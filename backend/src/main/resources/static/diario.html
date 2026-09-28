@@ -38,7 +38,7 @@
 </div>
 </div>
 <!-- Quick Metrics & Physical Gauge -->
-<div class="bg-primary-container/80 rounded-xl p-space-md flex items-center gap-space-lg shadow-inner min-w-[300px]">
+<div class="bg-primary-container/80 rounded-xl p-space-md flex items-center gap-space-lg shadow-inner w-full sm:w-auto">
 <div class="relative w-20 h-20 flex-shrink-0 flex items-center justify-center">
 <svg class="w-full h-full transform -rotate-90" viewbox="0 0 72 72">
 <circle class="text-surface-variant/20" cx="36" cy="36" fill="transparent" r="30" stroke="currentColor" stroke-width="7"></circle>
@@ -50,7 +50,7 @@
 </div>
 <div class="flex flex-col gap-1 min-w-0">
 <span class="font-label-sm text-label-sm uppercase tracking-wider text-surface-variant">Avanço Físico Total</span>
-<span class="font-title-md text-title-md text-on-primary font-semibold truncate">Fase de Instalações</span>
+<span class="font-title-md text-title-md text-on-primary font-semibold">Fase de Instalações</span>
 <div class="flex items-center gap-2 mt-1">
 <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-status-success/20 text-status-success">+4.2% esta semana</span>
 <span class="text-surface-variant text-[11px]">Meta: 70%</span>
@@ -61,29 +61,29 @@
 </section>
 <!-- Navigation Bar de Módulos Operacionais -->
 <section class="w-full bg-surface-card shadow-sm sticky top-20 z-40">
-<div class="max-w-7xl mx-auto px-margin flex items-center justify-between gap-space-md overflow-x-auto">
-<div class="flex items-center gap-space-xs py-space-xs">
-<button class="tab-trigger flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md transition-all duration-200 bg-primary-container text-on-primary shadow-sm" id="tab-btn-diario" onclick="switchTab('diario')">
+<div class="max-w-7xl mx-auto px-margin flex flex-col xl:flex-row xl:items-center xl:justify-between gap-space-md">
+<div class="flex max-w-full items-center gap-space-xs py-space-xs overflow-x-auto">
+<button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md transition-all duration-200 bg-primary-container text-on-primary shadow-sm" id="tab-btn-diario" onclick="switchTab('diario')">
 <span class="material-symbols-outlined text-[20px]">assignment</span>
 <span>Diário de Canteiro</span>
 <span class="px-1.5 py-0.5 text-xs rounded-full bg-secondary-container text-on-secondary font-bold">3 hoje</span>
 </button>
-<button class="tab-trigger flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-etapas" onclick="switchTab('etapas')">
+<button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-etapas" onclick="switchTab('etapas')">
 <span class="material-symbols-outlined text-[20px]">timeline</span>
 <span>Cronograma &amp; Etapas</span>
 <span class="px-1.5 py-0.5 text-xs rounded-full bg-surface-container-high text-on-surface-variant font-medium">10 fases</span>
 </button>
-<button class="tab-trigger flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-financeiro" onclick="switchTab('financeiro')">
+<button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-financeiro" onclick="switchTab('financeiro')">
 <span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
 <span>Medições &amp; Financeiro</span>
 </button>
-<button class="tab-trigger flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-comunicacao" onclick="switchTab('comunicacao')">
+<button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-comunicacao" onclick="switchTab('comunicacao')">
 <span class="material-symbols-outlined text-[20px]">chat</span>
 <span>Canal Técnico &amp; SAC</span>
 <span class="w-2 h-2 rounded-full bg-status-danger"></span>
 </button>
 </div>
-<div class="hidden md:flex items-center gap-space-sm py-space-xs">
+<div class="hidden md:flex self-end items-center gap-space-sm py-space-xs">
 <button class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg font-label-md text-label-md bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors" type="button">
 <span class="material-symbols-outlined text-[18px]">print</span>
 <span>Imprimir RDO</span>
