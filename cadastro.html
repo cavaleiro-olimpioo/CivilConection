@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Sora:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#d3dae8","surface-container-high":"#e1e9f6","surface-variant":"#dbe3f1","on-background":"#141c26","status-danger":"#d32f2f","error-container":"#ffdad6","inverse-primary":"#bac6e6","on-surface-variant":"#45474d","background":"#f8f9ff","on-primary":"#ffffff","on-error-container":"#93000a","primary-container":"#17243c","on-primary-container":"#7f8ba8","tertiary-container":"#112442","on-secondary":"#ffffff","surface-container":"#e7eefc","on-tertiary-fixed":"#061b39","inverse-surface":"#29313b","on-error":"#ffffff","secondary-fixed-dim":"#ffb77f","on-surface":"#141c26","error":"#ba1a1a","on-tertiary":"#ffffff","surface-bright":"#f8f9ff","on-tertiary-fixed-variant":"#354767","on-secondary-container":"#673400","on-primary-fixed":"#0e1b33","primary-fixed-dim":"#bac6e6","inverse-on-surface":"#e9f1ff","text-main":"#20252c","surface-white":"#ffffff","surface-container-low":"#eef4ff","surface-tint":"#525e79","on-secondary-fixed":"#2f1500","surface":"#f8f9ff","secondary":"#914c00","status-success":"#2d8a60","surface-canvas":"#f6f4ef","on-secondary-fixed-variant":"#6f3900","primary-fixed":"#d7e2ff","tertiary-fixed":"#d7e3ff","accent-orange-deep":"#d96f0d","status-warning":"#f59e0b","secondary-fixed":"#ffdcc4","tertiary-fixed-dim":"#b5c7ed","outline":"#75777e","outline-variant":"#c5c6ce","on-primary-fixed-variant":"#3a4761","tertiary":"#000e27","surface-container-highest":"#dbe3f1","on-tertiary-container":"#7a8caf","secondary-container":"#fd9432","primary":"#020e26","surface-container-lowest":"#ffffff"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin-mobile":"1rem",gutter:"1.5rem","space-md":"1rem","space-sm":"0.5rem","space-lg":"1.5rem",margin:"2rem","space-xl":"2.5rem","space-xs":"0.25rem","gutter-mobile":"1rem"},fontFamily:{"label-sm":["Inter"],"body-sm":["Inter"],"headline-lg-mobile":["Sora"],"display-lg":["Sora"],"title-lg":["Inter"],"headline-md":["Sora"],"label-lg":["Inter"],"body-lg":["Inter"],"display-lg-mobile":["Sora"],"body-md":["Inter"],"title-md":["Inter"],"headline-lg":["Sora"],"label-md":["Inter"],"headline-sm":["Sora"]},fontSize:{"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"600"}],"display-lg":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"700"}],"title-lg":["18px",{lineHeight:"26px",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"display-lg-mobile":["34px",{lineHeight:"42px",letterSpacing:"-0.01em",fontWeight:"700"}],"body-md":["15px",{lineHeight:"24px",fontWeight:"400"}],"title-md":["16px",{lineHeight:"24px",fontWeight:"600"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"600"}]}}}}</script><link rel="stylesheet" href="css/styles.css"/></head><body class="bg-surface-canvas text-on-surface font-body-md text-body-md flex items-center justify-center min-h-screen p-space-md"><main class="w-full max-w-lg bg-surface-white p-space-xl rounded-xl shadow-[0_4px_20px_rgba(23,36,60,0.08)]"><div class="flex flex-col w-full">
+<!-- Top Brand Watermark & Secure Badge -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-secondary-container shadow-md">
+<span class="material-symbols-outlined text-title-lg">foundation</span>
+</div>
+<div>
+<span class="font-headline-sm text-primary tracking-tight block">Civil Connection</span>
+<span class="font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-status-success inline-block"></span>
+          Supabase Auth & RLS Protegido
+        </span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-full text-primary font-label-md">
+<span class="material-symbols-outlined text-sm text-accent-orange-deep">verified_user</span>
+<span>Conformidade CREA / CAU / CFT</span>
+</div>
+</div>
+<!-- Mode Switcher Tabs -->
+<div class="bg-surface-container p-1 rounded-xl flex items-center mb-space-xl shadow-inner">
+<button class="flex-1 py-2.5 px-4 rounded-lg font-headline-sm text-label-lg transition-all duration-200 bg-surface-white text-primary shadow-sm flex items-center justify-center gap-2" id="tabRegister" onclick="switchAuthMode('register')" type="button">
+<span class="material-symbols-outlined text-title-md text-accent-orange-deep">person_add</span>
+<span>Criar Nova Conta</span>
+</button>
+<button class="flex-1 py-2.5 px-4 rounded-lg font-headline-sm text-label-lg transition-all duration-200 text-on-surface-variant hover:text-primary flex items-center justify-center gap-2" id="tabLogin" onclick="switchAuthMode('login')" type="button">
+<span class="material-symbols-outlined text-title-md">login</span>
+<span>Acessar Conta Existente</span>
+</button>
+</div>
+<!-- Main Grid: Form Left, Institutional Metrics & Badges Right -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Left Column: Dynamic Registration & Login Core -->
+<div class="lg:col-span-8 flex flex-col space-y-space-lg">
+<!-- Login View Container (Hidden by Default) -->
+<div class="hidden flex-col space-y-space-md bg-surface-white p-space-lg rounded-xl shadow-sm" id="loginView">
+<div class="space-y-1">
+<h2 class="font-headline-md text-primary">Acesso ao Ecossistema</h2>
+<p class="font-body-md text-on-surface-variant">Conecte-se com suas credenciais do Civil Connection gerenciadas pelo Supabase Auth.</p>
+</div>
+<form class="space-y-space-md" onsubmit="handleLoginSubmit(event)">
+<div class="space-y-1">
+<label class="font-label-md text-primary block">E-mail Cadastrado</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline">mail</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white focus:shadow-md transition-all font-body-md" placeholder="engenheiro@exemplo.com.br" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-primary block">Senha de Acesso</label>
+<a class="font-label-sm text-accent-orange-deep hover:underline" href="#">Esqueceu a senha?</a>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline">lock</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white focus:shadow-md transition-all font-body-md" placeholder="••••••••••••" required="" type="password"/>
+</div>
+</div>
+<button class="w-full py-3.5 px-6 rounded-lg bg-secondary-container hover:bg-accent-orange-deep text-on-primary font-headline-sm text-label-lg shadow-md transition-all duration-200 flex items-center justify-center gap-2" type="submit">
+<span>Autenticar no Sistema</span>
+<span class="material-symbols-outlined text-title-md">arrow_forward</span>
+</button>
+</form>
+</div>
+<!-- Register Form Container -->
+<form class="space-y-space-xl" id="registerForm" onsubmit="handleRegisterSubmit(event)">
+<!-- Profile Type Selector (user_types) -->
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-title-md text-primary flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary-container text-surface-white text-label-sm flex items-center justify-center">1</span>
+              Tipo de Atuação no Sistema
+            </label>
+<span class="font-label-sm text-accent-orange-deep uppercase tracking-wider">Tabela: user_types</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<!-- Client Option -->
+<div class="cursor-pointer p-space-md rounded-xl bg-surface-white shadow-sm hover:shadow-md transition-all duration-200 relative overflow-hidden flex flex-col justify-between" id="cardType-client" onclick="selectUserType('client')">
+<div class="flex items-start justify-between mb-2">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">home_work</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-dim flex items-center justify-center text-surface-white text-xs" id="check-client"></div>
+</div>
+<div>
+<p class="font-title-md text-primary">Proprietário</p>
+<p class="font-body-sm text-on-surface-variant mt-1">Publicar obras, gerenciar orçamentos e contratar especialistas.</p>
+</div>
+</div>
+<!-- Professional Option -->
+<div class="cursor-pointer p-space-md rounded-xl bg-surface-container-high shadow-md transition-all duration-200 relative overflow-hidden flex flex-col justify-between" id="cardType-professional" onclick="selectUserType('professional')">
+<div class="flex items-start justify-between mb-2">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined">engineering</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-secondary-container flex items-center justify-center text-surface-white text-xs" id="check-professional">
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+</div>
+<div>
+<p class="font-title-md text-primary">Profissional Autônomo</p>
+<p class="font-body-sm text-on-surface-variant mt-1">Engenheiros, arquitetos e mestres com CREA/CAU/CFT habilitado.</p>
+</div>
+</div>
+<!-- Contractor Option -->
+<div class="cursor-pointer p-space-md rounded-xl bg-surface-white shadow-sm hover:shadow-md transition-all duration-200 relative overflow-hidden flex flex-col justify-between" id="cardType-contractor" onclick="selectUserType('contractor')">
+<div class="flex items-start justify-between mb-2">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">domain</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-dim flex items-center justify-center text-surface-white text-xs" id="check-contractor"></div>
+</div>
+<div>
+<p class="font-title-md text-primary">Empreiteira</p>
+<p class="font-body-sm text-on-surface-variant mt-1">Construtoras jurídicas com CNPJ ativo e acervo de engenharia.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Base User Fields (users table) -->
+<div class="bg-surface-white p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-primary flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary-container text-surface-white text-label-sm flex items-center justify-center">2</span>
+              Credenciais & Contato (Tabela: users)
+            </h3>
+<span class="font-label-sm text-on-surface-variant">Auth Supabase</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="space-y-1 md:col-span-2">
+<label class="font-label-md text-primary">Nome Completo / Responsável Legal <span class="text-accent-orange-deep">*</span></label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline">badge</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white focus:shadow-md transition-all font-body-md" name="full_name" placeholder="Ex: Dr. Carlos Eduardo Medeiros" required="" type="text"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">E-mail Profissional <span class="text-accent-orange-deep">*</span></label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline">mail</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white focus:shadow-md transition-all font-body-md" name="email" placeholder="carlos.engenharia@empresa.com.br" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">WhatsApp / Telefone Direto <span class="text-accent-orange-deep">*</span></label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline">smartphone</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white focus:shadow-md transition-all font-body-md" name="phone" placeholder="(11) 98455-2210" required="" type="tel"/>
+</div>
+</div>
+<div class="space-y-1 md:col-span-2">
+<label class="font-label-md text-primary">Criar Senha de Segurança <span class="text-accent-orange-deep">*</span></label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline">lock</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white focus:shadow-md transition-all font-body-md" id="regPassword" oninput="checkPasswordStrength(this.value)" placeholder="Mínimo 8 dígitos com números e caracteres" required="" type="password"/>
+</div>
+<!-- Realtime Password Strength meter -->
+<div class="mt-2 flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-variant rounded-full overflow-hidden flex">
+<div class="h-full bg-status-danger w-1/4 transition-all duration-300" id="strengthMeter"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant" id="strengthText">Básica</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic Section A: Professional Autonomous (professional_profiles) -->
+<div class="bg-surface-white p-space-lg rounded-xl shadow-sm space-y-space-md" id="sectionProfessional">
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-primary flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-secondary-container text-surface-white text-label-sm flex items-center justify-center">3</span>
+              Qualificação Técnica (professional_profiles)
+            </h3>
+<span class="bg-surface-container px-2.5 py-1 rounded text-primary font-label-sm">Perfil Autônomo</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="space-y-1">
+<label class="font-label-md text-primary">Especialidade / Título Principal</label>
+<select class="w-full bg-surface-container-low px-4 py-3 rounded-lg text-primary focus:outline-none focus:bg-surface-white font-body-md" name="profession_title">
+<option>Engenheiro Civil Pleno</option>
+<option>Arquiteto e Urbanista</option>
+<option>Engenheiro Calculista / Estrutural</option>
+<option>Engenheiro Geotécnico</option>
+<option>Mestre de Obras / Técnico Edificações</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">Número do Registro (CREA / CAU / CFT)</label>
+<input class="w-full bg-surface-container-low px-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white font-body-md" placeholder="Ex: CREA-SP 506.912/D" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">Tempo de Experiência em Campo</label>
+<select class="w-full bg-surface-container-low px-4 py-3 rounded-lg text-primary focus:outline-none focus:bg-surface-white font-body-md" name="years_experience">
+<option>2 a 5 anos</option>
+<option>5 a 10 anos</option>
+<option>10 a 15 anos</option>
+<option>Acima de 15 anos de obras</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">Taxa / Valor Hora Referencial (R$)</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 text-on-surface-variant font-label-md">R$</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white font-body-md" placeholder="185,00" step="10" type="number"/>
+</div>
+</div>
+<!-- Multi-select Specialties Chips (specialties table) -->
+<div class="md:col-span-2 space-y-2">
+<label class="font-label-md text-primary block">Sub-especialidades de Execução (specialties)</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-full font-label-sm bg-primary-container text-surface-white transition-all" onclick="toggleChip(this)" type="button">Estruturas de Concreto Armado</button>
+<button class="px-3 py-1.5 rounded-full font-label-sm bg-surface-container text-primary transition-all" onclick="toggleChip(this)" type="button">Instalações Hidrossanitárias</button>
+<button class="px-3 py-1.5 rounded-full font-label-sm bg-primary-container text-surface-white transition-all" onclick="toggleChip(this)" type="button">Projetos BIM & Revit</button>
+<button class="px-3 py-1.5 rounded-full font-label-sm bg-surface-container text-primary transition-all" onclick="toggleChip(this)" type="button">Alvenaria Estrutural</button>
+<button class="px-3 py-1.5 rounded-full font-label-sm bg-surface-container text-primary transition-all" onclick="toggleChip(this)" type="button">Impermeabilização Técnica</button>
+<button class="px-3 py-1.5 rounded-full font-label-sm bg-surface-container text-primary transition-all" onclick="toggleChip(this)" type="button">Instalações de Média Tensão</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic Section B: Contractor Profile (contractor_profiles) -->
+<div class="hidden bg-surface-white p-space-lg rounded-xl shadow-sm space-y-space-md" id="sectionContractor">
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-primary flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-secondary-container text-surface-white text-label-sm flex items-center justify-center">3</span>
+              Dados Corporativos (contractor_profiles)
+            </h3>
+<span class="bg-surface-container px-2.5 py-1 rounded text-primary font-label-sm">Pessoa Jurídica</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="space-y-1">
+<label class="font-label-md text-primary">Razão Social (company_name)</label>
+<input class="w-full bg-surface-container-low px-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white font-body-md" placeholder="Construtora Horizonte Engenharia Ltda" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">Nome Fantasia</label>
+<input class="w-full bg-surface-container-low px-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white font-body-md" placeholder="Horizonte Obras" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">CNPJ Registrado</label>
+<input class="w-full bg-surface-container-low px-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white font-body-md" placeholder="12.345.678/0001-90" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">Porte da Construtora</label>
+<select class="w-full bg-surface-container-low px-4 py-3 rounded-lg text-primary focus:outline-none focus:bg-surface-white font-body-md">
+<option>ME / EPP (Até 20 colaboradores)</option>
+<option>Médio Porte (21 a 100 colaboradores)</option>
+<option>Grande Porte Corporativo (100+ obras simultâneas)</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">Raio Operacional Máximo</label>
+<div class="flex items-center gap-2">
+<input class="w-full accent-secondary-container" max="300" min="10" oninput="document.getElementById('kmOutput').innerText = this.value + ' km'" type="range" value="80"/>
+<span class="font-label-md text-primary w-16 text-right" id="kmOutput">80 km</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">Acervo Técnico / Anotação Técnica</label>
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center justify-between cursor-pointer hover:bg-surface-container transition-all">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">upload_file</span>
+<span class="font-label-sm text-on-surface-variant">Anexar CAT / Certidão (.PDF)</span>
+</div>
+<span class="font-label-sm text-accent-orange-deep font-semibold">Procurar</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Geographic Location Context -->
+<div class="bg-surface-white p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-primary flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary-container text-surface-white text-label-sm flex items-center justify-center">4</span>
+              Localização de Operação
+            </h3>
+<span class="font-label-sm text-on-surface-variant">Disponibilidade Geográfica</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="space-y-1">
+<label class="font-label-md text-primary">CEP Central</label>
+<input class="w-full bg-surface-container-low px-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white font-body-md" placeholder="01310-100" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">Cidade Base</label>
+<input class="w-full bg-surface-container-low px-4 py-3 rounded-lg text-primary placeholder:text-outline focus:outline-none focus:bg-surface-white font-body-md" placeholder="São Paulo" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-primary">UF / Estado</label>
+<select class="w-full bg-surface-container-low px-4 py-3 rounded-lg text-primary focus:outline-none focus:bg-surface-white font-body-md">
+<option>SP - São Paulo</option>
+<option>RJ - Rio de Janeiro</option>
+<option>MG - Minas Gerais</option>
+<option>PR - Paraná</option>
+<option>SC - Santa Catarina</option>
+<option>RS - Rio Grande do Sul</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Compliance & Legal Terms -->
+<div class="p-space-md rounded-xl bg-surface-container space-y-space-sm">
+<label class="flex items-start gap-3 cursor-pointer">
+<input class="mt-1 w-5 h-5 rounded accent-primary text-primary focus:ring-0" required="" type="checkbox"/>
+<span class="font-body-sm text-on-surface-variant">
+              Declaro que as informações técnicas, licenças profissionais (CREA/CAU) e documentos de identificação são legítimos sob responsabilidade civil e criminal, conforme a legislação brasileira e normas do CONFEA.
+            </span>
+</label>
+<label class="flex items-start gap-3 cursor-pointer">
+<input class="mt-1 w-5 h-5 rounded accent-primary text-primary focus:ring-0" required="" type="checkbox"/>
+<span class="font-body-sm text-on-surface-variant">
+              Concordo com os <a class="text-primary font-semibold underline" href="#">Termos de Uso</a> e autorizo o tratamento de dados segundo a LGPD integrado via Supabase Auth.
+            </span>
+</label>
+</div>
+<!-- Submit CTA Button -->
+<div>
+<button class="w-full py-4 px-6 rounded-lg bg-secondary-container hover:bg-accent-orange-deep text-on-primary font-headline-sm text-label-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-3" type="submit">
+<span class="material-symbols-outlined text-title-lg">engineering</span>
+<span>Finalizar Cadastro na Plataforma Civil Connection</span>
+</button>
+<p class="font-label-sm text-center text-on-surface-variant mt-2 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm text-status-success">lock</span>
+            Criptografia ponta a ponta com Row Level Security (RLS) habilitada
+          </p>
+</div>
+</form>
+</div>
+<!-- Right Column: Institutional Verification & Live Platform Metrics -->
+<div class="lg:col-span-4 flex flex-col space-y-space-lg">
+<!-- Verification Badge Card -->
+<div class="bg-primary-container text-on-primary p-space-lg rounded-xl shadow-md space-y-space-md relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-surface-white/5 pointer-events-none"></div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-title-lg">verified</span>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm block">Selo de Verificação</span>
+<span class="font-label-sm text-on-primary-container">Homologação Técnica</span>
+</div>
+</div>
+<p class="font-body-sm text-inverse-primary leading-relaxed">
+          Ao completar seu perfil no Civil Connection, seus registros de classe (ART/RRT) são confrontados com as bases públicas para liberação do selo <span class="text-secondary-fixed-dim font-semibold">Engenharia Verificada</span>, aumentando em até 4x a contratação de orçamentos.
+        </p>
+<div class="space-y-2 pt-2">
+<div class="flex items-center gap-2 font-label-sm text-inverse-primary">
+<span class="material-symbols-outlined text-sm text-secondary-container">check_circle</span>
+<span>Validação de acervo técnico e responsabilidade</span>
+</div>
+<div class="flex items-center gap-2 font-label-sm text-inverse-primary">
+<span class="material-symbols-outlined text-sm text-secondary-container">check_circle</span>
+<span>Contratos digitais com assinatura jurídica</span>
+</div>
+<div class="flex items-center gap-2 font-label-sm text-inverse-primary">
+<span class="material-symbols-outlined text-sm text-secondary-container">check_circle</span>
+<span>Medição física de etapas da obra com escrow</span>
+</div>
+</div>
+</div>
+<!-- Realtime Platform Stats (dashboard_stats) -->
+<div class="bg-surface-white p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<h4 class="font-title-md text-primary">Impacto do Sistema</h4>
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-success opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-status-success"></span>
+</span>
+</div>
+<div class="space-y-space-md">
+<!-- Metric 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="font-label-sm text-on-surface-variant">Profissionais Ativos</span>
+<p class="font-headline-md text-primary">1.482</p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">groups</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="font-label-sm text-on-surface-variant">Índice de Conformidade</span>
+<p class="font-headline-md text-status-success">98.4%</p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-status-success/10 flex items-center justify-center text-status-success">
+<span class="material-symbols-outlined">rule</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="font-label-sm text-on-surface-variant">Obras Intermediadas</span>
+<p class="font-headline-md text-secondary">R$ 48.2M</p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+</div>
+<!-- Inline SVG Architectural Cadence Graphic -->
+<div class="pt-2">
+<div class="flex items-center justify-between text-label-sm text-on-surface-variant mb-1">
+<span>Crescimento de Emissões ART</span>
+<span class="text-accent-orange-deep font-semibold">+34% este mês</span>
+</div>
+<svg class="w-full h-12 stroke-current text-primary-container fill-none overflow-visible" viewbox="0 0 300 45">
+<path d="M 0 38 Q 40 35, 75 28 T 150 20 T 225 15 T 300 4" stroke-linecap="round" stroke-width="2.5"></path>
+<circle cx="300" cy="4" fill="#fd9432" r="4" stroke="#ffffff" stroke-width="2"></circle>
+</svg>
+</div>
+</div>
+<!-- Institutional Support & Direct Channel -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-title-lg">contact_support</span>
+<div class="text-left">
+<p class="font-title-md text-primary text-sm">Dúvidas com seu registro?</p>
+<p class="font-body-sm text-on-surface-variant text-xs">Suporte especializado para CREA/CAU via plantão técnico.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  let activeUserType = 'professional';
+
+  function selectUserType(type) {
+    activeUserType = type;
+    
+    // Reset all cards
+    const types = ['client', 'professional', 'contractor'];
+    types.forEach(t => {
+      const card = document.getElementById('cardType-' + t);
+      const check = document.getElementById('check-' + t);
+      
+      if (t === type) {
+        card.classList.remove('bg-surface-white');
+        card.classList.add('bg-surface-container-high', 'shadow-md');
+        check.classList.remove('bg-surface-dim');
+        check.classList.add('bg-secondary-container');
+        check.innerHTML = '<span class="material-symbols-outlined text-xs">check</span>';
+      } else {
+        card.classList.add('bg-surface-white');
+        card.classList.remove('bg-surface-container-high', 'shadow-md');
+        check.classList.add('bg-surface-dim');
+        check.classList.remove('bg-secondary-container');
+        check.innerHTML = '';
+      }
+    });
+
+    // Toggle dynamic sections
+    const sectionProf = document.getElementById('sectionProfessional');
+    const sectionContr = document.getElementById('sectionContractor');
+
+    if (type === 'professional') {
+      sectionProf.classList.remove('hidden');
+      sectionContr.classList.add('hidden');
+    } else if (type === 'contractor') {
+      sectionProf.classList.add('hidden');
+      sectionContr.classList.remove('hidden');
+    } else {
+      // client
+      sectionProf.classList.add('hidden');
+      sectionContr.classList.add('hidden');
+    }
+  }
+
+  function toggleChip(button) {
+    if (button.classList.contains('bg-surface-container')) {
+      button.classList.remove('bg-surface-container', 'text-primary');
+      button.classList.add('bg-primary-container', 'text-surface-white');
+    } else {
+      button.classList.add('bg-surface-container', 'text-primary');
+      button.classList.remove('bg-primary-container', 'text-surface-white');
+    }
+  }
+
+  function checkPasswordStrength(password) {
+    const meter = document.getElementById('strengthMeter');
+    const text = document.getElementById('strengthText');
+    
+    if (password.length === 0) {
+      meter.className = 'h-full bg-status-danger w-1/4 transition-all duration-300';
+      text.innerText = 'Básica';
+    } else if (password.length < 6) {
+      meter.className = 'h-full bg-status-danger w-1/4 transition-all duration-300';
+      text.innerText = 'Fraca';
+    } else if (password.length < 10) {
+      meter.className = 'h-full bg-status-warning w-2/4 transition-all duration-300';
+      text.innerText = 'Média';
+    } else {
+      meter.className = 'h-full bg-status-success w-full transition-all duration-300';
+      text.innerText = 'Forte (Segura)';
+    }
+  }
+
+  function switchAuthMode(mode) {
+    const tabRegister = document.getElementById('tabRegister');
+    const tabLogin = document.getElementById('tabLogin');
+    const registerForm = document.getElementById('registerForm');
+    const loginView = document.getElementById('loginView');
+
+    if (mode === 'login') {
+      tabLogin.classList.add('bg-surface-white', 'text-primary', 'shadow-sm');
+      tabLogin.classList.remove('text-on-surface-variant');
+      tabRegister.classList.remove('bg-surface-white', 'text-primary', 'shadow-sm');
+      tabRegister.classList.add('text-on-surface-variant');
+
+      registerForm.classList.add('hidden');
+      loginView.classList.remove('hidden');
+      loginView.classList.add('flex');
+    } else {
+      tabRegister.classList.add('bg-surface-white', 'text-primary', 'shadow-sm');
+      tabRegister.classList.remove('text-on-surface-variant');
+      tabLogin.classList.remove('bg-surface-white', 'text-primary', 'shadow-sm');
+      tabLogin.classList.add('text-on-surface-variant');
+
+      loginView.classList.add('hidden');
+      loginView.classList.remove('flex');
+      registerForm.classList.remove('hidden');
+    }
+  }
+</script></main><script src="js/config.js"></script><script src="js/app.js"></script></body></html>
