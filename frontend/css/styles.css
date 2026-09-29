@@ -8,6 +8,12 @@ html {
     scroll-behavior: smooth;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 /* Otimização de fontes e renderização de texto */
 body {
     -webkit-font-smoothing: antialiased;
@@ -17,11 +23,28 @@ body {
 
 /* Transições suaves para botões e links */
 a, button {
-    transition: all 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out,
+        box-shadow 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out,
+        transform 0.2s ease-in-out;
+}
+
+/* Preserve long technical labels and values inside responsive layouts. */
+:where(.flex, .grid) > * {
+    min-width: 0;
+}
+
+:where(p, span, a, label, li, td, th) {
+    overflow-wrap: anywhere;
+}
+
+button {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
 }
 
 /* Efeito de foco visual acessível */
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible, [tabindex]:focus-visible {
     outline: 2px solid #FD9432;
     outline-offset: 2px;
 }
@@ -45,4 +68,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .toast-animate {
     animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
 }
