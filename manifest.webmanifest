@@ -1,0 +1,13 @@
+{
+  "name": "Civil Connection",
+  "short_name": "Civil Connection",
+  "description": "Plataforma de conexão entre proprietários, engenheiros e empreiteiras da construção civil.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f9ff",
+  "theme_color": "#020e26",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "assets/images/favicon.png", "sizes": "64x64", "type": "image/png" }
+  ]
+}
