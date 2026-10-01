@@ -1,4 +1,9 @@
 // Civil Conection - Full Stack API Integration Script
+//
+// A API REST (Spring Boot) é consultada em API_CONFIG.baseUrl (js/config.js).
+// Quando ela não está acessível (ex.: site estático publicado na Vercel sem o
+// backend), as páginas mantêm o conteúdo protótipo já embutido no HTML e um
+// único aviso informativo é registrado no console — sem erros vermelhos.
 
 document.addEventListener('DOMContentLoaded', () => {
     initPageNavigation();
@@ -18,16 +23,81 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// ==========================================
+// API CONNECTION
+// ==========================================
+// Error raised when the REST backend cannot be reached at all (static hosting
+// without the API, network failure, CORS, etc). Callers use it to decide
+// between a hard failure and gracefully keeping the prototype content.
+class ApiUnavailableError extends Error {
+    constructor(message = 'Backend REST não disponível neste endereço') {
+        super(message);
+        this.name = 'ApiUnavailableError';
+    }
+}
+
+// Once the API is deemed unreachable, further requests are skipped only for a
+// short cooldown instead of being blocked forever: a transient failure (backend
+// restarting, brief network drop) then recovers on the next user action or
+// after the window expires, without requiring a page reload.
+const API_RETRY_COOLDOWN_MS = 30000;
+let apiUnavailableUntil = 0;
+let apiWarningShown = false;
+
+function isApiUnavailable(error) {
+    return !!error && error.name === 'ApiUnavailableError';
+}
+
+function markApiUnavailable() {
+    apiUnavailableUntil = Date.now() + API_RETRY_COOLDOWN_MS;
+    if (!apiWarningShown) {
+        apiWarningShown = true;
+        console.warn(
+            '[Civil Connection] Backend REST não disponível — mantendo o conteúdo de demonstração da página. ' +
+            'Para usar dados reais: execute o backend Spring Boot (cd backend && ./gradlew bootRun) e, se necessário, ' +
+            'configure API_CONFIG.baseUrl em js/config.js.'
+        );
+    }
+}
+
+// Resolves the base URL of the REST API:
+// 1. explicit override in js/config.js (API_CONFIG.baseUrl);
+// 2. pages opened via file:// cannot use a relative "/api", so fall back to
+//    the default local Spring Boot address (http://localhost:8080);
+// 3. otherwise same origin (pages served by the backend itself).
+function getApiBaseUrl() {
+    const config = window.CIVIL_API_CONFIG || {};
+    if (typeof config.baseUrl === 'string' && config.baseUrl.trim() !== '') {
+        return config.baseUrl.trim().replace(/\/+$/, '');
+    }
+    if (window.location.protocol === 'file:') {
+        return 'http://localhost:8080';
+    }
+    return '';
+}
+
 // Helper for API calls
 async function apiFetch(endpoint, options = {}) {
+    if (Date.now() < apiUnavailableUntil) {
+        throw new ApiUnavailableError();
+    }
+
     try {
-        const response = await fetch(endpoint, {
+        const response = await fetch(getApiBaseUrl() + endpoint, {
             headers: {
                 'Content-Type': 'application/json',
                 ...options.headers
             },
             ...options
         });
+
+        // A 404 with a non-JSON body means there is no API behind this origin
+        // (e.g. the static Vercel deployment) — not a "resource not found".
+        const contentType = response.headers.get('content-type') || '';
+        if (response.status === 404 && !contentType.includes('json')) {
+            markApiUnavailable();
+            throw new ApiUnavailableError();
+        }
 
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({ message: 'Erro ao processar requisição' }));
@@ -37,6 +107,14 @@ async function apiFetch(endpoint, options = {}) {
         if (response.status === 204) return null;
         return await response.json();
     } catch (error) {
+        if (isApiUnavailable(error)) {
+            throw error;
+        }
+        if (error instanceof TypeError) {
+            // Network / DNS / CORS failure: the API is simply not reachable.
+            markApiUnavailable();
+            throw new ApiUnavailableError();
+        }
         console.error('API Error:', error);
         throw error;
     }
@@ -60,7 +138,7 @@ function showToast(message, isSuccess = true) {
 
 // Navigation fix across pages
 function initPageNavigation() {
-    const navLinks = document.querySelectorAll('nav a, header a');
+    const navLinks = document.querySelectorAll('a[data-path], nav a, header a');
     navLinks.forEach(link => {
         const text = link.innerText.trim().toLowerCase();
         const pathAttr = link.getAttribute('data-path');
@@ -96,7 +174,12 @@ async function initHomePage() {
         const stats = await apiFetch('/api/stats');
         updateHomeStats(stats);
     } catch (err) {
-        console.warn('Usando estatísticas padrão:', err);
+        // API offline (static deployment): keep the default metrics already
+        // present in the HTML markup — but do NOT return early, the hero
+        // search below must keep working.
+        if (!isApiUnavailable(err)) {
+            console.warn('Usando estatísticas padrão:', err);
+        }
     }
 
     // Hero search integration
@@ -161,7 +244,9 @@ async function initProfissionaisPage() {
 }
 
 async function carregarProfissionais(filtros = {}) {
-    const container = document.getElementById('lista-profissionais') || document.querySelector('main section .grid');
+    // Only replace the real list container — never a generic grid, which could
+    // match the search form or KPI cards.
+    const container = document.getElementById('lista-profissionais');
     if (!container) return;
 
     try {
@@ -173,6 +258,11 @@ async function carregarProfissionais(filtros = {}) {
         const profissionais = await apiFetch(`/api/profissionais?${queryParams.toString()}`);
         renderProfissionais(profissionais, container);
     } catch (err) {
+        if (isApiUnavailable(err)) {
+            // Backend offline (ex.: hospedagem estática): keep the prototype
+            // cards already rendered in the HTML.
+            return;
+        }
         showToast('Erro ao carregar profissionais', false);
     }
 }
@@ -255,7 +345,8 @@ async function initObrasPage() {
 }
 
 async function carregarObras(filtros = {}) {
-    const container = document.getElementById('lista-obras') || document.querySelector('main section .grid');
+    // Prefer explicit ids; #projectsGrid is the list rendered by obras.html.
+    const container = document.getElementById('lista-obras') || document.getElementById('projectsGrid');
     if (!container) return;
 
     try {
@@ -267,6 +358,11 @@ async function carregarObras(filtros = {}) {
         const obras = await apiFetch(`/api/obras?${queryParams.toString()}`);
         renderObras(obras, container);
     } catch (err) {
+        if (isApiUnavailable(err)) {
+            // Backend offline (ex.: hospedagem estática): keep the prototype
+            // project cards already rendered in the HTML.
+            return;
+        }
         showToast('Erro ao carregar obras', false);
     }
 }
@@ -344,6 +440,10 @@ async function initDiarioPage() {
                 obraId = obras[0].id;
             }
         } catch (e) {
+            if (isApiUnavailable(e)) {
+                // Backend offline: keep the prototype diary content.
+                return;
+            }
             console.warn('Nenhuma obra carregada');
         }
     }
@@ -359,6 +459,10 @@ async function carregarDetalhesObra(obraId) {
         renderDiarioHeader(obra);
         renderEtapasList(obra);
     } catch (err) {
+        if (isApiUnavailable(err)) {
+            // Backend offline: keep the prototype diary content.
+            return;
+        }
         showToast('Erro ao carregar diário da obra', false);
     }
 }
@@ -443,6 +547,10 @@ async function atualizarEtapaPrompt(etapaId, obraId, progressoAtual) {
         showToast('Etapa atualizada com sucesso!');
         carregarDetalhesObra(obraId);
     } catch (err) {
+        if (isApiUnavailable(err)) {
+            showToast('Backend não disponível — não é possível atualizar etapas agora.', false);
+            return;
+        }
         showToast('Erro ao atualizar etapa', false);
     }
 }
@@ -530,6 +638,10 @@ function initCadastroPage() {
                 window.location.href = 'index.html';
             }, 1500);
         } catch (err) {
+            if (isApiUnavailable(err)) {
+                showToast('Backend não disponível — execute o Spring Boot para cadastrar (veja js/config.js).', false);
+                return;
+            }
             showToast(err.message || 'Erro ao realizar cadastro', false);
         }
     };
