@@ -36,7 +36,12 @@ class ApiUnavailableError extends Error {
     }
 }
 
-let apiUnavailable = false;
+// Once the API is deemed unreachable, further requests are skipped only for a
+// short cooldown instead of being blocked forever: a transient failure (backend
+// restarting, brief network drop) then recovers on the next user action or
+// after the window expires, without requiring a page reload.
+const API_RETRY_COOLDOWN_MS = 30000;
+let apiUnavailableUntil = 0;
 let apiWarningShown = false;
 
 function isApiUnavailable(error) {
@@ -44,7 +49,7 @@ function isApiUnavailable(error) {
 }
 
 function markApiUnavailable() {
-    apiUnavailable = true;
+    apiUnavailableUntil = Date.now() + API_RETRY_COOLDOWN_MS;
     if (!apiWarningShown) {
         apiWarningShown = true;
         console.warn(
@@ -73,7 +78,7 @@ function getApiBaseUrl() {
 
 // Helper for API calls
 async function apiFetch(endpoint, options = {}) {
-    if (apiUnavailable) {
+    if (Date.now() < apiUnavailableUntil) {
         throw new ApiUnavailableError();
     }
 
@@ -169,12 +174,12 @@ async function initHomePage() {
         const stats = await apiFetch('/api/stats');
         updateHomeStats(stats);
     } catch (err) {
-        if (isApiUnavailable(err)) {
-            // Static deployment without the backend: keep the default
-            // metrics already present in the HTML markup.
-            return;
+        // API offline (static deployment): keep the default metrics already
+        // present in the HTML markup — but do NOT return early, the hero
+        // search below must keep working.
+        if (!isApiUnavailable(err)) {
+            console.warn('Usando estatísticas padrão:', err);
         }
-        console.warn('Usando estatísticas padrão:', err);
     }
 
     // Hero search integration
