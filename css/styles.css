@@ -1,9 +1,9 @@
 /* ==============================================================================
-   CIVIL CONNECTION - CUSTOM STYLESHEET
-   Extensão para classes utilitárias, animações e regras de acessibilidade
+   CIVIL CONNECTION — Estilos complementares, animações e acessibilidade
    ============================================================================== */
 
-/* Suavização de rolagem */
+/* ---------- Base ---------- */
+
 html {
     scroll-behavior: smooth;
 }
@@ -14,21 +14,72 @@ html {
     box-sizing: border-box;
 }
 
-/* Otimização de fontes e renderização de texto */
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
 
-/* Transições suaves para botões e links */
-a, button {
-    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out,
-        box-shadow 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out,
-        transform 0.2s ease-in-out;
+/* Títulos equilibram quebras de linha */
+h1, h2, h3 {
+    text-wrap: balance;
 }
 
-/* Preserve long technical labels and values inside responsive layouts. */
+/* Números alinhados em tabelas e listas técnicas */
+table,
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Acessibilidade ---------- */
+
+/* Link "pular para o conteúdo" — visível apenas ao focar via teclado */
+.skip-link {
+    position: fixed;
+    top: -100px;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    background: #020e26;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+/* Anel de foco visível e consistente */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid #fd9432;
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+}
+
+/* Leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ---------- Layout ---------- */
+
+/* Evita estouro de textos longos em layouts flexíveis */
 :where(.flex, .grid) > * {
     min-width: 0;
 }
@@ -37,16 +88,18 @@ a, button {
     overflow-wrap: anywhere;
 }
 
+/* ---------- Transições ---------- */
+
+a,
 button {
-    min-width: 2.75rem;
-    min-height: 2.75rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease,
+        box-shadow 0.2s ease, color 0.2s ease, opacity 0.2s ease,
+        transform 0.15s ease;
 }
 
-/* Efeito de foco visual acessível */
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
-textarea:focus-visible, [tabindex]:focus-visible {
-    outline: 2px solid #FD9432;
-    outline-offset: 2px;
+/* Feedback físico de clique */
+button:active {
+    transition-duration: 0.05s;
 }
 
 /* Barra de progresso animada */
@@ -54,21 +107,38 @@ textarea:focus-visible, [tabindex]:focus-visible {
     transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Toast de notificações animado */
-@keyframes slideInUp {
+/* ---------- Entrada escalonada no scroll ---------- */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: none;
+}
+
+/* Novos registros do diário entram suavemente */
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(12px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
     }
 }
 
-.toast-animate {
-    animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.animate-fade-in {
+    animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+/* ---------- Movimento reduzido ---------- */
 
 @media (prefers-reduced-motion: reduce) {
     html {
@@ -80,7 +150,36 @@ textarea:focus-visible, [tabindex]:focus-visible {
     *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ---------- Impressão (RDO / PDF) ---------- */
+
+@media print {
+    header,
+    footer,
+    #mobile-menu,
+    .skip-link,
+    .sticky {
+        display: none !important;
+    }
+
+    body {
+        background: #ffffff;
+    }
+
+    main {
+        padding-top: 0 !important;
+    }
+
+    .tab-pane {
+        display: flex !important;
     }
 }
