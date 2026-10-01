@@ -1,0 +1,48 @@
+# =============================================================================
+# VERCEL DEPLOYMENT IGNORE
+# -----------------------------------------------------------------------------
+# The production site (https://civilconection.vercel.app) is a static deploy
+# of the repository root. Only the web-facing files are shipped: the HTML
+# pages plus their css/, js/ and assets/ folders.
+#
+# Everything below is excluded from the deployment (backend sources, build
+# tooling, documentation, design prototypes, environment files, ...), which
+# also keeps private files such as .env off the public URL.
+# =============================================================================
+
+# Environment / secrets
+.env
+.env.*
+
+# Backend (Spring Boot) sources and builds
+backend/
+src/
+build/
+build.gradle
+settings.gradle
+gradle/
+gradlew
+gradlew.bat
+start-dev.bat
+start-dev.sh
+
+# Duplicate copy of the pages (the live ones are deployed from the root)
+frontend/
+
+# Design prototypes, documentation and database scripts
+design/
+docs/
+database/
+
+# Tooling
+tools/
+node_modules/
+
+# Repo meta / docs
+.git
+.github
+.gitignore
+.gitattributes
+.vercelignore
+README.md
+gitinstructions

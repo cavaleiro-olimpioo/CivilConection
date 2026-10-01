@@ -44,7 +44,16 @@ CivilConection/
 │   ├── gradlew & gradlew.bat      # Wrappers do Gradle
 │   └── README.md                  # Documentação específica do backend
 │
-├── frontend/                      # Interface Web Completa (HTML5, TailwindCSS, JS)
+├── index.html                     # Site estático publicado (deploy Vercel a partir da raiz)
+│   profissionais.html             #   As páginas da raiz são as versões de produção;
+│   obras.html                     #   carregam css/tailwind.css (build do Tailwind CLI),
+│   diario.html                    #   js/config.js (URL da API) e js/app.js (integração REST)
+│   cadastro.html
+│   ├── assets/images/             # Logotipo e imagens do site público
+│   ├── css/                       # tailwind.css (gerado) + styles.css (customizações)
+│   └── js/                        # config.js (API/Supabase) + app.js (integração REST)
+│
+├── frontend/                      # Cópia fonte da interface para desenvolvimento isolado
 │   ├── assets/images/             # Imagens e Logotipo oficial
 │   ├── css/styles.css             # Estilos utilitários e animações
 │   ├── js/app.js                  # Integração REST e controle de tela
@@ -54,6 +63,8 @@ CivilConection/
 │   ├── diario.html                # Gestão de diário de obras e vistorias
 │   ├── cadastro.html              # Autenticação e Registro (Cliente / Profissional)
 │   └── README.md                  # Instruções de desenvolvimento web
+│
+├── tools/tailwind/                # Build de produção do Tailwind CSS (npm run build)
 │
 ├── database/                      # Banco de Dados & Scripts Supabase
 │   ├── schema.sql                 # DDL de criação das tabelas (PostgreSQL / Supabase)
@@ -70,10 +81,11 @@ CivilConection/
 │   ├── tokens/DESIGN.md           # Tokens de Design System (cores, fontes Sora/Inter)
 │   ├── branding/logo.png          # Logotipo original da marca
 │   ├── mockups/                   # Telas de prototipação organizadas por tela
-│   └── README.md                  # Especificações de design e assets
+│   └── README.md                  # Especificação de design e assets
 │
 ├── .env.example                   # Modelo de variáveis de ambiente para Supabase
 ├── .gitignore                     # Ignora arquivos temporários, compilação e caches
+├── .vercelignore                  # Limita o deploy Vercel aos arquivos do site
 └── README.md                      # Documentação central do ecossistema
 ```
 
@@ -123,9 +135,58 @@ Você pode acessar a interface de duas formas:
 - **Opção B (Standalone com Live Server / VS Code)**:  
   Abra a pasta `frontend/` no VS Code e inicie com a extensão **Live Server** no arquivo `index.html`.
 
+> 💡 **Integração Frontend ↔ API**: a URL base da API é definida em
+> [`js/config.js`](js/config.js) (`API_CONFIG.baseUrl`):
+>
+> | Cenário | Valor de `baseUrl` |
+> |---|---|
+> | Páginas servidas pelo próprio backend (`http://localhost:8080`) | `''` (padrão, mesma origem) |
+> | HTML aberto direto no navegador (`file://`) ou servidor estático separado | automático: `http://localhost:8080` |
+> | Backend publicado (Render, Railway, VPS...) | `'https://seu-backend.example.com'` |
+>
+> Quando a API não está acessível (ex.: site estático publicado na Vercel sem o
+> backend), as páginas **mantêm o conteúdo de demonstração** já embutido no HTML
+> e registram apenas um aviso informativo no console — sem erros.
+
 ---
 
-### 3. Configurando o Supabase
+### 3. Build de Produção do Tailwind CSS
+
+As páginas **não utilizam mais o CDN** `cdn.tailwindcss.com` (que é destinado
+apenas a desenvolvimento). O stylesheet de produção é gerado pelo **Tailwind CLI**
+e versionado em `css/tailwind.css` (já compilado e minificado).
+
+Para regenerar o CSS após alterar classes ou tokens de design:
+
+```bash
+cd tools/tailwind
+npm install
+npm run build      # gera css/tailwind.css e sincroniza com frontend/ e backend/
+npm run watch      # modo desenvolvimento com recompilação automática
+```
+
+- A configuração do tema (tokens "Construct Modern") vive em
+  [`tools/tailwind/tailwind.config.js`](tools/tailwind/tailwind.config.js) — o
+  mesmo tema que antes era embutido via `<script>` em cada página.
+- Os tokens de design também estão documentados em
+  [`design/tokens/DESIGN.md`](design/tokens/DESIGN.md).
+
+---
+
+### 4. Publicação na Vercel
+
+O site público é um **deploy estático da raiz do repositório** (as páginas
+`*.html` + pastas `css/`, `js/` e `assets/`). O arquivo
+[`.vercelignore`](.vercelignore) exclui do deploy tudo que não é web
+(`backend/`, `src/`, `tools/`, `design/`, `docs/`, `.env`, ...), mantendo
+arquivos internos fora do endereço público.
+
+Como não há etapa de build na Vercel (o CSS já vem compilado), nenhuma
+configuração adicional é necessária — basta o push para a branch de produção.
+
+---
+
+### 5. Configurando o Supabase
 
 Para conectar o projeto ao banco de dados em nuvem do **Supabase**:
 

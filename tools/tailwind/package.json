@@ -1,0 +1,14 @@
+{
+  "name": "civilconection-tailwind-build",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tailwind CSS build tooling for the Civil Connection static pages (replaces the Tailwind Play CDN).",
+  "scripts": {
+    "build": "tailwindcss -c ./tailwind.config.js -i ./src/input.css -o ../../css/tailwind.css --minify && npm run sync",
+    "watch": "tailwindcss -c ./tailwind.config.js -i ./src/input.css -o ../../css/tailwind.css --watch",
+    "sync": "node sync.js"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
