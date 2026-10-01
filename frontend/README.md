@@ -54,7 +54,8 @@ O backend Spring Boot já serve todos os arquivos estáticos diretamente na port
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **HTML5 Semântico**: Estruturação acessível e SEO-friendly.
+- **HTML5 Semântico**: Estruturação acessível e SEO-friendly (`<title>`, meta description, OG tags, favicon e skip-link em todas as páginas).
 - **Tailwind CSS (via CDN)**: Design System com paleta corporativa `Construct Modern`.
 - **Vanilla JavaScript Moderno (ES6+)**: Comunicação assíncrona (`fetch`, `async/await`), manipulação do DOM e componentes dinâmicos.
-- **Material Symbols & Google Fonts**: Tipografia com `Sora` e `Inter`.
+- **Material Symbols & Google Fonts**: Tipografia com `Sora` (títulos) e `Archivo` (texto), com números tabulares para dados.
+- **Imagens locais otimizadas** em `assets/images/` (fotos de canteiro geradas + tiles técnicos blueprint), sem dependência de URLs externas.

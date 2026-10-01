@@ -1,649 +1,1021 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encontrar Profissionais — Civil Connection</title>
+  <meta name="description" content="Busque engenheiros, técnicos e empreiteiras verificadas com registro CREA/CAU/CFT ativo, avaliação auditada e rastreabilidade técnica para execução de obras civis." />
+  <meta name="theme-color" content="#020e26" />
+  <meta property="og:title" content="Encontrar Profissionais — Civil Connection" />
+  <meta property="og:description" content="Profissionais e empreiteiras verificadas com registro CREA/CAU/CFT ativo." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
 
-<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="css/tailwind.css"/><link rel="stylesheet" href="css/styles.css"/></head><body class="bg-surface-canvas font-body-md text-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface-card/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md"><img alt="civil_connection_logo.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WOVti2G0Jl0QJ8A5qko53tM9r9tkWLbEERY5F98WlZ7ChnHzEOjvTgR1Vq8aNwyAFKfJLEcSjMEe-aAGMHEiheUZqsYjSVMkoVIEIyGL2b1ceNJNmmKc-r7sA6DGmiT2ma2vxh3y8qw-VVhgIGnA1e6T3GXYvlSeM5coJ6H-2-td84hU0jwh0iLTHNoWz8zvpn9nVG96L624ZPuQj4vay-9xRpGWSbRwkS3p0arAa6iVXVwCeWUICnOfxMJCWOM274CizaxzTH"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-tight tracking-tight">Civil Connection</span><span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:inline-block tracking-wider uppercase">Conectando ideias, construindo o futuro</span></div></div><div class="hidden xl:flex items-center gap-space-sm bg-surface-container px-space-md py-space-xs rounded-xl"><span class="material-symbols-outlined text-outline text-[20px]">search</span><input class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-outline w-64" placeholder="Buscar obras, engenheiros, fornecedores..." type="text"/><div class="h-4 w-[1px] bg-outline-variant"></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">location_on</span><span class="font-label-sm text-label-sm">São Paulo, SP</span></div></div><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-primary font-title-md text-title-md rounded-lg"><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="inicio" href="#">Início</a><a aria-current="page" class="px-space-md py-space-sm transition-colors bg-primary-container text-on-primary font-title-md text-title-md rounded-lg" data-path="encontrar-profissionais" href="#">Encontrar Profissionais</a><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="obras-e-projetos" href="#">Obras &amp; Projetos</a><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="diario-de-obras" href="#">Diário de Obras</a><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard-visao-geral" href="#">Dashboard</a></nav><div class="flex items-center gap-space-md"><button class="hidden sm:inline-flex items-center gap-space-xs bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md px-space-lg py-space-sm rounded-lg transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span>Publicar Projeto</span></button><div class="relative flex items-center justify-center"><button aria-label="Notificações" class="p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[24px]">notifications</span></button><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-status-danger"></span></div><div class="flex items-center gap-space-xs pl-space-xs"><div class="relative"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-status-success rounded-full ring-2 ring-surface-card flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[9px]">verified</span></span></div></div></div></div></header><main class="w-full pt-20 bg-surface-canvas"><div class="flex flex-col w-full">
-<!-- Sub-Header / Architectural Context Banner -->
-<section class="w-full bg-primary text-on-primary py-space-xl px-margin relative overflow-hidden shadow-md">
-<div class="absolute inset-0 bg-gradient-to-r from-primary via-tertiary to-primary-container opacity-95 pointer-events-none"></div>
-<div class="absolute -right-16 -bottom-24 w-96 h-96 rounded-full bg-secondary-container/10 blur-3xl pointer-events-none"></div>
-<div class="max-w-7xl mx-auto relative z-10 flex flex-col gap-space-lg">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
-<div>
-<div class="flex items-center gap-space-xs text-secondary-fixed mb-space-xs">
-<span class="material-symbols-outlined text-[16px]">engineering</span>
-<span class="font-label-sm text-label-sm uppercase tracking-wider">Mapeamento Técnico de Canteiro • PostGIS Geo-Match</span>
-</div>
-<h1 class="font-headline-xl text-headline-xl text-on-primary tracking-tight">Encontrar Profissionais &amp; Especialistas</h1>
-<p class="font-body-md text-body-md text-primary-fixed-dim max-w-2xl mt-1">
-            Profissionais e empreiteiras com verificação documental CREA/CAU/CFT ativa, avaliação auditada e rastreabilidade técnica para execução de obras civis.
-          </p>
-</div>
-<div class="flex items-center gap-space-sm self-start md:self-auto bg-surface-card/10 backdrop-blur-md px-space-md py-space-sm rounded-lg shadow-sm">
-<span class="w-2.5 h-2.5 rounded-full bg-status-success animate-pulse"></span>
-<span class="font-label-md text-label-md text-on-primary">1.482 disponíveis para alocação</span>
-</div>
-</div>
-<!-- Advanced Blueprint Search Bar -->
-<div class="bg-surface-card text-on-surface rounded-xl p-space-md shadow-xl">
-<form class="grid grid-cols-1 md:grid-cols-12 gap-space-sm items-center" onsubmit="event.preventDefault();">
-<!-- Keyword / Specialty Search -->
-<div class="md:col-span-4 flex items-center gap-space-xs px-space-md py-space-sm bg-surface-container-low rounded-lg">
-<span class="material-symbols-outlined text-outline text-[22px]">construction</span>
-<div class="flex flex-col w-full">
-<span class="font-label-sm text-label-sm text-outline uppercase">Especialidade ou Cargo</span>
-<input class="bg-transparent font-title-md text-title-md text-on-surface outline-none placeholder:text-outline w-full" id="filter-search-term" placeholder="Estruturas, Hidráulica, Drywall, etc." type="text" value="Estruturas de Concreto"/>
-</div>
-</div>
-<!-- City / State Geo Location -->
-<div class="md:col-span-3 flex items-center gap-space-xs px-space-md py-space-sm bg-surface-container-low rounded-lg">
-<span class="material-symbols-outlined text-outline text-[22px]">share_location</span>
-<div class="flex flex-col w-full">
-<span class="font-label-sm text-label-sm text-outline uppercase">Localização / Base</span>
-<input class="bg-transparent font-title-md text-title-md text-on-surface outline-none placeholder:text-outline w-full" id="filter-location-text" placeholder="Cidade, UF ou CEP" type="text" value="São Paulo - SP"/>
-</div>
-</div>
-<!-- Radius Slider / Km -->
-<div class="md:col-span-3 flex flex-col justify-center px-space-md py-space-sm bg-surface-container-low rounded-lg">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-label-sm text-outline uppercase">Raio Operacional</span>
-<span class="font-label-md text-label-md text-primary" id="radius-val">50 km</span>
-</div>
-<input class="w-full accent-secondary-container cursor-pointer mt-1" max="250" min="5" oninput="document.getElementById('radius-val').innerText = this.value + ' km'" step="5" type="range" value="50"/>
-</div>
-<!-- Action Button -->
-<div class="md:col-span-2 flex h-full">
-<button class="w-full h-full min-h-[48px] bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md rounded-lg flex items-center justify-center gap-space-xs transition-all shadow-md active:scale-95" type="submit">
-<span class="material-symbols-outlined text-[20px]">manage_search</span>
-<span>Filtrar Base</span>
-</button>
-</div>
-</form>
-<!-- Rapid Tags Pill Ribbon -->
-<div class="flex items-center gap-space-xs overflow-x-auto pt-space-md pb-space-xs text-nowrap">
-<span class="font-label-sm text-label-sm text-outline uppercase pl-space-xs">Frequentes:</span>
-<button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" type="button">Cálculo Estrutural</button>
-<button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" type="button">Instalações Hidráulicas</button>
-<button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" type="button">Alvenaria Estrutural</button>
-<button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" type="button">Subestações Elétricas</button>
-<button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" type="button">Montagem Drywall / Steel Frame</button>
-<button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" type="button">HVAC / Climatização</button>
-</div>
-</div>
-</div>
-</section>
-<!-- Main Exploration Section -->
-<div class="max-w-7xl mx-auto w-full px-margin py-space-xl">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
-<!-- Interactive Filter Sidebar (Col 4) -->
-<aside class="lg:col-span-4 flex flex-col gap-space-lg">
-<!-- Filter Card -->
-<div class="bg-surface-card rounded-xl shadow-sm p-space-lg flex flex-col gap-space-lg">
-<div class="flex items-center justify-between pb-space-sm">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-primary text-[22px]">tune</span>
-<h2 class="font-headline-sm text-headline-sm text-primary">Filtros Avançados</h2>
-</div>
-<button class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary underline decoration-dotted" type="button">Limpar Tudo</button>
-</div>
-<!-- Entity Type Selection -->
-<div class="flex flex-col gap-space-xs">
-<span class="font-label-md text-label-md text-on-surface">Tipo de Contratação</span>
-<div class="grid grid-cols-2 gap-space-xs bg-surface-container-low p-1 rounded-lg">
-<label class="flex items-center justify-center gap-space-xs py-space-xs px-space-sm rounded-md bg-surface-card shadow-sm cursor-pointer text-primary font-label-sm text-label-sm">
-<input checked="" class="hidden" name="entity_type" type="radio" value="all"/>
-<span class="material-symbols-outlined text-[16px]">group</span>
-<span>Todos</span>
-</label>
-<label class="flex items-center justify-center gap-space-xs py-space-xs px-space-sm rounded-md hover:bg-surface-card/60 cursor-pointer text-on-surface-variant font-label-sm text-label-sm">
-<input class="hidden" name="entity_type" type="radio" value="contractor"/>
-<span class="material-symbols-outlined text-[16px]">domain</span>
-<span>Empreiteira</span>
-</label>
-<label class="flex items-center justify-center gap-space-xs py-space-xs px-space-sm rounded-md hover:bg-surface-card/60 cursor-pointer text-on-surface-variant font-label-sm text-label-sm col-span-2 mt-1">
-<input class="hidden" name="entity_type" type="radio" value="autonomous"/>
-<span class="material-symbols-outlined text-[16px]">person</span>
-<span>Engenheiro / Técnico Autônomo</span>
-</label>
-</div>
-</div>
-<!-- Fast Toggle Switches -->
-<div class="flex flex-col gap-space-md py-space-sm bg-surface-container-low p-space-md rounded-xl">
-<label class="flex items-center justify-between cursor-pointer group">
-<div class="flex items-center gap-space-xs">
-<span class="w-3 h-3 rounded-full bg-status-success"></span>
-<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Disponibilidade Imediata</span>
-</div>
-<input checked="" class="w-5 h-5 accent-secondary-container rounded cursor-pointer" type="checkbox"/>
-</label>
-<label class="flex items-center justify-between cursor-pointer group">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-status-success text-[18px]">verified</span>
-<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Profissionais Verificados</span>
-</div>
-<input checked="" class="w-5 h-5 accent-secondary-container rounded cursor-pointer" type="checkbox"/>
-</label>
-<label class="flex items-center justify-between cursor-pointer group">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-status-info text-[18px]">badge</span>
-<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Registro CREA / CAU / CFT Ativo</span>
-</div>
-<input checked="" class="w-5 h-5 accent-secondary-container rounded cursor-pointer" type="checkbox"/>
-</label>
-</div>
-<!-- Minimum Rating -->
-<div class="flex flex-col gap-space-xs">
-<span class="font-label-md text-label-md text-on-surface">Reputação Mínima</span>
-<div class="flex items-center gap-space-xs">
-<button class="flex-1 py-1.5 px-2 bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface flex items-center justify-center gap-1 hover:bg-surface-variant" type="button">
-<span>3.5+</span><span class="material-symbols-outlined text-[14px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
-</button>
-<button class="flex-1 py-1.5 px-2 bg-primary-container text-on-primary rounded-lg font-label-sm text-label-sm flex items-center justify-center gap-1 shadow-sm" type="button">
-<span>4.0+</span><span class="material-symbols-outlined text-[14px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
-</button>
-<button class="flex-1 py-1.5 px-2 bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface flex items-center justify-center gap-1 hover:bg-surface-variant" type="button">
-<span>4.5+</span><span class="material-symbols-outlined text-[14px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
-</button>
-<button class="flex-1 py-1.5 px-2 bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface flex items-center justify-center gap-1 hover:bg-surface-variant" type="button">
-<span>4.8+</span><span class="material-symbols-outlined text-[14px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
-</button>
-</div>
-</div>
-<!-- Pricing Range / Tariff -->
-<div class="flex flex-col gap-space-xs">
-<div class="flex items-center justify-between">
-<span class="font-label-md text-label-md text-on-surface">Faixa de Tarifa (R$/Hora)</span>
-<span class="font-label-sm text-label-sm text-outline">R$ 80 - R$ 380</span>
-</div>
-<div class="grid grid-cols-2 gap-space-sm mt-1">
-<div class="bg-surface-container-low px-space-sm py-1.5 rounded-lg flex items-center">
-<span class="text-outline font-label-sm text-label-sm mr-1">Mín R$</span>
-<input class="bg-transparent font-title-md text-title-md w-full outline-none text-on-surface" type="number" value="80"/>
-</div>
-<div class="bg-surface-container-low px-space-sm py-1.5 rounded-lg flex items-center">
-<span class="text-outline font-label-sm text-label-sm mr-1">Máx R$</span>
-<input class="bg-transparent font-title-md text-title-md w-full outline-none text-on-surface" type="number" value="380"/>
-</div>
-</div>
-</div>
-<!-- Secondary Technical Disciplines -->
-<div class="flex flex-col gap-space-xs">
-<span class="font-label-md text-label-md text-on-surface">Competências Obrigatórias</span>
-<div class="space-y-2 mt-1 max-h-48 overflow-y-auto pr-1">
-<label class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer text-body-sm font-body-sm">
-<input checked="" class="w-4 h-4 accent-secondary-container rounded" type="checkbox"/>
-<span>Emissão de ART / RRT</span>
-</label>
-<label class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer text-body-sm font-body-sm">
-<input checked="" class="w-4 h-4 accent-secondary-container rounded" type="checkbox"/>
-<span>Laudo de Estabilidade Estrutural</span>
-</label>
-<label class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer text-body-sm font-body-sm">
-<input class="w-4 h-4 accent-secondary-container rounded" type="checkbox"/>
-<span>Modelagem BIM / Revit</span>
-</label>
-<label class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer text-body-sm font-body-sm">
-<input class="w-4 h-4 accent-secondary-container rounded" type="checkbox"/>
-<span>Fiscalização Diária de Canteiro</span>
-</label>
-<label class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer text-body-sm font-body-sm">
-<input class="w-4 h-4 accent-secondary-container rounded" type="checkbox"/>
-<span>Segurança NR-18 / NR-35</span>
-</label>
-</div>
-</div>
-<button class="w-full py-space-sm bg-primary text-on-primary font-label-md text-label-md rounded-lg hover:bg-primary-container transition-colors shadow-sm flex items-center justify-center gap-space-xs" type="button">
-<span class="material-symbols-outlined text-[18px]">filter_alt</span>
-<span>Aplicar Filtros Estruturais</span>
-</button>
-</div>
-<!-- Integrated PostGIS Location Module -->
-<div class="bg-surface-card rounded-xl shadow-sm overflow-hidden flex flex-col">
-<div class="p-space-md flex items-center justify-between bg-surface-container-high">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-secondary text-[20px]">radar</span>
-<span class="font-title-md text-title-md text-primary">Malha Geoespacial</span>
-</div>
-<span class="font-label-sm text-label-sm bg-surface-card px-2 py-0.5 rounded text-primary font-semibold">PostGIS 3.4</span>
-</div>
-<div class="w-full h-56 bg-cover bg-center relative" data-location="São Paulo, SP, Brazil" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJ-K1Y3C3D2cDLisNDynjQhmE52Zg3DFCHAK_XN7-ORHKqUhZMznMbRdNlo060fxkQ0UcWM7ppVrU4DemIxfkMe06pyIOhci45MN9bb4bf9sFMTPCWQZiqpfitsJj1Si880nYlRAPQEEsYLEZu3YH_BcZlaov-S1SRYpRwSxUMPWj4sX-uBzEIYIXO4-b9cGuhMhw0WHktMhpIiVMyN-54HX3epu2_7wF_ZIicTXbjkZK75f17aKQ5ug')">
-<!-- Simulated GPS Radial Layer & Hotspots -->
-<div class="absolute inset-0 bg-primary/20 backdrop-blur-[1px] flex flex-col justify-between p-space-md">
-<div class="flex items-center justify-between">
-<span class="bg-surface-card/90 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2 py-1 rounded-md shadow-sm">
-                  Centro: Av. Paulista, SP
-                </span>
-<span class="bg-secondary-container text-on-secondary font-label-sm text-label-sm px-2 py-1 rounded-md shadow-sm">
-                  Raio: 50km
-                </span>
-</div>
-<!-- Hotspots Visual Overlay -->
-<div class="flex items-center gap-space-xs bg-surface-card/95 backdrop-blur-md p-space-xs rounded-lg shadow-md self-start">
-<span class="material-symbols-outlined text-status-success text-[18px]">location_searching</span>
-<span class="font-label-sm text-label-sm text-on-surface">32 canteiros com técnicos ativos próximos</span>
-</div>
-</div>
-</div>
-<div class="p-space-md bg-surface-card flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
-<span>Precisão de trajeto calculada via malha rodoviária.</span>
-<button class="text-secondary font-label-sm text-label-sm hover:underline" type="button">Expandir Mapa</button>
-</div>
-</div>
-</aside>
-<!-- Professional Search Output & Cards (Col 8) -->
-<main class="lg:col-span-8 flex flex-col gap-space-lg">
-<!-- Sorting and Result Header Toolbar -->
-<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-md">
-<div class="flex items-baseline gap-space-xs">
-<span class="font-headline-sm text-headline-sm text-primary">124</span>
-<span class="font-body-md text-body-md text-on-surface-variant">Especialistas e Construtoras encontrados</span>
-</div>
-<!-- Ordering Dropdown & Display Formats -->
-<div class="flex items-center gap-space-sm self-end sm:self-auto">
-<span class="font-label-sm text-label-sm text-outline uppercase hidden md:inline">Ordenar por:</span>
-<select class="bg-surface-container-low text-on-surface font-label-md text-label-md py-1.5 px-space-md rounded-lg outline-none cursor-pointer">
-<option selected="" value="rating">Mais bem avaliados</option>
-<option value="distance">Mais próximos (PostGIS)</option>
-<option value="price_asc">Menor valor de hora/diária</option>
-<option value="recent">Recentemente verificados</option>
-</select>
-</div>
-</div>
-<!-- Cards Collection (dynamic list container for js/app.js) -->
-<div id="lista-profissionais" class="flex flex-col gap-space-md">
-<!-- Card 1: Senior Structural Engineer -->
-<article class="bg-surface-card rounded-xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col p-space-lg gap-space-md">
-<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
-<div class="flex items-center gap-space-md">
-<div class="relative">
-<img class="w-16 h-16 rounded-xl object-cover shadow-inner" data-alt="Close up professional portrait of a senior Brazilian civil engineer wearing a safety helmet and glasses, construction blueprints visible in an office setting with warm professional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzDUPC1CtL7BKoNt1gsn__b2mTTLkSXwoAIZssBmf_B3xm1xBtY_9Ycb9LetcX2CUKFv2INKA34eQhHJesYQQBf0A_qx45JBLy0WCWiW6pJuHTa7umAwpoyyyvvZsMZydYxhhPThSq6XLC4BWphj6V1kvgfYGsEKbkzeZI3qaSdPn4X7qgo6AzzwWe7ksArkNCdt6HZGcNwiiCG-aRVq176GWDAs335DjGz6tSdhsw2AK54dQVNHjncw"/>
-<span class="absolute -bottom-1 -right-1 bg-status-success text-on-primary w-5 h-5 rounded-full flex items-center justify-center shadow" title="Profissional Verificado CREA">
-<span class="material-symbols-outlined text-[13px]">verified</span>
-</span>
-</div>
-<div>
-<div class="flex items-center gap-space-xs flex-wrap">
-<h3 class="font-headline-sm text-headline-sm text-primary">Eng. Roberto Vasconcellos</h3>
-<span class="bg-status-success/10 text-status-success font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold uppercase">CREA-SP 5069218</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Engenheiro Calculista Estrutural &amp; Perito Técnico Judicial</p>
-<div class="flex items-center gap-space-xs mt-1 text-on-surface-variant">
-<span class="material-symbols-outlined text-status-warning text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-title-md text-title-md text-primary font-bold">4.96</span>
-<span class="font-body-sm text-body-sm text-outline">(64 vistorias avaliadas)</span>
-<span class="text-outline">•</span>
-<span class="material-symbols-outlined text-[16px] text-outline">verified_user</span>
-<span class="font-body-sm text-body-sm text-status-success font-medium">ART Digital Instantânea</span>
-</div>
-</div>
-</div>
-<!-- Price Badge -->
-<div class="text-left sm:text-right bg-surface-container-low sm:bg-transparent p-space-sm sm:p-0 rounded-lg w-full sm:w-auto">
-<span class="font-label-sm text-label-sm text-outline block uppercase">Valor Estimado</span>
-<span class="font-headline-md text-headline-md text-primary font-bold">R$ 190<span class="text-body-sm font-normal text-on-surface-variant">/hora</span></span>
-<span class="font-label-sm text-label-sm text-status-success block">Disponibilidade: Imediata</span>
-</div>
-</div>
-<!-- Specialty Chips -->
-<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Estruturas de Concreto Armado</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Fundação &amp; Geotecnia</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Alvenaria Estrutural</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Modelagem BIM</span>
-</div>
-<!-- Location & PostGIS Distance Metric -->
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-canvas p-space-md rounded-lg">
-<div class="flex items-center gap-space-md text-on-surface-variant font-body-sm text-body-sm flex-wrap">
-<span class="flex items-center gap-1">
-<span class="material-symbols-outlined text-[18px] text-secondary">near_me</span>
-                  São Paulo - SP (Vila Mariana)
-                </span>
-<span class="flex items-center gap-1 text-primary font-medium">
-<span class="material-symbols-outlined text-[18px] text-status-info">navigation</span>
-<strong>4.2 km</strong> do seu canteiro de obras
-                </span>
-<span class="text-outline hidden sm:inline">•</span>
-<span>Raio máx: 80 km</span>
-</div>
-<!-- Card Action CTA -->
-<div class="flex items-center gap-space-sm self-end sm:self-auto">
-<button class="px-space-md py-2 bg-surface-card hover:bg-surface-variant text-primary font-label-md text-label-md rounded-lg transition-colors shadow-sm" onclick="openDrawer('Eng. Roberto Vasconcellos', 'CREA-SP 5069218', 'R$ 190/hora')" type="button">
-                  Ver Perfil
-                </button>
-<button class="px-space-lg py-2 bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-1 shadow transition-all" onclick="openDrawer('Eng. Roberto Vasconcellos', 'CREA-SP 5069218', 'R$ 190/hora')" type="button">
-<span class="material-symbols-outlined text-[18px]">send</span>
-<span>Solicitar Proposta</span>
-</button>
-</div>
-</div>
-</article>
-<!-- Card 2: Specialized Construction Company -->
-<article class="bg-surface-card rounded-xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col p-space-lg gap-space-md">
-<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
-<div class="flex items-center gap-space-md">
-<div class="relative">
-<img class="w-16 h-16 rounded-xl object-cover shadow-inner" data-alt="Commercial headquarters of an engineering contractor firm with heavy civil machinery, industrial scaffolding, and corporate architectural glass facade." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpLxqg0IBR5MR2qedUNfGdm3ljfh3gk--IVtPmbTqnbpjCOqpJ7Yf74xGRGUuL8k31AmSZgKmoKwSfRYTIiGgsQdO7Db0fBorIsA0YNMCdBiO-Q3YMwCa1vm6chSriZcAx6r3ECCUxuzs-kiTXQzEAA-zx-voZvMI4LVfh90gerYaHGdzDd3IB7kVPTi3KY2nOMxYNCE_BO3cF0AgxT-Sy_VHSw_rv8LDwqQtD04PJm61EVb8PvITZOA"/>
-<span class="absolute -bottom-1 -right-1 bg-status-info text-on-primary w-5 h-5 rounded-full flex items-center justify-center shadow" title="Empresa Homologada">
-<span class="material-symbols-outlined text-[13px]">domain_verification</span>
-</span>
-</div>
-<div>
-<div class="flex items-center gap-space-xs flex-wrap">
-<h3 class="font-headline-sm text-headline-sm text-primary">Vértice Obras &amp; Estruturas Ltda.</h3>
-<span class="bg-status-info/10 text-status-info font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold uppercase">PJ • CNPJ Ativo</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Empreiteira Especialista em Concretagem, Superestruturas e Lajes</p>
-<div class="flex items-center gap-space-xs mt-1 text-on-surface-variant">
-<span class="material-symbols-outlined text-status-warning text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-title-md text-title-md text-primary font-bold">4.89</span>
-<span class="font-body-sm text-body-sm text-outline">(112 contratos concluídos)</span>
-<span class="text-outline">•</span>
-<span class="font-body-sm text-body-sm text-on-surface">Equipe: 38 operários</span>
-</div>
-</div>
-</div>
-<!-- Price Badge -->
-<div class="text-left sm:text-right bg-surface-container-low sm:bg-transparent p-space-sm sm:p-0 rounded-lg w-full sm:w-auto">
-<span class="font-label-sm text-label-sm text-outline block uppercase">Diária de Equipe Base</span>
-<span class="font-headline-md text-headline-md text-primary font-bold">R$ 1.850<span class="text-body-sm font-normal text-on-surface-variant">/dia</span></span>
-<span class="font-label-sm text-label-sm text-status-success block">Equipamentos Próprios</span>
-</div>
-</div>
-<!-- Specialty Chips -->
-<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Concreto Usinado &amp; Bombeamento</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Montagem de Armaduras CA-50</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Formas Metálicas</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Segurança NR-18 Integrada</span>
-</div>
-<!-- Location & PostGIS Distance Metric -->
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-canvas p-space-md rounded-lg">
-<div class="flex items-center gap-space-md text-on-surface-variant font-body-sm text-body-sm flex-wrap">
-<span class="flex items-center gap-1">
-<span class="material-symbols-outlined text-[18px] text-secondary">near_me</span>
-                  Guarulhos / Grande SP
-                </span>
-<span class="flex items-center gap-1 text-primary font-medium">
-<span class="material-symbols-outlined text-[18px] text-status-info">navigation</span>
-<strong>16.8 km</strong> do seu canteiro de obras
-                </span>
-<span class="text-outline hidden sm:inline">•</span>
-<span>Raio máx: 120 km</span>
-</div>
-<div class="flex items-center gap-space-sm self-end sm:self-auto">
-<button class="px-space-md py-2 bg-surface-card hover:bg-surface-variant text-primary font-label-md text-label-md rounded-lg transition-colors shadow-sm" onclick="openDrawer('Vértice Obras &amp; Estruturas', 'CNPJ 31.902.129/0001-44', 'R$ 1.850/dia')" type="button">
-                  Ver Perfil
-                </button>
-<button class="px-space-lg py-2 bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-1 shadow transition-all" onclick="openDrawer('Vértice Obras &amp; Estruturas', 'CNPJ 31.902.129/0001-44', 'R$ 1.850/dia')" type="button">
-<span class="material-symbols-outlined text-[18px]">send</span>
-<span>Solicitar Proposta</span>
-</button>
-</div>
-</div>
-</article>
-<!-- Card 3: MEP Technical Specialist (Elétrica & Hidráulica) -->
-<article class="bg-surface-card rounded-xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col p-space-lg gap-space-md">
-<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
-<div class="flex items-center gap-space-md">
-<div class="relative">
-<img class="w-16 h-16 rounded-xl object-cover shadow-inner" data-alt="Professional electrical engineer examining high voltage industrial panels with diagnostic tablet tool, wearing safety boots and high visibility vest." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcIHFQHi2x4zDZ2HGIJEhfSVsBnzGuFI8TxDGZ5ywx1kyRvpACyq3AZjuOFGURdlwM-2-toO6tP_oWTlJtNG-6Gwv2oDmmUxKb82tUt8Ws3_0WzCCZVfsBFu1hGhboPwZRkb_dhxjPAlB6AYkm5TQuyFjuOXG3A239xnYfX48_fmZaylETkaCiz19MbZW-Gi0RBqUolvnVlgBHkLKeZz5oO-eLBTpkEcQowYyQ0lFg24MODOJN_9AD_g"/>
-<span class="absolute -bottom-1 -right-1 bg-status-success text-on-primary w-5 h-5 rounded-full flex items-center justify-center shadow" title="Profissional CFT Ativo">
-<span class="material-symbols-outlined text-[13px]">verified</span>
-</span>
-</div>
-<div>
-<div class="flex items-center gap-space-xs flex-wrap">
-<h3 class="font-headline-sm text-headline-sm text-primary">Tec. Carlos Eduardo Mendes</h3>
-<span class="bg-status-success/10 text-status-success font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold uppercase">CFT/CRT-04 98210-SP</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Técnico em Eletrotécnica &amp; Redes Hidráulicas Prediais</p>
-<div class="flex items-center gap-space-xs mt-1 text-on-surface-variant">
-<span class="material-symbols-outlined text-status-warning text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-title-md text-title-md text-primary font-bold">4.92</span>
-<span class="font-body-sm text-body-sm text-outline">(53 vistorias)</span>
-<span class="text-outline">•</span>
-<span class="font-body-sm text-body-sm text-status-success font-medium">Norma NR-10 &amp; SPDA</span>
-</div>
-</div>
-</div>
-<div class="text-left sm:text-right bg-surface-container-low sm:bg-transparent p-space-sm sm:p-0 rounded-lg w-full sm:w-auto">
-<span class="font-label-sm text-label-sm text-outline block uppercase">Valor Estimado</span>
-<span class="font-headline-md text-headline-md text-primary font-bold">R$ 130<span class="text-body-sm font-normal text-on-surface-variant">/hora</span></span>
-<span class="font-label-sm text-label-sm text-status-warning block">Disponível em 48h</span>
-</div>
-</div>
-<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Instalações Elétricas Industriais</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Quadros de Distribuição (QGBT)</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Tubulações PPR &amp; CPVC</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Testes Hidrostáticos</span>
-</div>
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-canvas p-space-md rounded-lg">
-<div class="flex items-center gap-space-md text-on-surface-variant font-body-sm text-body-sm flex-wrap">
-<span class="flex items-center gap-1">
-<span class="material-symbols-outlined text-[18px] text-secondary">near_me</span>
-                  Santo André - SP (ABC Paulista)
-                </span>
-<span class="flex items-center gap-1 text-primary font-medium">
-<span class="material-symbols-outlined text-[18px] text-status-info">navigation</span>
-<strong>11.5 km</strong> do seu canteiro de obras
-                </span>
-<span class="text-outline hidden sm:inline">•</span>
-<span>Raio máx: 45 km</span>
-</div>
-<div class="flex items-center gap-space-sm self-end sm:self-auto">
-<button class="px-space-md py-2 bg-surface-card hover:bg-surface-variant text-primary font-label-md text-label-md rounded-lg transition-colors shadow-sm" onclick="openDrawer('Tec. Carlos Eduardo Mendes', 'CFT-04 98210-SP', 'R$ 130/hora')" type="button">
-                  Ver Perfil
-                </button>
-<button class="px-space-lg py-2 bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-1 shadow transition-all" onclick="openDrawer('Tec. Carlos Eduardo Mendes', 'CFT-04 98210-SP', 'R$ 130/hora')" type="button">
-<span class="material-symbols-outlined text-[18px]">send</span>
-<span>Solicitar Proposta</span>
-</button>
-</div>
-</div>
-</article>
-<!-- Card 4: Drywall & Acústica Specialist -->
-<article class="bg-surface-card rounded-xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col p-space-lg gap-space-md">
-<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
-<div class="flex items-center gap-space-md">
-<div class="relative">
-<img class="w-16 h-16 rounded-xl object-cover shadow-inner" data-alt="Interior construction specialist installing laser level lines for drywall ceiling partitions in a high-end architectural commercial building." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCfSdbC9YFfwoyPteUqbGoTkHsmgeaOhaRH6IQcKjx-WDcaVBDrIExTanWdLcW9JuLDHeGxs-huU9mWE-qnlW11r9T4R4xF9QNrq8ZI9oCrXo7l65Ud0u9AyE0Y7Lh1dR4WfI5bJIK34DcvUhAxGt3rHNNXqIAvQT1f071DJaBUJB5ibw9GWJZOHex1TkIfM32WnZBZ0DO9Vsp7OcPha0-5Va3Bylz0je56fVJ5a98k5OBiGQjJgcn7w"/>
-<span class="absolute -bottom-1 -right-1 bg-status-success text-on-primary w-5 h-5 rounded-full flex items-center justify-center shadow" title="Profissional Certificado">
-<span class="material-symbols-outlined text-[13px]">verified</span>
-</span>
-</div>
-<div>
-<div class="flex items-center gap-space-xs flex-wrap">
-<h3 class="font-headline-sm text-headline-sm text-primary">Prumo Prime Acabamentos &amp; Drywall</h3>
-<span class="bg-surface-container-highest text-primary font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold uppercase">Microempresa • 8 Operários</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Construção a Seco, Isolamento Acústico e Divisórias Corporativas</p>
-<div class="flex items-center gap-space-xs mt-1 text-on-surface-variant">
-<span class="material-symbols-outlined text-status-warning text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-title-md text-title-md text-primary font-bold">4.82</span>
-<span class="font-body-sm text-body-sm text-outline">(37 obras concluídas)</span>
-<span class="text-outline">•</span>
-<span class="font-body-sm text-body-sm text-on-surface">Laser 3D Aferido</span>
-</div>
-</div>
-</div>
-<div class="text-left sm:text-right bg-surface-container-low sm:bg-transparent p-space-sm sm:p-0 rounded-lg w-full sm:w-auto">
-<span class="font-label-sm text-label-sm text-outline block uppercase">Diária / Metro Quadrado</span>
-<span class="font-headline-md text-headline-md text-primary font-bold">R$ 55<span class="text-body-sm font-normal text-on-surface-variant">/m² mão de obra</span></span>
-<span class="font-label-sm text-label-sm text-status-success block">Disponibilidade: Imediata</span>
-</div>
-</div>
-<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Sistemas Drywall Knauf/Placo</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Lã de Rocha Acústica</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Forros Removíveis Minerais</span>
-<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Pintura Airless</span>
-</div>
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-canvas p-space-md rounded-lg">
-<div class="flex items-center gap-space-md text-on-surface-variant font-body-sm text-body-sm flex-wrap">
-<span class="flex items-center gap-1">
-<span class="material-symbols-outlined text-[18px] text-secondary">near_me</span>
-                  São Paulo - SP (Pinheiros)
-                </span>
-<span class="flex items-center gap-1 text-primary font-medium">
-<span class="material-symbols-outlined text-[18px] text-status-info">navigation</span>
-<strong>6.1 km</strong> do seu canteiro de obras
-                </span>
-<span class="text-outline hidden sm:inline">•</span>
-<span>Raio máx: 60 km</span>
-</div>
-<div class="flex items-center gap-space-sm self-end sm:self-auto">
-<button class="px-space-md py-2 bg-surface-card hover:bg-surface-variant text-primary font-label-md text-label-md rounded-lg transition-colors shadow-sm" onclick="openDrawer('Prumo Prime Drywall', 'ME 28.110.044/0001-90', 'R$ 55/m²')" type="button">
-                  Ver Perfil
-                </button>
-<button class="px-space-lg py-2 bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-1 shadow transition-all" onclick="openDrawer('Prumo Prime Drywall', 'ME 28.110.044/0001-90', 'R$ 55/m²')" type="button">
-<span class="material-symbols-outlined text-[18px]">send</span>
-<span>Solicitar Proposta</span>
-</button>
-</div>
-</div>
-</article>
-</div>
-<!-- Structural Pagination -->
-<div class="flex items-center justify-between bg-surface-card p-space-md rounded-xl shadow-sm mt-space-sm">
-<div class="font-body-sm text-body-sm text-on-surface-variant">
-            Exibindo <span class="font-bold text-primary">1 - 4</span> de <span class="font-bold text-primary">124</span> perfis técnicos verificados
-          </div>
-<div class="flex items-center gap-space-xs">
-<button class="p-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-variant transition-colors disabled:opacity-40" disabled="" type="button">
-<span class="material-symbols-outlined text-[18px]">chevron_left</span>
-</button>
-<button class="w-9 h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center shadow-sm" type="button">1</button>
-<button class="w-9 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center hover:bg-surface-variant transition-colors" type="button">2</button>
-<button class="w-9 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center hover:bg-surface-variant transition-colors" type="button">3</button>
-<span class="text-outline px-1">...</span>
-<button class="w-9 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center hover:bg-surface-variant transition-colors" type="button">31</button>
-<button class="p-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-variant transition-colors" type="button">
-<span class="material-symbols-outlined text-[18px]">chevron_right</span>
-</button>
-</div>
-</div>
-</main>
-</div>
-</div>
-<!-- Proposal / Quick Contact Slide-Over Drawer Modal -->
-<div class="fixed inset-0 bg-primary/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" id="proposal-drawer-overlay">
-<div class="fixed top-0 right-0 h-full w-full max-w-lg bg-surface-card shadow-2xl p-space-lg flex flex-col justify-between overflow-y-auto translate-x-full transition-transform duration-300 ease-out" id="proposal-drawer">
-<!-- Drawer Header -->
-<div class="flex flex-col gap-space-md">
-<div class="flex items-center justify-between pb-space-sm border-b-0">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-secondary text-[24px]">assignment_add</span>
-<h3 class="font-headline-sm text-headline-sm text-primary">Solicitar Proposta Técnica</h3>
-</div>
-<button class="p-1 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" onclick="closeDrawer()" type="button">
-<span class="material-symbols-outlined text-[24px]">close</span>
-</button>
-</div>
-<!-- Selected Entity Spec -->
-<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-1">
-<span class="font-label-sm text-label-sm text-outline uppercase">Profissional Selecionado:</span>
-<span class="font-headline-sm text-headline-sm text-primary" id="drawer-prof-name">Eng. Roberto Vasconcellos</span>
-<div class="flex items-center justify-between mt-1 text-on-surface-variant font-body-sm text-body-sm">
-<span class="bg-surface-card px-2 py-0.5 rounded text-status-success font-semibold text-label-sm" id="drawer-prof-reg">CREA-SP 5069218</span>
-<span class="font-bold text-primary" id="drawer-prof-price">R$ 190/hora</span>
-</div>
-</div>
-<!-- Proposal Intake Form -->
-<form class="flex flex-col gap-space-md mt-space-sm" onsubmit="handleSendProposal(event)">
-<div class="flex flex-col gap-1">
-<label class="font-label-md text-label-md text-on-surface">Vincular a Obra / Projeto Existente</label>
-<select class="bg-surface-container-low text-on-surface font-body-md text-body-md p-space-sm rounded-lg outline-none cursor-pointer">
-<option value="p1">Edifício Residencial Horizonte (Torre B - Fundações)</option>
-<option value="p2">Retrofit Comercial Paulista Corporate</option>
-<option value="p3">Galpão Logístico Cajamar Módulo 4</option>
-<option value="new">+ Cadastrar Novo Canteiro de Obras</option>
-</select>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-md text-label-md text-on-surface">Tipo de Contratação Necessária</label>
-<div class="grid grid-cols-2 gap-space-xs">
-<label class="flex items-center gap-space-xs p-space-xs bg-surface-container-low rounded-lg cursor-pointer text-body-sm">
-<input checked="" class="accent-secondary-container" name="scope_type" type="radio"/>
-<span>Por Hora Técnica</span>
-</label>
-<label class="flex items-center gap-space-xs p-space-xs bg-surface-container-low rounded-lg cursor-pointer text-body-sm">
-<input class="accent-secondary-container" name="scope_type" type="radio"/>
-<span>Por Empreitada / Etapa</span>
-</label>
-</div>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-md text-label-md text-on-surface">Estimativa de Início • Cronograma</label>
-<input class="bg-surface-container-low text-on-surface font-body-md text-body-md p-space-sm rounded-lg outline-none" type="date" value="2025-04-01"/>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-md text-label-md text-on-surface">Memorial Descritivo do Escopo</label>
-<textarea class="bg-surface-container-low text-on-surface font-body-md text-body-md p-space-sm rounded-lg outline-none placeholder:text-outline resize-none" placeholder="Descreva brevemente a demanda técnica, volume de concreto, área construída ou laudo exigido..." rows="4"></textarea>
-</div>
-<!-- Attachment Drag & Drop Mock -->
-<div class="bg-surface-canvas p-space-md rounded-lg flex flex-col items-center justify-center gap-space-xs text-center cursor-pointer hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined text-outline text-[28px]">cloud_upload</span>
-<span class="font-label-md text-label-md text-primary">Anexar Projetos DWG, PDF ou Memorial</span>
-<span class="font-label-sm text-label-sm text-outline">Formatos aceitos: IFC, DWG, PDF até 50MB</span>
-</div>
-<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm mt-1">
-<span class="material-symbols-outlined text-status-success text-[18px]">verified_user</span>
-<span>Garantia de custódia de pagamento e ART protocolada em contrato.</span>
-</div>
-<!-- Drawer Submit Button -->
-<button class="w-full mt-space-md py-space-sm bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md rounded-lg flex items-center justify-center gap-space-xs shadow-md transition-all active:scale-95" type="submit">
-<span class="material-symbols-outlined text-[20px]">mark_email_read</span>
-<span>Disparar Solicitação Formal</span>
-</button>
-</form>
-</div>
-<!-- Drawer Footer info -->
-<div class="pt-space-md text-center text-outline font-label-sm text-label-sm">
-        Civil Connection • Plataforma Auditada CREA/CONFEA
-      </div>
-</div>
-</div>
-<!-- Interactive JavaScript Engine -->
-<script>
-    function openDrawer(name, reg, price) {
-      document.getElementById('drawer-prof-name').innerText = name;
-      document.getElementById('drawer-prof-reg').innerText = reg;
-      document.getElementById('drawer-prof-price').innerText = price;
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
 
-      const overlay = document.getElementById('proposal-drawer-overlay');
-      const drawer = document.getElementById('proposal-drawer');
-
-      overlay.classList.remove('opacity-0', 'pointer-events-none');
-      overlay.classList.add('opacity-100', 'pointer-events-auto');
-
-      drawer.classList.remove('translate-x-full');
-      drawer.classList.add('translate-x-0');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeDrawer() {
-      const overlay = document.getElementById('proposal-drawer-overlay');
-      const drawer = document.getElementById('proposal-drawer');
-
-      drawer.classList.remove('translate-x-0');
-      drawer.classList.add('translate-x-full');
-
-      overlay.classList.remove('opacity-100', 'pointer-events-auto');
-      overlay.classList.add('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = '';
-    }
-
-    function handleSendProposal(e) {
-      e.preventDefault();
-      alert('Solicitação de Proposta Técnica enviada com sucesso! O profissional receberá a notificação instantaneamente.');
-      closeDrawer();
-    }
-
-    // Close drawer when clicking outside
-    document.getElementById('proposal-drawer-overlay').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeDrawer();
-      }
-    });
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'surface-container-low': '#eef4ff',
+            'on-primary-fixed-variant': '#3a4761',
+            'on-primary-fixed': '#0e1b33',
+            'status-success': '#2D8A60',
+            'accent-hover': '#D96F0D',
+            'on-primary': '#ffffff',
+            'surface-variant': '#dbe3f1',
+            'primary-container': '#17243c',
+            'status-draft': '#9CA3AF',
+            'secondary-container': '#fd9432',
+            'surface': '#f8f9ff',
+            'tertiary': '#000e27',
+            'surface-dim': '#d3dae8',
+            'on-tertiary-container': '#7a8caf',
+            'background': '#f8f9ff',
+            'text-main': '#20252C',
+            'on-tertiary-fixed': '#061b39',
+            'on-error-container': '#93000a',
+            'outline-variant': '#c5c6ce',
+            'secondary': '#914c00',
+            'secondary-fixed-dim': '#ffb77f',
+            'on-error': '#ffffff',
+            'primary': '#020e26',
+            'on-secondary-container': '#673400',
+            'tertiary-fixed-dim': '#b5c7ed',
+            'error-container': '#ffdad6',
+            'surface-tint': '#525e79',
+            'status-danger': '#EF4444',
+            'surface-card': '#FFFFFF',
+            'on-surface-variant': '#45474d',
+            'on-secondary': '#ffffff',
+            'on-primary-container': '#7f8ba8',
+            'on-secondary-fixed-variant': '#6f3900',
+            'tertiary-fixed': '#d7e3ff',
+            'on-tertiary-fixed-variant': '#354767',
+            'surface-bright': '#f8f9ff',
+            'primary-fixed': '#d7e2ff',
+            'tertiary-container': '#112442',
+            'on-surface': '#141c26',
+            'on-background': '#141c26',
+            'secondary-fixed': '#ffdcc4',
+            'surface-container-highest': '#dbe3f1',
+            'on-tertiary': '#ffffff',
+            'surface-container-lowest': '#ffffff',
+            'inverse-on-surface': '#e9f1ff',
+            'primary-fixed-dim': '#bac6e6',
+            'inverse-surface': '#29313b',
+            'surface-container-high': '#e1e9f6',
+            'surface-container': '#e7eefc',
+            'on-secondary-fixed': '#2f1500',
+            'surface-canvas': '#F6F4EF',
+            'status-info': '#3B82F6',
+            'outline': '#75777e',
+            'error': '#ba1a1a',
+            'inverse-primary': '#bac6e6',
+            'status-warning': '#F59E0B',
+          },
+          borderRadius: {
+            DEFAULT: '0.125rem',
+            sm: '0.25rem',
+            lg: '0.375rem',
+            xl: '0.625rem',
+            '2xl': '1rem',
+            full: '9999px',
+          },
+          spacing: {
+            'margin-sm': '1rem',
+            'space-xl': '2.5rem',
+            'gutter-sm': '1rem',
+            'space-lg': '1.5rem',
+            'space-xs': '0.25rem',
+            gutter: '1.5rem',
+            margin: '2rem',
+            'space-md': '1rem',
+            'space-sm': '0.5rem',
+          },
+          fontFamily: {
+            display: ['Sora', 'sans-serif'],
+            headline: ['Sora', 'sans-serif'],
+            body: ['Archivo', 'sans-serif'],
+            sans: ['Archivo', 'sans-serif'],
+            'body-md': ['Archivo', 'sans-serif'],
+            'body-sm': ['Archivo', 'sans-serif'],
+            'body-lg': ['Archivo', 'sans-serif'],
+            'label-md': ['Archivo', 'sans-serif'],
+            'label-sm': ['Archivo', 'sans-serif'],
+            'label-lg': ['Archivo', 'sans-serif'],
+            'title-md': ['Archivo', 'sans-serif'],
+            'title-lg': ['Archivo', 'sans-serif'],
+            'headline-sm': ['Sora', 'sans-serif'],
+            'headline-md': ['Sora', 'sans-serif'],
+            'headline-lg': ['Sora', 'sans-serif'],
+            'headline-xl': ['Sora', 'sans-serif'],
+            'display-lg': ['Sora', 'sans-serif'],
+            'display-lg-mobile': ['Sora', 'sans-serif'],
+            'headline-xl-mobile': ['Sora', 'sans-serif'],
+          },
+          fontSize: {
+            'body-md': ['15px', { lineHeight: '24px', fontWeight: '400' }],
+            'body-sm': ['13px', { lineHeight: '20px', fontWeight: '400' }],
+            'headline-sm': ['18px', { lineHeight: '26px', fontWeight: '600' }],
+            'display-lg-mobile': ['32px', { lineHeight: '40px', letterSpacing: '-0.01em', fontWeight: '700' }],
+            'headline-md': ['22px', { lineHeight: '30px', fontWeight: '600' }],
+            'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0.01em', fontWeight: '600' }],
+            'body-lg': ['18px', { lineHeight: '28px', fontWeight: '400' }],
+            'title-md': ['16px', { lineHeight: '24px', fontWeight: '600' }],
+            'title-lg': ['20px', { lineHeight: '28px', fontWeight: '600' }],
+            'label-lg': ['15px', { lineHeight: '22px', fontWeight: '600' }],
+            'headline-xl-mobile': ['26px', { lineHeight: '34px', letterSpacing: '-0.01em', fontWeight: '700' }],
+            'display-lg': ['52px', { lineHeight: '60px', letterSpacing: '-0.025em', fontWeight: '700' }],
+            'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '600' }],
+            'headline-xl': ['36px', { lineHeight: '44px', letterSpacing: '-0.015em', fontWeight: '700' }],
+            'label-sm': ['11px', { lineHeight: '16px', letterSpacing: '0.05em', fontWeight: '600' }],
+          },
+        },
+      },
+    };
   </script>
-</div></main><footer class="w-full bg-surface-card shadow-[0_1px_8px_rgba(0,0,0,0.04)] mt-space-xl"><div class="max-w-7xl mx-auto px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter mb-space-xl"><div class="lg:col-span-2 flex flex-col gap-space-md"><div class="flex items-center gap-space-md"><img alt="civil_connection_logo.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WOVti2G0Jl0QJ8A5qko53tM9r9tkWLbEERY5F98WlZ7ChnHzEOjvTgR1Vq8aNwyAFKfJLEcSjMEe-aAGMHEiheUZqsYjSVMkoVIEIyGL2b1ceNJNmmKc-r7sA6DGmiT2ma2vxh3y8qw-VVhgIGnA1e6T3GXYvlSeM5coJ6H-2-td84hU0jwh0iLTHNoWz8zvpn9nVG96L624ZPuQj4vay-9xRpGWSbRwkS3p0arAa6iVXVwCeWUICnOfxMJCWOM274CizaxzTH"/><span class="font-headline-sm text-headline-sm text-primary">Civil Connection</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Plataforma integrada de engenharia e gestão de construções civis. Conectamos proprietários, empreiteiros e equipes técnicas com rastreabilidade estrutural.</p><div class="flex items-center gap-space-sm text-on-surface-variant"><span class="material-symbols-outlined text-status-success text-[18px]">verified_user</span><span class="font-label-sm text-label-sm uppercase tracking-wider">Plataforma Em conformidade com Normas ABNT &amp; CREA</span></div></div><div class="flex flex-col gap-space-sm"><h3 class="font-title-md text-title-md text-primary">Navegação</h3><ul class="flex flex-col gap-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="inicio" href="#">Início</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="encontrar-profissionais" href="#">Profissionais &amp; ART</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="obras-e-projetos" href="#">Projetos Ativos</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="diario-de-obras" href="#">Diários &amp; Vistorias</a></li></ul></div><div class="flex flex-col gap-space-sm"><h3 class="font-title-md text-title-md text-primary">Institucional</h3><ul class="flex flex-col gap-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Sobre a Plataforma</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Termos de Uso Técnico</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Privacidade &amp; LGPD</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Segurança no Canteiro</a></li></ul></div><div class="flex flex-col gap-space-sm"><h3 class="font-title-md text-title-md text-primary">Contato &amp; Suporte</h3><ul class="flex flex-col gap-space-xs"><li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">mail</span>contato@civilconnection.com.br</li><li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">call</span>+55 (11) 3450-9800</li><li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">location_on</span>Av. Paulista, 1000 - SP</li></ul></div></div><div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md bg-surface-container-low px-space-lg py-space-md rounded-xl"><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Civil Connection Engenharia &amp; Tecnologia S.A. Todos os direitos reservados.</p><div class="flex items-center gap-space-md text-on-surface-variant font-label-sm text-label-sm"><span class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-status-success">lock</span>Criptografia Ponta a Ponta</span><span>ISO 9001 Homologado</span></div></div></div></footer><script src="js/config.js"></script><script src="js/app.js"></script></body></html>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="bg-surface-canvas font-body-md text-body-md text-on-surface">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
+  <!-- ══════════════════ HEADER ══════════════════ -->
+  <header class="fixed top-0 w-full z-50 bg-surface-card/90 backdrop-blur-xl shadow-[0_1px_0_rgba(2,14,38,0.08)]">
+    <div class="h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-gutter">
+      <a class="flex items-center gap-space-md shrink-0" href="index.html" aria-label="Civil Connection — página inicial">
+        <img alt="Logotipo Civil Connection" class="h-10 w-auto object-contain" src="assets/images/logo.png" />
+        <span class="hidden flex-col leading-tight md:flex">
+          <span class="font-headline-sm text-headline-sm text-primary tracking-tight">Civil Connection</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant tracking-wide">Conectando ideias, construindo o futuro</span>
+        </span>
+      </a>
+
+      <div class="hidden xl:flex items-center gap-space-sm bg-surface-container px-space-md py-space-xs rounded-xl">
+        <span class="material-symbols-outlined text-outline text-[20px]" aria-hidden="true">search</span>
+        <input aria-label="Buscar obras ou profissionais" class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-outline w-64" id="header-search" placeholder="Buscar obras, engenheiros, serviços..." type="search" />
+      </div>
+
+      <nav aria-label="Navegação principal" class="hidden lg:flex items-center gap-space-xs">
+        <a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-lg" href="index.html">Início</a>
+        <a aria-current="page" class="px-space-md py-space-sm font-title-md text-title-md text-on-primary bg-primary-container rounded-lg" href="profissionais.html">Profissionais</a>
+        <a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-lg" href="obras.html">Obras &amp; Projetos</a>
+        <a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-lg" href="diario.html">Diário de Obras</a>
+      </nav>
+
+      <div class="flex items-center gap-space-sm">
+        <a class="hidden sm:inline-flex items-center gap-space-xs bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md px-space-lg py-space-sm rounded-lg transition-all shadow-sm" href="cadastro.html">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">add_circle</span>
+          <span>Publicar Projeto</span>
+        </a>
+        <a class="inline-flex items-center font-label-md text-label-md text-on-surface-variant hover:text-primary px-space-md py-space-sm rounded-lg hover:bg-surface-container transition-colors" href="cadastro.html">Entrar</a>
+        <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu de navegação" class="lg:hidden p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" id="mobile-menu-btn" type="button">
+          <span class="material-symbols-outlined text-[24px]" aria-hidden="true">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hidden lg:hidden bg-surface-card border-t border-surface-container shadow-lg" id="mobile-menu">
+      <nav aria-label="Navegação móvel" class="px-4 py-space-sm flex flex-col">
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" href="index.html">Início</a>
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-primary bg-primary-container rounded-lg" href="profissionais.html">Profissionais</a>
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" href="obras.html">Obras &amp; Projetos</a>
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" href="diario.html">Diário de Obras</a>
+        <a class="mt-space-xs py-space-sm rounded-lg bg-secondary-container text-on-secondary font-label-md text-label-md text-center" href="cadastro.html">Publicar Projeto / Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="w-full pt-20 bg-surface-canvas" id="conteudo">
+    <!-- ══════════════════ CABEÇALHO DE BUSCA ══════════════════ -->
+    <section class="w-full bg-primary text-on-primary py-space-xl relative overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.10] pointer-events-none">
+        <svg aria-hidden="true" class="w-full h-full" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern height="48" id="blueprint-grid-prof" patternUnits="userSpaceOnUse" width="48">
+              <path d="M 48 0 L 0 0 0 48" fill="none" stroke="currentColor" stroke-width="0.75"></path>
+              <circle cx="24" cy="24" fill="currentColor" opacity="0.3" r="1.5"></circle>
+            </pattern>
+          </defs>
+          <rect fill="url(#blueprint-grid-prof)" height="100%" width="100%"></rect>
+        </svg>
+      </div>
+      <div class="absolute -right-16 -bottom-24 w-96 h-96 rounded-full bg-secondary-container/10 blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-space-lg">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+          <div>
+            <div class="flex items-center gap-space-xs text-secondary-fixed mb-space-xs">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">engineering</span>
+              <span class="font-label-sm text-label-sm uppercase tracking-wider">Busca técnica homologada</span>
+            </div>
+            <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-primary tracking-tight text-balance">Encontrar profissionais &amp; especialistas</h1>
+            <p class="font-body-md text-body-md text-primary-fixed-dim max-w-2xl mt-1">
+              Profissionais e empreiteiras com verificação documental CREA/CAU/CFT ativa, avaliação auditada e rastreabilidade técnica para execução de obras civis.
+            </p>
+          </div>
+          <div class="flex items-center gap-space-sm self-start md:self-auto bg-surface-card/10 backdrop-blur-md px-space-md py-space-sm rounded-lg">
+            <span class="w-2.5 h-2.5 rounded-full bg-status-success animate-pulse"></span>
+            <span class="font-label-md text-label-md text-on-primary" style="font-variant-numeric: tabular-nums;">1.482 disponíveis para alocação</span>
+          </div>
+        </div>
+
+        <!-- Barra de busca -->
+        <form class="bg-surface-card text-on-surface rounded-xl p-space-md shadow-[0_16px_48px_-12px_rgba(2,14,38,0.35)]" id="prof-search-form">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm items-center">
+            <div class="md:col-span-4 flex items-center gap-space-xs px-space-md py-space-sm bg-surface-container-low rounded-lg">
+              <span class="material-symbols-outlined text-outline text-[22px]" aria-hidden="true">construction</span>
+              <div class="flex flex-col w-full">
+                <label class="font-label-sm text-label-sm text-outline" for="filter-search-term">Especialidade ou cargo</label>
+                <input class="bg-transparent font-title-md text-title-md text-on-surface outline-none placeholder:text-outline w-full" id="filter-search-term" placeholder="Estruturas, Hidráulica, Drywall..." type="search" />
+              </div>
+            </div>
+            <div class="md:col-span-3 flex items-center gap-space-xs px-space-md py-space-sm bg-surface-container-low rounded-lg">
+              <span class="material-symbols-outlined text-outline text-[22px]" aria-hidden="true">share_location</span>
+              <div class="flex flex-col w-full">
+                <label class="font-label-sm text-label-sm text-outline" for="filter-location-text">Localização / base</label>
+                <input class="bg-transparent font-title-md text-title-md text-on-surface outline-none placeholder:text-outline w-full" id="filter-location-text" placeholder="Cidade, UF ou CEP" type="text" value="São Paulo - SP" />
+              </div>
+            </div>
+            <div class="md:col-span-3 flex flex-col justify-center px-space-md py-space-sm bg-surface-container-low rounded-lg">
+              <div class="flex items-center justify-between">
+                <label class="font-label-sm text-label-sm text-outline" for="filter-radius">Raio operacional</label>
+                <span class="font-label-md text-label-md text-primary" id="radius-val" style="font-variant-numeric: tabular-nums;">50 km</span>
+              </div>
+              <input aria-label="Raio operacional em quilômetros" class="w-full accent-secondary-container cursor-pointer mt-1" id="filter-radius" max="250" min="5" oninput="document.getElementById('radius-val').innerText = this.value + ' km'" step="5" type="range" value="50" />
+            </div>
+            <div class="md:col-span-2 flex h-full">
+              <button class="w-full h-full min-h-[48px] bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md rounded-lg flex items-center justify-center gap-space-xs transition-all shadow-md" type="submit">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">manage_search</span>
+                <span>Filtrar base</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-space-xs overflow-x-auto pt-space-md pb-space-xs">
+            <span class="font-label-sm text-label-sm text-outline pl-space-xs shrink-0">Frequentes:</span>
+            <button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors shrink-0" data-term="Cálculo Estrutural" type="button">Cálculo estrutural</button>
+            <button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors shrink-0" data-term="Instalações Hidráulicas" type="button">Instalações hidráulicas</button>
+            <button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors shrink-0" data-term="Alvenaria Estrutural" type="button">Alvenaria estrutural</button>
+            <button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors shrink-0" data-term="Subestações Elétricas" type="button">Subestações elétricas</button>
+            <button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors shrink-0" data-term="Drywall" type="button">Drywall / steel frame</button>
+            <button class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors shrink-0" data-term="Climatização" type="button">HVAC / climatização</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ══════════════════ EXPLORAÇÃO: FILTROS + RESULTADOS ══════════════════ -->
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-space-xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+        <!-- Filtros (coluna lateral) -->
+        <aside class="lg:col-span-4 flex flex-col gap-space-lg" aria-label="Filtros avançados">
+          <div class="bg-surface-card rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] p-space-lg flex flex-col gap-space-lg">
+            <div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+              <div class="flex items-center gap-space-xs">
+                <span class="material-symbols-outlined text-primary text-[22px]" aria-hidden="true">tune</span>
+                <h2 class="font-headline-sm text-headline-sm text-primary">Filtros avançados</h2>
+              </div>
+              <button class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary underline decoration-dotted" id="clear-filters" type="button">Limpar tudo</button>
+            </div>
+
+            <div class="flex flex-col gap-space-xs">
+              <span class="font-label-md text-label-md text-on-surface">Tipo de contratação</span>
+              <div class="grid grid-cols-2 gap-space-xs bg-surface-container-low p-1 rounded-lg" id="entity-type-group" role="radiogroup" aria-label="Tipo de contratação">
+                <label class="entity-type flex items-center justify-center gap-space-xs py-space-xs px-space-sm rounded-md bg-surface-card shadow-sm cursor-pointer text-primary font-label-sm text-label-sm">
+                  <input checked class="hidden" name="entity_type" type="radio" value="all" />
+                  <span class="material-symbols-outlined text-[16px]" aria-hidden="true">group</span>
+                  <span>Todos</span>
+                </label>
+                <label class="entity-type flex items-center justify-center gap-space-xs py-space-xs px-space-sm rounded-md hover:bg-surface-card/60 cursor-pointer text-on-surface-variant font-label-sm text-label-sm">
+                  <input class="hidden" name="entity_type" type="radio" value="contractor" />
+                  <span class="material-symbols-outlined text-[16px]" aria-hidden="true">domain</span>
+                  <span>Empreiteira</span>
+                </label>
+                <label class="entity-type flex items-center justify-center gap-space-xs py-space-xs px-space-sm rounded-md hover:bg-surface-card/60 cursor-pointer text-on-surface-variant font-label-sm text-label-sm col-span-2">
+                  <input class="hidden" name="entity_type" type="radio" value="autonomous" />
+                  <span class="material-symbols-outlined text-[16px]" aria-hidden="true">person</span>
+                  <span>Engenheiro / técnico autônomo</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-space-md py-space-sm bg-surface-container-low p-space-md rounded-xl">
+              <label class="flex items-center justify-between cursor-pointer group">
+                <span class="flex items-center gap-space-xs">
+                  <span class="w-3 h-3 rounded-full bg-status-success"></span>
+                  <span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Disponibilidade imediata</span>
+                </span>
+                <input checked class="w-5 h-5 accent-secondary-container rounded cursor-pointer" type="checkbox" />
+              </label>
+              <label class="flex items-center justify-between cursor-pointer group">
+                <span class="flex items-center gap-space-xs">
+                  <span class="material-symbols-outlined text-status-success text-[18px]" aria-hidden="true">verified</span>
+                  <span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Profissionais verificados</span>
+                </span>
+                <input checked class="w-5 h-5 accent-secondary-container rounded cursor-pointer" type="checkbox" />
+              </label>
+              <label class="flex items-center justify-between cursor-pointer group">
+                <span class="flex items-center gap-space-xs">
+                  <span class="material-symbols-outlined text-status-info text-[18px]" aria-hidden="true">badge</span>
+                  <span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Registro CREA / CAU / CFT ativo</span>
+                </span>
+                <input checked class="w-5 h-5 accent-secondary-container rounded cursor-pointer" type="checkbox" />
+              </label>
+            </div>
+
+            <div class="flex flex-col gap-space-xs">
+              <span class="font-label-md text-label-md text-on-surface">Reputação mínima</span>
+              <div class="flex items-center gap-space-xs" id="rating-group">
+                <button class="rating-btn flex-1 py-1.5 px-2 bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface flex items-center justify-center gap-1 hover:bg-surface-variant transition-colors" data-rating="3.5" type="button">
+                  <span style="font-variant-numeric: tabular-nums;">3.5+</span>
+                  <span class="material-symbols-outlined text-[14px] text-secondary-container" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                </button>
+                <button class="rating-btn flex-1 py-1.5 px-2 bg-primary-container text-on-primary rounded-lg font-label-sm text-label-sm flex items-center justify-center gap-1 shadow-sm" data-rating="4.0" type="button">
+                  <span style="font-variant-numeric: tabular-nums;">4.0+</span>
+                  <span class="material-symbols-outlined text-[14px] text-secondary-container" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                </button>
+                <button class="rating-btn flex-1 py-1.5 px-2 bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface flex items-center justify-center gap-1 hover:bg-surface-variant transition-colors" data-rating="4.5" type="button">
+                  <span style="font-variant-numeric: tabular-nums;">4.5+</span>
+                  <span class="material-symbols-outlined text-[14px] text-secondary-container" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                </button>
+                <button class="rating-btn flex-1 py-1.5 px-2 bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface flex items-center justify-center gap-1 hover:bg-surface-variant transition-colors" data-rating="4.8" type="button">
+                  <span style="font-variant-numeric: tabular-nums;">4.8+</span>
+                  <span class="material-symbols-outlined text-[14px] text-secondary-container" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-space-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-label-md text-label-md text-on-surface">Faixa de tarifa (R$/hora)</span>
+                <span class="font-label-sm text-label-sm text-outline" style="font-variant-numeric: tabular-nums;">R$ 80 — R$ 380</span>
+              </div>
+              <div class="grid grid-cols-2 gap-space-sm mt-1">
+                <div class="bg-surface-container-low px-space-sm py-1.5 rounded-lg flex items-center">
+                  <span class="text-outline font-label-sm text-label-sm mr-1">Mín R$</span>
+                  <input aria-label="Tarifa mínima por hora" class="bg-transparent font-title-md text-title-md w-full outline-none text-on-surface" type="number" value="80" />
+                </div>
+                <div class="bg-surface-container-low px-space-sm py-1.5 rounded-lg flex items-center">
+                  <span class="text-outline font-label-sm text-label-sm mr-1">Máx R$</span>
+                  <input aria-label="Tarifa máxima por hora" class="bg-transparent font-title-md text-title-md w-full outline-none text-on-surface" type="number" value="380" />
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-space-xs">
+              <span class="font-label-md text-label-md text-on-surface">Competências obrigatórias</span>
+              <div class="flex flex-col gap-2 mt-1 max-h-48 overflow-y-auto pr-1">
+                <label class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer font-body-sm text-body-sm">
+                  <input checked class="w-4 h-4 accent-secondary-container rounded" type="checkbox" />
+                  <span>Emissão de ART / RRT</span>
+                </label>
+                <label class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer font-body-sm text-body-sm">
+                  <input checked class="w-4 h-4 accent-secondary-container rounded" type="checkbox" />
+                  <span>Laudo de estabilidade estrutural</span>
+                </label>
+                <label class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer font-body-sm text-body-sm">
+                  <input class="w-4 h-4 accent-secondary-container rounded" type="checkbox" />
+                  <span>Modelagem BIM / Revit</span>
+                </label>
+                <label class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer font-body-sm text-body-sm">
+                  <input class="w-4 h-4 accent-secondary-container rounded" type="checkbox" />
+                  <span>Fiscalização diária de canteiro</span>
+                </label>
+                <label class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer font-body-sm text-body-sm">
+                  <input class="w-4 h-4 accent-secondary-container rounded" type="checkbox" />
+                  <span>Segurança NR-18 / NR-35</span>
+                </label>
+              </div>
+            </div>
+
+            <button class="w-full py-space-sm bg-primary text-on-primary font-label-md text-label-md rounded-lg hover:bg-primary-container active:scale-[0.98] transition-all shadow-sm flex items-center justify-center gap-space-xs" id="apply-filters" type="button">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">filter_alt</span>
+              <span>Aplicar filtros</span>
+            </button>
+          </div>
+
+          <!-- Módulo de localização -->
+          <div class="bg-surface-card rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] overflow-hidden flex flex-col">
+            <div class="p-space-md flex items-center justify-between bg-surface-container-high">
+              <div class="flex items-center gap-space-xs">
+                <span class="material-symbols-outlined text-secondary text-[20px]" aria-hidden="true">radar</span>
+                <span class="font-title-md text-title-md text-primary">Malha geoespacial</span>
+              </div>
+              <span class="font-label-sm text-label-sm bg-surface-card px-2 py-0.5 rounded text-primary font-semibold">Raio de 50 km</span>
+            </div>
+            <div class="w-full h-56 relative">
+              <img alt="Mapa estilizado da região metropolitana de São Paulo" class="w-full h-full object-cover" loading="lazy" src="assets/images/mapa-sp.jpg" />
+              <div class="absolute inset-0 bg-primary/30 flex flex-col justify-between p-space-md">
+                <div class="flex items-center justify-between">
+                  <span class="bg-surface-card/90 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2 py-1 rounded-md shadow-sm">Centro: Av. Paulista, SP</span>
+                  <span class="bg-secondary-container text-on-secondary font-label-sm text-label-sm px-2 py-1 rounded-md shadow-sm">Raio: 50 km</span>
+                </div>
+                <div class="flex items-center gap-space-xs bg-surface-card/95 backdrop-blur-md p-space-xs rounded-lg shadow-md self-start">
+                  <span class="material-symbols-outlined text-status-success text-[18px]" aria-hidden="true">location_searching</span>
+                  <span class="font-label-sm text-label-sm text-on-surface">32 canteiros com técnicos ativos próximos</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-space-md bg-surface-card flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+              <span>Precisão de trajeto calculada via malha rodoviária.</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Resultados -->
+        <section class="lg:col-span-8 flex flex-col gap-space-lg" aria-label="Resultados da busca">
+          <div class="bg-surface-card rounded-xl p-space-md shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-md">
+            <div class="flex items-baseline gap-space-xs" style="font-variant-numeric: tabular-nums;">
+              <span class="font-headline-sm text-headline-sm text-primary" id="results-count">4</span>
+              <span class="font-body-md text-body-md text-on-surface-variant">especialistas e construtoras encontrados</span>
+            </div>
+            <div class="flex items-center gap-space-sm self-end sm:self-auto">
+              <label class="font-label-sm text-label-sm text-outline hidden md:inline" for="sort-select">Ordenar por:</label>
+              <select class="bg-surface-container-low text-on-surface font-label-md text-label-md py-1.5 px-space-md rounded-lg outline-none cursor-pointer" id="sort-select">
+                <option selected value="rating">Mais bem avaliados</option>
+                <option value="distance">Mais próximos</option>
+                <option value="price_asc">Menor valor de hora/diária</option>
+                <option value="recent">Verificados recentemente</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Cartões de profissionais (conteúdo substituído pela API quando disponível) -->
+          <div class="flex flex-col gap-space-md" id="lista-profissionais">
+            <!-- Card 1: Engenheiro estrutural -->
+            <article class="prof-card reveal bg-surface-card rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all overflow-hidden flex flex-col p-space-lg gap-space-md" data-type="autonomous" data-rating="4.96">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+                <div class="flex items-center gap-space-md min-w-0">
+                  <div class="relative shrink-0">
+                    <div class="w-16 h-16 rounded-xl bg-primary text-on-primary flex items-center justify-center font-headline-md text-headline-md">RV</div>
+                    <span class="absolute -bottom-1 -right-1 bg-status-success text-on-primary w-5 h-5 rounded-full flex items-center justify-center shadow" title="Profissional verificado CREA">
+                      <span class="material-symbols-outlined text-[13px]" aria-hidden="true">verified</span>
+                    </span>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="flex items-center gap-space-xs flex-wrap">
+                      <h3 class="font-headline-sm text-headline-sm text-primary">Eng. Roberto Vasconcellos</h3>
+                      <span class="bg-status-success/10 text-status-success font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold">CREA-SP 5069218</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Engenheiro calculista estrutural &amp; perito técnico judicial</p>
+                    <div class="flex items-center gap-space-xs mt-1 text-on-surface-variant flex-wrap" style="font-variant-numeric: tabular-nums;">
+                      <span class="material-symbols-outlined text-status-warning text-[18px]" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                      <span class="font-title-md text-title-md text-primary font-bold">4.96</span>
+                      <span class="font-body-sm text-body-sm text-outline">(64 vistorias avaliadas)</span>
+                      <span class="text-outline">•</span>
+                      <span class="material-symbols-outlined text-[16px] text-outline" aria-hidden="true">verified_user</span>
+                      <span class="font-body-sm text-body-sm text-status-success font-medium">ART digital imediata</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-left sm:text-right bg-surface-container-low sm:bg-transparent p-space-sm sm:p-0 rounded-lg w-full sm:w-auto shrink-0" style="font-variant-numeric: tabular-nums;">
+                  <span class="font-label-sm text-label-sm text-outline block">Valor estimado</span>
+                  <span class="font-headline-md text-headline-md text-primary font-bold">R$ 190<span class="font-body-sm text-body-sm font-normal text-on-surface-variant">/hora</span></span>
+                  <span class="font-label-sm text-label-sm text-status-success block">Disponibilidade imediata</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Estruturas de concreto armado</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Fundação &amp; geotecnia</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Alvenaria estrutural</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Modelagem BIM</span>
+              </div>
+
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-canvas p-space-md rounded-lg">
+                <div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant flex-wrap" style="font-variant-numeric: tabular-nums;">
+                  <span class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">near_me</span>
+                    São Paulo - SP (Vila Mariana)
+                  </span>
+                  <span class="flex items-center gap-1 text-primary font-medium">
+                    <span class="material-symbols-outlined text-[18px] text-status-info" aria-hidden="true">navigation</span>
+                    <strong>4.2 km</strong> do seu canteiro
+                  </span>
+                  <span class="text-outline hidden sm:inline">•</span>
+                  <span>Raio máx: 80 km</span>
+                </div>
+                <div class="flex items-center gap-space-sm self-end sm:self-auto">
+                  <button class="px-space-md py-2 bg-surface-card hover:bg-surface-variant active:scale-[0.98] text-primary font-label-md text-label-md rounded-lg transition-all shadow-sm" onclick="openDrawer('Eng. Roberto Vasconcellos', 'CREA-SP 5069218', 'R$ 190/hora')" type="button">Ver perfil</button>
+                  <button class="px-space-lg py-2 bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-1 shadow-sm transition-all" onclick="openDrawer('Eng. Roberto Vasconcellos', 'CREA-SP 5069218', 'R$ 190/hora')" type="button">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
+                    <span>Solicitar proposta</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2: Empreiteira -->
+            <article class="prof-card reveal bg-surface-card rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all overflow-hidden flex flex-col p-space-lg gap-space-md" data-type="contractor" data-rating="4.89" style="transition-delay: 80ms;">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+                <div class="flex items-center gap-space-md min-w-0">
+                  <div class="relative shrink-0">
+                    <div class="w-16 h-16 rounded-xl bg-secondary-container text-on-secondary flex items-center justify-center font-headline-md text-headline-md">VO</div>
+                    <span class="absolute -bottom-1 -right-1 bg-status-info text-on-primary w-5 h-5 rounded-full flex items-center justify-center shadow" title="Empresa homologada">
+                      <span class="material-symbols-outlined text-[13px]" aria-hidden="true">domain_verification</span>
+                    </span>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="flex items-center gap-space-xs flex-wrap">
+                      <h3 class="font-headline-sm text-headline-sm text-primary">Vértice Obras &amp; Estruturas Ltda.</h3>
+                      <span class="bg-status-info/10 text-status-info font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold">PJ • CNPJ ativo</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Empreiteira especialista em concretagem, superestruturas e lajes</p>
+                    <div class="flex items-center gap-space-xs mt-1 text-on-surface-variant flex-wrap" style="font-variant-numeric: tabular-nums;">
+                      <span class="material-symbols-outlined text-status-warning text-[18px]" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                      <span class="font-title-md text-title-md text-primary font-bold">4.89</span>
+                      <span class="font-body-sm text-body-sm text-outline">(112 contratos concluídos)</span>
+                      <span class="text-outline">•</span>
+                      <span class="font-body-sm text-body-sm text-on-surface">Equipe: 38 operários</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-left sm:text-right bg-surface-container-low sm:bg-transparent p-space-sm sm:p-0 rounded-lg w-full sm:w-auto shrink-0" style="font-variant-numeric: tabular-nums;">
+                  <span class="font-label-sm text-label-sm text-outline block">Diária de equipe base</span>
+                  <span class="font-headline-md text-headline-md text-primary font-bold">R$ 1.850<span class="font-body-sm text-body-sm font-normal text-on-surface-variant">/dia</span></span>
+                  <span class="font-label-sm text-label-sm text-status-success block">Equipamentos próprios</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Concreto usinado &amp; bombeamento</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Montagem de armaduras CA-50</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Formas metálicas</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Segurança NR-18 integrada</span>
+              </div>
+
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-canvas p-space-md rounded-lg">
+                <div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant flex-wrap" style="font-variant-numeric: tabular-nums;">
+                  <span class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">near_me</span>
+                    Guarulhos / Grande SP
+                  </span>
+                  <span class="flex items-center gap-1 text-primary font-medium">
+                    <span class="material-symbols-outlined text-[18px] text-status-info" aria-hidden="true">navigation</span>
+                    <strong>16.8 km</strong> do seu canteiro
+                  </span>
+                  <span class="text-outline hidden sm:inline">•</span>
+                  <span>Raio máx: 120 km</span>
+                </div>
+                <div class="flex items-center gap-space-sm self-end sm:self-auto">
+                  <button class="px-space-md py-2 bg-surface-card hover:bg-surface-variant active:scale-[0.98] text-primary font-label-md text-label-md rounded-lg transition-all shadow-sm" onclick="openDrawer('Vértice Obras &amp; Estruturas', 'CNPJ 31.902.129/0001-44', 'R$ 1.850/dia')" type="button">Ver perfil</button>
+                  <button class="px-space-lg py-2 bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-1 shadow-sm transition-all" onclick="openDrawer('Vértice Obras &amp; Estruturas', 'CNPJ 31.902.129/0001-44', 'R$ 1.850/dia')" type="button">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
+                    <span>Solicitar proposta</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3: Técnico MEP -->
+            <article class="prof-card reveal bg-surface-card rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all overflow-hidden flex flex-col p-space-lg gap-space-md" data-type="autonomous" data-rating="4.92" style="transition-delay: 160ms;">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+                <div class="flex items-center gap-space-md min-w-0">
+                  <div class="relative shrink-0">
+                    <div class="w-16 h-16 rounded-xl bg-primary text-on-primary flex items-center justify-center font-headline-md text-headline-md">CM</div>
+                    <span class="absolute -bottom-1 -right-1 bg-status-success text-on-primary w-5 h-5 rounded-full flex items-center justify-center shadow" title="Profissional CFT ativo">
+                      <span class="material-symbols-outlined text-[13px]" aria-hidden="true">verified</span>
+                    </span>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="flex items-center gap-space-xs flex-wrap">
+                      <h3 class="font-headline-sm text-headline-sm text-primary">Tec. Carlos Eduardo Mendes</h3>
+                      <span class="bg-status-success/10 text-status-success font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold">CFT/CRT-04 98210-SP</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Técnico em eletrotécnica &amp; redes hidráulicas prediais</p>
+                    <div class="flex items-center gap-space-xs mt-1 text-on-surface-variant flex-wrap" style="font-variant-numeric: tabular-nums;">
+                      <span class="material-symbols-outlined text-status-warning text-[18px]" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                      <span class="font-title-md text-title-md text-primary font-bold">4.92</span>
+                      <span class="font-body-sm text-body-sm text-outline">(53 vistorias)</span>
+                      <span class="text-outline">•</span>
+                      <span class="font-body-sm text-body-sm text-status-success font-medium">Norma NR-10 &amp; SPDA</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-left sm:text-right bg-surface-container-low sm:bg-transparent p-space-sm sm:p-0 rounded-lg w-full sm:w-auto shrink-0" style="font-variant-numeric: tabular-nums;">
+                  <span class="font-label-sm text-label-sm text-outline block">Valor estimado</span>
+                  <span class="font-headline-md text-headline-md text-primary font-bold">R$ 130<span class="font-body-sm text-body-sm font-normal text-on-surface-variant">/hora</span></span>
+                  <span class="font-label-sm text-label-sm text-status-warning block">Disponível em 48h</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Instalações elétricas industriais</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Quadros de distribuição (QGBT)</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Tubulações PPR &amp; CPVC</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Testes hidrostáticos</span>
+              </div>
+
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-canvas p-space-md rounded-lg">
+                <div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant flex-wrap" style="font-variant-numeric: tabular-nums;">
+                  <span class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">near_me</span>
+                    Santo André - SP (ABC Paulista)
+                  </span>
+                  <span class="flex items-center gap-1 text-primary font-medium">
+                    <span class="material-symbols-outlined text-[18px] text-status-info" aria-hidden="true">navigation</span>
+                    <strong>11.5 km</strong> do seu canteiro
+                  </span>
+                  <span class="text-outline hidden sm:inline">•</span>
+                  <span>Raio máx: 45 km</span>
+                </div>
+                <div class="flex items-center gap-space-sm self-end sm:self-auto">
+                  <button class="px-space-md py-2 bg-surface-card hover:bg-surface-variant active:scale-[0.98] text-primary font-label-md text-label-md rounded-lg transition-all shadow-sm" onclick="openDrawer('Tec. Carlos Eduardo Mendes', 'CFT-04 98210-SP', 'R$ 130/hora')" type="button">Ver perfil</button>
+                  <button class="px-space-lg py-2 bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-1 shadow-sm transition-all" onclick="openDrawer('Tec. Carlos Eduardo Mendes', 'CFT-04 98210-SP', 'R$ 130/hora')" type="button">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
+                    <span>Solicitar proposta</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4: Drywall -->
+            <article class="prof-card reveal bg-surface-card rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all overflow-hidden flex flex-col p-space-lg gap-space-md" data-type="contractor" data-rating="4.82" style="transition-delay: 240ms;">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+                <div class="flex items-center gap-space-md min-w-0">
+                  <div class="relative shrink-0">
+                    <div class="w-16 h-16 rounded-xl bg-primary text-on-primary flex items-center justify-center font-headline-md text-headline-md">PP</div>
+                    <span class="absolute -bottom-1 -right-1 bg-status-success text-on-primary w-5 h-5 rounded-full flex items-center justify-center shadow" title="Profissional certificado">
+                      <span class="material-symbols-outlined text-[13px]" aria-hidden="true">verified</span>
+                    </span>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="flex items-center gap-space-xs flex-wrap">
+                      <h3 class="font-headline-sm text-headline-sm text-primary">Prumo Prime Acabamentos &amp; Drywall</h3>
+                      <span class="bg-surface-container-highest text-primary font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold">Microempresa • 8 operários</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Construção a seco, isolamento acústico e divisórias corporativas</p>
+                    <div class="flex items-center gap-space-xs mt-1 text-on-surface-variant flex-wrap" style="font-variant-numeric: tabular-nums;">
+                      <span class="material-symbols-outlined text-status-warning text-[18px]" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                      <span class="font-title-md text-title-md text-primary font-bold">4.82</span>
+                      <span class="font-body-sm text-body-sm text-outline">(37 obras concluídas)</span>
+                      <span class="text-outline">•</span>
+                      <span class="font-body-sm text-body-sm text-on-surface">Laser 3D aferido</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-left sm:text-right bg-surface-container-low sm:bg-transparent p-space-sm sm:p-0 rounded-lg w-full sm:w-auto shrink-0" style="font-variant-numeric: tabular-nums;">
+                  <span class="font-label-sm text-label-sm text-outline block">Diária / metro quadrado</span>
+                  <span class="font-headline-md text-headline-md text-primary font-bold">R$ 55<span class="font-body-sm text-body-sm font-normal text-on-surface-variant">/m² mão de obra</span></span>
+                  <span class="font-label-sm text-label-sm text-status-success block">Disponibilidade imediata</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Sistemas drywall</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Lã de rocha acústica</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Forros removíveis minerais</span>
+                <span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">Pintura airless</span>
+              </div>
+
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-canvas p-space-md rounded-lg">
+                <div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant flex-wrap" style="font-variant-numeric: tabular-nums;">
+                  <span class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">near_me</span>
+                    São Paulo - SP (Pinheiros)
+                  </span>
+                  <span class="flex items-center gap-1 text-primary font-medium">
+                    <span class="material-symbols-outlined text-[18px] text-status-info" aria-hidden="true">navigation</span>
+                    <strong>6.1 km</strong> do seu canteiro
+                  </span>
+                  <span class="text-outline hidden sm:inline">•</span>
+                  <span>Raio máx: 60 km</span>
+                </div>
+                <div class="flex items-center gap-space-sm self-end sm:self-auto">
+                  <button class="px-space-md py-2 bg-surface-card hover:bg-surface-variant active:scale-[0.98] text-primary font-label-md text-label-md rounded-lg transition-all shadow-sm" onclick="openDrawer('Prumo Prime Drywall', 'ME 28.110.044/0001-90', 'R$ 55/m²')" type="button">Ver perfil</button>
+                  <button class="px-space-lg py-2 bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-1 shadow-sm transition-all" onclick="openDrawer('Prumo Prime Drywall', 'ME 28.110.044/0001-90', 'R$ 55/m²')" type="button">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
+                    <span>Solicitar proposta</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Estado vazio (exibido quando os filtros não encontram nada) -->
+          <div class="hidden bg-surface-card p-space-xl rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex-col items-center justify-center text-center gap-space-sm py-16" id="no-results-state">
+            <div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+              <span class="material-symbols-outlined text-[32px]" aria-hidden="true">search_off</span>
+            </div>
+            <h3 class="font-headline-sm text-headline-sm text-primary">Nenhum profissional encontrado</h3>
+            <p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
+              Nenhum perfil coincide com os filtros selecionados no momento. Tente ampliar o raio de busca ou reduzir os critérios.
+            </p>
+            <button class="bg-primary text-on-primary font-label-md text-label-md px-space-lg py-space-sm rounded-lg transition-all hover:bg-primary-container active:scale-[0.98] mt-space-xs" id="clear-filters-empty" type="button">Restaurar todos os filtros</button>
+          </div>
+
+          <!-- Paginação -->
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-sm bg-surface-card p-space-md rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)]" style="font-variant-numeric: tabular-nums;">
+            <div class="font-body-sm text-body-sm text-on-surface-variant">
+              Exibindo <span class="font-bold text-primary">1 - 4</span> de <span class="font-bold text-primary">48</span> perfis técnicos verificados
+            </div>
+            <div class="flex flex-wrap items-center gap-space-xs">
+              <button class="p-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-variant transition-colors disabled:opacity-40 disabled:pointer-events-none" disabled type="button" aria-label="Página anterior">
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">chevron_left</span>
+              </button>
+              <button class="w-9 h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center shadow-sm" type="button">1</button>
+              <button class="w-9 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center hover:bg-surface-variant transition-colors" type="button">2</button>
+              <button class="w-9 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center hover:bg-surface-variant transition-colors" type="button">3</button>
+              <span class="text-outline px-1">...</span>
+              <button class="w-9 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center hover:bg-surface-variant transition-colors" type="button">12</button>
+              <button class="p-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-variant transition-colors" type="button" aria-label="Próxima página">
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">chevron_right</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ══════════════════ DRAWER: SOLICITAR PROPOSTA ══════════════════ -->
+    <div class="fixed inset-0 bg-primary/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" id="proposal-drawer-overlay">
+      <div aria-modal="true" class="fixed top-0 right-0 h-full w-full max-w-lg bg-surface-card shadow-2xl p-space-lg flex flex-col justify-between overflow-y-auto translate-x-full transition-transform duration-300 ease-out" id="proposal-drawer" role="dialog">
+        <div class="flex flex-col gap-space-md">
+          <div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+            <div class="flex items-center gap-space-xs">
+              <span class="material-symbols-outlined text-secondary text-[24px]" aria-hidden="true">assignment_add</span>
+              <h3 class="font-headline-sm text-headline-sm text-primary">Solicitar proposta técnica</h3>
+            </div>
+            <button aria-label="Fechar painel" class="p-1 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" onclick="closeDrawer()" type="button">
+              <span class="material-symbols-outlined text-[24px]" aria-hidden="true">close</span>
+            </button>
+          </div>
+
+          <div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-1">
+            <span class="font-label-sm text-label-sm text-outline">Profissional selecionado:</span>
+            <span class="font-headline-sm text-headline-sm text-primary" id="drawer-prof-name">Eng. Roberto Vasconcellos</span>
+            <div class="flex items-center justify-between mt-1 text-on-surface-variant font-body-sm text-body-sm">
+              <span class="bg-surface-card px-2 py-0.5 rounded text-status-success font-semibold text-label-sm" id="drawer-prof-reg">CREA-SP 5069218</span>
+              <span class="font-bold text-primary" id="drawer-prof-price" style="font-variant-numeric: tabular-nums;">R$ 190/hora</span>
+            </div>
+          </div>
+
+          <form class="flex flex-col gap-space-md mt-space-sm" onsubmit="handleSendProposal(event)">
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface" for="drawer-project">Vincular a obra / projeto existente</label>
+              <select class="bg-surface-container-low text-on-surface font-body-md text-body-md p-space-sm rounded-lg outline-none cursor-pointer" id="drawer-project">
+                <option value="p1">Edifício Residencial Horizonte (Torre B — Fundações)</option>
+                <option value="p2">Retrofit Comercial Paulista Corporate</option>
+                <option value="p3">Galpão Logístico Cajamar Módulo 4</option>
+                <option value="new">+ Cadastrar novo canteiro de obras</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <span class="font-label-md text-label-md text-on-surface">Tipo de contratação necessária</span>
+              <div class="grid grid-cols-2 gap-space-xs">
+                <label class="flex items-center gap-space-xs p-space-xs bg-surface-container-low rounded-lg cursor-pointer font-body-sm text-body-sm">
+                  <input checked class="accent-secondary-container" name="scope_type" type="radio" />
+                  <span>Por hora técnica</span>
+                </label>
+                <label class="flex items-center gap-space-xs p-space-xs bg-surface-container-low rounded-lg cursor-pointer font-body-sm text-body-sm">
+                  <input class="accent-secondary-container" name="scope_type" type="radio" />
+                  <span>Por empreitada / etapa</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface" for="drawer-start-date">Estimativa de início</label>
+              <input class="bg-surface-container-low text-on-surface font-body-md text-body-md p-space-sm rounded-lg outline-none" id="drawer-start-date" type="date" />
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface" for="drawer-scope">Memorial descritivo do escopo</label>
+              <textarea class="bg-surface-container-low text-on-surface font-body-md text-body-md p-space-sm rounded-lg outline-none placeholder:text-outline resize-none" id="drawer-scope" placeholder="Descreva brevemente a demanda técnica, volume de concreto, área construída ou laudo exigido..." required rows="4"></textarea>
+            </div>
+
+            <div class="bg-surface-canvas p-space-md rounded-lg flex flex-col items-center justify-center gap-space-xs text-center cursor-pointer hover:bg-surface-container transition-colors border-2 border-dashed border-outline-variant/50">
+              <span class="material-symbols-outlined text-outline text-[28px]" aria-hidden="true">cloud_upload</span>
+              <span class="font-label-md text-label-md text-primary">Anexar projetos DWG, PDF ou memorial</span>
+              <span class="font-label-sm text-label-sm text-outline">Formatos aceitos: IFC, DWG, PDF até 50 MB</span>
+            </div>
+
+            <div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm mt-1">
+              <span class="material-symbols-outlined text-status-success text-[18px]" aria-hidden="true">verified_user</span>
+              <span>Garantia de custódia de pagamento e ART protocolada em contrato.</span>
+            </div>
+
+            <button class="w-full mt-space-md py-space-sm bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md rounded-lg flex items-center justify-center gap-space-xs shadow-md transition-all" type="submit">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">mark_email_read</span>
+              <span>Disparar solicitação formal</span>
+            </button>
+          </form>
+        </div>
+        <div class="pt-space-md text-center text-outline font-label-sm text-label-sm">
+          Civil Connection • Plataforma auditada CREA/CONFEA
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ════════ Drawer de proposta ════════
+      function openDrawer(name, reg, price) {
+        document.getElementById('drawer-prof-name').innerText = name;
+        document.getElementById('drawer-prof-reg').innerText = reg;
+        document.getElementById('drawer-prof-price').innerText = price;
+
+        const overlay = document.getElementById('proposal-drawer-overlay');
+        const drawer = document.getElementById('proposal-drawer');
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        overlay.classList.add('opacity-100', 'pointer-events-auto');
+        drawer.classList.remove('translate-x-full');
+        drawer.classList.add('translate-x-0');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        const overlay = document.getElementById('proposal-drawer-overlay');
+        const drawer = document.getElementById('proposal-drawer');
+        drawer.classList.remove('translate-x-0');
+        drawer.classList.add('translate-x-full');
+        overlay.classList.remove('opacity-100', 'pointer-events-auto');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+      }
+
+      function handleSendProposal(e) {
+        e.preventDefault();
+        closeDrawer();
+        if (typeof showToast === 'function') {
+          showToast('Solicitação enviada. O profissional receberá a notificação instantaneamente.');
+        }
+      }
+
+      document.getElementById('proposal-drawer-overlay').addEventListener('click', function (e) {
+        if (e.target === this) closeDrawer();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeDrawer();
+      });
+
+      // ════════ Filtros locais sobre os cards ════════
+      const resultsCount = document.getElementById('results-count');
+      const noResultsState = document.getElementById('no-results-state');
+      const cardsList = document.getElementById('lista-profissionais');
+
+      function currentEntityType() {
+        const checked = document.querySelector('input[name="entity_type"]:checked');
+        return checked ? checked.value : 'all';
+      }
+
+      function currentMinRating() {
+        const active = document.querySelector('#rating-group .rating-btn.bg-primary-container');
+        return active ? parseFloat(active.dataset.rating) : 0;
+      }
+
+      function applyLocalFilters() {
+        const type = currentEntityType();
+        const minRating = currentMinRating();
+        const term = (document.getElementById('filter-search-term').value || '').toLowerCase().trim();
+        let visible = 0;
+
+        cardsList.querySelectorAll('.prof-card').forEach(card => {
+          const matchesType = type === 'all' || card.dataset.type === type;
+          const matchesRating = parseFloat(card.dataset.rating || '0') >= minRating;
+          const haystack = card.innerText.toLowerCase();
+          const matchesTerm = !term || haystack.includes(term);
+          const show = matchesType && matchesRating && matchesTerm;
+          card.classList.toggle('hidden', !show);
+          if (show) visible++;
+        });
+
+        resultsCount.textContent = visible;
+        noResultsState.classList.toggle('hidden', visible > 0);
+        noResultsState.classList.toggle('flex', visible === 0);
+      }
+
+      // Grupo de tipo de contratação (estilo segmented control)
+      document.querySelectorAll('#entity-type-group .entity-type').forEach(label => {
+        label.addEventListener('click', () => {
+          document.querySelectorAll('#entity-type-group .entity-type').forEach(l => {
+            l.classList.remove('bg-surface-card', 'shadow-sm', 'text-primary');
+            l.classList.add('text-on-surface-variant');
+          });
+          label.classList.add('bg-surface-card', 'shadow-sm', 'text-primary');
+          label.classList.remove('text-on-surface-variant');
+        });
+      });
+
+      // Reputação mínima
+      document.querySelectorAll('#rating-group .rating-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#rating-group .rating-btn').forEach(b => {
+            b.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+            b.classList.add('bg-surface-container', 'text-on-surface');
+          });
+          btn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+          btn.classList.remove('bg-surface-container', 'text-on-surface');
+        });
+      });
+
+      document.getElementById('apply-filters').addEventListener('click', applyLocalFilters);
+      document.getElementById('clear-filters').addEventListener('click', () => {
+        document.getElementById('filter-search-term').value = '';
+        document.querySelector('input[name="entity_type"][value="all"]').checked = true;
+        document.querySelectorAll('#entity-type-group .entity-type').forEach(l => {
+          l.classList.remove('bg-surface-card', 'shadow-sm', 'text-primary');
+          l.classList.add('text-on-surface-variant');
+        });
+        document.querySelector('#entity-type-group .entity-type').classList.add('bg-surface-card', 'shadow-sm', 'text-primary');
+        applyLocalFilters();
+      });
+      document.getElementById('clear-filters-empty').addEventListener('click', () => {
+        document.getElementById('clear-filters').click();
+      });
+
+      // Tags rápidas preenchem a busca
+      document.querySelectorAll('[data-term]').forEach(tag => {
+        if (tag.classList.contains('quick-tag')) return;
+        tag.addEventListener('click', () => {
+          const input = document.getElementById('filter-search-term');
+          input.value = tag.dataset.term;
+          applyLocalFilters();
+          input.focus();
+        });
+      });
+
+      // Busca ao enviar o formulário
+      document.getElementById('prof-search-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        applyLocalFilters();
+      });
+
+      // Expõe o filtro para o app.js re-aplicar após renderização via API
+      window.applyLocalProfFilters = applyLocalFilters;
+    </script>
+  </main>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="w-full bg-surface-card border-t border-surface-container">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-space-xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter mb-space-xl">
+        <div class="lg:col-span-2 flex flex-col gap-space-md">
+          <div class="flex items-center gap-space-md">
+            <img alt="Logotipo Civil Connection" class="h-8 w-auto object-contain" src="assets/images/logo.png" />
+            <span class="font-headline-sm text-headline-sm text-primary">Civil Connection</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">
+            Plataforma integrada de engenharia e gestão de obras civis. Conectamos proprietários, empreiteiros e equipes técnicas com rastreabilidade estrutural.
+          </p>
+          <div class="flex items-center gap-space-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-status-success text-[18px]" aria-hidden="true">verified_user</span>
+            <span class="font-label-sm text-label-sm tracking-wide">Plataforma em conformidade com normas ABNT e CREA</span>
+          </div>
+        </div>
+        <nav aria-label="Navegação do rodapé" class="flex flex-col gap-space-sm">
+          <h3 class="font-title-md text-title-md text-primary">Navegação</h3>
+          <ul class="flex flex-col gap-space-xs">
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="index.html">Início</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="profissionais.html">Profissionais &amp; ART</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="obras.html">Projetos ativos</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="diario.html">Diários &amp; vistorias</a></li>
+          </ul>
+        </nav>
+        <div class="flex flex-col gap-space-sm">
+          <h3 class="font-title-md text-title-md text-primary">Institucional</h3>
+          <ul class="flex flex-col gap-space-xs">
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="index.html#confianca">Sobre a plataforma</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="cadastro.html#termos">Termos de uso técnico</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="cadastro.html#termos">Privacidade &amp; LGPD</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="mailto:contato@civilconnection.com.br">Segurança no canteiro</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-space-sm">
+          <h3 class="font-title-md text-title-md text-primary">Contato &amp; suporte</h3>
+          <ul class="flex flex-col gap-space-xs">
+            <li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">mail</span><a class="hover:text-on-surface transition-colors" href="mailto:contato@civilconnection.com.br">contato@civilconnection.com.br</a>
+            </li>
+            <li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">call</span><a class="hover:text-on-surface transition-colors" href="tel:+551134509800">+55 (11) 3450-9800</a>
+            </li>
+            <li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span>Av. Paulista, 1000 — São Paulo, SP
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-space-md border-t border-surface-container pt-space-lg">
+        <p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Civil Connection Engenharia &amp; Tecnologia. Projeto acadêmico — Etec.</p>
+        <div class="flex items-center gap-space-md text-on-surface-variant font-label-sm text-label-sm">
+          <span class="flex items-center gap-space-xs">
+            <span class="material-symbols-outlined text-[16px] text-status-success" aria-hidden="true">lock</span>Dados protegidos (LGPD)
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

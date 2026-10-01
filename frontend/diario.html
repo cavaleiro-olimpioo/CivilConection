@@ -1,1053 +1,1223 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diário de Obras — Residência Alphaville — Civil Connection</title>
+  <meta name="description" content="Acompanhe o diário de canteiro, cronograma físico-financeiro, medições e a comunicação técnica da sua obra em tempo real." />
+  <meta name="theme-color" content="#020e26" />
+  <meta property="og:title" content="Diário de Obras — Civil Connection" />
+  <meta property="og:description" content="Diário de canteiro, cronograma, medições e comunicação técnica em tempo real." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
 
-<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="css/tailwind.css"/><link rel="stylesheet" href="css/styles.css"/></head><body class="bg-surface-canvas font-body-md text-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface-card/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md"><img alt="Civil Connection" class="h-8 w-auto object-contain" src="assets/images/logo.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/aida/AEtjO1WOVti2G0Jl0QJ8A5qko53tM9r9tkWLbEERY5F98WlZ7ChnHzEOjvTgR1Vq8aNwyAFKfJLEcSjMEe-aAGMHEiheUZqsYjSVMkoVIEIyGL2b1ceNJNmmKc-r7sA6DGmiT2ma2vxh3y8qw-VVhgIGnA1e6T3GXYvlSeM5coJ6H-2-td84hU0jwh0iLTHNoWz8zvpn9nVG96L624ZPuQj4vay-9xRpGWSbRwkS3p0arAa6iVXVwCeWUICnOfxMJCWOM274CizaxzTH';"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-tight tracking-tight">Civil Connection</span><span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:inline-block tracking-wider uppercase">Conectando ideias, construindo o futuro</span></div></div><div class="hidden xl:flex items-center gap-space-sm bg-surface-container px-space-md py-space-xs rounded-xl"><span class="material-symbols-outlined text-outline text-[20px]">search</span><input class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-outline w-64" placeholder="Buscar obras, engenheiros, fornecedores..." type="text"/><div class="h-4 w-[1px] bg-outline-variant"></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">location_on</span><span class="font-label-sm text-label-sm">São Paulo, SP</span></div></div><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-primary font-title-md text-title-md rounded-lg"><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="inicio" href="#">Início</a><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="encontrar-profissionais" href="#">Encontrar Profissionais</a><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="obras-e-projetos" href="#">Obras &amp; Projetos</a><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="diario-de-obras" href="#">Diário de Obras</a><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard-visao-geral" href="#">Dashboard</a></nav><div class="flex items-center gap-space-md"><button class="hidden sm:inline-flex items-center gap-space-xs bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md px-space-lg py-space-sm rounded-lg transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span>Publicar Projeto</span></button><div class="relative flex items-center justify-center"><button aria-label="Notificações" class="p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[24px]">notifications</span></button><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-status-danger"></span></div><div class="flex items-center gap-space-xs pl-space-xs"><div class="relative"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-status-success rounded-full ring-2 ring-surface-card flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[9px]">verified</span></span></div></div></div></div></header><main class="w-full pt-20 bg-surface-canvas"><div class="flex flex-col w-full">
-<!-- Sub-Header Metadados Técnicos da Obra -->
-<section class="w-full bg-primary text-on-primary shadow-md">
-<div class="max-w-7xl mx-auto px-margin py-space-lg flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
-<div class="flex flex-col gap-space-xs">
-<div class="flex flex-wrap items-center gap-space-sm">
-<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded text-status-success bg-status-success/15 font-label-sm text-label-sm tracking-wider uppercase">
-<span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
-            Em Andamento
-          </span>
-<span class="text-surface-variant font-label-sm text-label-sm uppercase tracking-wider">ART Nº 2025/08492-SP</span>
-<span class="text-surface-variant/40">•</span>
-<span class="text-surface-variant font-label-sm text-label-sm flex items-center gap-1">
-<span class="material-symbols-outlined text-[15px]">pin_drop</span> Santana de Parnaíba - SP
-          </span>
-</div>
-<h1 class="font-headline-lg text-headline-lg text-on-primary tracking-tight">
-          Residência Alphaville - Lote 14 <span class="text-secondary-fixed-dim font-headline-sm text-headline-sm font-normal">(Reforma &amp; Ampliação)</span>
-</h1>
-<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md font-body-sm text-body-sm text-surface-variant">
-<div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-secondary-container text-[18px]">badge</span>
-<span>Resp. Técnico: <strong class="text-on-primary font-semibold">Engª. Mariana Silva</strong> (CREA 5069812-SP)</span>
-</div>
-<span class="text-surface-variant/40 hidden sm:inline">•</span>
-<div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-secondary-container text-[18px]">person</span>
-<span>Contratante: <strong class="text-on-primary font-semibold">Carlos Eduardo Silveira</strong></span>
-</div>
-<span class="text-surface-variant/40 hidden sm:inline">•</span>
-<div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-status-success text-[18px]">calendar_today</span>
-<span>Início: 12/01/2025 • Término Prev.: 28/08/2025</span>
-</div>
-</div>
-</div>
-<!-- Quick Metrics & Physical Gauge -->
-<div class="bg-primary-container/80 rounded-xl p-space-md flex items-center gap-space-lg shadow-inner w-full sm:w-auto">
-<div class="relative w-20 h-20 flex-shrink-0 flex items-center justify-center">
-<svg class="w-full h-full transform -rotate-90" viewbox="0 0 72 72">
-<circle class="text-surface-variant/20" cx="36" cy="36" fill="transparent" r="30" stroke="currentColor" stroke-width="7"></circle>
-<circle class="text-status-success transition-all duration-1000 ease-out" cx="36" cy="36" fill="transparent" r="30" stroke="currentColor" stroke-dasharray="188.4" stroke-dashoffset="60.28" stroke-linecap="round" stroke-width="7"></circle>
-</svg>
-<div class="absolute flex flex-col items-center justify-center text-center">
-<span class="font-headline-sm text-headline-sm text-on-primary font-bold">68%</span>
-</div>
-</div>
-<div class="flex flex-col gap-1 min-w-0">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-surface-variant">Avanço Físico Total</span>
-<span class="font-title-md text-title-md text-on-primary font-semibold">Fase de Instalações</span>
-<div class="flex items-center gap-2 mt-1">
-<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-status-success/20 text-status-success">+4.2% esta semana</span>
-<span class="text-surface-variant text-[11px]">Meta: 70%</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Navigation Bar de Módulos Operacionais -->
-<section class="w-full bg-surface-card shadow-sm sticky top-20 z-40">
-<div class="max-w-7xl mx-auto px-margin flex flex-col xl:flex-row xl:items-center xl:justify-between gap-space-md">
-<div class="flex max-w-full items-center gap-space-xs py-space-xs overflow-x-auto">
-<button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md transition-all duration-200 bg-primary-container text-on-primary shadow-sm" id="tab-btn-diario" onclick="switchTab('diario')">
-<span class="material-symbols-outlined text-[20px]">assignment</span>
-<span>Diário de Canteiro</span>
-<span class="px-1.5 py-0.5 text-xs rounded-full bg-secondary-container text-on-secondary font-bold">3 hoje</span>
-</button>
-<button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-etapas" onclick="switchTab('etapas')">
-<span class="material-symbols-outlined text-[20px]">timeline</span>
-<span>Cronograma &amp; Etapas</span>
-<span class="px-1.5 py-0.5 text-xs rounded-full bg-surface-container-high text-on-surface-variant font-medium">10 fases</span>
-</button>
-<button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-financeiro" onclick="switchTab('financeiro')">
-<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
-<span>Medições &amp; Financeiro</span>
-</button>
-<button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-comunicacao" onclick="switchTab('comunicacao')">
-<span class="material-symbols-outlined text-[20px]">chat</span>
-<span>Canal Técnico &amp; SAC</span>
-<span class="w-2 h-2 rounded-full bg-status-danger"></span>
-</button>
-</div>
-<div class="hidden md:flex self-end items-center gap-space-sm py-space-xs">
-<button class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg font-label-md text-label-md bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors" type="button">
-<span class="material-symbols-outlined text-[18px]">print</span>
-<span>Imprimir RDO</span>
-</button>
-<button class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg font-label-md text-label-md bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors" type="button">
-<span class="material-symbols-outlined text-[18px]">download</span>
-<span>Exportar PDF</span>
-</button>
-</div>
-</div>
-</section>
-<!-- Container Principal das Abas -->
-<div class="max-w-7xl mx-auto w-full px-margin py-space-xl">
-<!-- TAB 1: DIÁRIO DE OBRAS (DEFAULT) -->
-<div class="tab-pane flex flex-col gap-space-xl" id="tab-content-diario">
-<!-- Top Weather & Field Conditions Widget -->
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
-<div class="bg-surface-card p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
-<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-status-warning">
-<span class="material-symbols-outlined text-[32px]">wb_sunny</span>
-</div>
-<div>
-<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Clima do Canteiro</span>
-<div class="font-headline-sm text-headline-sm text-primary">28°C / Ensolarado</div>
-<span class="font-body-sm text-body-sm text-status-success">Solo seco • Próprio p/ concretagem</span>
-</div>
-</div>
-<div class="bg-surface-card p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
-<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-status-info">
-<span class="material-symbols-outlined text-[32px]">engineering</span>
-</div>
-<div>
-<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Efetivo Presente</span>
-<div class="font-headline-sm text-headline-sm text-primary">14 Operários</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant">1 Encarregado • 6 Pedreiros • 7 Serventes</span>
-</div>
-</div>
-<div class="bg-surface-card p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
-<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-status-success">
-<span class="material-symbols-outlined text-[32px]">health_and_safety</span>
-</div>
-<div>
-<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Segurança do Trabalho</span>
-<div class="font-headline-sm text-headline-sm text-status-success">100% Conforme</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant">DDS realizado • 126 dias sem acidentes</span>
-</div>
-</div>
-<div class="bg-surface-card p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
-<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-secondary-container">
-<span class="material-symbols-outlined text-[32px]">local_shipping</span>
-</div>
-<div>
-<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Entregas do Dia</span>
-<div class="font-headline-sm text-headline-sm text-primary">2 Recebimentos</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Tubos Tigre 100mm &amp; Argamassa AC-III</span>
-</div>
-</div>
-</div>
-<!-- Main Diary Grid: Formulário + Feed -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-<!-- Formulário Rápido de Novo Registro (Col 1-5) -->
-<div class="lg:col-span-5 flex flex-col gap-space-lg">
-<div class="bg-surface-card p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
-<div class="flex items-center justify-between pb-space-sm">
-<div class="flex items-center gap-space-sm">
-<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
-<h2 class="font-headline-sm text-headline-sm text-primary">Novo Registro Diário (RDO)</h2>
-</div>
-<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">14/05/2025</span>
-</div>
-<form class="flex flex-col gap-space-md" id="daily-entry-form" onsubmit="handleDiarySubmit(event)">
-<div class="grid grid-cols-2 gap-space-md">
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Tipo de Atividade</label>
-<select class="bg-surface-container-low px-space-sm py-2.5 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-card" id="entry-type">
-<option value="Execução Estrutural / Alvenaria">Instalações Hidráulicas</option>
-<option value="Concretagem &amp; Cura">Concretagem / Laje</option>
-<option value="Infraestrutura Elétrica">Infraestrutura Elétrica</option>
-<option value="Vistoria Técnica &amp; Medição">Vistoria Técnica &amp; Medição</option>
-<option value="Revestimento Cerâmico">Revestimento Cerâmico</option>
-<option value="Descarte / Bota-Fora">Descarte de Entulho</option>
-</select>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Fase Associada</label>
-<select class="bg-surface-container-low px-space-sm py-2.5 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-card" id="entry-stage">
-<option value="Instalações Hidráulicas">Etapa 5: Inst. Hidráulicas</option>
-<option value="Instalações Elétricas">Etapa 6: Inst. Elétricas</option>
-<option value="Alvenaria">Etapa 4: Alvenaria</option>
-<option value="Reboco">Etapa 7: Reboco Interno</option>
-</select>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-space-md">
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Efetivo Utilizado</label>
-<div class="flex items-center bg-surface-container-low px-space-sm py-2 rounded-lg">
-<span class="material-symbols-outlined text-outline text-[18px] mr-2">groups</span>
-<input class="bg-transparent font-body-sm text-body-sm text-on-surface w-full outline-none" id="entry-workers" max="50" min="1" type="number" value="6"/>
-<span class="text-xs text-on-surface-variant">operários</span>
-</div>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Horas Aplicadas</label>
-<div class="flex items-center bg-surface-container-low px-space-sm py-2 rounded-lg">
-<span class="material-symbols-outlined text-outline text-[18px] mr-2">schedule</span>
-<input class="bg-transparent font-body-sm text-body-sm text-on-surface w-full outline-none" id="entry-hours" max="24" min="1" type="number" value="8"/>
-<span class="text-xs text-on-surface-variant">horas</span>
-</div>
-</div>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Descrição do Serviço Executado</label>
-<textarea class="bg-surface-container-low px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-card resize-none" id="entry-desc" placeholder="Ex: Finalizado teste de estanqueidade nas colunas de esgoto dos banheiros suíte 01 e 02..." rows="3"></textarea>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Materiais Utilizados / Lote</label>
-<input class="bg-surface-container-low px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-card" id="entry-materials" placeholder="Ex: 4 barras tubo PVC 100mm, 2 conexões soldáveis 50mm, 1 adesivo 850g" type="text"/>
-</div>
-<!-- Upload de Vistoria Fotográfica -->
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Anexos Fotográficos &amp; Relatórios</label>
-<div class="border-2 border-dashed border-outline-variant/60 rounded-xl p-space-md text-center bg-surface-container-low/40 hover:bg-surface-container-low cursor-pointer transition-colors flex flex-col items-center justify-center gap-1">
-<span class="material-symbols-outlined text-secondary-container text-[28px]">add_photo_alternate</span>
-<span class="font-label-md text-label-md text-primary font-medium">Clique para anexar fotos ou arraste arquivos</span>
-<span class="font-body-sm text-[12px] text-on-surface-variant">Formatos suportados: JPG, PNG, PDF até 25MB (georreferenciamento automático)</span>
-</div>
-</div>
-<!-- Geolocation GPS Stamp -->
-<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-status-success text-[18px]">my_location</span>
-<span class="font-label-sm text-label-sm text-on-surface">Coord: -23.49842, -46.86211 (Precisão 2.4m)</span>
-</div>
-<span class="text-xs bg-surface-card px-2 py-0.5 rounded font-mono text-status-success">Verificado GPS</span>
-</div>
-<!-- Checklist de Segurança Diário -->
-<div class="flex flex-col gap-2 pt-2">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Verificação de Segurança (NR-18)</span>
-<div class="grid grid-cols-2 gap-2">
-<label class="flex items-center gap-2 text-xs font-medium cursor-pointer text-on-surface">
-<input checked="" class="w-4 h-4 accent-secondary-container rounded" type="checkbox"/>
-                    Uso total de EPIs conferido
-                  </label>
-<label class="flex items-center gap-2 text-xs font-medium cursor-pointer text-on-surface">
-<input checked="" class="w-4 h-4 accent-secondary-container rounded" type="checkbox"/>
-                    Proteção contra quedas ativa
-                  </label>
-<label class="flex items-center gap-2 text-xs font-medium cursor-pointer text-on-surface">
-<input checked="" class="w-4 h-4 accent-secondary-container rounded" type="checkbox"/>
-                    Quadro elétrico provisório estanque
-                  </label>
-<label class="flex items-center gap-2 text-xs font-medium cursor-pointer text-on-surface">
-<input checked="" class="w-4 h-4 accent-secondary-container rounded" type="checkbox"/>
-                    Canteiro limpo e desobstruído
-                  </label>
-</div>
-</div>
-<button class="w-full mt-space-sm py-space-sm px-space-md rounded-lg bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md flex items-center justify-center gap-2 transition-all shadow-sm" type="submit">
-<span class="material-symbols-outlined text-[20px]">save</span>
-<span>Registrar Entrada no Diário Oficial</span>
-</button>
-</form>
-</div>
-</div>
-<!-- Feed Cronológico dos Últimos Registros (Col 6-12) -->
-<div class="lg:col-span-7 flex flex-col gap-space-md">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-space-sm">
-<h2 class="font-headline-sm text-headline-sm text-primary">Histórico Cronológico do Canteiro</h2>
-<span class="bg-surface-card px-2.5 py-0.5 rounded-full text-xs font-semibold text-on-surface-variant shadow-sm">Total: 42 relatórios</span>
-</div>
-<div class="flex items-center gap-2">
-<select class="bg-surface-card px-3 py-1 rounded-lg text-xs font-medium text-on-surface shadow-sm outline-none">
-<option>Todos os tipos</option>
-<option>Apenas fotos antes/depois</option>
-<option>Apenas inspeções técnicas</option>
-</select>
-</div>
-</div>
-<div class="flex flex-col gap-space-md" id="diary-feed">
-<!-- Entrada 1: Recente -->
-<article class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md transition-all hover:shadow-md">
-<div class="flex flex-wrap items-center justify-between gap-space-sm">
-<div class="flex items-center gap-space-sm">
-<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-sm">
-                    MS
-                  </div>
-<div>
-<div class="flex items-center gap-2">
-<span class="font-title-md text-title-md text-primary font-semibold">Engª. Mariana Silva</span>
-<span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[11px] font-semibold">Responsável Técnico</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Hoje às 11:30 • Santana de Parnaíba (Via Mobile Tablet)</span>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<span class="bg-status-success/15 text-status-success px-2.5 py-1 rounded text-xs font-semibold uppercase tracking-wider">
-                    Instalações Hidráulicas
-                  </span>
-</div>
-</div>
-<div class="bg-surface-canvas p-space-md rounded-lg flex flex-col gap-2">
-<h3 class="font-title-md text-title-md text-primary font-semibold">
-                  Passagem de prumadas e montagem dos barriletes de água fria/quente (PEX)
-                </h3>
-<p class="font-body-md text-body-md text-text-main">
-                  Executada passagem da tubulação PEX multicamada para o sistema de aquecimento solar e rede pressurizada. Realizado teste hidrostático inicial mantendo 6 bar de pressão durante 3 horas sem variação pressométrica. Validação de isolamento térmico nos condutos das lajes do 2º pavimento.
-                </p>
-<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-on-surface-variant pt-1">
-<span><strong>Efetivo:</strong> 5 Oficiais encanadores</span>
-<span>•</span>
-<span><strong>Horas:</strong> 6.5h</span>
-<span>•</span>
-<span><strong>Consumo:</strong> 82m Tubo PEX 25mm, 18 joelhos prensados</span>
-</div>
-</div>
-<!-- Galeria Antes/Depois -->
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
-<div class="flex flex-col gap-1.5">
-<div class="relative rounded-lg overflow-hidden h-48 bg-surface-container shadow-inner">
-<img class="w-full h-full object-cover" data-alt="Technical close-up photo of raw exposed concrete wall before plumbing pipes installation, construction rubble on the floor, natural jobsite lighting, raw industrial aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfdJMYkcmpDt24FetQ9csu7Pqy7y_S68DD6_n5YbQGcITtiWs5TNWC7VJWvo7Dc-rQ2gCYrMUfNoaDdbvVCeFPfU-d7jMUzBh4VcUmplzlPhKFzN1gL1sJTqWO1phekAMUPaktYXrrPezBkqbHkvehVcOdQpaB-FqUIuSkUtH9l4BBua_U83XmIceE8-oxdXvPIyGdNxc6f7bb3MLA8mlZwdNWCsac7Lcc6mriwJLqtQejdiuI1uRubg"/>
-<span class="absolute top-2 left-2 bg-primary/80 text-on-primary font-label-sm text-[10px] uppercase px-2 py-0.5 rounded backdrop-blur">Antes da Montagem</span>
-</div>
-<span class="text-xs text-on-surface-variant">Parede antes do rasgo estrutural e caixas embutidas</span>
-</div>
-<div class="flex flex-col gap-1.5">
-<div class="relative rounded-lg overflow-hidden h-48 bg-surface-container shadow-inner">
-<img class="w-full h-full object-cover" data-alt="High precision plumbing installation completed on residential construction, neat red and blue PEX pipes organized with brass fittings on clean masonry, daylight illuminates the technical craftsmanship" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKFAsplhJ1ZLvqgZgA8pgeYK9Odkl4HEEizMouLpxd330tPYMNppvSbyXKUdtiIzI_W_7LWGN39YW3xYC_QtfAzXI-vc5_2plPFAC_0SCD2TQX5mRQZqajP-Q2YlaFgoiq1cYMu1mWAZn3nrjaoYFbruDCVKffeTguQu6G4SGBt8i-f8S5ldO4g1FyQvJbiC32bN-3cx8X5gGjTVWiZZZlUY94PvYiDohCHvfhqlg2vOYZQSriAbds1Q"/>
-<span class="absolute top-2 left-2 bg-status-success text-on-primary font-label-sm text-[10px] uppercase px-2 py-0.5 rounded backdrop-blur">Depois • Concluído</span>
-</div>
-<span class="text-xs text-on-surface-variant">Prumada instalada e pressurizada para teste de vazamento</span>
-</div>
-</div>
-<!-- Safety & Technical Validation Seal -->
-<div class="flex items-center justify-between pt-space-xs text-xs text-on-surface-variant">
-<div class="flex items-center gap-3">
-<span class="flex items-center gap-1 text-status-success font-medium">
-<span class="material-symbols-outlined text-[16px]">verified</span> ART Vinculada
-                  </span>
-<span class="flex items-center gap-1 text-status-success font-medium">
-<span class="material-symbols-outlined text-[16px]">check_circle</span> Checklist NR-18 Validado
-                  </span>
-</div>
-<button class="text-primary hover:text-accent-hover font-semibold flex items-center gap-1" type="button">
-<span>Ver Laudo Técnico</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</button>
-</div>
-</article>
-<!-- Entrada 2: Dia Anterior -->
-<article class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md transition-all hover:shadow-md">
-<div class="flex flex-wrap items-center justify-between gap-space-sm">
-<div class="flex items-center gap-space-sm">
-<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary font-bold text-sm">
-                    RC
-                  </div>
-<div>
-<div class="flex items-center gap-2">
-<span class="font-title-md text-title-md text-primary font-semibold">Roberto Carlos Lima</span>
-<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded text-[11px] font-semibold">Mestre de Obras</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Ontem às 17:45 • Canteiro de Obras</span>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<span class="bg-surface-container-high text-on-surface-variant px-2.5 py-1 rounded text-xs font-semibold uppercase tracking-wider">
-                    Alvenaria Estrutural
-                  </span>
-</div>
-</div>
-<div class="bg-surface-canvas p-space-md rounded-lg flex flex-col gap-2">
-<h3 class="font-title-md text-title-md text-primary font-semibold">
-                  Fechamento de vedações perimetrais e assentamento de vergas nos vãos
-                </h3>
-<p class="font-body-md text-body-md text-text-main">
-                  Concluído 100% do fechamento em bloco cerâmico termoacústico no pavimento superior. Execução das vergas e contra-vergas de concreto armado nas aberturas das esquadrias da fachada sul para mitigação de fissuras por cisalhamento.
-                </p>
-<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-on-surface-variant pt-1">
-<span><strong>Efetivo:</strong> 8 Pedreiros, 4 Serventes</span>
-<span>•</span>
-<span><strong>Horas:</strong> 9.0h</span>
-<span>•</span>
-<span><strong>Consumo:</strong> 420 blocos cerâmicos, 14 sacos de cimento CP-II</span>
-</div>
-</div>
-<div class="rounded-lg overflow-hidden h-44 bg-surface-container shadow-inner">
-<img class="w-full h-full object-cover" data-alt="Wide shot of modern residential construction site with crisp masonry work, cleanly set ceramic blocks and reinforced concrete lintels over door and window frames under golden afternoon sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlKWd8e3sGyK075y46pGVjmDQhgjxS3MaUtBHczl9z-VWq_m3aT1GdTTBCXGV0NOK-EwXOCn6EElL-QYDRX-5FKh-bE8r83xno3QHSHhgKAi5Lg_-jSqXhwdB3Jg5DnlkPRSrA2mnS3TT6PkqYGbeYvbpdyuR4yyYE1xJjvtnytSgU3ejCy7cCpDoxcD0z9JCLQeAh6PIzxPT8uQrNzyMTZebdIJZ10UfDD1nrInt_aTcVb1gQxNpNMA"/>
-</div>
-<div class="flex items-center justify-between pt-space-xs text-xs text-on-surface-variant">
-<div class="flex items-center gap-3">
-<span class="flex items-center gap-1 text-status-success font-medium">
-<span class="material-symbols-outlined text-[16px]">check_circle</span> Alinhamento a prumo verificado
-                  </span>
-</div>
-<span class="text-outline font-mono">Registro #RDO-0041</span>
-</div>
-</article>
-</div>
-</div>
-</div>
-</div>
-<!-- TAB 2: CRONOGRAMA & ETAPAS (project_stages) -->
-<div class="tab-pane hidden flex flex-col gap-space-lg" id="tab-content-etapas">
-<div class="bg-surface-card p-space-lg rounded-xl shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
-<div>
-<h2 class="font-headline-md text-headline-md text-primary">Cronograma Estruturado de Execução</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Base de dados sincronizada com o Planejamento Físico-Financeiro (EAP do Projeto).</p>
-</div>
-<div class="flex items-center gap-space-sm flex-wrap">
-<span class="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded bg-status-success/15 text-status-success">
-<span class="w-2 h-2 rounded-full bg-status-success"></span> 3 Concluídas
-          </span>
-<span class="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded bg-secondary-container/15 text-secondary">
-<span class="w-2 h-2 rounded-full bg-secondary-container"></span> 2 Em Andamento
-          </span>
-<span class="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant">
-<span class="w-2 h-2 rounded-full bg-outline"></span> 5 Pendentes
-          </span>
-</div>
-</div>
-<!-- Tabela de Etapas (project_stages) -->
-<div class="bg-surface-card rounded-xl shadow-sm overflow-hidden">
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-surface-container-low text-on-surface font-label-md text-label-md">
-<th class="py-space-md px-space-lg w-16">Etapa</th>
-<th class="py-space-md px-space-md">Nome da Fase</th>
-<th class="py-space-md px-space-md">Progresso Físico</th>
-<th class="py-space-md px-space-md">Período Previsto</th>
-<th class="py-space-md px-space-md">Execução Real</th>
-<th class="py-space-md px-space-md">Status</th>
-<th class="py-space-md px-space-lg text-right">Ação</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-surface-variant/30 font-body-sm text-body-sm">
-<!-- Fase 1 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-md px-space-lg font-mono text-primary font-bold">01</td>
-<td class="py-space-md px-space-md font-semibold text-primary">Planejamento &amp; Sondagem SPT</td>
-<td class="py-space-md px-space-md">
-<div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden">
-<div class="bg-status-success h-full w-full"></div>
-</div>
-<span class="text-xs font-semibold text-status-success mt-1 block">100%</span>
-</td>
-<td class="py-space-md px-space-md text-on-surface-variant">12/01 a 28/01</td>
-<td class="py-space-md px-space-md text-status-success font-medium">12/01 a 26/01 (Adiantado)</td>
-<td class="py-space-md px-space-md">
-<span class="px-2.5 py-1 rounded text-xs font-semibold bg-status-success/15 text-status-success uppercase">Concluído</span>
-</td>
-<td class="py-space-md px-space-lg text-right">
-<button class="text-primary hover:text-accent-hover font-semibold text-xs inline-flex items-center gap-1">
-<span>Relatório</span><span class="material-symbols-outlined text-[14px]">open_in_new</span>
-</button>
-</td>
-</tr>
-<!-- Fase 2 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-md px-space-lg font-mono text-primary font-bold">02</td>
-<td class="py-space-md px-space-md font-semibold text-primary">Fundação &amp; Terraplanagem</td>
-<td class="py-space-md px-space-md">
-<div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden">
-<div class="bg-status-success h-full w-full"></div>
-</div>
-<span class="text-xs font-semibold text-status-success mt-1 block">100%</span>
-</td>
-<td class="py-space-md px-space-md text-on-surface-variant">29/01 a 25/02</td>
-<td class="py-space-md px-space-md text-status-success font-medium">29/01 a 24/02</td>
-<td class="py-space-md px-space-md">
-<span class="px-2.5 py-1 rounded text-xs font-semibold bg-status-success/15 text-status-success uppercase">Concluído</span>
-</td>
-<td class="py-space-md px-space-lg text-right">
-<button class="text-primary hover:text-accent-hover font-semibold text-xs inline-flex items-center gap-1">
-<span>Relatório</span><span class="material-symbols-outlined text-[14px]">open_in_new</span>
-</button>
-</td>
-</tr>
-<!-- Fase 3 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-md px-space-lg font-mono text-primary font-bold">03</td>
-<td class="py-space-md px-space-md font-semibold text-primary">Estrutura (Pilares, Vigas &amp; Lajes)</td>
-<td class="py-space-md px-space-md">
-<div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden">
-<div class="bg-status-success h-full w-full"></div>
-</div>
-<span class="text-xs font-semibold text-status-success mt-1 block">100%</span>
-</td>
-<td class="py-space-md px-space-md text-on-surface-variant">26/02 a 10/04</td>
-<td class="py-space-md px-space-md text-status-success font-medium">26/02 a 12/04</td>
-<td class="py-space-md px-space-md">
-<span class="px-2.5 py-1 rounded text-xs font-semibold bg-status-success/15 text-status-success uppercase">Concluído</span>
-</td>
-<td class="py-space-md px-space-lg text-right">
-<button class="text-primary hover:text-accent-hover font-semibold text-xs inline-flex items-center gap-1">
-<span>Relatório</span><span class="material-symbols-outlined text-[14px]">open_in_new</span>
-</button>
-</td>
-</tr>
-<!-- Fase 4 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-md px-space-lg font-mono text-primary font-bold">04</td>
-<td class="py-space-md px-space-md font-semibold text-primary">Alvenaria de Vedação &amp; Divisórias</td>
-<td class="py-space-md px-space-md">
-<div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden">
-<div class="bg-status-success h-full w-[95%]"></div>
-</div>
-<span class="text-xs font-semibold text-status-success mt-1 block">95% (Arremates)</span>
-</td>
-<td class="py-space-md px-space-md text-on-surface-variant">11/04 a 05/05</td>
-<td class="py-space-md px-space-md text-primary font-medium">13/04 a 16/05 (Em fechamento)</td>
-<td class="py-space-md px-space-md">
-<span class="px-2.5 py-1 rounded text-xs font-semibold bg-secondary-container/15 text-secondary uppercase">Em Andamento</span>
-</td>
-<td class="py-space-md px-space-lg text-right">
-<button class="text-primary hover:text-accent-hover font-semibold text-xs inline-flex items-center gap-1">
-<span>Inspecionar</span><span class="material-symbols-outlined text-[14px]">open_in_new</span>
-</button>
-</td>
-</tr>
-<!-- Fase 5 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors bg-surface-container-low/20">
-<td class="py-space-md px-space-lg font-mono text-secondary font-bold">05</td>
-<td class="py-space-md px-space-md font-semibold text-primary">Instalações Hidráulicas &amp; Gás</td>
-<td class="py-space-md px-space-md">
-<div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden">
-<div class="bg-secondary-container h-full w-[70%]"></div>
-</div>
-<span class="text-xs font-semibold text-secondary mt-1 block">70% (Fase Ativa)</span>
-</td>
-<td class="py-space-md px-space-md text-on-surface-variant">02/05 a 22/05</td>
-<td class="py-space-md px-space-md text-primary font-medium">06/05 a 23/05 (No Prazo)</td>
-<td class="py-space-md px-space-md">
-<span class="px-2.5 py-1 rounded text-xs font-semibold bg-secondary-container/20 text-secondary uppercase">Em Andamento</span>
-</td>
-<td class="py-space-md px-space-lg text-right">
-<button class="text-secondary hover:text-accent-hover font-semibold text-xs inline-flex items-center gap-1">
-<span>Acompanhar</span><span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-</button>
-</td>
-</tr>
-<!-- Fase 6 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-md px-space-lg font-mono text-on-surface-variant">06</td>
-<td class="py-space-md px-space-md font-medium text-on-surface">Instalações Elétricas, Dados &amp; CFTV</td>
-<td class="py-space-md px-space-md">
-<div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden">
-<div class="bg-outline h-full w-[15%]"></div>
-</div>
-<span class="text-xs text-on-surface-variant mt-1 block">15% (Eletrodutos)</span>
-</td>
-<td class="py-space-md px-space-md text-on-surface-variant">15/05 a 08/06</td>
-<td class="py-space-md px-space-md text-on-surface-variant font-medium">Previsto 16/05</td>
-<td class="py-space-md px-space-md">
-<span class="px-2.5 py-1 rounded text-xs font-medium bg-surface-container-high text-on-surface-variant uppercase">Pendente</span>
-</td>
-<td class="py-space-md px-space-lg text-right">
-<button class="text-on-surface-variant hover:text-on-surface text-xs inline-flex items-center gap-1">
-<span>Material</span>
-</button>
-</td>
-</tr>
-<!-- Fase 7 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-md px-space-lg font-mono text-on-surface-variant">07</td>
-<td class="py-space-md px-space-md font-medium text-on-surface">Reboco &amp; Regularização de Superfícies</td>
-<td class="py-space-md px-space-md">
-<div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden">
-<div class="bg-outline h-full w-0"></div>
-</div>
-<span class="text-xs text-on-surface-variant mt-1 block">0%</span>
-</td>
-<td class="py-space-md px-space-md text-on-surface-variant">25/05 a 20/06</td>
-<td class="py-space-md px-space-md text-on-surface-variant">-</td>
-<td class="py-space-md px-space-md">
-<span class="px-2.5 py-1 rounded text-xs font-medium bg-surface-container-high text-on-surface-variant uppercase">Pendente</span>
-</td>
-<td class="py-space-md px-space-lg text-right">
-<span class="text-xs text-on-surface-variant">Aguardando</span>
-</td>
-</tr>
-<!-- Fase 8 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-md px-space-lg font-mono text-on-surface-variant">08</td>
-<td class="py-space-md px-space-md font-medium text-on-surface">Piso, Porcelanatos &amp; Revestimentos</td>
-<td class="py-space-md px-space-md">
-<div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden">
-<div class="bg-outline h-full w-0"></div>
-</div>
-<span class="text-xs text-on-surface-variant mt-1 block">0%</span>
-</td>
-<td class="py-space-md px-space-md text-on-surface-variant">22/06 a 20/07</td>
-<td class="py-space-md px-space-md text-on-surface-variant">-</td>
-<td class="py-space-md px-space-md">
-<span class="px-2.5 py-1 rounded text-xs font-medium bg-surface-container-high text-on-surface-variant uppercase">Pendente</span>
-</td>
-<td class="py-space-md px-space-lg text-right">
-<span class="text-xs text-on-surface-variant">Aguardando</span>
-</td>
-</tr>
-<!-- Fase 9 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-md px-space-lg font-mono text-on-surface-variant">09</td>
-<td class="py-space-md px-space-md font-medium text-on-surface">Pintura Interna, Externa &amp; Texturas</td>
-<td class="py-space-md px-space-md">
-<div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden">
-<div class="bg-outline h-full w-0"></div>
-</div>
-<span class="text-xs text-on-surface-variant mt-1 block">0%</span>
-</td>
-<td class="py-space-md px-space-md text-on-surface-variant">22/07 a 15/08</td>
-<td class="py-space-md px-space-md text-on-surface-variant">-</td>
-<td class="py-space-md px-space-md">
-<span class="px-2.5 py-1 rounded text-xs font-medium bg-surface-container-high text-on-surface-variant uppercase">Pendente</span>
-</td>
-<td class="py-space-md px-space-lg text-right">
-<span class="text-xs text-on-surface-variant">Aguardando</span>
-</td>
-</tr>
-<!-- Fase 10 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-space-md px-space-lg font-mono text-on-surface-variant">10</td>
-<td class="py-space-md px-space-md font-medium text-on-surface">Limpeza Final Pós-Obra &amp; Vistoria Habite-se</td>
-<td class="py-space-md px-space-md">
-<div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden">
-<div class="bg-outline h-full w-0"></div>
-</div>
-<span class="text-xs text-on-surface-variant mt-1 block">0%</span>
-</td>
-<td class="py-space-md px-space-md text-on-surface-variant">16/08 a 28/08</td>
-<td class="py-space-md px-space-md text-on-surface-variant">-</td>
-<td class="py-space-md px-space-md">
-<span class="px-2.5 py-1 rounded text-xs font-medium bg-surface-container-high text-on-surface-variant uppercase">Pendente</span>
-</td>
-<td class="py-space-md px-space-lg text-right">
-<span class="text-xs text-on-surface-variant">Entrega de Chaves</span>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<!-- TAB 3: GESTÃO FINANCEIRA & PROPOSTAS ACEITAS -->
-<div class="tab-pane hidden flex flex-col gap-space-xl" id="tab-content-financeiro">
-<!-- Finance KPI Cards -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
-<div class="bg-surface-card p-space-lg rounded-xl shadow-sm flex flex-col gap-1">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Orçamento Aprovado</span>
-<div class="font-headline-lg text-headline-lg text-primary">R$ 540.000<span class="text-sm font-normal text-on-surface-variant">,00</span></div>
-<span class="text-xs text-status-success flex items-center gap-1 font-medium">
-<span class="material-symbols-outlined text-[16px]">verified</span> Contrato com BDI travado
-          </span>
-</div>
-<div class="bg-surface-card p-space-lg rounded-xl shadow-sm flex flex-col gap-1">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Gasto Real Acumulado</span>
-<div class="font-headline-lg text-headline-lg text-secondary">R$ 352.890<span class="text-sm font-normal text-on-surface-variant">,45</span></div>
-<span class="text-xs text-on-surface-variant flex items-center gap-1">
-<span class="font-semibold text-primary">65.3%</span> do teto orçamentário
-          </span>
-</div>
-<div class="bg-surface-card p-space-lg rounded-xl shadow-sm flex flex-col gap-1">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Saldo em Garantia / Escrow</span>
-<div class="font-headline-lg text-headline-lg text-status-success">R$ 187.109<span class="text-sm font-normal text-on-surface-variant">,55</span></div>
-<span class="text-xs text-status-success font-medium">Disponível para próximas medições</span>
-</div>
-<div class="bg-surface-card p-space-lg rounded-xl shadow-sm flex flex-col gap-1">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Desvio de Custo (EVMS)</span>
-<div class="font-headline-lg text-headline-lg text-status-success">-2.7%</div>
-<span class="text-xs text-status-success font-medium">Economia apurada em compras conjuntas</span>
-</div>
-</div>
-<!-- Detalhamento de Medições e Custos -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-<!-- Breakdown Chart / Bars -->
-<div class="lg:col-span-7 bg-surface-card p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
-<div class="flex items-center justify-between">
-<h3 class="font-title-md text-title-md text-primary font-semibold">Composição de Gastos por Grupo</h3>
-<span class="text-xs text-on-surface-variant font-mono">Atualizado hoje</span>
-</div>
-<div class="flex flex-col gap-space-md pt-2">
-<!-- Item 1: Materiais de Construção -->
-<div class="flex flex-col gap-1">
-<div class="flex justify-between text-xs font-semibold">
-<span class="text-primary">Materiais Básicos &amp; Acabamentos</span>
-<span class="text-on-surface">R$ 214.500 / R$ 320.000 (67%)</span>
-</div>
-<div class="w-full bg-surface-container-high rounded-full h-3 overflow-hidden">
-<div class="bg-primary h-full w-[67%]"></div>
-</div>
-</div>
-<!-- Item 2: Mão de Obra Técnica -->
-<div class="flex flex-col gap-1">
-<div class="flex justify-between text-xs font-semibold">
-<span class="text-primary">Mão de Obra &amp; Empreiteiros Especializados</span>
-<span class="text-on-surface">R$ 112.000 / R$ 160.000 (70%)</span>
-</div>
-<div class="w-full bg-surface-container-high rounded-full h-3 overflow-hidden">
-<div class="bg-secondary-container h-full w-[70%]"></div>
-</div>
-</div>
-<!-- Item 3: Equipamentos e Caçambas -->
-<div class="flex flex-col gap-1">
-<div class="flex justify-between text-xs font-semibold">
-<span class="text-primary">Locação de Equipamentos, Andaimes &amp; Caçambas</span>
-<span class="text-on-surface">R$ 18.240 / R$ 35.000 (52%)</span>
-</div>
-<div class="w-full bg-surface-container-high rounded-full h-3 overflow-hidden">
-<div class="bg-status-info h-full w-[52%]"></div>
-</div>
-</div>
-<!-- Item 4: Documentação Técnica e ARTs -->
-<div class="flex flex-col gap-1">
-<div class="flex justify-between text-xs font-semibold">
-<span class="text-primary">Taxas Técnicas, ARTs, Alvará &amp; Projetos Executivos</span>
-<span class="text-on-surface">R$ 8.150 / R$ 25.000 (32%)</span>
-</div>
-<div class="w-full bg-surface-container-high rounded-full h-3 overflow-hidden">
-<div class="bg-status-success h-full w-[32%]"></div>
-</div>
-</div>
-</div>
-<div class="mt-4 p-space-md rounded-xl bg-surface-container-low flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary-container text-[24px]">receipt_long</span>
-<div>
-<span class="font-title-md text-body-md text-primary font-semibold block">Próxima Medição #05</span>
-<span class="text-xs text-on-surface-variant">Liberação programada para 20/05 após vistoria de tubulações</span>
-</div>
-</div>
-<button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-1.5 rounded-lg text-xs font-semibold">
-              Ver Folha de Medição
-            </button>
-</div>
-</div>
-<!-- Propostas & Ordens de Compra Recentes -->
-<div class="lg:col-span-5 bg-surface-card p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
-<div class="flex items-center justify-between">
-<h3 class="font-title-md text-title-md text-primary font-semibold">Propostas Homologadas</h3>
-<span class="text-xs bg-status-success/10 text-status-success px-2 py-0.5 rounded font-semibold">3 ativas</span>
-</div>
-<div class="flex flex-col gap-space-sm">
-<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
-<div class="flex items-center justify-between">
-<span class="font-title-md text-body-sm text-primary font-bold">Hidráulica &amp; Termofusão</span>
-<span class="font-mono text-xs font-semibold text-primary">R$ 24.800,00</span>
-</div>
-<span class="text-xs text-on-surface-variant">Proposta da HidroVale Engenharia Ltda (Aceita em 02/05)</span>
-<div class="flex items-center justify-between text-[11px] pt-1 text-status-success font-medium">
-<span>Status: 1ª Parcela Paga (50%)</span>
-<span class="text-primary underline cursor-pointer">Ver Contrato</span>
-</div>
-</div>
-<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
-<div class="flex items-center justify-between">
-<span class="font-title-md text-body-sm text-primary font-bold">Esquadrias de Alumínio Preto</span>
-<span class="font-mono text-xs font-semibold text-primary">R$ 48.500,00</span>
-</div>
-<span class="text-xs text-on-surface-variant">Alumínio Prime SP (Medição executiva aprovada)</span>
-<div class="flex items-center justify-between text-[11px] pt-1 text-secondary font-medium">
-<span>Status: Em fabricação na fábrica</span>
-<span class="text-primary underline cursor-pointer">Ver Projeto</span>
-</div>
-</div>
-<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
-<div class="flex items-center justify-between">
-<span class="font-title-md text-body-sm text-primary font-bold">Porcelanatos 120x120cm</span>
-<span class="font-mono text-xs font-semibold text-primary">R$ 38.900,00</span>
-</div>
-<span class="text-xs text-on-surface-variant">Distribuidora Portobello Shop Barueri</span>
-<div class="flex items-center justify-between text-[11px] pt-1 text-status-success font-medium">
-<span>Status: Entregue no Canteiro</span>
-<span class="text-primary underline cursor-pointer">Ver NF-e</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- TAB 4: COMUNICAÇÃO DIRETA & CHAT TÉCNICO (conversations) -->
-<div class="tab-pane hidden flex flex-col gap-space-lg" id="tab-content-comunicacao">
-<div class="bg-surface-card rounded-xl shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 h-[680px]">
-<!-- Sidebar de Canais de Diálogo (Col 1-4) -->
-<div class="lg:col-span-4 bg-surface-container-low/40 p-space-md flex flex-col gap-space-md overflow-y-auto">
-<div class="flex items-center justify-between">
-<h3 class="font-title-md text-title-md text-primary font-semibold">Tópicos &amp; Canais</h3>
-<button class="p-1.5 rounded-lg bg-surface-card text-on-surface-variant hover:text-on-surface shadow-sm">
-<span class="material-symbols-outlined text-[18px]">add_comment</span>
-</button>
-</div>
-<div class="flex flex-col gap-1.5">
-<!-- Canal Ativo: Engª Mariana & Carlos Eduardo -->
-<div class="p-space-md rounded-xl bg-surface-card shadow-sm cursor-pointer flex items-start gap-3 border-l-4 border-secondary-container">
-<div class="w-10 h-10 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-on-primary font-bold text-xs">
-                MS
-              </div>
-<div class="flex flex-col min-w-0 flex-1">
-<div class="flex items-center justify-between">
-<span class="font-title-md text-body-sm text-primary font-bold truncate">Engª. Mariana Silva</span>
-<span class="text-[11px] text-on-surface-variant">11:42</span>
-</div>
-<span class="text-xs text-status-success font-medium">Canal Oficial RT &amp; Cliente</span>
-<p class="text-xs text-on-surface-variant truncate mt-1">Fotos do teste de pressão adicionadas no diário...</p>
-</div>
-</div>
-<!-- Canal 2: Fornecedor Tubos & Conexões -->
-<div class="p-space-md rounded-xl hover:bg-surface-card/60 cursor-pointer flex items-start gap-3 transition-colors">
-<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-on-surface font-bold text-xs">
-                HV
-              </div>
-<div class="flex flex-col min-w-0 flex-1">
-<div class="flex items-center justify-between">
-<span class="font-title-md text-body-sm text-primary font-bold truncate">HidroVale Vendas</span>
-<span class="text-[11px] text-on-surface-variant">09:15</span>
-</div>
-<span class="text-xs text-on-surface-variant">Suprimentos</span>
-<p class="text-xs text-on-surface-variant truncate mt-1">Caminhão com registros em trânsito.</p>
-</div>
-</div>
-<!-- Canal 3: Arquiteto de Interiores -->
-<div class="p-space-md rounded-xl hover:bg-surface-card/60 cursor-pointer flex items-start gap-3 transition-colors">
-<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-on-surface font-bold text-xs">
-                LB
-              </div>
-<div class="flex flex-col min-w-0 flex-1">
-<div class="flex items-center justify-between">
-<span class="font-title-md text-body-sm text-primary font-bold truncate">Lucas Braga (Arq.)</span>
-<span class="text-[11px] text-on-surface-variant">Ontem</span>
-</div>
-<span class="text-xs text-on-surface-variant">Compatibilização de Nichos</span>
-<p class="text-xs text-on-surface-variant truncate mt-1">Enviei a paginação revisada em DWG.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Janela de Chat em Tempo Real (Col 5-12) -->
-<div class="lg:col-span-8 flex flex-col h-full bg-surface-card">
-<!-- Chat Header -->
-<div class="px-space-lg py-space-md bg-surface-card flex items-center justify-between shadow-sm">
-<div class="flex items-center gap-3">
-<div class="relative">
-<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-sm">
-                  MS
-                </div>
-<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-status-success ring-2 ring-surface-card"></span>
-</div>
-<div>
-<div class="flex items-center gap-2">
-<h4 class="font-title-md text-title-md text-primary font-semibold">Engª. Mariana Silva</h4>
-<span class="text-[10px] bg-status-success/15 text-status-success font-semibold px-2 py-0.5 rounded">ONLINE</span>
-</div>
-<span class="text-xs text-on-surface-variant">CREA 5069812-SP • Conectada via Canteiro Tablet</span>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<button class="p-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary transition-colors" title="Ligar para Engenheiro">
-<span class="material-symbols-outlined text-[20px]">phone</span>
-</button>
-<button class="p-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary transition-colors" title="Agendar Vistoria Presencial">
-<span class="material-symbols-outlined text-[20px]">event_available</span>
-</button>
-</div>
-</div>
-<!-- Mensagens Históricas -->
-<div class="flex-1 p-space-lg overflow-y-auto flex flex-col gap-space-md bg-surface-canvas/50" id="chat-messages-container">
-<!-- Mensagem 1: Cliente -->
-<div class="flex flex-col items-end gap-1 max-w-[80%] self-end">
-<span class="text-[11px] text-on-surface-variant font-medium">Carlos Eduardo (Você) • 10:15</span>
-<div class="bg-primary text-on-primary p-space-md rounded-2xl rounded-tr-xs shadow-sm text-body-sm">
-                Bom dia, Engª Mariana! Como ficou a questão da queda d’água da laje gourmet que conversamos na vistoria de sábado passado?
-              </div>
-</div>
-<!-- Mensagem 2: Engenheira -->
-<div class="flex flex-col items-start gap-1 max-w-[80%] self-start">
-<span class="text-[11px] text-on-surface-variant font-medium">Engª. Mariana Silva • 10:22</span>
-<div class="bg-surface-card text-on-surface p-space-md rounded-2xl rounded-tl-xs shadow-sm text-body-sm">
-                Bom dia, Carlos! Já recalculamos os caimentos. Ajustamos para 1,5% em direção aos dois ralos lineares ocultos. O contrapiso impermeabilizado já começou a ser nivelado hoje cedo com aditivo hidrófugo.
-              </div>
-</div>
-<!-- Mensagem 3: Engenheira com Imagem -->
-<div class="flex flex-col items-start gap-1 max-w-[80%] self-start">
-<span class="text-[11px] text-on-surface-variant font-medium">Engª. Mariana Silva • 10:25</span>
-<div class="bg-surface-card text-on-surface p-space-md rounded-2xl rounded-tl-xs shadow-sm text-body-sm flex flex-col gap-2">
-<span>Olha a checagem com nível a laser dos mestres de guia:</span>
-<div class="rounded-lg overflow-hidden h-40 w-64 bg-surface-container shadow-sm">
-<img class="w-full h-full object-cover" data-alt="A construction engineer using a green crossline laser level on a freshly prepared floor screed for slope verification, bright clean residential site, sharp technical detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbWuDrDqt3RfXwfqhd1jZiUrKfuDE3L17xNZB68MIHJqkrihTipNNlfXQHjAtlSDcjd8H1myIYJTwHEvn7r-nvaBDf1uhGHTFkDBmVDjVzEqer3KRJvMjsiaJXOdqYTkga7VCdZDKq3setpVCm2m5RlXuT0WkqBAN64-OCFzNev7SC70vgoloYKzApGwOz06b8e0_CAMWFH_uIJvVJOB8BtwyYtyd5Gra4HHWP8q0WP3fy0_rL3qMW-g"/>
-</div>
-<span class="text-[11px] text-status-success font-semibold">Tudo em conformidade com o projeto hidrossanitário.</span>
-</div>
-</div>
-<!-- Mensagem 4: Cliente -->
-<div class="flex flex-col items-end gap-1 max-w-[80%] self-end">
-<span class="text-[11px] text-on-surface-variant font-medium">Carlos Eduardo (Você) • 10:48</span>
-<div class="bg-primary text-on-primary p-space-md rounded-2xl rounded-tr-xs shadow-sm text-body-sm">
-                Perfeito! E quanto à tubulação de água quente que vi que lançaram no RDO de hoje, já posso liberar a compra das torneiras monocomando?
-              </div>
-</div>
-<!-- Mensagem 5: Engenheira -->
-<div class="flex flex-col items-start gap-1 max-w-[80%] self-start">
-<span class="text-[11px] text-on-surface-variant font-medium">Engª. Mariana Silva • 11:42</span>
-<div class="bg-surface-card text-on-surface p-space-md rounded-2xl rounded-tl-xs shadow-sm text-body-sm">
-                Pode sim! Os pontos foram chumbados respeitando o diâmetro padrão de 1/2" com pressão garantida de 12 m.c.a. através do pressurizador.
-              </div>
-</div>
-</div>
-<!-- Chat Input Bar -->
-<div class="p-space-md bg-surface-card shadow-inner">
-<form class="flex items-center gap-space-sm" id="chat-form" onsubmit="handleChatSubmit(event)">
-<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant transition-colors" title="Anexar Foto do Canteiro" type="button">
-<span class="material-symbols-outlined text-[20px]">attach_file</span>
-</button>
-<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant transition-colors" title="Localização Atual" type="button">
-<span class="material-symbols-outlined text-[20px]">pin_drop</span>
-</button>
-<input class="flex-1 bg-surface-container-low px-space-md py-2.5 rounded-lg text-body-sm font-body-sm text-on-surface outline-none focus:bg-surface-card" id="chat-input" placeholder="Digite sua mensagem técnica ou dúvida sobre a obra..." type="text"/>
-<button class="bg-secondary-container hover:bg-accent-hover text-on-secondary px-space-lg py-2.5 rounded-lg font-label-md text-label-md flex items-center gap-1.5 transition-colors shadow-sm" type="submit">
-<span>Enviar</span>
-<span class="material-symbols-outlined text-[18px]">send</span>
-</button>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Microinterações Javascript -->
-<script>
-    function switchTab(tabId) {
-      // 1. Ocultar todos os painéis
-      const panels = document.querySelectorAll('.tab-pane');
-      panels.forEach(panel => {
-        panel.classList.add('hidden');
-      });
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
 
-      // 2. Desativar estilos de botões
-      const triggers = document.querySelectorAll('.tab-trigger');
-      triggers.forEach(trigger => {
-        trigger.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
-        trigger.classList.add('text-on-surface-variant', 'hover:text-on-surface', 'hover:bg-surface-container');
-      });
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'surface-container-low': '#eef4ff',
+            'on-primary-fixed-variant': '#3a4761',
+            'on-primary-fixed': '#0e1b33',
+            'status-success': '#2D8A60',
+            'accent-hover': '#D96F0D',
+            'on-primary': '#ffffff',
+            'surface-variant': '#dbe3f1',
+            'primary-container': '#17243c',
+            'status-draft': '#9CA3AF',
+            'secondary-container': '#fd9432',
+            'surface': '#f8f9ff',
+            'tertiary': '#000e27',
+            'surface-dim': '#d3dae8',
+            'on-tertiary-container': '#7a8caf',
+            'background': '#f8f9ff',
+            'text-main': '#20252C',
+            'on-tertiary-fixed': '#061b39',
+            'on-error-container': '#93000a',
+            'outline-variant': '#c5c6ce',
+            'secondary': '#914c00',
+            'secondary-fixed-dim': '#ffb77f',
+            'on-error': '#ffffff',
+            'primary': '#020e26',
+            'on-secondary-container': '#673400',
+            'tertiary-fixed-dim': '#b5c7ed',
+            'error-container': '#ffdad6',
+            'surface-tint': '#525e79',
+            'status-danger': '#EF4444',
+            'surface-card': '#FFFFFF',
+            'on-surface-variant': '#45474d',
+            'on-secondary': '#ffffff',
+            'on-primary-container': '#7f8ba8',
+            'on-secondary-fixed-variant': '#6f3900',
+            'tertiary-fixed': '#d7e3ff',
+            'on-tertiary-fixed-variant': '#354767',
+            'surface-bright': '#f8f9ff',
+            'primary-fixed': '#d7e2ff',
+            'tertiary-container': '#112442',
+            'on-surface': '#141c26',
+            'on-background': '#141c26',
+            'secondary-fixed': '#ffdcc4',
+            'surface-container-highest': '#dbe3f1',
+            'on-tertiary': '#ffffff',
+            'surface-container-lowest': '#ffffff',
+            'inverse-on-surface': '#e9f1ff',
+            'primary-fixed-dim': '#bac6e6',
+            'inverse-surface': '#29313b',
+            'surface-container-high': '#e1e9f6',
+            'surface-container': '#e7eefc',
+            'on-secondary-fixed': '#2f1500',
+            'surface-canvas': '#F6F4EF',
+            'status-info': '#3B82F6',
+            'outline': '#75777e',
+            'error': '#ba1a1a',
+            'inverse-primary': '#bac6e6',
+            'status-warning': '#F59E0B',
+          },
+          borderRadius: {
+            DEFAULT: '0.125rem',
+            sm: '0.25rem',
+            lg: '0.375rem',
+            xl: '0.625rem',
+            '2xl': '1rem',
+            full: '9999px',
+          },
+          spacing: {
+            'margin-sm': '1rem',
+            'space-xl': '2.5rem',
+            'gutter-sm': '1rem',
+            'space-lg': '1.5rem',
+            'space-xs': '0.25rem',
+            gutter: '1.5rem',
+            margin: '2rem',
+            'space-md': '1rem',
+            'space-sm': '0.5rem',
+          },
+          fontFamily: {
+            display: ['Sora', 'sans-serif'],
+            headline: ['Sora', 'sans-serif'],
+            body: ['Archivo', 'sans-serif'],
+            sans: ['Archivo', 'sans-serif'],
+            'body-md': ['Archivo', 'sans-serif'],
+            'body-sm': ['Archivo', 'sans-serif'],
+            'body-lg': ['Archivo', 'sans-serif'],
+            'label-md': ['Archivo', 'sans-serif'],
+            'label-sm': ['Archivo', 'sans-serif'],
+            'label-lg': ['Archivo', 'sans-serif'],
+            'title-md': ['Archivo', 'sans-serif'],
+            'title-lg': ['Archivo', 'sans-serif'],
+            'headline-sm': ['Sora', 'sans-serif'],
+            'headline-md': ['Sora', 'sans-serif'],
+            'headline-lg': ['Sora', 'sans-serif'],
+            'headline-xl': ['Sora', 'sans-serif'],
+            'display-lg': ['Sora', 'sans-serif'],
+            'display-lg-mobile': ['Sora', 'sans-serif'],
+            'headline-xl-mobile': ['Sora', 'sans-serif'],
+          },
+          fontSize: {
+            'body-md': ['15px', { lineHeight: '24px', fontWeight: '400' }],
+            'body-sm': ['13px', { lineHeight: '20px', fontWeight: '400' }],
+            'headline-sm': ['18px', { lineHeight: '26px', fontWeight: '600' }],
+            'display-lg-mobile': ['32px', { lineHeight: '40px', letterSpacing: '-0.01em', fontWeight: '700' }],
+            'headline-md': ['22px', { lineHeight: '30px', fontWeight: '600' }],
+            'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0.01em', fontWeight: '600' }],
+            'body-lg': ['18px', { lineHeight: '28px', fontWeight: '400' }],
+            'title-md': ['16px', { lineHeight: '24px', fontWeight: '600' }],
+            'title-lg': ['20px', { lineHeight: '28px', fontWeight: '600' }],
+            'label-lg': ['15px', { lineHeight: '22px', fontWeight: '600' }],
+            'headline-xl-mobile': ['26px', { lineHeight: '34px', letterSpacing: '-0.01em', fontWeight: '700' }],
+            'display-lg': ['52px', { lineHeight: '60px', letterSpacing: '-0.025em', fontWeight: '700' }],
+            'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '600' }],
+            'headline-xl': ['36px', { lineHeight: '44px', letterSpacing: '-0.015em', fontWeight: '700' }],
+            'label-sm': ['11px', { lineHeight: '16px', letterSpacing: '0.05em', fontWeight: '600' }],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
 
-      // 3. Ativar aba clicada
-      const targetPanel = document.getElementById('tab-content-' + tabId);
-      if (targetPanel) {
-        targetPanel.classList.remove('hidden');
-      }
+<body class="bg-surface-canvas font-body-md text-body-md text-on-surface">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 
-      const targetBtn = document.getElementById('tab-btn-' + tabId);
-      if (targetBtn) {
-        targetBtn.classList.remove('text-on-surface-variant', 'hover:text-on-surface', 'hover:bg-surface-container');
-        targetBtn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
-      }
-    }
+  <!-- ══════════════════ HEADER ══════════════════ -->
+  <header class="fixed top-0 w-full z-50 bg-surface-card/90 backdrop-blur-xl shadow-[0_1px_0_rgba(2,14,38,0.08)]">
+    <div class="h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-gutter">
+      <a class="flex items-center gap-space-md shrink-0" href="index.html" aria-label="Civil Connection — página inicial">
+        <img alt="Logotipo Civil Connection" class="h-10 w-auto object-contain" src="assets/images/logo.png" />
+        <span class="hidden flex-col leading-tight md:flex">
+          <span class="font-headline-sm text-headline-sm text-primary tracking-tight">Civil Connection</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant tracking-wide">Conectando ideias, construindo o futuro</span>
+        </span>
+      </a>
 
-    function handleDiarySubmit(e) {
-      e.preventDefault();
-      const desc = document.getElementById('entry-desc').value.trim();
-      const type = document.getElementById('entry-type').value;
-      const workers = document.getElementById('entry-workers').value;
-      const hours = document.getElementById('entry-hours').value;
-      const materials = document.getElementById('entry-materials').value;
+      <div class="hidden xl:flex items-center gap-space-sm bg-surface-container px-space-md py-space-xs rounded-xl">
+        <span class="material-symbols-outlined text-outline text-[20px]" aria-hidden="true">search</span>
+        <input aria-label="Buscar obras ou profissionais" class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-outline w-64" id="header-search" placeholder="Buscar obras, engenheiros, serviços..." type="search" />
+      </div>
 
-      if (!desc) {
-        alert('Por favor, informe a descrição do serviço executado.');
-        return;
-      }
+      <nav aria-label="Navegação principal" class="hidden lg:flex items-center gap-space-xs">
+        <a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-lg" href="index.html">Início</a>
+        <a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-lg" href="profissionais.html">Profissionais</a>
+        <a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-lg" href="obras.html">Obras &amp; Projetos</a>
+        <a aria-current="page" class="px-space-md py-space-sm font-title-md text-title-md text-on-primary bg-primary-container rounded-lg" href="diario.html">Diário de Obras</a>
+      </nav>
 
-      const feed = document.getElementById('diary-feed');
-      const now = new Date();
-      const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      <div class="flex items-center gap-space-sm">
+        <a class="hidden sm:inline-flex items-center gap-space-xs bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md px-space-lg py-space-sm rounded-lg transition-all shadow-sm" href="cadastro.html">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">add_circle</span>
+          <span>Publicar Projeto</span>
+        </a>
+        <a class="inline-flex items-center font-label-md text-label-md text-on-surface-variant hover:text-primary px-space-md py-space-sm rounded-lg hover:bg-surface-container transition-colors" href="cadastro.html">Entrar</a>
+        <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu de navegação" class="lg:hidden p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" id="mobile-menu-btn" type="button">
+          <span class="material-symbols-outlined text-[24px]" aria-hidden="true">menu</span>
+        </button>
+      </div>
+    </div>
 
-      // Cria um novo artigo no feed
-      const newCard = document.createElement('article');
-      newCard.className = 'bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md transition-all hover:shadow-md animate-fade-in';
-      newCard.innerHTML = `
-        <div class="flex flex-wrap items-center justify-between gap-space-sm">
-          <div class="flex items-center gap-space-sm">
-            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-sm">
-              MS
+    <div class="hidden lg:hidden bg-surface-card border-t border-surface-container shadow-lg" id="mobile-menu">
+      <nav aria-label="Navegação móvel" class="px-4 py-space-sm flex flex-col">
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" href="index.html">Início</a>
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" href="profissionais.html">Profissionais</a>
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" href="obras.html">Obras &amp; Projetos</a>
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-primary bg-primary-container rounded-lg" href="diario.html">Diário de Obras</a>
+        <a class="mt-space-xs py-space-sm rounded-lg bg-secondary-container text-on-secondary font-label-md text-label-md text-center" href="cadastro.html">Publicar Projeto / Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="w-full pt-20 bg-surface-canvas" id="conteudo">
+    <!-- ══════════════════ CABEÇALHO DA OBRA ══════════════════ -->
+    <section class="w-full bg-primary text-on-primary shadow-md relative overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.08] pointer-events-none">
+        <svg aria-hidden="true" class="w-full h-full" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern height="48" id="blueprint-grid-diario" patternUnits="userSpaceOnUse" width="48">
+              <path d="M 48 0 L 0 0 0 48" fill="none" stroke="currentColor" stroke-width="0.75"></path>
+              <circle cx="24" cy="24" fill="currentColor" opacity="0.3" r="1.5"></circle>
+            </pattern>
+          </defs>
+          <rect fill="url(#blueprint-grid-diario)" height="100%" width="100%"></rect>
+        </svg>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-space-lg relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+        <div class="flex flex-col gap-space-xs min-w-0">
+          <div class="flex flex-wrap items-center gap-space-sm">
+            <span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded text-status-success bg-status-success/15 font-label-sm text-label-sm tracking-wide">
+              <span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+              <span data-obra-status>Em andamento</span>
+            </span>
+            <span class="text-surface-variant font-label-sm text-label-sm tracking-wide" style="font-variant-numeric: tabular-nums;">ART nº 2025/08492-SP</span>
+            <span class="text-surface-variant/40">•</span>
+            <span class="text-surface-variant font-label-sm text-label-sm flex items-center gap-1">
+              <span class="material-symbols-outlined text-[15px]" aria-hidden="true">pin_drop</span> Santana de Parnaíba - SP
+            </span>
+          </div>
+          <h1 class="font-headline-lg text-headline-md md:text-headline-lg text-on-primary tracking-tight">
+            Residência Alphaville — Lote 14 <span class="text-secondary-fixed-dim font-headline-sm text-headline-sm font-normal">(Reforma &amp; Ampliação)</span>
+          </h1>
+          <div class="flex flex-wrap items-center gap-y-1 gap-x-space-md font-body-sm text-body-sm text-surface-variant">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-secondary-container text-[18px]" aria-hidden="true">badge</span>
+              <span>Resp. técnico: <strong class="text-on-primary font-semibold">Engª. Mariana Silva</strong> (CREA 5069812-SP)</span>
+            </div>
+            <span class="text-surface-variant/40 hidden sm:inline">•</span>
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-secondary-container text-[18px]" aria-hidden="true">person</span>
+              <span>Contratante: <strong class="text-on-primary font-semibold">Carlos Eduardo Silveira</strong></span>
+            </div>
+            <span class="text-surface-variant/40 hidden sm:inline">•</span>
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-status-success text-[18px]" aria-hidden="true">calendar_today</span>
+              <span style="font-variant-numeric: tabular-nums;">Início: 12/01/2025 • Término prev.: 28/08/2025</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Medidor de avanço físico -->
+        <div class="bg-primary-container/80 rounded-xl p-space-md flex items-center gap-space-lg shadow-inner w-full sm:w-auto shrink-0">
+          <div class="relative w-20 h-20 flex-shrink-0 flex items-center justify-center">
+            <svg aria-hidden="true" class="w-full h-full transform -rotate-90" viewbox="0 0 72 72">
+              <circle class="text-surface-variant/20" cx="36" cy="36" fill="transparent" r="30" stroke="currentColor" stroke-width="7"></circle>
+              <circle class="text-status-success transition-all duration-1000 ease-out" cx="36" cy="36" fill="transparent" r="30" stroke="currentColor" stroke-dasharray="188.4" stroke-dashoffset="60.28" stroke-linecap="round" stroke-width="7"></circle>
+            </svg>
+            <div class="absolute flex flex-col items-center justify-center text-center">
+              <span class="font-headline-sm text-headline-sm text-on-primary font-bold" data-obra-progresso="68" style="font-variant-numeric: tabular-nums;">68%</span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1 min-w-0">
+            <span class="font-label-sm text-label-sm tracking-wide text-surface-variant">Avanço físico total</span>
+            <span class="font-title-md text-title-md text-on-primary font-semibold">Fase de instalações</span>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-status-success/20 text-status-success" style="font-variant-numeric: tabular-nums;">+4.2% esta semana</span>
+              <span class="text-surface-variant text-[11px]" style="font-variant-numeric: tabular-nums;">Meta: 70%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ BARRA DE ABAS ══════════════════ -->
+    <section class="w-full bg-surface-card shadow-sm sticky top-20 z-40 border-b border-surface-container" aria-label="Módulos da obra">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col xl:flex-row xl:items-center xl:justify-between gap-space-md">
+        <div class="flex max-w-full items-center gap-space-xs py-space-xs overflow-x-auto" role="tablist">
+          <button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md transition-all duration-200 bg-primary-container text-on-primary shadow-sm" id="tab-btn-diario" onclick="switchTab('diario')" role="tab" aria-selected="true" type="button">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">assignment</span>
+            <span>Diário de canteiro</span>
+            <span class="px-1.5 py-0.5 text-xs rounded-full bg-secondary-container text-on-secondary font-bold">3 hoje</span>
+          </button>
+          <button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-etapas" onclick="switchTab('etapas')" role="tab" aria-selected="false" type="button">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">timeline</span>
+            <span>Cronograma &amp; etapas</span>
+            <span class="px-1.5 py-0.5 text-xs rounded-full bg-surface-container-high text-on-surface-variant font-medium">10 fases</span>
+          </button>
+          <button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-financeiro" onclick="switchTab('financeiro')" role="tab" aria-selected="false" type="button">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">account_balance_wallet</span>
+            <span>Medições &amp; financeiro</span>
+          </button>
+          <button class="tab-trigger shrink-0 flex items-center gap-2 px-space-md py-space-sm rounded-lg font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200" id="tab-btn-comunicacao" onclick="switchTab('comunicacao')" role="tab" aria-selected="false" type="button">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">chat</span>
+            <span>Canal técnico &amp; SAC</span>
+            <span class="w-2 h-2 rounded-full bg-status-danger"></span>
+          </button>
+        </div>
+        <div class="hidden md:flex self-end items-center gap-space-sm py-space-xs">
+          <button class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg font-label-md text-label-md bg-surface-container hover:bg-surface-container-high active:scale-[0.98] text-on-surface transition-all" onclick="window.print()" type="button">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">print</span>
+            <span>Imprimir / Exportar PDF</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CONTEÚDO DAS ABAS ══════════════════ -->
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-space-xl">
+      <!-- ABA 1: DIÁRIO -->
+      <div class="tab-pane flex flex-col gap-space-xl" id="tab-content-diario" role="tabpanel">
+        <!-- Condições do canteiro -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+          <div class="reveal bg-surface-card p-space-md rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex items-center gap-space-md">
+            <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-status-warning shrink-0">
+              <span class="material-symbols-outlined text-[32px]" aria-hidden="true">wb_sunny</span>
             </div>
             <div>
-              <div class="flex items-center gap-2">
-                <span class="font-title-md text-title-md text-primary font-semibold">Engª. Mariana Silva</span>
-                <span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[11px] font-semibold">Responsável Técnico</span>
-              </div>
-              <span class="font-body-sm text-body-sm text-on-surface-variant">Hoje às ${timeString} • Santana de Parnaíba (Recém-publicado)</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Clima do canteiro</span>
+              <div class="font-headline-sm text-headline-sm text-primary" style="font-variant-numeric: tabular-nums;">28°C / Ensolarado</div>
+              <span class="font-body-sm text-body-sm text-status-success">Solo seco • Próprio p/ concretagem</span>
             </div>
           </div>
-          <div class="flex items-center gap-2">
-            <span class="bg-status-success/15 text-status-success px-2.5 py-1 rounded text-xs font-semibold uppercase tracking-wider">
-              ${type}
+          <div class="reveal bg-surface-card p-space-md rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex items-center gap-space-md" style="transition-delay: 60ms;">
+            <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-status-info shrink-0">
+              <span class="material-symbols-outlined text-[32px]" aria-hidden="true">engineering</span>
+            </div>
+            <div>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Efetivo presente</span>
+              <div class="font-headline-sm text-headline-sm text-primary" style="font-variant-numeric: tabular-nums;">14 operários</div>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">1 encarregado • 6 pedreiros • 7 serventes</span>
+            </div>
+          </div>
+          <div class="reveal bg-surface-card p-space-md rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex items-center gap-space-md" style="transition-delay: 120ms;">
+            <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-status-success shrink-0">
+              <span class="material-symbols-outlined text-[32px]" aria-hidden="true">health_and_safety</span>
+            </div>
+            <div>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Segurança do trabalho</span>
+              <div class="font-headline-sm text-headline-sm text-status-success">100% conforme</div>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">DDS realizado • 126 dias sem acidentes</span>
+            </div>
+          </div>
+          <div class="reveal bg-surface-card p-space-md rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex items-center gap-space-md" style="transition-delay: 180ms;">
+            <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-secondary-container shrink-0">
+              <span class="material-symbols-outlined text-[32px]" aria-hidden="true">local_shipping</span>
+            </div>
+            <div>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Entregas do dia</span>
+              <div class="font-headline-sm text-headline-sm text-primary" style="font-variant-numeric: tabular-nums;">2 recebimentos</div>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Tubos Tigre 100mm &amp; argamassa AC-III</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário + feed -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+          <!-- Formulário RDO -->
+          <div class="lg:col-span-5 flex flex-col gap-space-lg">
+            <div class="bg-surface-card p-space-lg rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col gap-space-md">
+              <div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+                <div class="flex items-center gap-space-sm">
+                  <span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+                  <h2 class="font-headline-sm text-headline-sm text-primary">Novo registro diário (RDO)</h2>
+                </div>
+                <span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant" style="font-variant-numeric: tabular-nums;">14/05/2025</span>
+              </div>
+
+              <form class="flex flex-col gap-space-md" id="daily-entry-form" onsubmit="handleDiarySubmit(event)">
+                <div class="grid grid-cols-2 gap-space-md">
+                  <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-label-sm text-on-surface-variant" for="entry-type">Tipo de atividade</label>
+                    <select class="bg-surface-container-low px-space-sm py-2.5 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-card cursor-pointer" id="entry-type">
+                      <option value="Instalações Hidráulicas">Instalações hidráulicas</option>
+                      <option value="Concretagem e Cura">Concretagem / laje</option>
+                      <option value="Infraestrutura Elétrica">Infraestrutura elétrica</option>
+                      <option value="Vistoria Técnica e Medição">Vistoria técnica &amp; medição</option>
+                      <option value="Revestimento Cerâmico">Revestimento cerâmico</option>
+                      <option value="Descarte de Entulho">Descarte de entulho</option>
+                    </select>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-label-sm text-on-surface-variant" for="entry-stage">Fase associada</label>
+                    <select class="bg-surface-container-low px-space-sm py-2.5 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-card cursor-pointer" id="entry-stage">
+                      <option value="Instalações Hidráulicas">Etapa 5: Inst. hidráulicas</option>
+                      <option value="Instalações Elétricas">Etapa 6: Inst. elétricas</option>
+                      <option value="Alvenaria">Etapa 4: Alvenaria</option>
+                      <option value="Reboco">Etapa 7: Reboco interno</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-space-md">
+                  <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-label-sm text-on-surface-variant" for="entry-workers">Efetivo utilizado</label>
+                    <div class="flex items-center bg-surface-container-low px-space-sm py-2 rounded-lg">
+                      <span class="material-symbols-outlined text-outline text-[18px] mr-2" aria-hidden="true">groups</span>
+                      <input class="bg-transparent font-body-sm text-body-sm text-on-surface w-full outline-none" id="entry-workers" max="50" min="1" type="number" value="6" />
+                      <span class="text-xs text-on-surface-variant">operários</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-label-sm text-on-surface-variant" for="entry-hours">Horas aplicadas</label>
+                    <div class="flex items-center bg-surface-container-low px-space-sm py-2 rounded-lg">
+                      <span class="material-symbols-outlined text-outline text-[18px] mr-2" aria-hidden="true">schedule</span>
+                      <input class="bg-transparent font-body-sm text-body-sm text-on-surface w-full outline-none" id="entry-hours" max="24" min="1" type="number" value="8" />
+                      <span class="text-xs text-on-surface-variant">horas</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <label class="font-label-sm text-label-sm text-on-surface-variant" for="entry-desc">Descrição do serviço executado</label>
+                  <textarea class="bg-surface-container-low px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-card resize-none" id="entry-desc" placeholder="Ex: Finalizado teste de estanqueidade nas colunas de esgoto das suítes 01 e 02..." required rows="3"></textarea>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <label class="font-label-sm text-label-sm text-on-surface-variant" for="entry-materials">Materiais utilizados / lote</label>
+                  <input class="bg-surface-container-low px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-card" id="entry-materials" placeholder="Ex: 4 barras tubo PVC 100mm, 2 conexões soldáveis 50mm, 1 adesivo 850g" type="text" />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <span class="font-label-sm text-label-sm text-on-surface-variant">Anexos fotográficos &amp; relatórios</span>
+                  <div class="border-2 border-dashed border-outline-variant/60 rounded-xl p-space-md text-center bg-surface-container-low/40 hover:bg-surface-container-low cursor-pointer transition-colors flex flex-col items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-secondary-container text-[28px]" aria-hidden="true">add_photo_alternate</span>
+                    <span class="font-label-md text-label-md text-primary font-medium">Clique para anexar fotos ou arraste arquivos</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">JPG, PNG ou PDF até 25 MB</span>
+                  </div>
+                </div>
+
+                <div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-status-success text-[18px]" aria-hidden="true">my_location</span>
+                    <span class="font-label-sm text-label-sm text-on-surface" style="font-variant-numeric: tabular-nums;">Coord: -23.49842, -46.86211 (precisão 2.4m)</span>
+                  </div>
+                  <span class="text-xs bg-surface-card px-2 py-0.5 rounded font-mono text-status-success">Verificado GPS</span>
+                </div>
+
+                <div class="flex flex-col gap-2 pt-2">
+                  <span class="font-label-sm text-label-sm text-on-surface-variant">Verificação de segurança (NR-18)</span>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <label class="flex items-center gap-2 text-xs font-medium cursor-pointer text-on-surface">
+                      <input checked class="w-4 h-4 accent-secondary-container rounded" type="checkbox" />
+                      Uso total de EPIs conferido
+                    </label>
+                    <label class="flex items-center gap-2 text-xs font-medium cursor-pointer text-on-surface">
+                      <input checked class="w-4 h-4 accent-secondary-container rounded" type="checkbox" />
+                      Proteção contra quedas ativa
+                    </label>
+                    <label class="flex items-center gap-2 text-xs font-medium cursor-pointer text-on-surface">
+                      <input checked class="w-4 h-4 accent-secondary-container rounded" type="checkbox" />
+                      Quadro elétrico provisório estanque
+                    </label>
+                    <label class="flex items-center gap-2 text-xs font-medium cursor-pointer text-on-surface">
+                      <input checked class="w-4 h-4 accent-secondary-container rounded" type="checkbox" />
+                      Canteiro limpo e desobstruído
+                    </label>
+                  </div>
+                </div>
+
+                <button class="w-full mt-space-sm py-space-sm px-space-md rounded-lg bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md flex items-center justify-center gap-2 transition-all shadow-sm" type="submit">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">save</span>
+                  <span>Registrar entrada no diário</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Feed cronológico -->
+          <div class="lg:col-span-7 flex flex-col gap-space-md">
+            <div class="flex flex-wrap items-center justify-between gap-space-sm">
+              <div class="flex items-center gap-space-sm">
+                <h2 class="font-headline-sm text-headline-sm text-primary">Histórico cronológico do canteiro</h2>
+                <span class="bg-surface-card px-2.5 py-0.5 rounded-full text-xs font-semibold text-on-surface-variant shadow-sm" style="font-variant-numeric: tabular-nums;">Total: 42 relatórios</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <label class="sr-only" for="feed-filter">Filtrar registros</label>
+                <select class="bg-surface-card px-3 py-1 rounded-lg text-xs font-medium text-on-surface shadow-sm outline-none cursor-pointer" id="feed-filter">
+                  <option>Todos os tipos</option>
+                  <option>Apenas fotos antes/depois</option>
+                  <option>Apenas inspeções técnicas</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-space-md" id="diary-feed">
+              <!-- Entrada 1 -->
+              <article class="reveal bg-surface-card rounded-xl p-space-lg shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col gap-space-md transition-all hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)]">
+                <div class="flex flex-wrap items-center justify-between gap-space-sm">
+                  <div class="flex items-center gap-space-sm">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-sm">MS</div>
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <span class="font-title-md text-title-md text-primary font-semibold">Engª. Mariana Silva</span>
+                        <span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[11px] font-semibold">Responsável técnica</span>
+                      </div>
+                      <span class="font-body-sm text-body-sm text-on-surface-variant">Hoje às 11:30 • Santana de Parnaíba (via tablet)</span>
+                    </div>
+                  </div>
+                  <span class="bg-status-success/15 text-status-success px-2.5 py-1 rounded text-xs font-semibold">Instalações hidráulicas</span>
+                </div>
+
+                <div class="bg-surface-canvas p-space-md rounded-lg flex flex-col gap-2">
+                  <h3 class="font-title-md text-title-md text-primary font-semibold">
+                    Passagem de prumadas e montagem dos barriletes de água fria/quente (PEX)
+                  </h3>
+                  <p class="font-body-md text-body-md text-text-main">
+                    Executada passagem da tubulação PEX multicamada para o sistema de aquecimento solar e rede pressurizada. Realizado teste hidrostático inicial mantendo 6 bar de pressão durante 3 horas sem variação pressométrica. Validação de isolamento térmico nos condutos das lajes do 2º pavimento.
+                  </p>
+                  <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-on-surface-variant pt-1" style="font-variant-numeric: tabular-nums;">
+                    <span><strong>Efetivo:</strong> 5 oficiais encanadores</span>
+                    <span>•</span>
+                    <span><strong>Horas:</strong> 6.5h</span>
+                    <span>•</span>
+                    <span><strong>Consumo:</strong> 82m tubo PEX 25mm, 18 joelhos prensados</span>
+                  </div>
+                </div>
+
+                <!-- Galeria antes/depois -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                  <div class="flex flex-col gap-1.5">
+                    <div class="relative rounded-lg overflow-hidden h-48 bg-surface-container">
+                      <img alt="Alvenaria bruta de banheiro antes da instalação hidráulica, com entulho no piso" class="w-full h-full object-cover" loading="lazy" src="assets/images/diario-antes.jpg" />
+                      <span class="absolute top-2 left-2 bg-primary/80 text-on-primary font-label-sm text-[10px] px-2 py-0.5 rounded backdrop-blur">Antes da montagem</span>
+                    </div>
+                    <span class="text-xs text-on-surface-variant">Parede antes do rasgo estrutural e caixas embutidas</span>
+                  </div>
+                  <div class="flex flex-col gap-1.5">
+                    <div class="relative rounded-lg overflow-hidden h-48 bg-surface-container">
+                      <img alt="Prumadas de tubos PEX vermelhos e azuis organizadas com conexões de latão" class="w-full h-full object-cover" loading="lazy" src="assets/images/diario-depois.jpg" />
+                      <span class="absolute top-2 left-2 bg-status-success text-on-primary font-label-sm text-[10px] px-2 py-0.5 rounded backdrop-blur">Depois • Concluído</span>
+                    </div>
+                    <span class="text-xs text-on-surface-variant">Prumada instalada e pressurizada para teste de vazamento</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-space-xs text-xs text-on-surface-variant">
+                  <div class="flex items-center gap-3">
+                    <span class="flex items-center gap-1 text-status-success font-medium">
+                      <span class="material-symbols-outlined text-[16px]" aria-hidden="true">verified</span> ART vinculada
+                    </span>
+                    <span class="flex items-center gap-1 text-status-success font-medium">
+                      <span class="material-symbols-outlined text-[16px]" aria-hidden="true">check_circle</span> Checklist NR-18 validado
+                    </span>
+                  </div>
+                  <button class="text-primary hover:text-accent-hover font-semibold flex items-center gap-1 transition-colors" type="button">
+                    <span>Ver laudo técnico</span>
+                    <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Entrada 2 -->
+              <article class="reveal bg-surface-card rounded-xl p-space-lg shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col gap-space-md transition-all hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)]" style="transition-delay: 80ms;">
+                <div class="flex flex-wrap items-center justify-between gap-space-sm">
+                  <div class="flex items-center gap-space-sm">
+                    <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary font-bold text-sm">RC</div>
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <span class="font-title-md text-title-md text-primary font-semibold">Roberto Carlos Lima</span>
+                        <span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded text-[11px] font-semibold">Mestre de obras</span>
+                      </div>
+                      <span class="font-body-sm text-body-sm text-on-surface-variant">Ontem às 17:45 • Canteiro de obras</span>
+                    </div>
+                  </div>
+                  <span class="bg-surface-container-high text-on-surface-variant px-2.5 py-1 rounded text-xs font-semibold">Alvenaria estrutural</span>
+                </div>
+
+                <div class="bg-surface-canvas p-space-md rounded-lg flex flex-col gap-2">
+                  <h3 class="font-title-md text-title-md text-primary font-semibold">
+                    Fechamento de vedações perimetrais e assentamento de vergas nos vãos
+                  </h3>
+                  <p class="font-body-md text-body-md text-text-main">
+                    Concluído 100% do fechamento em bloco cerâmico termoacústico no pavimento superior. Execução das vergas e contra-vergas de concreto armado nas aberturas das esquadrias da fachada sul para mitigação de fissuras por cisalhamento.
+                  </p>
+                  <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-on-surface-variant pt-1" style="font-variant-numeric: tabular-nums;">
+                    <span><strong>Efetivo:</strong> 8 pedreiros, 4 serventes</span>
+                    <span>•</span>
+                    <span><strong>Horas:</strong> 9.0h</span>
+                    <span>•</span>
+                    <span><strong>Consumo:</strong> 420 blocos cerâmicos, 14 sacos de cimento CP-II</span>
+                  </div>
+                </div>
+
+                <div class="rounded-lg overflow-hidden h-44 bg-surface-container">
+                  <img alt="Pedreiro assentando blocos cerâmicos com vergas de concreto sobre vãos" class="w-full h-full object-cover" loading="lazy" src="assets/images/diario-alvenaria.jpg" />
+                </div>
+
+                <div class="flex items-center justify-between pt-space-xs text-xs text-on-surface-variant">
+                  <div class="flex items-center gap-3">
+                    <span class="flex items-center gap-1 text-status-success font-medium">
+                      <span class="material-symbols-outlined text-[16px]" aria-hidden="true">check_circle</span> Alinhamento a prumo verificado
+                    </span>
+                  </div>
+                  <span class="text-outline font-mono" style="font-variant-numeric: tabular-nums;">Registro #RDO-0041</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABA 2: CRONOGRAMA & ETAPAS -->
+      <div class="tab-pane hidden flex flex-col gap-space-lg" id="tab-content-etapas" role="tabpanel">
+        <div class="bg-surface-card p-space-lg rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+          <div>
+            <h2 class="font-headline-md text-headline-md text-primary">Cronograma estruturado de execução</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Base de dados sincronizada com o planejamento físico-financeiro (EAP do projeto).</p>
+          </div>
+          <div class="flex items-center gap-space-sm flex-wrap">
+            <span class="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded bg-status-success/15 text-status-success">
+              <span class="w-2 h-2 rounded-full bg-status-success"></span> 3 concluídas
+            </span>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded bg-secondary-container/15 text-secondary">
+              <span class="w-2 h-2 rounded-full bg-secondary-container"></span> 2 em andamento
+            </span>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant">
+              <span class="w-2 h-2 rounded-full bg-outline"></span> 5 pendentes
             </span>
           </div>
         </div>
 
-        <div class="bg-surface-canvas p-space-md rounded-lg flex flex-col gap-2">
-          <h3 class="font-title-md text-title-md text-primary font-semibold">
-            Registro Operacional de Campo
-          </h3>
-          <p class="font-body-md text-body-md text-text-main">
-            ${desc}
-          </p>
-          <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-on-surface-variant pt-1">
-            <span><strong>Efetivo:</strong> ${workers} operários</span>
-            <span>•</span>
-            <span><strong>Horas:</strong> ${hours}h</span>
-            ${materials ? `<span>•</span><span><strong>Consumo:</strong> ${materials}</span>` : ''}
+        <div class="bg-surface-card rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse" style="font-variant-numeric: tabular-nums;">
+              <caption class="sr-only">Cronograma físico de execução por etapa da obra</caption>
+              <thead>
+                <tr class="bg-surface-container-low text-on-surface font-label-md text-label-md">
+                  <th class="py-space-md px-space-lg w-16" scope="col">Etapa</th>
+                  <th class="py-space-md px-space-md" scope="col">Nome da fase</th>
+                  <th class="py-space-md px-space-md" scope="col">Progresso físico</th>
+                  <th class="py-space-md px-space-md" scope="col">Período previsto</th>
+                  <th class="py-space-md px-space-md" scope="col">Execução real</th>
+                  <th class="py-space-md px-space-md" scope="col">Status</th>
+                  <th class="py-space-md px-space-lg text-right" scope="col">Ação</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-surface-variant/30 font-body-sm text-body-sm">
+                <tr class="hover:bg-surface-container-low/50 transition-colors">
+                  <td class="py-space-md px-space-lg font-mono text-primary font-bold">01</td>
+                  <td class="py-space-md px-space-md font-semibold text-primary">Planejamento &amp; sondagem SPT</td>
+                  <td class="py-space-md px-space-md">
+                    <div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden"><div class="bg-status-success h-full w-full"></div></div>
+                    <span class="text-xs font-semibold text-status-success mt-1 block">100%</span>
+                  </td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">12/01 a 28/01</td>
+                  <td class="py-space-md px-space-md text-status-success font-medium">12/01 a 26/01 (adiantado)</td>
+                  <td class="py-space-md px-space-md"><span class="px-2.5 py-1 rounded text-xs font-semibold bg-status-success/15 text-status-success">Concluído</span></td>
+                  <td class="py-space-md px-space-lg text-right">
+                    <button class="text-primary hover:text-accent-hover font-semibold text-xs inline-flex items-center gap-1" type="button">
+                      <span>Relatório</span>
+                      <span class="material-symbols-outlined text-[14px]" aria-hidden="true">open_in_new</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-surface-container-low/50 transition-colors">
+                  <td class="py-space-md px-space-lg font-mono text-primary font-bold">02</td>
+                  <td class="py-space-md px-space-md font-semibold text-primary">Fundação &amp; terraplanagem</td>
+                  <td class="py-space-md px-space-md">
+                    <div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden"><div class="bg-status-success h-full w-full"></div></div>
+                    <span class="text-xs font-semibold text-status-success mt-1 block">100%</span>
+                  </td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">29/01 a 25/02</td>
+                  <td class="py-space-md px-space-md text-status-success font-medium">29/01 a 24/02</td>
+                  <td class="py-space-md px-space-md"><span class="px-2.5 py-1 rounded text-xs font-semibold bg-status-success/15 text-status-success">Concluído</span></td>
+                  <td class="py-space-md px-space-lg text-right">
+                    <button class="text-primary hover:text-accent-hover font-semibold text-xs inline-flex items-center gap-1" type="button">
+                      <span>Relatório</span>
+                      <span class="material-symbols-outlined text-[14px]" aria-hidden="true">open_in_new</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-surface-container-low/50 transition-colors">
+                  <td class="py-space-md px-space-lg font-mono text-primary font-bold">03</td>
+                  <td class="py-space-md px-space-md font-semibold text-primary">Estrutura (pilares, vigas &amp; lajes)</td>
+                  <td class="py-space-md px-space-md">
+                    <div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden"><div class="bg-status-success h-full w-full"></div></div>
+                    <span class="text-xs font-semibold text-status-success mt-1 block">100%</span>
+                  </td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">26/02 a 10/04</td>
+                  <td class="py-space-md px-space-md text-status-success font-medium">26/02 a 12/04</td>
+                  <td class="py-space-md px-space-md"><span class="px-2.5 py-1 rounded text-xs font-semibold bg-status-success/15 text-status-success">Concluído</span></td>
+                  <td class="py-space-md px-space-lg text-right">
+                    <button class="text-primary hover:text-accent-hover font-semibold text-xs inline-flex items-center gap-1" type="button">
+                      <span>Relatório</span>
+                      <span class="material-symbols-outlined text-[14px]" aria-hidden="true">open_in_new</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-surface-container-low/50 transition-colors">
+                  <td class="py-space-md px-space-lg font-mono text-primary font-bold">04</td>
+                  <td class="py-space-md px-space-md font-semibold text-primary">Alvenaria de vedação &amp; divisórias</td>
+                  <td class="py-space-md px-space-md">
+                    <div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden"><div class="bg-status-success h-full w-[95%]"></div></div>
+                    <span class="text-xs font-semibold text-status-success mt-1 block">95% (arremates)</span>
+                  </td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">11/04 a 05/05</td>
+                  <td class="py-space-md px-space-md text-primary font-medium">13/04 a 16/05 (em fechamento)</td>
+                  <td class="py-space-md px-space-md"><span class="px-2.5 py-1 rounded text-xs font-semibold bg-secondary-container/15 text-secondary">Em andamento</span></td>
+                  <td class="py-space-md px-space-lg text-right">
+                    <button class="text-primary hover:text-accent-hover font-semibold text-xs inline-flex items-center gap-1" type="button">
+                      <span>Inspecionar</span>
+                      <span class="material-symbols-outlined text-[14px]" aria-hidden="true">open_in_new</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-surface-container-low/50 transition-colors bg-surface-container-low/20">
+                  <td class="py-space-md px-space-lg font-mono text-secondary font-bold">05</td>
+                  <td class="py-space-md px-space-md font-semibold text-primary">Instalações hidráulicas &amp; gás</td>
+                  <td class="py-space-md px-space-md">
+                    <div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden"><div class="bg-secondary-container h-full w-[70%]"></div></div>
+                    <span class="text-xs font-semibold text-secondary mt-1 block">70% (fase ativa)</span>
+                  </td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">02/05 a 22/05</td>
+                  <td class="py-space-md px-space-md text-primary font-medium">06/05 a 23/05 (no prazo)</td>
+                  <td class="py-space-md px-space-md"><span class="px-2.5 py-1 rounded text-xs font-semibold bg-secondary-container/20 text-secondary">Em andamento</span></td>
+                  <td class="py-space-md px-space-lg text-right">
+                    <button class="text-secondary hover:text-accent-hover font-semibold text-xs inline-flex items-center gap-1" type="button">
+                      <span>Acompanhar</span>
+                      <span class="material-symbols-outlined text-[14px]" aria-hidden="true">arrow_forward</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-surface-container-low/50 transition-colors">
+                  <td class="py-space-md px-space-lg font-mono text-on-surface-variant">06</td>
+                  <td class="py-space-md px-space-md font-medium text-on-surface">Instalações elétricas, dados &amp; CFTV</td>
+                  <td class="py-space-md px-space-md">
+                    <div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden"><div class="bg-outline h-full w-[15%]"></div></div>
+                    <span class="text-xs text-on-surface-variant mt-1 block">15% (eletrodutos)</span>
+                  </td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">15/05 a 08/06</td>
+                  <td class="py-space-md px-space-md text-on-surface-variant font-medium">Previsto 16/05</td>
+                  <td class="py-space-md px-space-md"><span class="px-2.5 py-1 rounded text-xs font-medium bg-surface-container-high text-on-surface-variant">Pendente</span></td>
+                  <td class="py-space-md px-space-lg text-right">
+                    <button class="text-on-surface-variant hover:text-on-surface text-xs inline-flex items-center gap-1" type="button">
+                      <span>Material</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-surface-container-low/50 transition-colors">
+                  <td class="py-space-md px-space-lg font-mono text-on-surface-variant">07</td>
+                  <td class="py-space-md px-space-md font-medium text-on-surface">Reboco &amp; regularização de superfícies</td>
+                  <td class="py-space-md px-space-md">
+                    <div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden"><div class="bg-outline h-full w-0"></div></div>
+                    <span class="text-xs text-on-surface-variant mt-1 block">0%</span>
+                  </td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">25/05 a 20/06</td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">-</td>
+                  <td class="py-space-md px-space-md"><span class="px-2.5 py-1 rounded text-xs font-medium bg-surface-container-high text-on-surface-variant">Pendente</span></td>
+                  <td class="py-space-md px-space-lg text-right"><span class="text-xs text-on-surface-variant">Aguardando</span></td>
+                </tr>
+                <tr class="hover:bg-surface-container-low/50 transition-colors">
+                  <td class="py-space-md px-space-lg font-mono text-on-surface-variant">08</td>
+                  <td class="py-space-md px-space-md font-medium text-on-surface">Piso, porcelanatos &amp; revestimentos</td>
+                  <td class="py-space-md px-space-md">
+                    <div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden"><div class="bg-outline h-full w-0"></div></div>
+                    <span class="text-xs text-on-surface-variant mt-1 block">0%</span>
+                  </td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">22/06 a 20/07</td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">-</td>
+                  <td class="py-space-md px-space-md"><span class="px-2.5 py-1 rounded text-xs font-medium bg-surface-container-high text-on-surface-variant">Pendente</span></td>
+                  <td class="py-space-md px-space-lg text-right"><span class="text-xs text-on-surface-variant">Aguardando</span></td>
+                </tr>
+                <tr class="hover:bg-surface-container-low/50 transition-colors">
+                  <td class="py-space-md px-space-lg font-mono text-on-surface-variant">09</td>
+                  <td class="py-space-md px-space-md font-medium text-on-surface">Pintura interna, externa &amp; texturas</td>
+                  <td class="py-space-md px-space-md">
+                    <div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden"><div class="bg-outline h-full w-0"></div></div>
+                    <span class="text-xs text-on-surface-variant mt-1 block">0%</span>
+                  </td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">22/07 a 15/08</td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">-</td>
+                  <td class="py-space-md px-space-md"><span class="px-2.5 py-1 rounded text-xs font-medium bg-surface-container-high text-on-surface-variant">Pendente</span></td>
+                  <td class="py-space-md px-space-lg text-right"><span class="text-xs text-on-surface-variant">Aguardando</span></td>
+                </tr>
+                <tr class="hover:bg-surface-container-low/50 transition-colors">
+                  <td class="py-space-md px-space-lg font-mono text-on-surface-variant">10</td>
+                  <td class="py-space-md px-space-md font-medium text-on-surface">Limpeza final pós-obra &amp; vistoria habite-se</td>
+                  <td class="py-space-md px-space-md">
+                    <div class="w-36 bg-surface-container-high rounded-full h-2 overflow-hidden"><div class="bg-outline h-full w-0"></div></div>
+                    <span class="text-xs text-on-surface-variant mt-1 block">0%</span>
+                  </td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">16/08 a 28/08</td>
+                  <td class="py-space-md px-space-md text-on-surface-variant">-</td>
+                  <td class="py-space-md px-space-md"><span class="px-2.5 py-1 rounded text-xs font-medium bg-surface-container-high text-on-surface-variant">Pendente</span></td>
+                  <td class="py-space-md px-space-lg text-right"><span class="text-xs text-on-surface-variant">Entrega de chaves</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
+      </div>
 
-        <div class="flex items-center justify-between pt-space-xs text-xs text-on-surface-variant">
-          <div class="flex items-center gap-3">
-            <span class="flex items-center gap-1 text-status-success font-medium">
-              <span class="material-symbols-outlined text-[16px]">verified</span> ART Validada
+      <!-- ABA 3: FINANCEIRO -->
+      <div class="tab-pane hidden flex flex-col gap-space-xl" id="tab-content-financeiro" role="tabpanel">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter" style="font-variant-numeric: tabular-nums;">
+          <div class="reveal bg-surface-card p-space-lg rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col gap-1">
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Orçamento aprovado</span>
+            <div class="font-headline-lg text-headline-md md:text-headline-lg text-primary">R$ 540.000<span class="text-sm font-normal text-on-surface-variant">,00</span></div>
+            <span class="text-xs text-status-success flex items-center gap-1 font-medium">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">verified</span> Contrato com BDI travado
             </span>
-            <span class="flex items-center gap-1 text-status-success font-medium">
-              <span class="material-symbols-outlined text-[16px]">pin_drop</span> GPS Confirmado
+          </div>
+          <div class="reveal bg-surface-card p-space-lg rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col gap-1" style="transition-delay: 60ms;">
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Gasto real acumulado</span>
+            <div class="font-headline-lg text-headline-md md:text-headline-lg text-secondary">R$ 352.890<span class="text-sm font-normal text-on-surface-variant">,45</span></div>
+            <span class="text-xs text-on-surface-variant flex items-center gap-1">
+              <span class="font-semibold text-primary">65.3%</span> do teto orçamentário
             </span>
           </div>
-          <span class="text-status-success font-semibold">Entrada Gravada com Sucesso</span>
-        </div>
-      `;
-
-      feed.prepend(newCard);
-      document.getElementById('daily-entry-form').reset();
-    }
-
-    function handleChatSubmit(e) {
-      e.preventDefault();
-      const input = document.getElementById('chat-input');
-      const text = input.value.trim();
-      if (!text) return;
-
-      const container = document.getElementById('chat-messages-container');
-      const now = new Date();
-      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-      // Adiciona mensagem do usuário
-      const msgDiv = document.createElement('div');
-      msgDiv.className = 'flex flex-col items-end gap-1 max-w-[80%] self-end';
-      msgDiv.innerHTML = `
-        <span class="text-[11px] text-on-surface-variant font-medium">Carlos Eduardo (Você) • ${timeStr}</span>
-        <div class="bg-primary text-on-primary p-space-md rounded-2xl rounded-tr-xs shadow-sm text-body-sm">
-          ${text}
-        </div>
-      `;
-      container.appendChild(msgDiv);
-      input.value = '';
-      container.scrollTop = container.scrollHeight;
-
-      // Resposta simulada após 1.2 segundos
-      setTimeout(() => {
-        const replyDiv = document.createElement('div');
-        replyDiv.className = 'flex flex-col items-start gap-1 max-w-[80%] self-start';
-        replyDiv.innerHTML = `
-          <span class="text-[11px] text-on-surface-variant font-medium">Engª. Mariana Silva • Agora</span>
-          <div class="bg-surface-card text-on-surface p-space-md rounded-2xl rounded-tl-xs shadow-sm text-body-sm">
-            Mensagem recebida, Carlos! Estou aqui no canteiro acompanhando esse ponto com o mestre Roberto. Já adicionei a nota na folha de verificação da semana.
+          <div class="reveal bg-surface-card p-space-lg rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col gap-1" style="transition-delay: 120ms;">
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Saldo em garantia / custódia</span>
+            <div class="font-headline-lg text-headline-md md:text-headline-lg text-status-success">R$ 187.109<span class="text-sm font-normal text-on-surface-variant">,55</span></div>
+            <span class="text-xs text-status-success font-medium">Disponível para próximas medições</span>
           </div>
-        `;
-        container.appendChild(replyDiv);
+          <div class="reveal bg-surface-card p-space-lg rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col gap-1" style="transition-delay: 180ms;">
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Desvio de custo</span>
+            <div class="font-headline-lg text-headline-md md:text-headline-lg text-status-success">-2.7%</div>
+            <span class="text-xs text-status-success font-medium">Economia apurada em compras conjuntas</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+          <div class="lg:col-span-7 bg-surface-card p-space-lg rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col gap-space-md">
+            <div class="flex items-center justify-between">
+              <h3 class="font-title-md text-title-md text-primary font-semibold">Composição de gastos por grupo</h3>
+              <span class="text-xs text-on-surface-variant font-mono">Atualizado hoje</span>
+            </div>
+            <div class="flex flex-col gap-space-md pt-2" style="font-variant-numeric: tabular-nums;">
+              <div class="flex flex-col gap-1">
+                <div class="flex justify-between text-xs font-semibold">
+                  <span class="text-primary">Materiais básicos &amp; acabamentos</span>
+                  <span class="text-on-surface">R$ 214.500 / R$ 320.000 (67%)</span>
+                </div>
+                <div class="w-full bg-surface-container-high rounded-full h-3 overflow-hidden"><div class="bg-primary h-full w-[67%]"></div></div>
+              </div>
+              <div class="flex flex-col gap-1">
+                <div class="flex justify-between text-xs font-semibold">
+                  <span class="text-primary">Mão de obra &amp; empreiteiros especializados</span>
+                  <span class="text-on-surface">R$ 112.000 / R$ 160.000 (70%)</span>
+                </div>
+                <div class="w-full bg-surface-container-high rounded-full h-3 overflow-hidden"><div class="bg-secondary-container h-full w-[70%]"></div></div>
+              </div>
+              <div class="flex flex-col gap-1">
+                <div class="flex justify-between text-xs font-semibold">
+                  <span class="text-primary">Locação de equipamentos, andaimes &amp; caçambas</span>
+                  <span class="text-on-surface">R$ 18.240 / R$ 35.000 (52%)</span>
+                </div>
+                <div class="w-full bg-surface-container-high rounded-full h-3 overflow-hidden"><div class="bg-status-info h-full w-[52%]"></div></div>
+              </div>
+              <div class="flex flex-col gap-1">
+                <div class="flex justify-between text-xs font-semibold">
+                  <span class="text-primary">Taxas técnicas, ARTs, alvará &amp; projetos executivos</span>
+                  <span class="text-on-surface">R$ 8.150 / R$ 25.000 (32%)</span>
+                </div>
+                <div class="w-full bg-surface-container-high rounded-full h-3 overflow-hidden"><div class="bg-status-success h-full w-[32%]"></div></div>
+              </div>
+            </div>
+            <div class="mt-4 p-space-md rounded-xl bg-surface-container-low flex items-center justify-between gap-space-sm">
+              <div class="flex items-center gap-3 min-w-0">
+                <span class="material-symbols-outlined text-secondary-container text-[24px]" aria-hidden="true">receipt_long</span>
+                <div class="min-w-0">
+                  <span class="font-title-md text-body-md text-primary font-semibold block">Próxima medição #05</span>
+                  <span class="text-xs text-on-surface-variant">Liberação programada para 20/05 após vistoria de tubulações</span>
+                </div>
+              </div>
+              <button class="bg-primary hover:bg-primary-container active:scale-[0.98] text-on-primary px-space-md py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0" type="button">
+                Ver folha de medição
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-surface-card p-space-lg rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col gap-space-md">
+            <div class="flex items-center justify-between">
+              <h3 class="font-title-md text-title-md text-primary font-semibold">Propostas homologadas</h3>
+              <span class="text-xs bg-status-success/10 text-status-success px-2 py-0.5 rounded font-semibold">3 ativas</span>
+            </div>
+            <div class="flex flex-col gap-space-sm" style="font-variant-numeric: tabular-nums;">
+              <div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-title-md text-body-sm text-primary font-bold">Hidráulica &amp; termofusão</span>
+                  <span class="font-mono text-xs font-semibold text-primary">R$ 24.800,00</span>
+                </div>
+                <span class="text-xs text-on-surface-variant">Proposta da HidroVale Engenharia Ltda (aceita em 02/05)</span>
+                <div class="flex items-center justify-between text-[11px] pt-1 text-status-success font-medium">
+                  <span>Status: 1ª parcela paga (50%)</span>
+                  <button class="text-primary underline cursor-pointer" type="button">Ver contrato</button>
+                </div>
+              </div>
+              <div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-title-md text-body-sm text-primary font-bold">Esquadrias de alumínio preto</span>
+                  <span class="font-mono text-xs font-semibold text-primary">R$ 48.500,00</span>
+                </div>
+                <span class="text-xs text-on-surface-variant">Alumínio Prime SP (medição executiva aprovada)</span>
+                <div class="flex items-center justify-between text-[11px] pt-1 text-secondary font-medium">
+                  <span>Status: em fabricação</span>
+                  <button class="text-primary underline cursor-pointer" type="button">Ver projeto</button>
+                </div>
+              </div>
+              <div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-title-md text-body-sm text-primary font-bold">Porcelanatos 120x120cm</span>
+                  <span class="font-mono text-xs font-semibold text-primary">R$ 38.900,00</span>
+                </div>
+                <span class="text-xs text-on-surface-variant">Distribuidora Portobello Shop Barueri</span>
+                <div class="flex items-center justify-between text-[11px] pt-1 text-status-success font-medium">
+                  <span>Status: entregue no canteiro</span>
+                  <button class="text-primary underline cursor-pointer" type="button">Ver NF-e</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABA 4: COMUNICAÇÃO -->
+      <div class="tab-pane hidden flex flex-col gap-space-lg" id="tab-content-comunicacao" role="tabpanel">
+        <div class="bg-surface-card rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] overflow-hidden grid grid-cols-1 lg:grid-cols-12 h-[680px]">
+          <!-- Canais -->
+          <div class="lg:col-span-4 bg-surface-container-low/40 p-space-md flex flex-col gap-space-md overflow-y-auto">
+            <div class="flex items-center justify-between">
+              <h3 class="font-title-md text-title-md text-primary font-semibold">Tópicos &amp; canais</h3>
+              <button aria-label="Novo tópico de conversa" class="p-1.5 rounded-lg bg-surface-card text-on-surface-variant hover:text-on-surface shadow-sm transition-colors" type="button">
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">add_comment</span>
+              </button>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <button class="p-space-md rounded-xl bg-surface-card shadow-sm cursor-pointer flex items-start gap-3 border-l-4 border-secondary-container text-left" type="button">
+                <div class="w-10 h-10 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-on-primary font-bold text-xs">MS</div>
+                <div class="flex flex-col min-w-0 flex-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-title-md text-body-sm text-primary font-bold truncate">Engª. Mariana Silva</span>
+                    <span class="text-[11px] text-on-surface-variant" style="font-variant-numeric: tabular-nums;">11:42</span>
+                  </div>
+                  <span class="text-xs text-status-success font-medium">Canal oficial RT &amp; cliente</span>
+                  <p class="text-xs text-on-surface-variant truncate mt-1">Fotos do teste de pressão adicionadas no diário...</p>
+                </div>
+              </button>
+              <button class="p-space-md rounded-xl hover:bg-surface-card/60 cursor-pointer flex items-start gap-3 transition-colors text-left" type="button">
+                <div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-on-surface font-bold text-xs">HV</div>
+                <div class="flex flex-col min-w-0 flex-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-title-md text-body-sm text-primary font-bold truncate">HidroVale Vendas</span>
+                    <span class="text-[11px] text-on-surface-variant" style="font-variant-numeric: tabular-nums;">09:15</span>
+                  </div>
+                  <span class="text-xs text-on-surface-variant">Suprimentos</span>
+                  <p class="text-xs text-on-surface-variant truncate mt-1">Caminhão com registros em trânsito.</p>
+                </div>
+              </button>
+              <button class="p-space-md rounded-xl hover:bg-surface-card/60 cursor-pointer flex items-start gap-3 transition-colors text-left" type="button">
+                <div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-on-surface font-bold text-xs">LB</div>
+                <div class="flex flex-col min-w-0 flex-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-title-md text-body-sm text-primary font-bold truncate">Lucas Braga (Arq.)</span>
+                    <span class="text-[11px] text-on-surface-variant">Ontem</span>
+                  </div>
+                  <span class="text-xs text-on-surface-variant">Compatibilização de nichos</span>
+                  <p class="text-xs text-on-surface-variant truncate mt-1">Enviei a paginação revisada em DWG.</p>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Chat -->
+          <div class="lg:col-span-8 flex flex-col h-full bg-surface-card">
+            <div class="px-space-lg py-space-md bg-surface-card flex items-center justify-between shadow-sm border-b border-surface-container">
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="relative shrink-0">
+                  <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-sm">MS</div>
+                  <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-status-success ring-2 ring-surface-card"></span>
+                </div>
+                <div class="min-w-0">
+                  <div class="flex items-center gap-2">
+                    <h4 class="font-title-md text-title-md text-primary font-semibold truncate">Engª. Mariana Silva</h4>
+                    <span class="text-[10px] bg-status-success/15 text-status-success font-semibold px-2 py-0.5 rounded shrink-0">ONLINE</span>
+                  </div>
+                  <span class="text-xs text-on-surface-variant truncate">CREA 5069812-SP • Conectada via tablet do canteiro</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button aria-label="Ligar para engenheira" class="p-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary transition-colors" title="Ligar" type="button">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">phone</span>
+                </button>
+                <button aria-label="Agendar vistoria presencial" class="p-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary transition-colors" title="Agendar vistoria" type="button">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">event_available</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex-1 p-space-lg overflow-y-auto flex flex-col gap-space-md bg-surface-canvas/50" id="chat-messages-container">
+              <div class="flex flex-col items-end gap-1 max-w-[80%] self-end">
+                <span class="text-[11px] text-on-surface-variant font-medium">Carlos Eduardo (Você) • 10:15</span>
+                <div class="bg-primary text-on-primary p-space-md rounded-2xl rounded-tr-sm shadow-sm text-body-sm font-body-sm">
+                  Bom dia, Engª Mariana! Como ficou a questão da queda d'água da laje gourmet que conversamos na vistoria de sábado passado?
+                </div>
+              </div>
+              <div class="flex flex-col items-start gap-1 max-w-[80%] self-start">
+                <span class="text-[11px] text-on-surface-variant font-medium">Engª. Mariana Silva • 10:22</span>
+                <div class="bg-surface-card text-on-surface p-space-md rounded-2xl rounded-tl-sm shadow-sm text-body-sm font-body-sm">
+                  Bom dia, Carlos! Já recalculamos os caimentos. Ajustamos para 1,5% em direção aos dois ralos lineares ocultos. O contrapiso impermeabilizado começou a ser nivelado hoje cedo com aditivo hidrófugo.
+                </div>
+              </div>
+              <div class="flex flex-col items-start gap-1 max-w-[80%] self-start">
+                <span class="text-[11px] text-on-surface-variant font-medium">Engª. Mariana Silva • 10:25</span>
+                <div class="bg-surface-card text-on-surface p-space-md rounded-2xl rounded-tl-sm shadow-sm text-body-sm font-body-sm flex flex-col gap-2">
+                  <span>Olha a checagem com nível a laser dos mestres de guia:</span>
+                  <img alt="Nível a laser verde projetado sobre contrapiso recém-nivelado" class="rounded-lg overflow-hidden h-40 w-64 bg-surface-container shadow-sm object-cover" loading="lazy" src="assets/images/diario-laser.jpg" />
+                  <span class="text-[11px] text-status-success font-semibold">Tudo em conformidade com o projeto hidrossanitário.</span>
+                </div>
+              </div>
+              <div class="flex flex-col items-end gap-1 max-w-[80%] self-end">
+                <span class="text-[11px] text-on-surface-variant font-medium">Carlos Eduardo (Você) • 10:48</span>
+                <div class="bg-primary text-on-primary p-space-md rounded-2xl rounded-tr-sm shadow-sm text-body-sm font-body-sm">
+                  Perfeito! E quanto à tubulação de água quente que vi que lançaram no RDO de hoje, já posso liberar a compra das torneiras monocomando?
+                </div>
+              </div>
+              <div class="flex flex-col items-start gap-1 max-w-[80%] self-start">
+                <span class="text-[11px] text-on-surface-variant font-medium">Engª. Mariana Silva • 11:42</span>
+                <div class="bg-surface-card text-on-surface p-space-md rounded-2xl rounded-tl-sm shadow-sm text-body-sm font-body-sm">
+                  Pode sim! Os pontos foram chumbados respeitando o diâmetro padrão de 1/2" com pressão garantida de 12 m.c.a. através do pressurizador.
+                </div>
+              </div>
+            </div>
+
+            <div class="p-space-md bg-surface-card shadow-inner border-t border-surface-container">
+              <form class="flex items-center gap-space-sm" id="chat-form" onsubmit="handleChatSubmit(event)">
+                <button aria-label="Anexar foto do canteiro" class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant transition-colors" title="Anexar foto do canteiro" type="button">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">attach_file</span>
+                </button>
+                <button aria-label="Enviar localização atual" class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant transition-colors" title="Localização atual" type="button">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">pin_drop</span>
+                </button>
+                <label class="sr-only" for="chat-input">Mensagem</label>
+                <input class="flex-1 bg-surface-container-low px-space-md py-2.5 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-card" id="chat-input" placeholder="Digite sua mensagem técnica ou dúvida sobre a obra..." type="text" />
+                <button class="bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary px-space-lg py-2.5 rounded-lg font-label-md text-label-md flex items-center gap-1.5 transition-all shadow-sm" type="submit">
+                  <span>Enviar</span>
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ════════ Alternância de abas ════════
+      function switchTab(tabId) {
+        document.querySelectorAll('.tab-pane').forEach(panel => panel.classList.add('hidden'));
+        document.querySelectorAll('.tab-trigger').forEach(trigger => {
+          trigger.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+          trigger.classList.add('text-on-surface-variant', 'hover:text-on-surface', 'hover:bg-surface-container');
+          trigger.setAttribute('aria-selected', 'false');
+        });
+
+        const targetPanel = document.getElementById('tab-content-' + tabId);
+        if (targetPanel) targetPanel.classList.remove('hidden');
+
+        const targetBtn = document.getElementById('tab-btn-' + tabId);
+        if (targetBtn) {
+          targetBtn.classList.remove('text-on-surface-variant', 'hover:text-on-surface', 'hover:bg-surface-container');
+          targetBtn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+          targetBtn.setAttribute('aria-selected', 'true');
+        }
+      }
+
+      // ════════ Novo registro de diário (RDO) ════════
+      function handleDiarySubmit(e) {
+        e.preventDefault();
+        const desc = document.getElementById('entry-desc').value.trim();
+        const type = document.getElementById('entry-type').value;
+        const workers = document.getElementById('entry-workers').value;
+        const hours = document.getElementById('entry-hours').value;
+        const materials = document.getElementById('entry-materials').value;
+
+        if (!desc) {
+          if (typeof showToast === 'function') {
+            showToast('Informe a descrição do serviço executado.', false);
+          }
+          document.getElementById('entry-desc').focus();
+          return;
+        }
+
+        const feed = document.getElementById('diary-feed');
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+        const newCard = document.createElement('article');
+        newCard.className = 'bg-surface-card rounded-xl p-space-lg shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] flex flex-col gap-space-md transition-all hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] animate-fade-in';
+        newCard.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-space-sm">
+            <div class="flex items-center gap-space-sm">
+              <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-sm">MS</div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-title-md text-title-md text-primary font-semibold">Engª. Mariana Silva</span>
+                  <span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[11px] font-semibold">Responsável técnica</span>
+                </div>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">Hoje às ${timeString} • Santana de Parnaíba (recém-publicado)</span>
+              </div>
+            </div>
+            <span class="bg-status-success/15 text-status-success px-2.5 py-1 rounded text-xs font-semibold">${type}</span>
+          </div>
+          <div class="bg-surface-canvas p-space-md rounded-lg flex flex-col gap-2">
+            <h3 class="font-title-md text-title-md text-primary font-semibold">Registro operacional de campo</h3>
+            <p class="font-body-md text-body-md text-text-main">${desc}</p>
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-on-surface-variant pt-1">
+              <span><strong>Efetivo:</strong> ${workers} operários</span>
+              <span>•</span>
+              <span><strong>Horas:</strong> ${hours}h</span>
+              ${materials ? `<span>•</span><span><strong>Consumo:</strong> ${materials}</span>` : ''}
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-space-xs text-xs text-on-surface-variant">
+            <div class="flex items-center gap-3">
+              <span class="flex items-center gap-1 text-status-success font-medium">
+                <span class="material-symbols-outlined text-[16px]">verified</span> ART validada
+              </span>
+              <span class="flex items-center gap-1 text-status-success font-medium">
+                <span class="material-symbols-outlined text-[16px]">pin_drop</span> GPS confirmado
+              </span>
+            </div>
+            <span class="text-status-success font-semibold">Entrada gravada com sucesso</span>
+          </div>`;
+        feed.prepend(newCard);
+        document.getElementById('daily-entry-form').reset();
+        if (typeof showToast === 'function') {
+          showToast('Registro do diário publicado com sucesso.');
+        }
+      }
+
+      // ════════ Chat técnico ════════
+      function handleChatSubmit(e) {
+        e.preventDefault();
+        const input = document.getElementById('chat-input');
+        const text = input.value.trim();
+        if (!text) return;
+
+        const container = document.getElementById('chat-messages-container');
+        const timeStr = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'flex flex-col items-end gap-1 max-w-[80%] self-end';
+        msgDiv.innerHTML = `
+          <span class="text-[11px] text-on-surface-variant font-medium">Carlos Eduardo (Você) • ${timeStr}</span>
+          <div class="bg-primary text-on-primary p-space-md rounded-2xl rounded-tr-sm shadow-sm text-body-sm font-body-sm">${text}</div>`;
+        container.appendChild(msgDiv);
+        input.value = '';
         container.scrollTop = container.scrollHeight;
-      }, 1200);
-    }
-  </script>
-</div></main><footer class="w-full bg-surface-card shadow-[0_1px_8px_rgba(0,0,0,0.04)] mt-space-xl"><div class="max-w-7xl mx-auto px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter mb-space-xl"><div class="lg:col-span-2 flex flex-col gap-space-md"><div class="flex items-center gap-space-md"><img alt="Civil Connection" class="h-8 w-auto object-contain" src="assets/images/logo.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/aida/AEtjO1WOVti2G0Jl0QJ8A5qko53tM9r9tkWLbEERY5F98WlZ7ChnHzEOjvTgR1Vq8aNwyAFKfJLEcSjMEe-aAGMHEiheUZqsYjSVMkoVIEIyGL2b1ceNJNmmKc-r7sA6DGmiT2ma2vxh3y8qw-VVhgIGnA1e6T3GXYvlSeM5coJ6H-2-td84hU0jwh0iLTHNoWz8zvpn9nVG96L624ZPuQj4vay-9xRpGWSbRwkS3p0arAa6iVXVwCeWUICnOfxMJCWOM274CizaxzTH';"/><span class="font-headline-sm text-headline-sm text-primary">Civil Connection</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Plataforma integrada de engenharia e gestão de construções civis. Conectamos proprietários, empreiteiros e equipes técnicas com rastreabilidade estrutural.</p><div class="flex items-center gap-space-sm text-on-surface-variant"><span class="material-symbols-outlined text-status-success text-[18px]">verified_user</span><span class="font-label-sm text-label-sm uppercase tracking-wider">Plataforma Em conformidade com Normas ABNT &amp; CREA</span></div></div><div class="flex flex-col gap-space-sm"><h3 class="font-title-md text-title-md text-primary">Navegação</h3><ul class="flex flex-col gap-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="inicio" href="#">Início</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="encontrar-profissionais" href="#">Profissionais &amp; ART</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="obras-e-projetos" href="#">Projetos Ativos</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="diario-de-obras" href="#">Diários &amp; Vistorias</a></li></ul></div><div class="flex flex-col gap-space-sm"><h3 class="font-title-md text-title-md text-primary">Institucional</h3><ul class="flex flex-col gap-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Sobre a Plataforma</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Termos de Uso Técnico</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Privacidade &amp; LGPD</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Segurança no Canteiro</a></li></ul></div><div class="flex flex-col gap-space-sm"><h3 class="font-title-md text-title-md text-primary">Contato &amp; Suporte</h3><ul class="flex flex-col gap-space-xs"><li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">mail</span>contato@civilconnection.com.br</li><li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">call</span>+55 (11) 3450-9800</li><li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">location_on</span>Av. Paulista, 1000 - SP</li></ul></div></div><div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md bg-surface-container-low px-space-lg py-space-md rounded-xl"><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Civil Connection Engenharia &amp; Tecnologia S.A. Todos os direitos reservados.</p><div class="flex items-center gap-space-md text-on-surface-variant font-label-sm text-label-sm"><span class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-status-success">lock</span>Criptografia Ponta a Ponta</span><span>ISO 9001 Homologado</span></div></div></div></footer><script src="js/config.js"></script><script src="js/app.js"></script></body></html>
+
+        setTimeout(() => {
+          const replyDiv = document.createElement('div');
+          replyDiv.className = 'flex flex-col items-start gap-1 max-w-[80%] self-start';
+          replyDiv.innerHTML = `
+            <span class="text-[11px] text-on-surface-variant font-medium">Engª. Mariana Silva • agora</span>
+            <div class="bg-surface-card text-on-surface p-space-md rounded-2xl rounded-tl-sm shadow-sm text-body-sm font-body-sm">
+              Mensagem recebida, Carlos! Estou aqui no canteiro acompanhando esse ponto com o mestre Roberto. Já adicionei a nota na folha de verificação da semana.
+            </div>`;
+          container.appendChild(replyDiv);
+          container.scrollTop = container.scrollHeight;
+        }, 1200);
+      }
+    </script>
+  </main>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="w-full bg-surface-card border-t border-surface-container">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-space-xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter mb-space-xl">
+        <div class="lg:col-span-2 flex flex-col gap-space-md">
+          <div class="flex items-center gap-space-md">
+            <img alt="Logotipo Civil Connection" class="h-8 w-auto object-contain" src="assets/images/logo.png" />
+            <span class="font-headline-sm text-headline-sm text-primary">Civil Connection</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">
+            Plataforma integrada de engenharia e gestão de obras civis. Conectamos proprietários, empreiteiros e equipes técnicas com rastreabilidade estrutural.
+          </p>
+          <div class="flex items-center gap-space-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-status-success text-[18px]" aria-hidden="true">verified_user</span>
+            <span class="font-label-sm text-label-sm tracking-wide">Plataforma em conformidade com normas ABNT e CREA</span>
+          </div>
+        </div>
+        <nav aria-label="Navegação do rodapé" class="flex flex-col gap-space-sm">
+          <h3 class="font-title-md text-title-md text-primary">Navegação</h3>
+          <ul class="flex flex-col gap-space-xs">
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="index.html">Início</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="profissionais.html">Profissionais &amp; ART</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="obras.html">Projetos ativos</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="diario.html">Diários &amp; vistorias</a></li>
+          </ul>
+        </nav>
+        <div class="flex flex-col gap-space-sm">
+          <h3 class="font-title-md text-title-md text-primary">Institucional</h3>
+          <ul class="flex flex-col gap-space-xs">
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="index.html#confianca">Sobre a plataforma</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="cadastro.html#termos">Termos de uso técnico</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="cadastro.html#termos">Privacidade &amp; LGPD</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="mailto:contato@civilconnection.com.br">Segurança no canteiro</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-space-sm">
+          <h3 class="font-title-md text-title-md text-primary">Contato &amp; suporte</h3>
+          <ul class="flex flex-col gap-space-xs">
+            <li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">mail</span><a class="hover:text-on-surface transition-colors" href="mailto:contato@civilconnection.com.br">contato@civilconnection.com.br</a>
+            </li>
+            <li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">call</span><a class="hover:text-on-surface transition-colors" href="tel:+551134509800">+55 (11) 3450-9800</a>
+            </li>
+            <li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span>Av. Paulista, 1000 — São Paulo, SP
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-space-md border-t border-surface-container pt-space-lg">
+        <p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Civil Connection Engenharia &amp; Tecnologia. Projeto acadêmico — Etec.</p>
+        <div class="flex items-center gap-space-md text-on-surface-variant font-label-sm text-label-sm">
+          <span class="flex items-center gap-space-xs">
+            <span class="material-symbols-outlined text-[16px] text-status-success" aria-hidden="true">lock</span>Dados protegidos (LGPD)
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

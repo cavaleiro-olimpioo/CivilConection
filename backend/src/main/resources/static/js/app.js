@@ -1,16 +1,15 @@
-// Civil Conection - Full Stack API Integration Script
-//
-// A API REST (Spring Boot) é consultada em API_CONFIG.baseUrl (js/config.js).
-// Quando ela não está acessível (ex.: site estático publicado na Vercel sem o
-// backend), as páginas mantêm o conteúdo protótipo já embutido no HTML e um
-// único aviso informativo é registrado no console — sem erros vermelhos.
+// ============================================================
+// CIVIL CONNECTION — Integração REST, navegação e interatividade
+// ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    initPageNavigation();
+    initMobileMenu();
+    initHeaderSearch();
+    initScrollReveal();
 
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-    if (currentPage === 'index.html' || currentPage === '' || currentPage === '/') {
+    if (currentPage === 'index.html' || currentPage === '') {
         initHomePage();
     } else if (currentPage === 'profissionais.html') {
         initProfissionaisPage();
@@ -18,86 +17,47 @@ document.addEventListener('DOMContentLoaded', () => {
         initObrasPage();
     } else if (currentPage === 'diario.html') {
         initDiarioPage();
-    } else if (currentPage === 'cadastro.html') {
-        initCadastroPage();
     }
+    // cadastro.html é autossuficiente (scripts inline na própria página).
 });
 
-// ==========================================
-// API CONNECTION
-// ==========================================
-// Error raised when the REST backend cannot be reached at all (static hosting
-// without the API, network failure, CORS, etc). Callers use it to decide
-// between a hard failure and gracefully keeping the prototype content.
-class ApiUnavailableError extends Error {
-    constructor(message = 'Backend REST não disponível neste endereço') {
-        super(message);
-        this.name = 'ApiUnavailableError';
-    }
+// ============================================================
+// Utilitários
+// ============================================================
+
+// Resolve o endpoint conforme a configuração disponível:
+// - window.CIVIL_API_CONFIG.baseUrl quando configurado (js/config.js);
+// - http://localhost:8080 para páginas abertas via file:// (URL relativa não funciona);
+// - URL relativa (mesma origem) nos demais casos.
+function resolveApiUrl(endpoint) {
+    if (/^[a-z][a-z0-9+.-]*:\/\//i.test(endpoint)) return endpoint;
+
+    const configured = (window.CIVIL_API_CONFIG && window.CIVIL_API_CONFIG.baseUrl) || '';
+    const base = configured
+        ? configured
+        : (window.location.protocol === 'file:' ? 'http://localhost:8080' : '');
+
+    if (!base) return endpoint;
+    return `${base.replace(/\/+$/, '')}${endpoint.startsWith('/') ? '' : '/'}${endpoint}`;
 }
 
-// Once the API is deemed unreachable, further requests are skipped only for a
-// short cooldown instead of being blocked forever: a transient failure (backend
-// restarting, brief network drop) then recovers on the next user action or
-// after the window expires, without requiring a page reload.
-const API_RETRY_COOLDOWN_MS = 30000;
-let apiUnavailableUntil = 0;
-let apiWarningShown = false;
+// Escapa valores vindos da API antes de interpolá-los em HTML.
+const HTML_ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 
-function isApiUnavailable(error) {
-    return !!error && error.name === 'ApiUnavailableError';
+function escapeHtml(value) {
+    if (value == null) return '';
+    return String(value).replace(/[&<>"']/g, ch => HTML_ESCAPES[ch]);
 }
 
-function markApiUnavailable() {
-    apiUnavailableUntil = Date.now() + API_RETRY_COOLDOWN_MS;
-    if (!apiWarningShown) {
-        apiWarningShown = true;
-        console.warn(
-            '[Civil Connection] Backend REST não disponível — mantendo o conteúdo de demonstração da página. ' +
-            'Para usar dados reais: execute o backend Spring Boot (cd backend && ./gradlew bootRun) e, se necessário, ' +
-            'configure API_CONFIG.baseUrl em js/config.js.'
-        );
-    }
-}
-
-// Resolves the base URL of the REST API:
-// 1. explicit override in js/config.js (API_CONFIG.baseUrl);
-// 2. pages opened via file:// cannot use a relative "/api", so fall back to
-//    the default local Spring Boot address (http://localhost:8080);
-// 3. otherwise same origin (pages served by the backend itself).
-function getApiBaseUrl() {
-    const config = window.CIVIL_API_CONFIG || {};
-    if (typeof config.baseUrl === 'string' && config.baseUrl.trim() !== '') {
-        return config.baseUrl.trim().replace(/\/+$/, '');
-    }
-    if (window.location.protocol === 'file:') {
-        return 'http://localhost:8080';
-    }
-    return '';
-}
-
-// Helper for API calls
 async function apiFetch(endpoint, options = {}) {
-    if (Date.now() < apiUnavailableUntil) {
-        throw new ApiUnavailableError();
-    }
-
     try {
-        const response = await fetch(getApiBaseUrl() + endpoint, {
+        const response = await fetch(resolveApiUrl(endpoint), {
             headers: {
                 'Content-Type': 'application/json',
                 ...options.headers
             },
             ...options
         });
-
-        // A 404 with a non-JSON body means there is no API behind this origin
-        // (e.g. the static Vercel deployment) — not a "resource not found".
-        const contentType = response.headers.get('content-type') || '';
-        if (response.status === 404 && !contentType.includes('json')) {
-            markApiUnavailable();
-            throw new ApiUnavailableError();
-        }
 
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({ message: 'Erro ao processar requisição' }));
@@ -107,163 +67,225 @@ async function apiFetch(endpoint, options = {}) {
         if (response.status === 204) return null;
         return await response.json();
     } catch (error) {
-        if (isApiUnavailable(error)) {
-            throw error;
-        }
-        if (error instanceof TypeError) {
-            // Network / DNS / CORS failure: the API is simply not reachable.
-            markApiUnavailable();
-            throw new ApiUnavailableError();
-        }
         console.error('API Error:', error);
         throw error;
     }
 }
 
+let toastTimer = null;
+
 function showToast(message, isSuccess = true) {
+    document.querySelectorAll('.app-toast').forEach(t => t.remove());
+
     const toast = document.createElement('div');
-    toast.className = `fixed bottom-5 right-5 z-50 px-6 py-3 rounded-lg text-white shadow-xl flex items-center gap-3 transition-all transform translate-y-0 ${
-        isSuccess ? 'bg-emerald-600' : 'bg-red-600'
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.className = `app-toast fixed bottom-5 right-5 z-[80] max-w-sm px-5 py-3 rounded-xl shadow-[0_12px_32px_-8px_rgba(2,14,38,0.4)] flex items-center gap-3 transition-all duration-300 translate-y-4 opacity-0 ${
+        isSuccess ? 'bg-primary text-on-primary' : 'bg-error text-on-error'
     }`;
     toast.innerHTML = `
-        <span class="material-symbols-outlined">${isSuccess ? 'check_circle' : 'error'}</span>
-        <span>${message}</span>
+        <span class="material-symbols-outlined text-[20px] ${isSuccess ? 'text-status-success' : 'text-error-container'}" aria-hidden="true">${isSuccess ? 'check_circle' : 'error'}</span>
+        <span class="font-label-md text-label-md">${escapeHtml(message)}</span>
     `;
     document.body.appendChild(toast);
-    setTimeout(() => {
-        toast.style.opacity = '0';
+
+    requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-4', 'opacity-0');
+    });
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+        toast.classList.add('translate-y-4', 'opacity-0');
         setTimeout(() => toast.remove(), 300);
     }, 4000);
 }
 
-// Navigation fix across pages
-function initPageNavigation() {
-    const navLinks = document.querySelectorAll('a[data-path], nav a, header a');
-    navLinks.forEach(link => {
-        const text = link.innerText.trim().toLowerCase();
-        const pathAttr = link.getAttribute('data-path');
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
-        if (pathAttr === 'inicio' || text.includes('início') || text.includes('inicio')) {
-            link.href = 'index.html';
-        } else if (pathAttr === 'encontrar-profissionais' || text.includes('profissionais')) {
-            link.href = 'profissionais.html';
-        } else if (pathAttr === 'obras-e-projetos' || text.includes('obras')) {
-            link.href = 'obras.html';
-        } else if (pathAttr === 'diario-de-obras' || text.includes('diário') || text.includes('diario')) {
-            link.href = 'diario.html';
-        } else if (pathAttr === 'dashboard-visao-geral' || text.includes('dashboard') || text.includes('cadastro') || text.includes('entrar')) {
-            link.href = 'cadastro.html';
+// ============================================================
+// Navegação global
+// ============================================================
+
+function initMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+
+    const icon = btn.querySelector('.material-symbols-outlined');
+
+    const close = () => {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Abrir menu de navegação');
+        if (icon) icon.textContent = 'menu';
+    };
+
+    btn.addEventListener('click', () => {
+        const isOpen = !menu.classList.contains('hidden');
+        if (isOpen) {
+            close();
+        } else {
+            menu.classList.remove('hidden');
+            btn.setAttribute('aria-expanded', 'true');
+            btn.setAttribute('aria-label', 'Fechar menu de navegação');
+            if (icon) icon.textContent = 'close';
         }
     });
 
-    // Logo click
-    const logoImg = document.querySelector('header img');
-    if (logoImg && logoImg.closest('a')) {
-        logoImg.closest('a').href = 'index.html';
-    } else if (logoImg && logoImg.parentElement) {
-        logoImg.parentElement.style.cursor = 'pointer';
-        logoImg.parentElement.addEventListener('click', () => window.location.href = 'index.html');
-    }
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+    });
 }
 
-// ==========================================
+function initHeaderSearch() {
+    const input = document.getElementById('header-search');
+    if (!input) return;
+
+    const go = () => {
+        const query = input.value.trim();
+        window.location.href = query
+            ? `profissionais.html?termo=${encodeURIComponent(query)}`
+            : 'profissionais.html';
+    };
+
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            go();
+        }
+    });
+}
+
+// ============================================================
+// Animações de entrada (respeita prefers-reduced-motion)
+// ============================================================
+
+function initScrollReveal() {
+    const elements = document.querySelectorAll('.reveal');
+    if (!elements.length) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+        elements.forEach(el => el.classList.add('revealed'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    elements.forEach(el => observer.observe(el));
+}
+
+// ============================================================
 // 1. HOMEPAGE (index.html)
-// ==========================================
+// ============================================================
+
 async function initHomePage() {
+    // Console de busca do herói — vinculado antes da busca de estatísticas,
+    // para que a busca funcione mesmo se /api/stats falhar, demorar ou travar.
+    const form = document.getElementById('hero-search-form');
+    const input = document.getElementById('service-search-input');
+    if (form && input) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = input.value.trim();
+            window.location.href = query
+                ? `profissionais.html?termo=${encodeURIComponent(query)}`
+                : 'profissionais.html';
+        });
+    }
+
     try {
         const stats = await apiFetch('/api/stats');
         updateHomeStats(stats);
     } catch (err) {
-        // API offline (static deployment): keep the default metrics already
-        // present in the HTML markup — but do NOT return early, the hero
-        // search below must keep working.
-        if (!isApiUnavailable(err)) {
-            console.warn('Usando estatísticas padrão:', err);
-        }
-    }
-
-    // Hero search integration
-    const searchBtn = document.querySelector('#service-search-input')?.closest('.grid')?.querySelector('button');
-    const searchInput = document.getElementById('service-search-input');
-    if (searchBtn && searchInput) {
-        searchBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const query = searchInput.value.trim();
-            if (query) {
-                window.location.href = `profissionais.html?termo=${encodeURIComponent(query)}`;
-            }
-        });
+        console.warn('Usando estatísticas padrão:', err.message);
     }
 }
 
 function updateHomeStats(stats) {
     if (!stats) return;
 
-    // Look for metric numbers in the DOM and update them
-    const statElements = document.querySelectorAll('[data-stat]');
-    statElements.forEach(el => {
+    const fmt = new Intl.NumberFormat('pt-BR');
+    document.querySelectorAll('[data-stat]').forEach(el => {
         const type = el.getAttribute('data-stat');
-        if (type === 'obrasConcluidas') el.innerText = stats.obrasConcluidas || '142';
-        if (type === 'profissionaisCadastrados') el.innerText = stats.profissionaisCadastrados || '1.280';
-        if (type === 'totalObras') el.innerText = stats.totalObras || '350+';
-        if (type === 'satisfacaoMedia') el.innerText = (stats.satisfacaoMedia || '4.9') + ' / 5.0';
+        if (type === 'obrasConcluidas' && stats.obrasConcluidas != null) el.innerText = fmt.format(stats.obrasConcluidas);
+        if (type === 'profissionaisCadastrados' && stats.profissionaisCadastrados != null) el.innerText = fmt.format(stats.profissionaisCadastrados);
+        if (type === 'totalObras' && stats.totalObras != null) el.innerText = fmt.format(stats.totalObras);
+        if (type === 'satisfacaoMedia' && stats.satisfacaoMedia != null) {
+            el.innerText = `${new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1 }).format(stats.satisfacaoMedia)}%`;
+        }
     });
 }
 
-// ==========================================
+// ============================================================
 // 2. PROFISSIONAIS (profissionais.html)
-// ==========================================
+// ============================================================
+
+let apiFailureToastShown = false;
+
 async function initProfissionaisPage() {
     const urlParams = new URLSearchParams(window.location.search);
     const initialTerm = urlParams.get('termo') || '';
 
-    const searchInput = document.querySelector('input[placeholder*="Buscar"]') || document.querySelector('input[type="text"]');
+    const searchInput = document.getElementById('filter-search-term');
     if (searchInput && initialTerm) {
         searchInput.value = initialTerm;
     }
 
-    // Load initial data
-    await carregarProfissionais({ termo: initialTerm });
-
-    // Attach search event
+    // Busca ao vivo contra a API (com filtro local imediato na falha)
     if (searchInput) {
         searchInput.addEventListener('input', debounce(() => {
+            if (typeof window.applyLocalProfFilters === 'function') {
+                window.applyLocalProfFilters();
+            }
             carregarProfissionais({ termo: searchInput.value.trim() });
-        }, 400));
+        }, 450));
     }
 
-    // Filter selects/buttons
-    const filterSelects = document.querySelectorAll('select');
-    filterSelects.forEach(select => {
-        select.addEventListener('change', () => {
-            const cidade = document.querySelector('select[name="cidade"]')?.value || '';
-            const profissao = document.querySelector('select[name="profissao"]')?.value || '';
-            carregarProfissionais({ termo: searchInput?.value || '', cidade, profissao });
-        });
-    });
+    await carregarProfissionais({ termo: initialTerm });
 }
 
+// Guarda da última requisição: respostas atrasadas de buscas antigas
+// não podem sobrescrever o resultado da busca mais recente.
+let profissionaisRequestId = 0;
+
 async function carregarProfissionais(filtros = {}) {
-    // Only replace the real list container — never a generic grid, which could
-    // match the search form or KPI cards.
     const container = document.getElementById('lista-profissionais');
     if (!container) return;
 
+    const requestId = ++profissionaisRequestId;
+
     try {
-        let queryParams = new URLSearchParams();
+        const queryParams = new URLSearchParams();
         if (filtros.termo) queryParams.append('termo', filtros.termo);
-        if (filtros.profissao) queryParams.append('profissao', filtros.profissao);
-        if (filtros.cidade) queryParams.append('cidade', filtros.cidade);
 
         const profissionais = await apiFetch(`/api/profissionais?${queryParams.toString()}`);
+        if (requestId !== profissionaisRequestId) return;
         renderProfissionais(profissionais, container);
     } catch (err) {
-        if (isApiUnavailable(err)) {
-            // Backend offline (ex.: hospedagem estática): keep the prototype
-            // cards already rendered in the HTML.
-            return;
+        if (requestId !== profissionaisRequestId) return;
+        if (!apiFailureToastShown) {
+            apiFailureToastShown = true;
+            showToast('API indisponível — exibindo vitrine de demonstração.', false);
         }
-        showToast('Erro ao carregar profissionais', false);
     }
 }
 
@@ -271,180 +293,207 @@ function renderProfissionais(profissionais, container) {
     if (!profissionais || profissionais.length === 0) {
         container.innerHTML = `
             <div class="col-span-full py-12 text-center text-on-surface-variant">
-                <span class="material-symbols-outlined text-4xl mb-2 text-outline">search_off</span>
-                <p class="font-title-md">Nenhum profissional encontrado com os filtros selecionados.</p>
-            </div>
-        `;
+                <span class="material-symbols-outlined text-[40px] mb-2 text-outline" aria-hidden="true">search_off</span>
+                <p class="font-title-md text-title-md">Nenhum profissional encontrado com os filtros selecionados.</p>
+            </div>`;
         return;
     }
 
-    container.innerHTML = profissionais.map(p => `
-        <div class="bg-surface-card rounded-xl p-space-md shadow-sm border border-surface-container-high flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div>
-                <div class="flex items-start justify-between gap-space-sm mb-space-sm">
-                    <div class="flex items-center gap-space-sm">
-                        <div class="w-12 h-12 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-title-md">
-                            ${p.nome ? p.nome.charAt(0).toUpperCase() : 'P'}
-                        </div>
-                        <div>
-                            <h3 class="font-title-md text-primary leading-snug">${p.nome || 'Profissional'}</h3>
-                            <span class="font-label-sm text-secondary-container font-semibold uppercase tracking-wider">${p.profissao || 'Especialista'}</span>
-                        </div>
+    container.innerHTML = profissionais.map(p => {
+        const nomeBase = p.nome || 'P';
+        const iniciais = escapeHtml(
+            nomeBase
+                .split(' ')
+                .filter(w => w.length > 2)
+                .slice(0, 2)
+                .map(w => w.charAt(0).toUpperCase())
+                .join('') || nomeBase.charAt(0).toUpperCase()
+        );
+        const nota = typeof p.avaliacao === 'number' ? p.avaliacao.toFixed(2) : '5.00';
+        const especialidades = typeof p.especialidades === 'string'
+            ? p.especialidades.split(',').slice(0, 4).map(esp =>
+                `<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">${escapeHtml(esp.trim())}</span>`).join('')
+            : '';
+        const nomeContato = p.nome || 'Profissional';
+        const contato = p.contato || p.email || '';
+
+        return `
+        <article class="prof-card bg-surface-card rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all overflow-hidden flex flex-col p-space-lg gap-space-md" data-type="autonomous" data-rating="${nota}">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+                <div class="flex items-center gap-space-md min-w-0">
+                    <div class="relative shrink-0">
+                        <div class="w-16 h-16 rounded-xl bg-primary text-on-primary flex items-center justify-center font-headline-md text-headline-md">${iniciais}</div>
+                        <span class="absolute -bottom-1 -right-1 bg-status-success text-on-primary w-5 h-5 rounded-full flex items-center justify-center shadow" title="Profissional verificado">
+                            <span class="material-symbols-outlined text-[13px]" aria-hidden="true">verified</span>
+                        </span>
                     </div>
-                    <div class="flex items-center gap-1 bg-surface-container px-2 py-1 rounded text-label-sm font-bold text-on-surface">
-                        <span class="material-symbols-outlined text-amber-500 text-[16px]">star</span>
-                        <span>${p.avaliacao ? p.avaliacao.toFixed(1) : '5.0'}</span>
+                    <div class="min-w-0">
+                        <h3 class="font-headline-sm text-headline-sm text-primary">${escapeHtml(p.nome || 'Profissional')}</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">${escapeHtml(p.profissao || 'Especialista')}</p>
+                        <div class="flex items-center gap-space-xs mt-1 text-on-surface-variant" style="font-variant-numeric: tabular-nums;">
+                            <span class="material-symbols-outlined text-status-warning text-[18px]" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="font-title-md text-title-md text-primary font-bold">${nota}</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="flex items-center gap-1 text-on-surface-variant font-label-sm mb-space-sm">
-                    <span class="material-symbols-outlined text-[16px]">location_on</span>
-                    <span>${p.cidade || 'São Paulo, SP'}</span>
+            </div>
+            ${p.descricao ? `<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 max-w-prose">${escapeHtml(p.descricao)}</p>` : ''}
+            ${especialidades ? `<div class="flex flex-wrap items-center gap-space-xs">${especialidades}</div>` : ''}
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-canvas p-space-md rounded-lg">
+                <div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+                    <span class="flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">near_me</span>
+                        ${escapeHtml(p.cidade || 'São Paulo, SP')}
+                    </span>
                 </div>
-
-                <p class="font-body-sm text-on-surface-variant line-clamp-3 mb-space-md">
-                    ${p.descricao || 'Profissional especializado em execução de obras residenciais e comerciais com garantia de qualidade e conformidade.'}
-                </p>
-
-                ${p.especialidades ? `
-                    <div class="flex flex-wrap gap-1 mb-space-md">
-                        ${p.especialidades.split(',').map(esp => `
-                            <span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm">${esp.trim()}</span>
-                        `).join('')}
-                    </div>
-                ` : ''}
+                <div class="flex items-center gap-space-sm self-end sm:self-auto">
+                    <button class="px-space-md py-2 bg-surface-card hover:bg-surface-variant active:scale-[0.98] text-primary font-label-md text-label-md rounded-lg transition-all shadow-sm" data-action="contatar-profissional" data-nome="${escapeHtml(nomeContato)}" data-contato="${escapeHtml(contato)}" type="button">Ver perfil</button>
+                    <button class="px-space-lg py-2 bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-1 shadow-sm transition-all" data-action="contatar-profissional" data-nome="${escapeHtml(nomeContato)}" data-contato="${escapeHtml(contato)}" type="button">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
+                        <span>Solicitar proposta</span>
+                    </button>
+                </div>
             </div>
+        </article>`;
+    }).join('');
 
-            <div class="pt-space-sm border-t border-surface-container flex items-center justify-between gap-2">
-                <span class="font-label-sm text-on-surface-variant">${p.contato || p.email || 'Contato via portal'}</span>
-                <button onclick="contatarProfissional('${p.nome}', '${p.contato || p.email}')" class="px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-label-sm hover:bg-primary-container transition-colors flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[16px]">chat</span>
-                    <span>Contatar</span>
-                </button>
-            </div>
-        </div>
-    `).join('');
+    bindProfissionaisActions(container);
+
+    if (typeof window.applyLocalProfFilters === 'function') {
+        window.applyLocalProfFilters();
+    }
+}
+
+// Listener delegado (registrado uma única vez por container) no lugar de onclick inline.
+function bindProfissionaisActions(container) {
+    if (container.dataset.actionsBound === 'true') return;
+    container.dataset.actionsBound = 'true';
+
+    container.addEventListener('click', (event) => {
+        const btn = event.target.closest('[data-action="contatar-profissional"]');
+        if (!btn || !container.contains(btn)) return;
+        contatarProfissional(btn.dataset.nome || 'Profissional', btn.dataset.contato || '');
+    });
 }
 
 function contatarProfissional(nome, contato) {
-    alert(`Entrar em contato com ${nome}:\nE-mail / Telefone: ${contato}`);
+    showToast(contato
+        ? `Solicitação enviada para ${nome}. Contato: ${contato}`
+        : `Solicitação enviada para ${nome}. O contato acontece pelo portal.`);
 }
 
-// ==========================================
+// ============================================================
 // 3. OBRAS E PROJETOS (obras.html)
-// ==========================================
+// ============================================================
+
 async function initObrasPage() {
     await carregarObras();
-
-    const searchInput = document.querySelector('input[placeholder*="Buscar"]');
-    if (searchInput) {
-        searchInput.addEventListener('input', debounce(() => {
-            carregarObras({ termo: searchInput.value.trim() });
-        }, 400));
-    }
 }
 
-async function carregarObras(filtros = {}) {
-    // Prefer explicit ids; #projectsGrid is the list rendered by obras.html.
-    const container = document.getElementById('lista-obras') || document.getElementById('projectsGrid');
+async function carregarObras() {
+    const container = document.getElementById('projectsGrid');
     if (!container) return;
 
     try {
-        let queryParams = new URLSearchParams();
-        if (filtros.termo) queryParams.append('termo', filtros.termo);
-        if (filtros.categoria) queryParams.append('categoria', filtros.categoria);
-        if (filtros.status) queryParams.append('status', filtros.status);
-
-        const obras = await apiFetch(`/api/obras?${queryParams.toString()}`);
-        renderObras(obras, container);
-    } catch (err) {
-        if (isApiUnavailable(err)) {
-            // Backend offline (ex.: hospedagem estática): keep the prototype
-            // project cards already rendered in the HTML.
-            return;
+        const obras = await apiFetch('/api/obras');
+        if (obras && obras.length > 0) {
+            renderObras(obras, container);
         }
-        showToast('Erro ao carregar obras', false);
+    } catch (err) {
+        // API indisponível: mantém os cartões de demonstração estáticos.
+        console.warn('Obras da API indisponíveis:', err.message);
     }
 }
+
+const OBRA_IMAGES = [
+    'assets/images/obra-residencial.jpg',
+    'assets/images/obra-comercial.jpg',
+    'assets/images/obra-galpao.jpg',
+    'assets/images/obra-infraestrutura.jpg',
+    'assets/images/obra-restauro.jpg',
+    'assets/images/obra-paisagismo.jpg',
+];
 
 function renderObras(obras, container) {
-    if (!obras || obras.length === 0) {
-        container.innerHTML = `
-            <div class="col-span-full py-12 text-center text-on-surface-variant">
-                <span class="material-symbols-outlined text-4xl mb-2 text-outline">construction</span>
-                <p class="font-title-md">Nenhuma obra cadastrada até o momento.</p>
-            </div>
-        `;
-        return;
-    }
+    const fmt = new Intl.NumberFormat('pt-BR');
 
-    container.innerHTML = obras.map(o => `
-        <div class="bg-surface-card rounded-xl p-space-md shadow-sm border border-surface-container-high flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div>
-                <div class="flex items-center justify-between mb-space-xs">
-                    <span class="px-2.5 py-0.5 rounded-full text-label-sm font-semibold uppercase bg-secondary-container/15 text-secondary-container">
-                        ${o.categoria || 'Residencial'}
-                    </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-label-sm font-semibold uppercase ${
-                        o.status === 'CONCLUIDA' ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800'
-                    }">
-                        ${o.status === 'CONCLUIDA' ? 'Concluída' : 'Em Andamento'}
-                    </span>
-                </div>
+    container.innerHTML = obras.map((o, i) => {
+        const progresso = Number(o.progresso) || 0;
+        const concluida = o.status === 'CONCLUIDA';
+        const categoria = escapeHtml(o.categoria || 'Residencial');
+        const img = OBRA_IMAGES[i % OBRA_IMAGES.length];
+        const orcamento = Number(o.orcamentoEstimado) || progresso * 1000;
+        const nome = escapeHtml(o.nome || 'Obra sem nome');
+        const codigo = escapeHtml(o.id);
+        const idUrl = encodeURIComponent(o.id == null ? '' : o.id);
 
-                <h3 class="font-headline-sm text-primary my-space-xs">${o.nome}</h3>
-                <p class="font-body-sm text-on-surface-variant line-clamp-2 mb-space-sm">${o.descricao || 'Sem descrição informada.'}</p>
-
-                <div class="flex items-center gap-1 text-on-surface-variant font-label-sm mb-space-md">
-                    <span class="material-symbols-outlined text-[16px]">location_on</span>
-                    <span>${o.cidade || 'São Paulo, SP'}</span>
-                    <span class="mx-1">•</span>
-                    <span>Cliente: ${o.clienteNome || 'Proprietário'}</span>
-                </div>
-
-                <!-- Progress Bar -->
-                <div class="mb-space-md">
-                    <div class="flex justify-between text-label-sm font-semibold mb-1">
-                        <span>Progresso Geral</span>
-                        <span>${o.progresso || 0}%</span>
+        return `
+        <article class="project-card bg-surface-card rounded-xl overflow-hidden shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] flex flex-col justify-between transition-all duration-200 group"
+                 data-budget="${orcamento}" data-category="${categoria}" data-modality="empreiteiras" data-urgency="Normal">
+            <div class="flex flex-col">
+                <div class="relative w-full h-48 overflow-hidden bg-surface-container">
+                    <img alt="Foto ilustrativa da obra ${nome}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" src="${img}" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+                    <div class="absolute top-space-sm left-space-sm flex items-center gap-space-xs">
+                        <span class="${concluida ? 'bg-status-success' : 'bg-status-info/90'} text-on-primary px-space-sm py-space-xs rounded font-label-sm text-label-sm font-semibold">${concluida ? 'Concluída' : 'Em andamento'}</span>
                     </div>
-                    <div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
-                        <div class="h-full bg-secondary-container rounded-full transition-all duration-500" style="width: ${o.progresso || 0}%"></div>
+                    <div class="absolute bottom-space-sm left-space-sm right-space-sm text-on-primary flex items-center justify-between">
+                        <span class="font-label-sm text-label-sm bg-primary/60 backdrop-blur-sm px-2 py-0.5 rounded">${categoria}</span>
+                        <span class="font-label-sm text-label-sm opacity-90" style="font-variant-numeric: tabular-nums;">Cód: CC-${codigo}</span>
                     </div>
                 </div>
+                <div class="p-space-lg flex flex-col gap-space-md">
+                    <div class="flex flex-col gap-space-xs">
+                        <div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+                            <span class="material-symbols-outlined text-[16px] text-secondary" aria-hidden="true">location_on</span>
+                            <span>${escapeHtml(o.cidade || 'São Paulo, SP')}</span>
+                        </div>
+                        <h2 class="font-headline-sm text-headline-sm text-primary line-clamp-1 group-hover:text-secondary transition-colors">${nome}</h2>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">${escapeHtml(o.descricao || 'Sem descrição informada.')}</p>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between font-label-sm text-label-sm font-semibold">
+                            <span>Progresso geral</span>
+                            <span style="font-variant-numeric: tabular-nums;">${progresso}%</span>
+                        </div>
+                        <div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
+                            <div class="${concluida ? 'bg-status-success' : 'bg-secondary-container'} h-full rounded-full transition-all duration-500" style="width: ${progresso}%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="pt-space-sm border-t border-surface-container flex items-center justify-between">
-                <span class="font-label-sm text-on-surface-variant">${o.etapas ? o.etapas.length : 0} etapas registradas</span>
-                <a href="diario.html?obraId=${o.id}" class="px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-label-sm hover:bg-primary-container transition-colors flex items-center gap-1">
-                    <span>Acompanhar Diário</span>
-                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            <div class="p-space-lg pt-0">
+                <a class="btn-open-modal w-full bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md py-space-sm rounded-lg transition-all flex items-center justify-center gap-space-xs shadow-sm"
+                   data-budget="Consulte o edital" data-code="CC-${codigo}" data-title="${nome}" href="diario.html?obraId=${idUrl}">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+                    <span>Acompanhar diário</span>
                 </a>
             </div>
-        </div>
-    `).join('');
+        </article>`;
+    }).join('');
+
+    // Reexecuta filtros e bindings da página após a substituição do conteúdo.
+    if (typeof window.afterObrasRender === 'function') {
+        window.afterObrasRender();
+    }
 }
 
-// ==========================================
+// ============================================================
 // 4. DIÁRIO DE OBRAS (diario.html)
-// ==========================================
+// ============================================================
+
 async function initDiarioPage() {
     const urlParams = new URLSearchParams(window.location.search);
     let obraId = urlParams.get('obraId');
 
     if (!obraId) {
-        // Fetch first available obra
         try {
             const obras = await apiFetch('/api/obras');
             if (obras && obras.length > 0) {
                 obraId = obras[0].id;
             }
         } catch (e) {
-            if (isApiUnavailable(e)) {
-                // Backend offline: keep the prototype diary content.
-                return;
-            }
-            console.warn('Nenhuma obra carregada');
+            console.warn('Nenhuma obra carregada da API — mantendo obra de demonstração.');
         }
     }
 
@@ -457,213 +506,33 @@ async function carregarDetalhesObra(obraId) {
     try {
         const obra = await apiFetch(`/api/obras/${obraId}`);
         renderDiarioHeader(obra);
-        renderEtapasList(obra);
     } catch (err) {
-        if (isApiUnavailable(err)) {
-            // Backend offline: keep the prototype diary content.
-            return;
-        }
-        showToast('Erro ao carregar diário da obra', false);
+        console.warn('Diário da obra indisponível — mantendo dados de demonstração.');
     }
 }
 
 function renderDiarioHeader(obra) {
-    const titleEl = document.querySelector('h1') || document.querySelector('.font-headline-xl');
-    if (titleEl) titleEl.innerText = obra.nome;
+    if (!obra) return;
+
+    const titleEl = document.querySelector('main h1');
+    if (titleEl && obra.nome) {
+        // Preserva o sufixo "(Reforma & Ampliação)" quando existir no nome original.
+        titleEl.childNodes[0].textContent = obra.nome + ' ';
+    }
 
     const statusEl = document.querySelector('[data-obra-status]');
-    if (statusEl) statusEl.innerText = obra.status;
+    if (statusEl && obra.status) {
+        const statusMap = {
+            'EM_ANDAMENTO': 'Em andamento',
+            'CONCLUIDA': 'Concluída',
+            'PLANEJAMENTO': 'Em planejamento',
+            'PAUSADA': 'Pausada',
+        };
+        statusEl.textContent = statusMap[obra.status] || obra.status;
+    }
 
     const progressEl = document.querySelector('[data-obra-progresso]');
-    if (progressEl) progressEl.innerText = `${obra.progresso}%`;
-}
-
-function renderEtapasList(obra) {
-    const container = document.getElementById('lista-etapas') || document.querySelector('.space-y-space-md');
-    if (!container) return;
-
-    if (!obra.etapas || obra.etapas.length === 0) {
-        container.innerHTML = `
-            <div class="p-6 text-center text-on-surface-variant bg-surface-card rounded-xl">
-                <p>Nenhuma etapa cadastrada nesta obra.</p>
-                <button onclick="adicionarEtapaModal(${obra.id})" class="mt-3 px-4 py-2 bg-primary text-white rounded-lg">Adicionar Primeira Etapa</button>
-            </div>
-        `;
-        return;
+    if (progressEl && obra.progresso != null) {
+        progressEl.textContent = `${obra.progresso}%`;
     }
-
-    container.innerHTML = obra.etapas.map(e => `
-        <div class="bg-surface-card p-space-md rounded-xl border border-surface-container-high flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div class="flex items-start gap-3">
-                <div class="w-8 h-8 rounded-full ${e.status === 'CONCLUIDO' ? 'bg-emerald-500' : 'bg-secondary-container'} text-white flex items-center justify-center font-bold text-label-sm">
-                    ${e.ordem || 1}
-                </div>
-                <div>
-                    <h4 class="font-title-md text-primary">${e.nome}</h4>
-                    <p class="font-body-sm text-on-surface-variant">${e.descricao || 'Sem observações adicionais.'}</p>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <div class="w-32">
-                    <div class="flex justify-between text-label-sm mb-1 font-semibold">
-                        <span>Progresso</span>
-                        <span>${e.progresso}%</span>
-                    </div>
-                    <div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
-                        <div class="h-full bg-emerald-500 rounded-full" style="width: ${e.progresso}%"></div>
-                    </div>
-                </div>
-
-                <button onclick="atualizarEtapaPrompt(${e.id}, ${e.obraId}, ${e.progresso})" class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-primary font-label-sm transition-colors flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[16px]">edit</span>
-                    <span>Atualizar</span>
-                </button>
-            </div>
-        </div>
-    `).join('');
-}
-
-async function atualizarEtapaPrompt(etapaId, obraId, progressoAtual) {
-    const novoProgressoStr = prompt(`Informe o novo progresso da etapa (0 a 100):`, progressoAtual);
-    if (novoProgressoStr === null) return;
-
-    const novoProgresso = parseInt(novoProgressoStr, 10);
-    if (isNaN(novoProgresso) || novoProgresso < 0 || novoProgresso > 100) {
-        alert('Por favor, informe um número válido entre 0 e 100.');
-        return;
-    }
-
-    try {
-        const etapaAtual = await apiFetch(`/api/etapas/${etapaId}`);
-        etapaAtual.progresso = novoProgresso;
-        etapaAtual.status = novoProgresso >= 100 ? 'CONCLUIDO' : (novoProgresso > 0 ? 'EM_ANDAMENTO' : 'PENDENTE');
-
-        await apiFetch(`/api/etapas/${etapaId}`, {
-            method: 'PUT',
-            body: JSON.stringify(etapaAtual)
-        });
-
-        showToast('Etapa atualizada com sucesso!');
-        carregarDetalhesObra(obraId);
-    } catch (err) {
-        if (isApiUnavailable(err)) {
-            showToast('Backend não disponível — não é possível atualizar etapas agora.', false);
-            return;
-        }
-        showToast('Erro ao atualizar etapa', false);
-    }
-}
-
-// ==========================================
-// 5. CADASTRO / LOGIN (cadastro.html)
-// ==========================================
-function initCadastroPage() {
-    window.switchAuthMode = function(mode) {
-        const registerForm = document.getElementById('registerForm');
-        const loginView = document.getElementById('loginView');
-        const tabRegister = document.getElementById('tabRegister');
-        const tabLogin = document.getElementById('tabLogin');
-
-        if (mode === 'register') {
-            if (registerForm) registerForm.style.display = 'block';
-            if (loginView) loginView.style.display = 'none';
-            if (tabRegister) {
-                tabRegister.classList.add('bg-surface-white', 'text-primary', 'shadow-sm');
-                tabRegister.classList.remove('text-on-surface-variant');
-            }
-            if (tabLogin) {
-                tabLogin.classList.remove('bg-surface-white', 'text-primary', 'shadow-sm');
-                tabLogin.classList.add('text-on-surface-variant');
-            }
-        } else {
-            if (registerForm) registerForm.style.display = 'none';
-            if (loginView) {
-                loginView.style.display = 'flex';
-                loginView.classList.remove('hidden');
-            }
-            if (tabLogin) {
-                tabLogin.classList.add('bg-surface-white', 'text-primary', 'shadow-sm');
-                tabLogin.classList.remove('text-on-surface-variant');
-            }
-            if (tabRegister) {
-                tabRegister.classList.remove('bg-surface-white', 'text-primary', 'shadow-sm');
-                tabRegister.classList.add('text-on-surface-variant');
-            }
-        }
-    };
-
-    window.handleRegisterSubmit = async function(event) {
-        event.preventDefault();
-
-        const form = event.target;
-        const nomeInput = form.querySelector('input[name="full_name"]') || form.querySelector('input[placeholder*="Carlos"]');
-        const emailInput = form.querySelector('input[name="email"]') || form.querySelector('input[type="email"]');
-        const senhaInput = document.getElementById('regPassword') || form.querySelector('input[type="password"]');
-        const profissaoSelect = form.querySelector('select');
-        const cidadeInput = form.querySelector('input[placeholder*="São Paulo"]') || form.querySelector('input[placeholder*="Cidade"]');
-
-        const tipoRadio = form.querySelector('input[name="user_type"]:checked');
-        const tipo = tipoRadio ? (tipoRadio.value.includes('pro') ? 'PROFISSIONAL' : 'CLIENTE') : 'CLIENTE';
-
-        const payload = {
-            nome: nomeInput ? nomeInput.value.trim() : 'Novo Usuário',
-            email: emailInput ? emailInput.value.trim() : 'usuario@exemplo.com',
-            senha: senhaInput ? senhaInput.value : 'Senha@123',
-            tipo: tipo
-        };
-
-        try {
-            const usuarioCriado = await apiFetch('/api/usuarios', {
-                method: 'POST',
-                body: JSON.stringify(payload)
-            });
-
-            if (tipo === 'PROFISSIONAL' || (profissaoSelect && profissaoSelect.value)) {
-                await apiFetch('/api/profissionais', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        usuarioId: usuarioCriado.id,
-                        profissao: profissaoSelect ? profissaoSelect.value : 'Engenheiro Civil',
-                        cidade: cidadeInput ? cidadeInput.value : 'São Paulo',
-                        descricao: 'Profissional registrado na plataforma Civil Conection',
-                        avaliacao: 5.0,
-                        contato: payload.email
-                    })
-                });
-            }
-
-            showToast('Cadastro realizado com sucesso!');
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 1500);
-        } catch (err) {
-            if (isApiUnavailable(err)) {
-                showToast('Backend não disponível — execute o Spring Boot para cadastrar (veja js/config.js).', false);
-                return;
-            }
-            showToast(err.message || 'Erro ao realizar cadastro', false);
-        }
-    };
-
-    window.handleLoginSubmit = async function(event) {
-        event.preventDefault();
-        showToast('Acesso realizado com sucesso!');
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 1000);
-    };
-}
-
-// Helper debounce function for live search inputs
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
 }
