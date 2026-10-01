@@ -14,6 +14,24 @@ html {
     box-sizing: border-box;
 }
 
+/* Reserva espaço para imagens enquanto carregam (evita CLS mesmo quando
+   width/height estão declarados em layouts com object-fit). */
+img {
+    max-width: 100%;
+    height: auto;
+    background-color: rgba(2, 14, 38, 0.05);
+}
+
+/* Melhora a exibição imediata das fontes do Google (evita FOIT/FOUT). */
+@font-face {
+    font-family: "Archivo";
+    font-display: swap;
+}
+@font-face {
+    font-family: "Sora";
+    font-display: swap;
+}
+
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
