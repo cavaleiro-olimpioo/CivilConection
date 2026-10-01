@@ -49,6 +49,15 @@ function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, ch => HTML_ESCAPES[ch]);
 }
 
+// Detecta falhas de rede/ausência de backend para evitar logs ruidosos no console
+// enquanto o site opera em modo de demonstração (offline/fallback).
+function isOfflineFetchError(error) {
+    if (!error) return false;
+    if (error.name === 'TypeError') return true; // Failed to fetch
+    const msg = (error.message || '').toLowerCase();
+    return msg.includes('failed to fetch') || msg.includes('networkerror') || msg.includes('load failed');
+}
+
 async function apiFetch(endpoint, options = {}) {
     try {
         const response = await fetch(resolveApiUrl(endpoint), {
@@ -60,14 +69,24 @@ async function apiFetch(endpoint, options = {}) {
         });
 
         if (!response.ok) {
+            // Resposta HTTP recebida mas com erro (ex.: 4xx/5xx) — loga apenas
+            // quando o backend realmente respondeu.
             const errorData = await response.json().catch(() => ({ message: 'Erro ao processar requisição' }));
-            throw new Error(errorData.message || 'Erro na requisição');
+            const err = new Error(errorData.message || 'Erro na requisição');
+            err.status = response.status;
+            console.warn(`API ${response.status} em ${endpoint}:`, err.message);
+            throw err;
         }
 
         if (response.status === 204) return null;
         return await response.json();
     } catch (error) {
-        console.error('API Error:', error);
+        // Falha de conexão (sem backend) — usa fallback silenciosamente.
+        if (isOfflineFetchError(error) && !error.status) {
+            const err = new Error('Backend indisponível — usando dados de demonstração.');
+            err.code = 'NETWORK_OFFLINE';
+            throw err;
+        }
         throw error;
     }
 }
