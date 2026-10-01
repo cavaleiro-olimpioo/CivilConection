@@ -174,14 +174,8 @@ function initScrollReveal() {
 // ============================================================
 
 async function initHomePage() {
-    try {
-        const stats = await apiFetch('/api/stats');
-        updateHomeStats(stats);
-    } catch (err) {
-        console.warn('Usando estatísticas padrão:', err.message);
-    }
-
-    // Console de busca do herói
+    // Console de busca do herói — vinculado antes da busca de estatísticas,
+    // para que a busca funcione mesmo se /api/stats falhar, demorar ou travar.
     const form = document.getElementById('hero-search-form');
     const input = document.getElementById('service-search-input');
     if (form && input) {
@@ -192,6 +186,13 @@ async function initHomePage() {
                 ? `profissionais.html?termo=${encodeURIComponent(query)}`
                 : 'profissionais.html';
         });
+    }
+
+    try {
+        const stats = await apiFetch('/api/stats');
+        updateHomeStats(stats);
+    } catch (err) {
+        console.warn('Usando estatísticas padrão:', err.message);
     }
 }
 

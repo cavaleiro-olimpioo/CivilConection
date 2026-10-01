@@ -1,754 +1,1002 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil Connection — Obras, profissionais e diário de obras em uma só plataforma</title>
+  <meta name="description" content="Plataforma que conecta proprietários, engenheiros e empreiteiras da construção civil: publique sua obra, encontre profissionais verificados e acompanhe o diário de canteiro em tempo real." />
+  <meta name="theme-color" content="#020e26" />
+  <meta property="og:title" content="Civil Connection" />
+  <meta property="og:description" content="Conectando ideias, construindo o futuro. Obras, profissionais e diário de obras em uma só plataforma." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/hero-canteiro.jpg" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
 
-<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-low":"#eef4ff","on-primary-fixed-variant":"#3a4761","on-primary-fixed":"#0e1b33","status-success":"#2D8A60","accent-hover":"#D96F0D","on-primary":"#ffffff","surface-variant":"#dbe3f1","primary-container":"#17243c","status-draft":"#9CA3AF","secondary-container":"#fd9432","surface":"#f8f9ff","tertiary":"#000e27","surface-dim":"#d3dae8","on-tertiary-container":"#7a8caf","background":"#f8f9ff","text-main":"#20252C","on-tertiary-fixed":"#061b39","on-error-container":"#93000a","outline-variant":"#c5c6ce","secondary":"#914c00","secondary-fixed-dim":"#ffb77f","on-error":"#ffffff","primary":"#020e26","on-secondary-container":"#673400","tertiary-fixed-dim":"#b5c7ed","error-container":"#ffdad6","surface-tint":"#525e79","status-danger":"#EF4444","surface-card":"#FFFFFF","on-surface-variant":"#45474d","on-secondary":"#ffffff","on-primary-container":"#7f8ba8","on-secondary-fixed-variant":"#6f3900","tertiary-fixed":"#d7e3ff","on-tertiary-fixed-variant":"#354767","surface-bright":"#f8f9ff","primary-fixed":"#d7e2ff","tertiary-container":"#112442","on-surface":"#141c26","on-background":"#141c26","secondary-fixed":"#ffdcc4","surface-container-highest":"#dbe3f1","on-tertiary":"#ffffff","surface-container-lowest":"#ffffff","inverse-on-surface":"#e9f1ff","primary-fixed-dim":"#bac6e6","inverse-surface":"#29313b","surface-container-high":"#e1e9f6","surface-container":"#e7eefc","on-secondary-fixed":"#2f1500","surface-canvas":"#F6F4EF","status-info":"#3B82F6","outline":"#75777e","error":"#ba1a1a","inverse-primary":"#bac6e6","status-warning":"#F59E0B"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"margin-sm":"1rem","space-xl":"2.5rem","gutter-sm":"1rem","space-lg":"1.5rem","space-xs":"0.25rem","gutter":"1.5rem","margin":"2rem","space-md":"1rem","space-sm":"0.5rem"},"fontFamily":{"body-md":["Inter"],"body-sm":["Inter"],"headline-sm":["Sora"],"display-lg-mobile":["Sora"],"headline-md":["Sora"],"label-md":["Inter"],"body-lg":["Inter"],"title-md":["Inter"],"headline-xl-mobile":["Sora"],"display-lg":["Sora"],"headline-lg":["Sora"],"headline-xl":["Sora"],"label-sm":["Inter"]},"fontSize":{"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"headline-sm":["18px",{"lineHeight":"26px","fontWeight":"600"}],"display-lg-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-md":["22px",{"lineHeight":"30px","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"title-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-xl-mobile":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"700"}],"display-lg":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-xl":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"700"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0.05em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface-canvas font-body-md text-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface-card/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md"><img alt="civil_connection_logo.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WOVti2G0Jl0QJ8A5qko53tM9r9tkWLbEERY5F98WlZ7ChnHzEOjvTgR1Vq8aNwyAFKfJLEcSjMEe-aAGMHEiheUZqsYjSVMkoVIEIyGL2b1ceNJNmmKc-r7sA6DGmiT2ma2vxh3y8qw-VVhgIGnA1e6T3GXYvlSeM5coJ6H-2-td84hU0jwh0iLTHNoWz8zvpn9nVG96L624ZPuQj4vay-9xRpGWSbRwkS3p0arAa6iVXVwCeWUICnOfxMJCWOM274CizaxzTH"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-tight tracking-tight">Civil Connection</span><span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:inline-block tracking-wider uppercase">Conectando ideias, construindo o futuro</span></div></div><div class="hidden xl:flex items-center gap-space-sm bg-surface-container px-space-md py-space-xs rounded-xl"><span class="material-symbols-outlined text-outline text-[20px]">search</span><input class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-outline w-64" placeholder="Buscar obras, engenheiros, fornecedores..." type="text"/><div class="h-4 w-[1px] bg-outline-variant"></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">location_on</span><span class="font-label-sm text-label-sm">São Paulo, SP</span></div></div><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-primary font-title-md text-title-md rounded-lg"><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="inicio" href="#">Início</a><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="encontrar-profissionais" href="#">Encontrar Profissionais</a><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="obras-e-projetos" href="#">Obras &amp; Projetos</a><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="diario-de-obras" href="#">Diário de Obras</a><a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard-visao-geral" href="#">Dashboard</a></nav><div class="flex items-center gap-space-md"><button class="hidden sm:inline-flex items-center gap-space-xs bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md px-space-lg py-space-sm rounded-lg transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span>Publicar Projeto</span></button><div class="relative flex items-center justify-center"><button aria-label="Notificações" class="p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[24px]">notifications</span></button><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-status-danger"></span></div><div class="flex items-center gap-space-xs pl-space-xs"><div class="relative"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-status-success rounded-full ring-2 ring-surface-card flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[9px]">verified</span></span></div></div></div></div></header><main class="w-full pt-20 bg-surface-canvas"><div class="flex flex-col w-full">
-<!-- HERO MASTER SECTION -->
-<section class="relative w-full overflow-hidden bg-primary text-on-primary">
-<div class="absolute inset-0 opacity-15 pointer-events-none">
-<svg class="w-full h-full" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<pattern height="48" id="blueprint-grid" patternunits="userSpaceOnUse" width="48">
-<path d="M 48 0 L 0 0 0 48" fill="none" stroke="currentColor" stroke-width="0.75"></path>
-<circle cx="24" cy="24" fill="currentColor" opacity="0.3" r="1.5"></circle>
-</pattern>
-</defs>
-<rect fill="url(#blueprint-grid)" height="100%" width="100%"></rect>
-</svg>
-</div>
-<!-- Soft Ambient Light -->
-<div class="absolute -top-32 -right-32 w-96 h-96 bg-secondary-container/20 rounded-full blur-3xl pointer-events-none"></div>
-<div class="absolute -bottom-24 -left-24 w-80 h-80 bg-status-info/10 rounded-full blur-3xl pointer-events-none"></div>
-<div class="relative max-w-7xl mx-auto px-margin pt-space-xl pb-28 flex flex-col items-center text-center">
-<div class="inline-flex items-center gap-space-xs bg-surface-card/10 backdrop-blur-md px-space-md py-space-xs rounded-full mb-space-lg shadow-sm">
-<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed">Ecossistema Construtivo Integrado</span>
-<span class="font-label-sm text-label-sm text-surface-variant/70">| Conforme CREA &amp; ABNT</span>
-</div>
-<h1 class="font-headline-xl text-headline-xl sm:text-[44px] sm:leading-[52px] font-bold text-on-primary max-w-4xl tracking-tight mb-space-md">
-        Conectando ideias, <span class="text-secondary-container">construindo o futuro</span>
-</h1>
-<p class="font-body-lg text-body-lg text-surface-variant max-w-2xl mb-space-xl text-balance font-light">
-        A plataforma definitiva que une incorporadores, clientes residenciais, engenheiros civis certificados e empreiteiras de alto desempenho em um fluxo auditável, transparente e seguro.
-      </p>
-<!-- Dynamic Search Console Card -->
-<div class="w-full max-w-4xl bg-surface-card rounded-xl p-space-md shadow-xl text-on-surface text-left">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm items-center">
-<!-- Service Dropdown / Input -->
-<div class="md:col-span-4 flex flex-col bg-surface-container-low px-space-md py-space-xs rounded-lg">
-<label class="font-label-sm text-label-sm uppercase text-on-surface-variant">Especialidade / Serviço</label>
-<div class="flex items-center gap-space-xs mt-0.5">
-<span class="material-symbols-outlined text-primary text-[20px]">handyman</span>
-<input class="w-full bg-transparent font-body-sm text-body-sm text-on-surface outline-none placeholder:text-outline" id="service-search-input" placeholder="Ex: Estrutura, Alvenaria, Elétrica..." type="text"/>
-</div>
-</div>
-<!-- Location Selector -->
-<div class="md:col-span-3 flex flex-col bg-surface-container-low px-space-md py-space-xs rounded-lg">
-<label class="font-label-sm text-label-sm uppercase text-on-surface-variant">Localidade</label>
-<div class="flex items-center gap-space-xs mt-0.5">
-<span class="material-symbols-outlined text-secondary text-[20px]">location_on</span>
-<select class="w-full bg-transparent font-body-sm text-body-sm text-on-surface outline-none cursor-pointer">
-<option value="SP">São Paulo, SP</option>
-<option value="RJ">Rio de Janeiro, RJ</option>
-<option value="MG">Belo Horizonte, MG</option>
-<option value="PR">Curitiba, PR</option>
-<option value="RS">Porto Alegre, RS</option>
-<option value="BA">Salvador, BA</option>
-<option value="ALL">Todo o Brasil</option>
-</select>
-</div>
-</div>
-<!-- Target Profile / Modalidade -->
-<div class="md:col-span-3 flex flex-col bg-surface-container-low px-space-md py-space-xs rounded-lg">
-<label class="font-label-sm text-label-sm uppercase text-on-surface-variant">Perfil Buscado</label>
-<div class="flex items-center gap-space-xs mt-0.5">
-<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
-<select class="w-full bg-transparent font-body-sm text-body-sm text-on-surface outline-none cursor-pointer">
-<option value="all">Todos os Especialistas</option>
-<option value="eng">Engenheiro / RT</option>
-<option value="emp">Empreiteira Homologada</option>
-<option value="tec">Técnicos &amp; Mão de Obra</option>
-</select>
-</div>
-</div>
-<!-- Action Button -->
-<div class="md:col-span-2 h-full">
-<button class="w-full h-full min-h-[46px] bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md rounded-lg flex items-center justify-center gap-space-xs transition-all duration-200 shadow-md" id="btn-hero-search">
-<span class="material-symbols-outlined text-[20px]">search</span>
-<span>Filtrar</span>
-</button>
-</div>
-</div>
-<!-- Quick Filter Tags -->
-<div class="flex flex-wrap items-center gap-space-xs mt-space-md pt-space-xs text-on-surface-variant">
-<span class="font-label-sm text-label-sm flex items-center gap-1 font-semibold text-primary">
-<span class="material-symbols-outlined text-[16px]">bolt</span> Em alta:
-          </span>
-<button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Estruturas de Concreto" type="button">Estruturas de Concreto</button>
-<button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Alvenaria Estrutural" type="button">Alvenaria</button>
-<button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Hidráulica Predial" type="button">Hidráulica</button>
-<button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Instalações Elétricas" type="button">Elétrica</button>
-<button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Climatização HVAC" type="button">Climatização</button>
-<button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Pintura e Acabamento" type="button">Pintura Fina</button>
-</div>
-</div>
-</div>
-</section>
-<!-- LIVE METRICS BAR (dashboard_stats view reflection) -->
-<section class="w-full bg-surface-card -mt-10 max-w-6xl mx-auto px-margin rounded-xl shadow-lg relative z-20">
-<div class="grid grid-cols-2 md:grid-cols-4 py-space-lg gap-gutter divide-y-0 text-center">
-<div class="flex flex-col items-center">
-<div class="flex items-center gap-space-xs text-secondary mb-1">
-<span class="material-symbols-outlined text-[24px]">apartment</span>
-<span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight" data-stat="obrasConcluidas">+1.250</span>
-</div>
-<p class="font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold">Obras Concluídas</p>
-<span class="font-body-sm text-body-sm text-status-success flex items-center gap-0.5 mt-0.5">
-<span class="material-symbols-outlined text-[14px]">trending_up</span> 100% com ART emitida
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'surface-container-low': '#eef4ff',
+            'on-primary-fixed-variant': '#3a4761',
+            'on-primary-fixed': '#0e1b33',
+            'status-success': '#2D8A60',
+            'accent-hover': '#D96F0D',
+            'on-primary': '#ffffff',
+            'surface-variant': '#dbe3f1',
+            'primary-container': '#17243c',
+            'status-draft': '#9CA3AF',
+            'secondary-container': '#fd9432',
+            'surface': '#f8f9ff',
+            'tertiary': '#000e27',
+            'surface-dim': '#d3dae8',
+            'on-tertiary-container': '#7a8caf',
+            'background': '#f8f9ff',
+            'text-main': '#20252C',
+            'on-tertiary-fixed': '#061b39',
+            'on-error-container': '#93000a',
+            'outline-variant': '#c5c6ce',
+            'secondary': '#914c00',
+            'secondary-fixed-dim': '#ffb77f',
+            'on-error': '#ffffff',
+            'primary': '#020e26',
+            'on-secondary-container': '#673400',
+            'tertiary-fixed-dim': '#b5c7ed',
+            'error-container': '#ffdad6',
+            'surface-tint': '#525e79',
+            'status-danger': '#EF4444',
+            'surface-card': '#FFFFFF',
+            'on-surface-variant': '#45474d',
+            'on-secondary': '#ffffff',
+            'on-primary-container': '#7f8ba8',
+            'on-secondary-fixed-variant': '#6f3900',
+            'tertiary-fixed': '#d7e3ff',
+            'on-tertiary-fixed-variant': '#354767',
+            'surface-bright': '#f8f9ff',
+            'primary-fixed': '#d7e2ff',
+            'tertiary-container': '#112442',
+            'on-surface': '#141c26',
+            'on-background': '#141c26',
+            'secondary-fixed': '#ffdcc4',
+            'surface-container-highest': '#dbe3f1',
+            'on-tertiary': '#ffffff',
+            'surface-container-lowest': '#ffffff',
+            'inverse-on-surface': '#e9f1ff',
+            'primary-fixed-dim': '#bac6e6',
+            'inverse-surface': '#29313b',
+            'surface-container-high': '#e1e9f6',
+            'surface-container': '#e7eefc',
+            'on-secondary-fixed': '#2f1500',
+            'surface-canvas': '#F6F4EF',
+            'status-info': '#3B82F6',
+            'outline': '#75777e',
+            'error': '#ba1a1a',
+            'inverse-primary': '#bac6e6',
+            'status-warning': '#F59E0B',
+          },
+          borderRadius: {
+            DEFAULT: '0.125rem',
+            sm: '0.25rem',
+            lg: '0.375rem',
+            xl: '0.625rem',
+            '2xl': '1rem',
+            full: '9999px',
+          },
+          spacing: {
+            'margin-sm': '1rem',
+            'space-xl': '2.5rem',
+            'gutter-sm': '1rem',
+            'space-lg': '1.5rem',
+            'space-xs': '0.25rem',
+            gutter: '1.5rem',
+            margin: '2rem',
+            'space-md': '1rem',
+            'space-sm': '0.5rem',
+          },
+          fontFamily: {
+            display: ['Sora', 'sans-serif'],
+            headline: ['Sora', 'sans-serif'],
+            body: ['Archivo', 'sans-serif'],
+            sans: ['Archivo', 'sans-serif'],
+            'body-md': ['Archivo', 'sans-serif'],
+            'body-sm': ['Archivo', 'sans-serif'],
+            'body-lg': ['Archivo', 'sans-serif'],
+            'label-md': ['Archivo', 'sans-serif'],
+            'label-sm': ['Archivo', 'sans-serif'],
+            'label-lg': ['Archivo', 'sans-serif'],
+            'title-md': ['Archivo', 'sans-serif'],
+            'title-lg': ['Archivo', 'sans-serif'],
+            'headline-sm': ['Sora', 'sans-serif'],
+            'headline-md': ['Sora', 'sans-serif'],
+            'headline-lg': ['Sora', 'sans-serif'],
+            'headline-xl': ['Sora', 'sans-serif'],
+            'display-lg': ['Sora', 'sans-serif'],
+            'display-lg-mobile': ['Sora', 'sans-serif'],
+            'headline-xl-mobile': ['Sora', 'sans-serif'],
+          },
+          fontSize: {
+            'body-md': ['15px', { lineHeight: '24px', fontWeight: '400' }],
+            'body-sm': ['13px', { lineHeight: '20px', fontWeight: '400' }],
+            'headline-sm': ['18px', { lineHeight: '26px', fontWeight: '600' }],
+            'display-lg-mobile': ['32px', { lineHeight: '40px', letterSpacing: '-0.01em', fontWeight: '700' }],
+            'headline-md': ['22px', { lineHeight: '30px', fontWeight: '600' }],
+            'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0.01em', fontWeight: '600' }],
+            'body-lg': ['18px', { lineHeight: '28px', fontWeight: '400' }],
+            'title-md': ['16px', { lineHeight: '24px', fontWeight: '600' }],
+            'title-lg': ['20px', { lineHeight: '28px', fontWeight: '600' }],
+            'label-lg': ['15px', { lineHeight: '22px', fontWeight: '600' }],
+            'headline-xl-mobile': ['26px', { lineHeight: '34px', letterSpacing: '-0.01em', fontWeight: '700' }],
+            'display-lg': ['52px', { lineHeight: '60px', letterSpacing: '-0.025em', fontWeight: '700' }],
+            'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '600' }],
+            'headline-xl': ['36px', { lineHeight: '44px', letterSpacing: '-0.015em', fontWeight: '700' }],
+            'label-sm': ['11px', { lineHeight: '16px', letterSpacing: '0.05em', fontWeight: '600' }],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="bg-surface-canvas font-body-md text-body-md text-on-surface">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
+  <!-- ══════════════════ HEADER ══════════════════ -->
+  <header class="fixed top-0 w-full z-50 bg-surface-card/90 backdrop-blur-xl shadow-[0_1px_0_rgba(2,14,38,0.08)]">
+    <div class="h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-gutter">
+      <a class="flex items-center gap-space-md shrink-0" href="index.html" aria-label="Civil Connection — página inicial">
+        <img alt="Logotipo Civil Connection" class="h-10 w-auto object-contain" src="assets/images/logo.png" />
+        <span class="hidden flex-col leading-tight md:flex">
+          <span class="font-headline-sm text-headline-sm text-primary tracking-tight">Civil Connection</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant tracking-wide">Conectando ideias, construindo o futuro</span>
         </span>
-</div>
-<div class="flex flex-col items-center">
-<div class="flex items-center gap-space-xs text-secondary mb-1">
-<span class="material-symbols-outlined text-[24px]">groups</span>
-<span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight" data-stat="profissionaisCadastrados">+3.400</span>
-</div>
-<p class="font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold">Profissionais Cadastrados</p>
-<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Engenheiros &amp; Técnicos</span>
-</div>
-<div class="flex flex-col items-center">
-<div class="flex items-center gap-space-xs text-secondary mb-1">
-<span class="material-symbols-outlined text-[24px]">verified</span>
-<span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight" data-stat="satisfacaoMedia">98.4%</span>
-</div>
-<p class="font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold">Índice de Satisfação</p>
-<span class="font-body-sm text-body-sm text-status-success flex items-center gap-0.5 mt-0.5">
-<span class="material-symbols-outlined text-[14px]">star</span> Base de avaliações reais
-        </span>
-</div>
-<div class="flex flex-col items-center">
-<div class="flex items-center gap-space-xs text-secondary mb-1">
-<span class="material-symbols-outlined text-[24px]">domain</span>
-<span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight" data-stat="totalObras">+520</span>
-</div>
-<p class="font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold">Empreiteiras Homologadas</p>
-<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Auditoria de conformidade</span>
-</div>
-</div>
-</section>
-<!-- SERVIÇOS & SOLUÇÕES POR PÚBLICO (Segmented Tab System) -->
-<section class="max-w-7xl mx-auto px-margin pt-24 pb-space-xl w-full">
-<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md">
-<div class="max-w-2xl">
-<div class="flex items-center gap-space-xs text-secondary font-label-md text-label-md uppercase mb-1">
-<span class="material-symbols-outlined text-[18px]">hub</span>
-<span>Soluções Sob Medida</span>
-</div>
-<h2 class="font-headline-xl text-headline-xl font-bold text-primary tracking-tight">
-          Arquitetada para cada agente da cadeia construtiva
-        </h2>
-</div>
-<!-- Segment Selector Buttons -->
-<div class="flex bg-surface-container p-1 rounded-xl w-fit">
-<button class="tab-btn active px-space-md py-space-xs rounded-lg font-label-md text-label-md text-on-primary bg-primary shadow-sm transition-all flex items-center gap-1.5" id="tab-btn-clientes" onclick="switchAudienceTab('clientes')">
-<span class="material-symbols-outlined text-[18px]">home_work</span>
-<span>Proprietários &amp; Clientes</span>
-</button>
-<button class="tab-btn px-space-md py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" id="tab-btn-engenheiros" onclick="switchAudienceTab('engenheiros')">
-<span class="material-symbols-outlined text-[18px]">engineering</span>
-<span>Engenheiros &amp; RTs</span>
-</button>
-<button class="tab-btn px-space-md py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" id="tab-btn-empreiteiras" onclick="switchAudienceTab('empreiteiras')">
-<span class="material-symbols-outlined text-[18px]">corporate_fare</span>
-<span>Empreiteiras &amp; Construtoras</span>
-</button>
-</div>
-</div>
-<!-- Audience Panes Container -->
-<div class="relative min-h-[380px]" id="audience-panels">
-<!-- Pane 1: Clientes -->
-<div class="audience-pane block" id="pane-clientes">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center bg-surface-card rounded-xl p-space-lg md:p-space-xl shadow-md">
-<div class="lg:col-span-7 flex flex-col gap-space-md">
-<span class="px-space-sm py-1 bg-surface-container-low text-primary w-fit rounded-lg font-label-sm text-label-sm uppercase">Para quem vai construir ou reformar</span>
-<h3 class="font-headline-lg text-headline-lg font-bold text-primary">Segurança contratual, vistorias regulares e zero surpresas</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-              Publique o escopo da sua obra e receba orçamentos estruturados de profissionais pré-avaliados. Tenha controle do diário de obras, medições e liberação de pagamentos atrelada a entregas físicas reais.
-            </p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm my-space-xs">
-<div class="flex items-start gap-space-xs">
-<span class="material-symbols-outlined text-status-success text-[20px] mt-0.5">task_alt</span>
-<div>
-<h4 class="font-title-md text-title-md text-primary">Contrato &amp; Garantia</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Retenção de sinal até a validação do marco técnico.</p>
-</div>
-</div>
-<div class="flex items-start gap-space-xs">
-<span class="material-symbols-outlined text-status-success text-[20px] mt-0.5">task_alt</span>
-<div>
-<h4 class="font-title-md text-title-md text-primary">Diário de Obras Online</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Fotos diárias, clima no canteiro e cronograma físico.</p>
-</div>
-</div>
-</div>
-<div class="flex items-center gap-space-md pt-space-xs">
-<button class="bg-secondary-container hover:bg-accent-hover text-on-secondary px-space-lg py-space-sm font-label-md text-label-md rounded-lg flex items-center gap-space-xs transition-colors shadow-sm">
-<span>Publicar Minha Obra Gratuitamente</span>
-<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</button>
-<a class="font-title-md text-title-md text-primary hover:text-secondary flex items-center gap-1" href="#">
-                Como funciona o escrow <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-</a>
-</div>
-</div>
-<div class="lg:col-span-5 relative">
-<div class="overflow-hidden rounded-xl shadow-md h-72 w-full">
-<img class="w-full h-full object-cover" data-alt="Modern architectural construction site in daylight with an engineer reviewing blueprints on a tablet next to a family client, crisp lighting with steel structural framework visible in background, professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPfsKSIc3Cmb_2Ln60p3RGGNSijR0vcGFKT8BnGy7THKR_Zv2n7uZgQ_ec-jAM4FJG4zLEWI0vUyPzRTvRoYeIxz9z9sEVwAkwQnu86iS5ScdK3Xs2rlOXviMxBtS028HHE2d_cDpLCGQZFkKPfqCXEnR7pIJjKhl2L4Wq2ip9SJDuUlOcyaUKVG9s4l-E36ZvhEG4TVrGjc3MH4YDXNFxHfmx-eC0My8-rGZUL4wzLMiBYKPIwrdi0Q"/>
-</div>
-<div class="absolute -bottom-4 -left-4 bg-surface-card p-space-md rounded-lg shadow-lg flex items-center gap-space-sm max-w-xs">
-<span class="material-symbols-outlined text-secondary text-[32px]">shield</span>
-<div>
-<p class="font-title-md text-title-md text-primary leading-tight">ART Vinculada</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Registro técnico obrigatório</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Pane 2: Engenheiros -->
-<div class="audience-pane hidden" id="pane-engenheiros">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center bg-surface-card rounded-xl p-space-lg md:p-space-xl shadow-md">
-<div class="lg:col-span-7 flex flex-col gap-space-md">
-<span class="px-space-sm py-1 bg-surface-container-low text-primary w-fit rounded-lg font-label-sm text-label-sm uppercase">Para Engenheiros, Arquitetos e Peritos</span>
-<h3 class="font-headline-lg text-headline-lg font-bold text-primary">Captação contínua de projetos e emissão integrada de vistorias</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-              Expanda sua carteira de clientes com leads qualificados. Gerencie responsabilidade técnica (RT), aprove orçamentos com detalhamento analítico e utilize nosso app para gerar diários de obras com carimbo de geolocalização.
-            </p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm my-space-xs">
-<div class="flex items-start gap-space-xs">
-<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">verified_user</span>
-<div>
-<h4 class="font-title-md text-title-md text-primary">Selo Profissional CREA</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Verificação expressa de certidão técnica junto ao conselho.</p>
-</div>
-</div>
-<div class="flex items-start gap-space-xs">
-<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">assignment</span>
-<div>
-<h4 class="font-title-md text-title-md text-primary">Templates de Laudo &amp; Orçamento</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Modelos Sinapi integrados para orçamentação precisa.</p>
-</div>
-</div>
-</div>
-<div class="flex items-center gap-space-md pt-space-xs">
-<button class="bg-primary hover:bg-primary-container text-on-primary px-space-lg py-space-sm font-label-md text-label-md rounded-lg flex items-center gap-space-xs transition-colors shadow-sm">
-<span>Cadastrar Perfil Técnico</span>
-<span class="material-symbols-outlined text-[18px]">verified</span>
-</button>
-<a class="font-title-md text-title-md text-primary hover:text-secondary flex items-center gap-1" href="#">
-                Conhecer plano Pro <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-</a>
-</div>
-</div>
-<div class="lg:col-span-5 relative">
-<div class="overflow-hidden rounded-xl shadow-md h-72 w-full">
-<img class="w-full h-full object-cover" data-alt="Civil engineer with protective safety hardhat checking structural concrete columns in building site, natural outdoor lighting, professional construction management ambiance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfLCdfUAuwDnjFTv6QQnrVH9j7EirZOfP2z2UrdnlHT2R9LL3uGq5AZiIIQr89wmPL92VJl8xqtgPmiXgjJ4cWQ_-Jl71Wqt2OQXgAzY6r8TIonjyqxPNWOR1SDtCVeyCxkJfrmHyXJTKCrBW_1gTdNbWfElmTA0FRci-i6YO6zGHnLi7kZHj65ayiMOPXSMBcmCfv7sb2rBTdRi0XvAOtoQ4kflh_5AH4njUu-Wc4kp9NXBhLDWwJ5w"/>
-</div>
-<div class="absolute -bottom-4 -right-4 bg-surface-card p-space-md rounded-lg shadow-lg flex items-center gap-space-sm">
-<span class="material-symbols-outlined text-status-success text-[32px]">payments</span>
-<div>
-<p class="font-title-md text-title-md text-primary leading-tight">Recebimento Pontual</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Sem inadimplência de honorários</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Pane 3: Empreiteiras -->
-<div class="audience-pane hidden" id="pane-empreiteiras">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center bg-surface-card rounded-xl p-space-lg md:p-space-xl shadow-md">
-<div class="lg:col-span-7 flex flex-col gap-space-md">
-<span class="px-space-sm py-1 bg-surface-container-low text-primary w-fit rounded-lg font-label-sm text-label-sm uppercase">Para Empreiteiras &amp; Construtoras</span>
-<h3 class="font-headline-lg text-headline-lg font-bold text-primary">Alocação de equipes, subcontratação ágil e concorrências de vulto</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-              Centralize seu pipeline de obras comerciais, industriais e residenciais. Encontre subempreiteiros especializados homologados para pacotes de instalações elétricas, hidráulicas e armação de ferragens.
-            </p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm my-space-xs">
-<div class="flex items-start gap-space-xs">
-<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">groups_2</span>
-<div>
-<h4 class="font-title-md text-title-md text-primary">Rede de Subempreiteiros</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Times avaliados por pontualidade e produtividade no canteiro.</p>
-</div>
-</div>
-<div class="flex items-start gap-space-xs">
-<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">insights</span>
-<div>
-<h4 class="font-title-md text-title-md text-primary">Acompanhamento de Medições</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Histórico rastreável de avanço físico-financeiro por lote.</p>
-</div>
-</div>
-</div>
-<div class="flex items-center gap-space-md pt-space-xs">
-<button class="bg-secondary-container hover:bg-accent-hover text-on-secondary px-space-lg py-space-sm font-label-md text-label-md rounded-lg flex items-center gap-space-xs transition-colors shadow-sm">
-<span>Homologar Minha Construtora</span>
-<span class="material-symbols-outlined text-[18px]">domain_add</span>
-</button>
-<a class="font-title-md text-title-md text-primary hover:text-secondary flex items-center gap-1" href="#">
-                Concorrências abertas <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-</a>
-</div>
-</div>
-<div class="lg:col-span-5 relative">
-<div class="overflow-hidden rounded-xl shadow-md h-72 w-full">
-<img class="w-full h-full object-cover" data-alt="Commercial construction site with heavy yellow cranes, steel beam framing, and safety personnel in high visibility vests inspecting progress at sunset." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkPv0WH-_2ni48kmdChrMJDhtt_BASLCXS5Ov8qNR54PIgpBTkyyEiuo47j9Kh2dgNBlFmWYTVhnr05rf9EERhgbkF4KeYU8hk0E2yvQ6lApRleUGkoZvoc3AkGN_Oep1q2Iv_Ul-IQVrybspjIFe3SKCgIUzOP4qIAQKRYq0PydiGCwm7sAL_rSU5igQkhUJo08kmq9ZSanHt8DGJp4jUBoouFd1bIyZXQlH6I0LknEQ9xD0kMyBaJg"/>
-</div>
-<div class="absolute -bottom-4 -left-4 bg-surface-card p-space-md rounded-lg shadow-lg flex items-center gap-space-sm">
-<span class="material-symbols-outlined text-primary text-[32px]">fact_check</span>
-<div>
-<p class="font-title-md text-title-md text-primary leading-tight">Auditoria Fiscal &amp; CND</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Compliance tributário em dia</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- VITRINE DE PROFISSIONAIS E EMPREITEIRAS EM DESTAQUE -->
-<section class="w-full bg-surface-container-low py-space-xl">
-<div class="max-w-7xl mx-auto px-margin">
-<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-space-xl gap-space-md">
-<div>
-<div class="flex items-center gap-space-xs text-secondary font-label-md text-label-md uppercase mb-1">
-<span class="material-symbols-outlined text-[18px]">verified</span>
-<span>Quadro Técnico Homologado</span>
-</div>
-<h2 class="font-headline-xl text-headline-xl font-bold text-primary tracking-tight">
-            Especialistas em destaque na plataforma
-          </h2>
-</div>
-<a class="font-title-md text-title-md text-primary hover:text-secondary flex items-center gap-space-xs" data-path="encontrar-profissionais" href="#">
-<span>Ver todos os 3.400+ profissionais</span>
-<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</a>
-</div>
-<!-- Professional Cards Bento Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-<!-- Card 1: Engenheiro Estrutural -->
-<div class="bg-surface-card rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-<div>
-<div class="flex items-start justify-between gap-space-sm mb-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="relative">
-<div class="w-14 h-14 rounded-full overflow-hidden bg-surface-container">
-<img class="w-full h-full object-cover" data-alt="Portrait of experienced male structural engineer with friendly smile, wearing blue collared work shirt and safety glasses indoors with architectural plans in background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-vtbOaLbwMQaVEvPUViIFtmYB5s3ASBuhuEMvHF4ba3_Gttr9Gpc6WwEiWEUyqTQ6VUilv9GRshxVdE3fw-xRGpVgcm57X9FZMTpzdLGyY0Yu-7E4dcjCRPqLhdbDp95-TbC2ELCaVvH_DrQKS8vIlIjVnND2iXyXV3r5rg1sVZrXFUvzVPOx2pefZgcn7yDCVr33m9KgkRdCETVrCblbij5QCCsexs_WQa-wOsqrcZ-m-g2z2xC7RA"/>
-</div>
-<span class="absolute -bottom-1 -right-1 w-5 h-5 bg-status-success rounded-full flex items-center justify-center text-on-primary" title="CREA Ativo">
-<span class="material-symbols-outlined text-[12px]">check</span>
-</span>
-</div>
-<div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Eng. Ricardo Valadares</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">CREA 506.912.441-SP</p>
-</div>
-</div>
-<span class="px-space-xs py-0.5 bg-status-success/10 text-status-success rounded font-label-sm text-label-sm uppercase font-semibold">Verificado</span>
-</div>
-<div class="flex items-center gap-space-md mb-space-md pb-space-sm bg-surface-container-low px-space-md py-space-xs rounded-lg">
-<div class="flex items-center gap-1 text-secondary font-semibold">
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-title-md text-title-md">4.9</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant font-normal">(48 obras)</span>
-</div>
-<div class="h-4 w-[1px] bg-outline-variant"></div>
-<div class="font-body-sm text-body-sm text-on-surface font-medium">14 anos exp.</div>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
-              Especialista em cálculo estrutural de concreto armado, fundações profundas e reforço estrutural em retrofits urbanos.
-            </p>
-<div class="flex flex-wrap gap-1 mb-space-lg">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Cálculo Estrutural</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Fundações</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Laudos Técnicos</span>
-</div>
-</div>
-<div class="pt-space-md flex items-center justify-between">
-<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px]">location_on</span> São Paulo &amp; ABCD
-            </span>
-<button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-space-xs rounded-lg font-label-md text-label-md flex items-center gap-1 transition-colors">
-<span>Solicitar ART</span>
-<span class="material-symbols-outlined text-[16px]">send</span>
-</button>
-</div>
-</div>
-<!-- Card 2: Empreiteira de Obras Civis -->
-<div class="bg-surface-card rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-<div>
-<div class="flex items-start justify-between gap-space-sm mb-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="relative">
-<div class="w-14 h-14 rounded-full overflow-hidden bg-surface-container flex items-center justify-center">
-<img class="w-full h-full object-cover" data-alt="Corporate logo emblem of construction contractor company with orange geometric scaffolding lines on solid navy blue background, modern and sharp." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA62QO-WkAfDYKDDmmae1_vTwkX0UxWD6nVyR1sfKMaTsXJqr9-1DLO2lOJRZPdBTNCgDaqmzrSKRZnd4xqsDf6zQjPeXdc23ZaVoaQrS2IYmhq-vrKmC9GqvMAVRSKXzm0rMHVZ3PCmVnfGTQvVIKhUnNiceV6nHzl2nHtYRF4pToSi7IeviiUevBAYslF6X1gCX_Zg6iKGtdXFqqXEVT-78o-ScS8OBAUYI92T4QAq01C5IkYhcf99g"/>
-</div>
-<span class="absolute -bottom-1 -right-1 w-5 h-5 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary" title="Empreiteira Premium">
-<span class="material-symbols-outlined text-[12px]">workspace_premium</span>
-</span>
-</div>
-<div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Aliança Obras &amp; Edificações</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">CNPJ Ativo | ISO 9001</p>
-</div>
-</div>
-<span class="px-space-xs py-0.5 bg-status-info/10 text-status-info rounded font-label-sm text-label-sm uppercase font-semibold">Empreiteira</span>
-</div>
-<div class="flex items-center gap-space-md mb-space-md pb-space-sm bg-surface-container-low px-space-md py-space-xs rounded-lg">
-<div class="flex items-center gap-1 text-secondary font-semibold">
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-title-md text-title-md">5.0</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant font-normal">(112 obras)</span>
-</div>
-<div class="h-4 w-[1px] bg-outline-variant"></div>
-<div class="font-body-sm text-body-sm text-on-surface font-medium">19 anos exp.</div>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
-              Execução turn-key de obras comerciais, galpões logísticos e reformas corporativas de alto padrão com frota própria.
-            </p>
-<div class="flex flex-wrap gap-1 mb-space-lg">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Turn-Key</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Estrutura Metálica</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Alvenaria</span>
-</div>
-</div>
-<div class="pt-space-md flex items-center justify-between">
-<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px]">location_on</span> Campinas &amp; Região
-            </span>
-<button class="bg-secondary-container hover:bg-accent-hover text-on-secondary px-space-md py-space-xs rounded-lg font-label-md text-label-md flex items-center gap-1 transition-colors">
-<span>Cotar Escopo</span>
-<span class="material-symbols-outlined text-[16px]">description</span>
-</button>
-</div>
-</div>
-<!-- Card 3: Especialista em Instalações & HVAC -->
-<div class="bg-surface-card rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-<div>
-<div class="flex items-start justify-between gap-space-sm mb-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="relative">
-<div class="w-14 h-14 rounded-full overflow-hidden bg-surface-container">
-<img class="w-full h-full object-cover" data-alt="Portrait of female electrical and MEP engineer in hardhat smiling confidently while carrying technical blueprints, clean industrial background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeh8ZEi6Pmd0AIKI5oRuixH8jxaP-LhPvKFIluv0kvs0hpBwVy3Nqv_TdD2Q7vIE3suu6CflB9UvteDmrMWu4_zz90MIszzO71buZP_2AE8NFqYbPXQV_ZAd0Mi7uVqjhFGLdakPsPmSPuOtRt_zjHSQqYoGjdxsLKUYkdXwVXQxT_NJQn05iou2KFcZtlUeFasatWlEkNXlzmmpuoZceWGml98hE7gJ5qrR7IKeH6rSuWe8UhvJ1Y5A"/>
-</div>
-<span class="absolute -bottom-1 -right-1 w-5 h-5 bg-status-success rounded-full flex items-center justify-center text-on-primary" title="CFT/CREA">
-<span class="material-symbols-outlined text-[12px]">check</span>
-</span>
-</div>
-<div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Engª. Camila Montenegro</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">CREA 819.043.119-MG</p>
-</div>
-</div>
-<span class="px-space-xs py-0.5 bg-status-success/10 text-status-success rounded font-label-sm text-label-sm uppercase font-semibold">Verificado</span>
-</div>
-<div class="flex items-center gap-space-md mb-space-md pb-space-sm bg-surface-container-low px-space-md py-space-xs rounded-lg">
-<div class="flex items-center gap-1 text-secondary font-semibold">
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-title-md text-title-md">4.8</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant font-normal">(34 obras)</span>
-</div>
-<div class="h-4 w-[1px] bg-outline-variant"></div>
-<div class="font-body-sm text-body-sm text-on-surface font-medium">9 anos exp.</div>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
-              Projetista hidrossanitária, subestações abrigadas, climatização industrial e prevenção contra incêndio (AVCB).
-            </p>
-<div class="flex flex-wrap gap-1 mb-space-lg">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Instalações MEP</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">AVCB Bombeiros</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">HVAC</span>
-</div>
-</div>
-<div class="pt-space-md flex items-center justify-between">
-<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px]">location_on</span> Belo Horizonte &amp; Vale
-            </span>
-<button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-space-xs rounded-lg font-label-md text-label-md flex items-center gap-1 transition-colors">
-<span>Contatar</span>
-<span class="material-symbols-outlined text-[16px]">chat</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- OBRAS RECENTES PUBLICADAS (Feed de Oportunidades & Concorrências) -->
-<section class="max-w-7xl mx-auto px-margin py-space-xl w-full">
-<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-space-lg gap-space-md">
-<div>
-<div class="flex items-center gap-space-xs text-secondary font-label-md text-label-md uppercase mb-1">
-<span class="material-symbols-outlined text-[18px]">handshake</span>
-<span>Mural de Oportunidades</span>
-</div>
-<h2 class="font-headline-xl text-headline-xl font-bold text-primary tracking-tight">
-          Obras recentes abertas para propostas
-        </h2>
-</div>
-<div class="flex items-center gap-space-xs">
-<span class="font-label-sm text-label-sm text-on-surface-variant">Filtro Rápido:</span>
-<select class="bg-surface-card px-space-sm py-1 rounded-lg text-on-surface font-label-sm text-label-sm shadow-sm outline-none" id="project-filter-status">
-<option value="all">Todas as Categorias</option>
-<option value="residencial">Residencial</option>
-<option value="comercial">Comercial</option>
-<option value="industrial">Industrial</option>
-</select>
-</div>
-</div>
-<!-- Cards de Projetos -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter" id="projects-grid">
-<!-- Obra 1 -->
-<div class="bg-surface-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col group project-card" data-category="residencial">
-<div class="relative h-48 w-full overflow-hidden bg-surface-container">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Contemporary two-story residential house under structural concrete framing stage with blue sky, safety netting, clean construction site view." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxUMfCuU1129eWV28wuTbGzUraaTSnI_bZNCoGaJzH0v8qU0HjqoMEUcLl09DutBY806eSiLIby3XbN26Ubt749FgYyfT7sHoQelABZKzHlfPn56sCsbeVhuB4HuOY03Sk3hVQpYLBgl1hgBtyHrGFfZI0kUbHZ9I5NhluAvPNhJEJeuQ8lJnwUSOnE3UFfb9iiENwBmHETOR6YtAhCKrbSomTb6sPUC6qnt5C2dWmErY5VvlNAViWYw"/>
-<span class="absolute top-3 left-3 bg-primary/90 text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm backdrop-blur-sm uppercase">
-            Residencial Alto Padrão
-          </span>
-<span class="absolute top-3 right-3 bg-status-success text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm font-semibold">
-            Recebendo Propostas
-          </span>
-</div>
-<div class="p-space-lg flex flex-col flex-1 justify-between">
-<div>
-<div class="flex items-center gap-1 font-label-sm text-label-sm text-secondary mb-1">
-<span class="material-symbols-outlined text-[16px]">calendar_today</span>
-<span>Início previsto: Outubro / 2025</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-space-xs line-clamp-1">Construção Casa Granja Viana - 420m²</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-md">
-              Demanda de empreiteira para execução completa de alvenaria estrutural, lajes protendidas e infraestrutura elétrica/hidráulica.
-            </p>
-<div class="grid grid-cols-2 gap-space-xs bg-surface-container-low p-space-sm rounded-lg mb-space-md">
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Orçamento Est.</span>
-<span class="font-title-md text-title-md text-primary font-bold">R$ 580.000</span>
-</div>
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Prazo Estimado</span>
-<span class="font-title-md text-title-md text-on-surface font-semibold">8 Meses</span>
-</div>
-</div>
-</div>
-<div class="flex items-center justify-between pt-space-xs">
-<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px]">location_on</span> Cotia, SP
-            </span>
-<button class="bg-secondary-container hover:bg-accent-hover text-on-secondary px-space-md py-1 rounded-lg font-label-md text-label-md transition-colors shadow-sm">
-              Ver Edital
-            </button>
-</div>
-</div>
-</div>
-<!-- Obra 2 -->
-<div class="bg-surface-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col group project-card" data-category="comercial">
-<div class="relative h-48 w-full overflow-hidden bg-surface-container">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Interior of an expansive commercial retail space with exposed HVAC ceiling ducts, concrete floor polishing equipment and modern structural pillars." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYar0db48yTHFbBD1TSFPurNNI-G5FgQxovoYPJgE8GOBkFlWLTICVAycNDbRf8yRAWZK80ggc6kArpU0sPaDTXWnhk2FYELxv1ONxAPd-vAe0Wdb9QAqZDGMAuGu27dNc9-d2tfwEdxPoM9Kvd2laX8D2iA-Ck7n-g1g4z9HjHpvNxCr_pXKQCsPv7l8BQRzeudPoxRIrrsHRyMrwZxFfyoRX5v4p4Fdd4PIYzbkZBAoXHyMquvcMOA"/>
-<span class="absolute top-3 left-3 bg-primary/90 text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm backdrop-blur-sm uppercase">
-            Comercial Corporativo
-          </span>
-<span class="absolute top-3 right-3 bg-status-info text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm font-semibold">
-            Em Análise Técnica
-          </span>
-</div>
-<div class="p-space-lg flex flex-col flex-1 justify-between">
-<div>
-<div class="flex items-center gap-1 font-label-sm text-label-sm text-secondary mb-1">
-<span class="material-symbols-outlined text-[16px]">calendar_today</span>
-<span>Início previsto: Imediato</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-space-xs line-clamp-1">Retrofit Clínico &amp; Recepção</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-md">
-              Reforma estrutural de 2 pavimentos comerciais em centro médico. Instalações de gases medicinais e cabeamento estruturado.
-            </p>
-<div class="grid grid-cols-2 gap-space-xs bg-surface-container-low p-space-sm rounded-lg mb-space-md">
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Orçamento Est.</span>
-<span class="font-title-md text-title-md text-primary font-bold">R$ 210.000</span>
-</div>
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Prazo Estimado</span>
-<span class="font-title-md text-title-md text-on-surface font-semibold">3 Meses</span>
-</div>
-</div>
-</div>
-<div class="flex items-center justify-between pt-space-xs">
-<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px]">location_on</span> Jardins, São Paulo
-            </span>
-<button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-1 rounded-lg font-label-md text-label-md transition-colors shadow-sm">
-              Enviar Proposta
-            </button>
-</div>
-</div>
-</div>
-<!-- Obra 3 -->
-<div class="bg-surface-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col group project-card" data-category="industrial">
-<div class="relative h-48 w-full overflow-hidden bg-surface-container">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Spacious industrial logistics warehouse construction with pre-cast concrete columns, polished concrete flooring and industrial LED high bay lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFtQChuiZ2VfZoZqqfyxEXv7gcvKKzF7M5MyR39xQ-3SI5VoYaFmo-veJrO1RdD2PjsfnIU-u4BTXqt4t3W2Jke_-TAQjvzsKftyia1M8VGQ6hjLb2TS_7iTnoeNxynHrIHPFk3T4WNfKoWJ-qRfQv0Z9b4GOTSwmgnDEti2Rz_fomEQyalquTipdLWDzremuxnLc91mq1oG-0dSjXYkZl1ctN2ZaZwXMgLgz9ZCkN9oAyxAKYGLBtcw"/>
-<span class="absolute top-3 left-3 bg-primary/90 text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm backdrop-blur-sm uppercase">
-            Galpão Industrial
-          </span>
-<span class="absolute top-3 right-3 bg-status-success text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm font-semibold">
-            Recebendo Propostas
-          </span>
-</div>
-<div class="p-space-lg flex flex-col flex-1 justify-between">
-<div>
-<div class="flex items-center gap-1 font-label-sm text-label-sm text-secondary mb-1">
-<span class="material-symbols-outlined text-[16px]">calendar_today</span>
-<span>Início previsto: Novembro / 2025</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-space-xs line-clamp-1">Piso Industrial de Alta Resistência - 2.800m²</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-md">
-              Concretagem de piso polido nivelado a laser com fibra metálica para centro logístico automotivo.
-            </p>
-<div class="grid grid-cols-2 gap-space-xs bg-surface-container-low p-space-sm rounded-lg mb-space-md">
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Orçamento Est.</span>
-<span class="font-title-md text-title-md text-primary font-bold">R$ 840.000</span>
-</div>
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Prazo Estimado</span>
-<span class="font-title-md text-title-md text-on-surface font-semibold">45 Dias</span>
-</div>
-</div>
-</div>
-<div class="flex items-center justify-between pt-space-xs">
-<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px]">location_on</span> Betim, MG
-            </span>
-<button class="bg-secondary-container hover:bg-accent-hover text-on-secondary px-space-md py-1 rounded-lg font-label-md text-label-md transition-colors shadow-sm">
-              Ver Edital
-            </button>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- DIFERENCIAIS DE CONFIANÇA & COMPLIANCE -->
-<section class="w-full bg-surface-card py-space-xl">
-<div class="max-w-7xl mx-auto px-margin">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<div class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-low">
-<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-secondary-container shrink-0">
-<span class="material-symbols-outlined text-[26px]">gavel</span>
-</div>
-<div>
-<h4 class="font-title-md text-title-md text-primary mb-1">Validação de Registro no CREA</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Checamos a regularidade da certidão profissional antes de liberar orçamentos e assinaturas de ART.</p>
-</div>
-</div>
-<div class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-low">
-<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-secondary-container shrink-0">
-<span class="material-symbols-outlined text-[26px]">lock</span>
-</div>
-<div>
-<h4 class="font-title-md text-title-md text-primary mb-1">Garantia Financeira Escrow</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Os valores de medições são custodiados e só liberados após a validação do diário de obras e vistorias.</p>
-</div>
-</div>
-<div class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-low">
-<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-secondary-container shrink-0">
-<span class="material-symbols-outlined text-[26px]">history_edu</span>
-</div>
-<div>
-<h4 class="font-title-md text-title-md text-primary mb-1">Rastreabilidade Documental</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Projetos, as-built, notas fiscais e relatórios técnicos reunidos em um único acervo perpétuo.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- MODERN FINAL CTA BANNER -->
-<section class="max-w-7xl mx-auto px-margin py-space-xl w-full">
-<div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary to-primary-container text-on-primary p-space-xl md:p-16 shadow-xl">
-<!-- Blueprint overlay -->
-<div class="absolute inset-0 opacity-10 pointer-events-none">
-<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<pattern height="40" id="cta-blueprint" patternunits="userSpaceOnUse" width="40">
-<path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.8"></path>
-</pattern>
-</defs>
-<rect fill="url(#cta-blueprint)" height="100%" width="100%"></rect>
-</svg>
-</div>
-<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
-<div class="lg:col-span-8 flex flex-col gap-space-sm">
-<span class="px-space-sm py-0.5 bg-secondary-container/20 text-secondary-fixed w-fit rounded font-label-sm text-label-sm uppercase tracking-wider font-semibold">
-            Inicie Hoje na Civil Connection
-          </span>
-<h2 class="font-headline-xl text-headline-xl sm:text-[40px] sm:leading-[48px] font-bold text-on-primary tracking-tight">
-            Pronto para transformar a gestão e a execução das suas obras?
-          </h2>
-<p class="font-body-lg text-body-lg text-surface-variant max-w-2xl font-light">
-            Publique sua obra sem custos para receber orçamentos, ou credencie sua construtora e equipe técnica na maior rede da construção civil brasileira.
-          </p>
-</div>
-<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-space-sm justify-center">
-<button class="w-full bg-secondary-container hover:bg-accent-hover text-on-secondary font-label-md text-label-md px-space-lg py-space-md rounded-lg flex items-center justify-center gap-space-xs transition-colors shadow-md">
-<span class="material-symbols-outlined text-[20px]">add_circle</span>
-<span>Publicar Obra Gratuitamente</span>
-</button>
-<button class="w-full bg-surface-card/10 hover:bg-surface-card/20 text-on-primary font-label-md text-label-md px-space-lg py-space-md rounded-lg flex items-center justify-center gap-space-xs transition-colors backdrop-blur-sm">
-<span class="material-symbols-outlined text-[20px]">badge</span>
-<span>Cadastrar Meu Perfil Técnico</span>
-</button>
-</div>
-</div>
-</div>
-</section>
-<!-- Interactive JavaScript logic for Tabs, Quick Tags and Project Filtering -->
-<script>
-    function switchAudienceTab(audience) {
-      const tabs = ['clientes', 'engenheiros', 'empreiteiras'];
-      tabs.forEach(tab => {
-        const pane = document.getElementById('pane-' + tab);
-        const btn = document.getElementById('tab-btn-' + tab);
-        if (tab === audience) {
-          pane.classList.remove('hidden');
-          pane.classList.add('block');
-          btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
-          btn.classList.remove('text-on-surface-variant');
-        } else {
-          pane.classList.remove('block');
-          pane.classList.add('hidden');
-          btn.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
-          btn.classList.add('text-on-surface-variant');
-        }
-      });
-    }
+      </a>
 
-    // Quick tag search fill
-    document.querySelectorAll('.quick-tag').forEach(tag => {
-      tag.addEventListener('click', function() {
-        const input = document.getElementById('service-search-input');
-        input.value = this.dataset.term;
-        input.focus();
-      });
-    });
+      <div class="hidden xl:flex items-center gap-space-sm bg-surface-container px-space-md py-space-xs rounded-xl">
+        <span class="material-symbols-outlined text-outline text-[20px]" aria-hidden="true">search</span>
+        <input aria-label="Buscar obras ou profissionais" class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-outline w-64" id="header-search" placeholder="Buscar obras, engenheiros, serviços..." type="search" />
+      </div>
 
-    // Project category filter
-    const projectFilter = document.getElementById('project-filter-status');
-    if (projectFilter) {
-      projectFilter.addEventListener('change', function() {
-        const val = this.value;
-        const cards = document.querySelectorAll('.project-card');
-        cards.forEach(card => {
-          if (val === 'all' || card.dataset.category === val) {
-            card.style.display = 'flex';
+      <nav aria-label="Navegação principal" class="hidden lg:flex items-center gap-space-xs">
+        <a aria-current="page" class="px-space-md py-space-sm font-title-md text-title-md text-on-primary bg-primary-container rounded-lg" href="index.html">Início</a>
+        <a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-lg" href="profissionais.html">Profissionais</a>
+        <a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-lg" href="obras.html">Obras &amp; Projetos</a>
+        <a class="px-space-md py-space-sm font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors rounded-lg" href="diario.html">Diário de Obras</a>
+      </nav>
+
+      <div class="flex items-center gap-space-sm">
+        <a class="hidden sm:inline-flex items-center gap-space-xs bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md px-space-lg py-space-sm rounded-lg transition-all shadow-sm" href="cadastro.html">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">add_circle</span>
+          <span>Publicar Projeto</span>
+        </a>
+        <a class="inline-flex items-center font-label-md text-label-md text-on-surface-variant hover:text-primary px-space-md py-space-sm rounded-lg hover:bg-surface-container transition-colors" href="cadastro.html">Entrar</a>
+        <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu de navegação" class="lg:hidden p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" id="mobile-menu-btn" type="button">
+          <span class="material-symbols-outlined text-[24px]" aria-hidden="true">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile -->
+    <div class="hidden lg:hidden bg-surface-card border-t border-surface-container shadow-lg" id="mobile-menu">
+      <nav aria-label="Navegação móvel" class="px-4 py-space-sm flex flex-col">
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-primary bg-primary-container rounded-lg" href="index.html">Início</a>
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" href="profissionais.html">Profissionais</a>
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" href="obras.html">Obras &amp; Projetos</a>
+        <a class="py-space-sm px-space-sm font-title-md text-title-md text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" href="diario.html">Diário de Obras</a>
+        <a class="mt-space-xs py-space-sm rounded-lg bg-secondary-container text-on-secondary font-label-md text-label-md text-center" href="cadastro.html">Publicar Projeto / Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="w-full pt-20 bg-surface-canvas" id="conteudo">
+    <!-- ══════════════════ HERO ══════════════════ -->
+    <section class="relative w-full overflow-hidden bg-primary text-on-primary">
+      <img alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover opacity-25" src="assets/images/hero-canteiro.jpg" />
+      <div class="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/85 to-primary pointer-events-none"></div>
+
+      <!-- Malha de projeto (blueprint) -->
+      <div class="absolute inset-0 opacity-[0.12] pointer-events-none">
+        <svg aria-hidden="true" class="w-full h-full" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern height="48" id="blueprint-grid" patternUnits="userSpaceOnUse" width="48">
+              <path d="M 48 0 L 0 0 0 48" fill="none" stroke="currentColor" stroke-width="0.75"></path>
+              <circle cx="24" cy="24" fill="currentColor" opacity="0.3" r="1.5"></circle>
+            </pattern>
+          </defs>
+          <rect fill="url(#blueprint-grid)" height="100%" width="100%"></rect>
+        </svg>
+      </div>
+      <div class="absolute -top-32 -right-32 w-96 h-96 bg-secondary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-space-xl pb-32 flex flex-col items-center text-center">
+        <div class="inline-flex items-center gap-space-xs bg-surface-card/10 backdrop-blur-md px-space-md py-space-xs rounded-full mb-space-lg">
+          <span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed">Ecossistema construtivo integrado</span>
+          <span class="font-label-sm text-label-sm text-surface-variant/70 hidden sm:inline">| Conforme CREA &amp; ABNT</span>
+        </div>
+
+        <h1 class="font-display-lg text-display-lg-mobile sm:text-display-lg text-on-primary max-w-4xl tracking-tight mb-space-md text-balance">
+          Conectando ideias,<br class="hidden sm:block" />
+          <span class="text-secondary-container">construindo o futuro</span>
+        </h1>
+
+        <p class="font-body-lg text-body-lg text-surface-variant max-w-2xl mb-space-xl text-balance font-light">
+          A plataforma que reúne incorporadores, clientes residenciais, engenheiros civis certificados e empreiteiras em um fluxo auditável, transparente e seguro.
+        </p>
+
+        <!-- Console de busca -->
+        <form class="w-full max-w-4xl bg-surface-card rounded-xl p-space-md shadow-[0_16px_48px_-12px_rgba(2,14,38,0.35)] text-on-surface text-left" id="hero-search-form">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm items-center">
+            <div class="md:col-span-4 flex flex-col bg-surface-container-low px-space-md py-space-xs rounded-lg">
+              <label class="font-label-sm text-label-sm uppercase text-on-surface-variant" for="service-search-input">Especialidade / Serviço</label>
+              <div class="flex items-center gap-space-xs mt-0.5">
+                <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">handyman</span>
+                <input class="w-full bg-transparent font-body-sm text-body-sm text-on-surface outline-none placeholder:text-outline" id="service-search-input" placeholder="Ex: Estrutura, Alvenaria, Elétrica..." type="search" />
+              </div>
+            </div>
+            <div class="md:col-span-3 flex flex-col bg-surface-container-low px-space-md py-space-xs rounded-lg">
+              <label class="font-label-sm text-label-sm uppercase text-on-surface-variant" for="hero-location">Localidade</label>
+              <div class="flex items-center gap-space-xs mt-0.5">
+                <span class="material-symbols-outlined text-secondary text-[20px]" aria-hidden="true">location_on</span>
+                <select class="w-full bg-transparent font-body-sm text-body-sm text-on-surface outline-none cursor-pointer" id="hero-location">
+                  <option value="SP">São Paulo, SP</option>
+                  <option value="RJ">Rio de Janeiro, RJ</option>
+                  <option value="MG">Belo Horizonte, MG</option>
+                  <option value="PR">Curitiba, PR</option>
+                  <option value="RS">Porto Alegre, RS</option>
+                  <option value="BA">Salvador, BA</option>
+                  <option value="ALL">Todo o Brasil</option>
+                </select>
+              </div>
+            </div>
+            <div class="md:col-span-3 flex flex-col bg-surface-container-low px-space-md py-space-xs rounded-lg">
+              <label class="font-label-sm text-label-sm uppercase text-on-surface-variant" for="hero-profile">Perfil buscado</label>
+              <div class="flex items-center gap-space-xs mt-0.5">
+                <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">badge</span>
+                <select class="w-full bg-transparent font-body-sm text-body-sm text-on-surface outline-none cursor-pointer" id="hero-profile">
+                  <option value="all">Todos os especialistas</option>
+                  <option value="eng">Engenheiro / RT</option>
+                  <option value="emp">Empreiteira homologada</option>
+                  <option value="tec">Técnicos &amp; mão de obra</option>
+                </select>
+              </div>
+            </div>
+            <div class="md:col-span-2 h-full">
+              <button class="w-full h-full min-h-[46px] bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md rounded-lg flex items-center justify-center gap-space-xs transition-all shadow-md" type="submit">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">search</span>
+                <span>Buscar</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-space-xs mt-space-md pt-space-xs text-on-surface-variant">
+            <span class="font-label-sm text-label-sm flex items-center gap-1 font-semibold text-primary">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">bolt</span> Em alta:
+            </span>
+            <button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Estruturas de Concreto" type="button">Estruturas de concreto</button>
+            <button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Alvenaria Estrutural" type="button">Alvenaria</button>
+            <button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Hidráulica Predial" type="button">Hidráulica</button>
+            <button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Instalações Elétricas" type="button">Elétrica</button>
+            <button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Climatização HVAC" type="button">Climatização</button>
+            <button class="quick-tag px-space-sm py-1 bg-surface-container hover:bg-surface-container-high rounded-full font-label-sm text-label-sm transition-colors text-on-surface" data-term="Pintura e Acabamento" type="button">Pintura fina</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ══════════════════ MÉTRICAS ══════════════════ -->
+    <section class="w-full bg-surface-card -mt-12 max-w-6xl mx-auto px-space-lg rounded-xl shadow-[0_12px_40px_-12px_rgba(2,14,38,0.18)] relative z-20">
+      <div class="grid grid-cols-2 md:grid-cols-4 py-space-lg gap-gutter text-center" style="font-variant-numeric: tabular-nums;">
+        <div class="flex flex-col items-center px-space-sm">
+          <div class="flex items-center gap-space-xs text-secondary mb-1">
+            <span class="material-symbols-outlined text-[24px]" aria-hidden="true">apartment</span>
+            <span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight" data-stat="obrasConcluidas">1.187</span>
+          </div>
+          <p class="font-label-sm text-label-sm text-on-surface-variant">Obras concluídas</p>
+          <span class="font-body-sm text-body-sm text-status-success flex items-center gap-0.5 mt-0.5">
+            <span class="material-symbols-outlined text-[14px]" aria-hidden="true">trending_up</span> 100% com ART emitida
+          </span>
+        </div>
+        <div class="flex flex-col items-center px-space-sm">
+          <div class="flex items-center gap-space-xs text-secondary mb-1">
+            <span class="material-symbols-outlined text-[24px]" aria-hidden="true">groups</span>
+            <span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight" data-stat="profissionaisCadastrados">3.412</span>
+          </div>
+          <p class="font-label-sm text-label-sm text-on-surface-variant">Profissionais cadastrados</p>
+          <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Engenheiros &amp; técnicos</span>
+        </div>
+        <div class="flex flex-col items-center px-space-sm">
+          <div class="flex items-center gap-space-xs text-secondary mb-1">
+            <span class="material-symbols-outlined text-[24px]" aria-hidden="true">verified</span>
+            <span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight" data-stat="satisfacaoMedia">97.8%</span>
+          </div>
+          <p class="font-label-sm text-label-sm text-on-surface-variant">Índice de satisfação</p>
+          <span class="font-body-sm text-body-sm text-status-success flex items-center gap-0.5 mt-0.5">
+            <span class="material-symbols-outlined text-[14px]" aria-hidden="true">star</span> Base de avaliações reais
+          </span>
+        </div>
+        <div class="flex flex-col items-center px-space-sm">
+          <div class="flex items-center gap-space-xs text-secondary mb-1">
+            <span class="material-symbols-outlined text-[24px]" aria-hidden="true">domain</span>
+            <span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight" data-stat="totalObras">512</span>
+          </div>
+          <p class="font-label-sm text-label-sm text-on-surface-variant">Empreiteiras homologadas</p>
+          <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Auditoria de conformidade</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ SOLUÇÕES POR PÚBLICO ══════════════════ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-space-xl w-full">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md">
+        <div class="max-w-2xl">
+          <div class="flex items-center gap-space-xs text-secondary font-label-md text-label-md mb-1">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">hub</span>
+            <span class="uppercase tracking-wide">Soluções sob medida</span>
+          </div>
+          <h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl font-bold text-primary tracking-tight text-balance">
+            Arquitetada para cada agente da cadeia construtiva
+          </h2>
+        </div>
+        <div class="flex max-w-full overflow-x-auto bg-surface-container p-1 rounded-xl" role="tablist" aria-label="Selecionar público">
+          <button class="tab-btn active shrink-0 px-space-md py-space-xs rounded-lg font-label-md text-label-md text-on-primary bg-primary shadow-sm transition-all flex items-center gap-1.5" id="tab-btn-clientes" onclick="switchAudienceTab('clientes')" role="tab" aria-selected="true" type="button">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">home_work</span>
+            <span>Proprietários &amp; clientes</span>
+          </button>
+          <button class="tab-btn shrink-0 px-space-md py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" id="tab-btn-engenheiros" onclick="switchAudienceTab('engenheiros')" role="tab" aria-selected="false" type="button">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">engineering</span>
+            <span>Engenheiros &amp; RTs</span>
+          </button>
+          <button class="tab-btn shrink-0 px-space-md py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" id="tab-btn-empreiteiras" onclick="switchAudienceTab('empreiteiras')" role="tab" aria-selected="false" type="button">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">corporate_fare</span>
+            <span>Empreiteiras &amp; construtoras</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="relative min-h-[380px]" id="audience-panels">
+        <!-- Painel: Clientes -->
+        <div aria-label="Soluções para proprietários e clientes" class="audience-pane block reveal" id="pane-clientes" role="tabpanel">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center bg-surface-card rounded-xl p-space-lg md:p-10 shadow-[0_4px_24px_-8px_rgba(2,14,38,0.10)]">
+            <div class="lg:col-span-7 flex flex-col gap-space-md">
+              <span class="px-space-sm py-1 bg-surface-container-low text-primary w-fit rounded-lg font-label-sm text-label-sm uppercase tracking-wide">Para quem vai construir ou reformar</span>
+              <h3 class="font-headline-lg text-headline-md md:text-headline-lg font-bold text-primary text-balance">Segurança contratual, vistorias regulares e zero surpresas</h3>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-prose">
+                Publique o escopo da sua obra e receba orçamentos estruturados de profissionais pré-avaliados. Tenha controle do diário de obras, das medições e da liberação de pagamentos atrelada a entregas físicas reais.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm my-space-xs">
+                <div class="flex items-start gap-space-xs">
+                  <span class="material-symbols-outlined text-status-success text-[20px] mt-0.5" aria-hidden="true">task_alt</span>
+                  <div>
+                    <h4 class="font-title-md text-title-md text-primary">Contrato &amp; garantia</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Retenção de sinal até a validação do marco técnico.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-space-xs">
+                  <span class="material-symbols-outlined text-status-success text-[20px] mt-0.5" aria-hidden="true">task_alt</span>
+                  <div>
+                    <h4 class="font-title-md text-title-md text-primary">Diário de obras online</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Fotos diárias, clima no canteiro e cronograma físico.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+                <a class="bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary px-space-lg py-space-sm font-label-md text-label-md rounded-lg flex items-center gap-space-xs transition-all shadow-sm" href="cadastro.html">
+                  <span>Publicar minha obra gratuitamente</span>
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+                </a>
+                <a class="font-title-md text-title-md text-primary hover:text-secondary flex items-center gap-1 transition-colors" href="#confianca">
+                  Como funciona a custódia de pagamento <span class="material-symbols-outlined text-[16px]" aria-hidden="true">chevron_right</span>
+                </a>
+              </div>
+            </div>
+            <div class="lg:col-span-5 relative">
+              <div class="overflow-hidden rounded-xl shadow-[0_12px_32px_-8px_rgba(2,14,38,0.25)] h-72 w-full">
+                <img alt="Engenheira apresentando o projeto no tablet para um casal de clientes no canteiro de obra" class="w-full h-full object-cover" loading="lazy" src="assets/images/aud-clientes.jpg" />
+              </div>
+              <div class="absolute -bottom-4 -left-4 bg-surface-card p-space-md rounded-lg shadow-[0_12px_32px_-8px_rgba(2,14,38,0.25)] flex items-center gap-space-sm max-w-xs">
+                <span class="material-symbols-outlined text-secondary text-[32px]" aria-hidden="true">shield</span>
+                <div>
+                  <p class="font-title-md text-title-md text-primary leading-tight">ART vinculada</p>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Registro técnico obrigatório</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Painel: Engenheiros -->
+        <div aria-label="Soluções para engenheiros e responsáveis técnicos" class="audience-pane hidden" id="pane-engenheiros" role="tabpanel">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center bg-surface-card rounded-xl p-space-lg md:p-10 shadow-[0_4px_24px_-8px_rgba(2,14,38,0.10)]">
+            <div class="lg:col-span-7 flex flex-col gap-space-md">
+              <span class="px-space-sm py-1 bg-surface-container-low text-primary w-fit rounded-lg font-label-sm text-label-sm uppercase tracking-wide">Para engenheiros, arquitetos e peritos</span>
+              <h3 class="font-headline-lg text-headline-md md:text-headline-lg font-bold text-primary text-balance">Captação contínua de projetos e emissão integrada de vistorias</h3>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-prose">
+                Expanda sua carteira de clientes com leads qualificados. Gerencie a responsabilidade técnica (RT), aprove orçamentos com detalhamento analítico e gere diários de obra com carimbo de geolocalização.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm my-space-xs">
+                <div class="flex items-start gap-space-xs">
+                  <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5" aria-hidden="true">verified_user</span>
+                  <div>
+                    <h4 class="font-title-md text-title-md text-primary">Selo profissional CREA</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Verificação expressa de certidão técnica junto ao conselho.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-space-xs">
+                  <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5" aria-hidden="true">assignment</span>
+                  <div>
+                    <h4 class="font-title-md text-title-md text-primary">Templates de laudo &amp; orçamento</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Modelos SINAPI integrados para orçamentação precisa.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+                <a class="bg-primary hover:bg-primary-container active:scale-[0.98] text-on-primary px-space-lg py-space-sm font-label-md text-label-md rounded-lg flex items-center gap-space-xs transition-all shadow-sm" href="cadastro.html">
+                  <span>Cadastrar perfil técnico</span>
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">verified</span>
+                </a>
+                <a class="font-title-md text-title-md text-primary hover:text-secondary flex items-center gap-1 transition-colors" href="profissionais.html">
+                  Ver profissionais na plataforma <span class="material-symbols-outlined text-[16px]" aria-hidden="true">chevron_right</span>
+                </a>
+              </div>
+            </div>
+            <div class="lg:col-span-5 relative">
+              <div class="overflow-hidden rounded-xl shadow-[0_12px_32px_-8px_rgba(2,14,38,0.25)] h-72 w-full">
+                <img alt="Engenheira civil de capacete inspecionando pilares de concreto recém-concretados" class="w-full h-full object-cover" loading="lazy" src="assets/images/aud-engenheiros.jpg" />
+              </div>
+              <div class="absolute -bottom-4 -right-4 bg-surface-card p-space-md rounded-lg shadow-[0_12px_32px_-8px_rgba(2,14,38,0.25)] flex items-center gap-space-sm">
+                <span class="material-symbols-outlined text-status-success text-[32px]" aria-hidden="true">payments</span>
+                <div>
+                  <p class="font-title-md text-title-md text-primary leading-tight">Recebimento pontual</p>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Sem inadimplência de honorários</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Painel: Empreiteiras -->
+        <div aria-label="Soluções para empreiteiras e construtoras" class="audience-pane hidden" id="pane-empreiteiras" role="tabpanel">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center bg-surface-card rounded-xl p-space-lg md:p-10 shadow-[0_4px_24px_-8px_rgba(2,14,38,0.10)]">
+            <div class="lg:col-span-7 flex flex-col gap-space-md">
+              <span class="px-space-sm py-1 bg-surface-container-low text-primary w-fit rounded-lg font-label-sm text-label-sm uppercase tracking-wide">Para empreiteiras &amp; construtoras</span>
+              <h3 class="font-headline-lg text-headline-md md:text-headline-lg font-bold text-primary text-balance">Alocação de equipes, subcontratação ágil e concorrências de vulto</h3>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-prose">
+                Centralize seu pipeline de obras comerciais, industriais e residenciais. Encontre subempreiteiros especializados e homologados para pacotes de instalações elétricas, hidráulicas e armação de ferragens.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm my-space-xs">
+                <div class="flex items-start gap-space-xs">
+                  <span class="material-symbols-outlined text-primary text-[20px] mt-0.5" aria-hidden="true">groups_2</span>
+                  <div>
+                    <h4 class="font-title-md text-title-md text-primary">Rede de subempreiteiros</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Times avaliados por pontualidade e produtividade no canteiro.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-space-xs">
+                  <span class="material-symbols-outlined text-primary text-[20px] mt-0.5" aria-hidden="true">insights</span>
+                  <div>
+                    <h4 class="font-title-md text-title-md text-primary">Acompanhamento de medições</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Histórico rastreável de avanço físico-financeiro por lote.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+                <a class="bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary px-space-lg py-space-sm font-label-md text-label-md rounded-lg flex items-center gap-space-xs transition-all shadow-sm" href="cadastro.html">
+                  <span>Homologar minha construtora</span>
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">domain_add</span>
+                </a>
+                <a class="font-title-md text-title-md text-primary hover:text-secondary flex items-center gap-1 transition-colors" href="obras.html">
+                  Oportunidades abertas <span class="material-symbols-outlined text-[16px]" aria-hidden="true">chevron_right</span>
+                </a>
+              </div>
+            </div>
+            <div class="lg:col-span-5 relative">
+              <div class="overflow-hidden rounded-xl shadow-[0_12px_32px_-8px_rgba(2,14,38,0.25)] h-72 w-full">
+                <img alt="Grua amarela içando vigas de aço em canteiro comercial ao pôr do sol" class="w-full h-full object-cover" loading="lazy" src="assets/images/aud-empreiteira.jpg" />
+              </div>
+              <div class="absolute -bottom-4 -left-4 bg-surface-card p-space-md rounded-lg shadow-[0_12px_32px_-8px_rgba(2,14,38,0.25)] flex items-center gap-space-sm">
+                <span class="material-symbols-outlined text-primary text-[32px]" aria-hidden="true">fact_check</span>
+                <div>
+                  <p class="font-title-md text-title-md text-primary leading-tight">Auditoria fiscal &amp; CND</p>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Compliance tributário em dia</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ PROFISSIONAIS EM DESTAQUE ══════════════════ -->
+    <section class="w-full bg-surface-container-low py-space-xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-space-xl gap-space-md">
+          <div>
+            <div class="flex items-center gap-space-xs text-secondary font-label-md text-label-md mb-1">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">verified</span>
+              <span class="uppercase tracking-wide">Quadro técnico homologado</span>
+            </div>
+            <h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl font-bold text-primary tracking-tight text-balance">
+              Especialistas em destaque na plataforma
+            </h2>
+          </div>
+          <a class="font-title-md text-title-md text-primary hover:text-secondary flex items-center gap-space-xs transition-colors" href="profissionais.html">
+            <span>Ver todos os profissionais</span>
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+          <!-- Destaque: engenheiro estrutural -->
+          <article class="reveal bg-surface-card rounded-xl p-space-lg shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all flex flex-col justify-between lg:col-span-2 lg:flex-row lg:items-center gap-space-lg">
+            <div class="flex flex-col gap-space-md flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-space-sm">
+                <div class="flex items-center gap-space-md">
+                  <div class="relative shrink-0">
+                    <div class="w-16 h-16 rounded-xl overflow-hidden bg-primary text-on-primary flex items-center justify-center font-headline-lg text-headline-lg">
+                      RV
+                    </div>
+                    <span class="absolute -bottom-1 -right-1 w-6 h-6 bg-status-success rounded-full flex items-center justify-center text-on-primary ring-2 ring-surface-card" title="CREA ativo">
+                      <span class="material-symbols-outlined text-[14px]" aria-hidden="true">check</span>
+                    </span>
+                  </div>
+                  <div>
+                    <h3 class="font-headline-sm text-headline-sm text-primary font-bold">Eng. Ricardo Valadares</h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">CREA 506.912.441-SP</p>
+                  </div>
+                </div>
+                <span class="px-space-xs py-0.5 bg-status-success/10 text-status-success rounded font-label-sm text-label-sm font-semibold shrink-0">Verificado</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant max-w-prose">
+                Especialista em cálculo estrutural de concreto armado, fundações profundas e reforço estrutural em retrofits urbanos. Atende São Paulo e ABCD com ART digital em até 24h.
+              </p>
+              <div class="flex flex-wrap gap-1">
+                <span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Cálculo estrutural</span>
+                <span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Fundações</span>
+                <span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Laudos técnicos</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-space-sm lg:w-56 shrink-0 border-t lg:border-t-0 lg:border-l border-surface-container pt-space-md lg:pt-0 lg:pl-space-lg">
+              <div class="flex items-center justify-between" style="font-variant-numeric: tabular-nums;">
+                <div class="flex items-center gap-1 text-secondary font-semibold">
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                  <span class="font-title-md text-title-md">4.9</span>
+                  <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">(48 obras)</span>
+                </div>
+                <span class="font-body-sm text-body-sm text-on-surface font-medium">14 anos exp.</span>
+              </div>
+              <span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span> São Paulo &amp; ABCD
+              </span>
+              <a class="bg-primary hover:bg-primary-container active:scale-[0.98] text-on-primary px-space-md py-space-sm rounded-lg font-label-md text-label-md flex items-center justify-center gap-1 transition-all" href="profissionais.html">
+                <span>Solicitar ART</span>
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">send</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Empreiteira -->
+          <article class="reveal bg-surface-card rounded-xl p-space-lg shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all flex flex-col justify-between" style="transition-delay: 80ms;">
+            <div>
+              <div class="flex items-start justify-between gap-space-sm mb-space-md">
+                <div class="flex items-center gap-space-sm">
+                  <div class="relative shrink-0">
+                    <div class="w-14 h-14 rounded-xl overflow-hidden bg-secondary-container text-on-secondary flex items-center justify-center font-headline-md text-headline-md">
+                      AO
+                    </div>
+                    <span class="absolute -bottom-1 -right-1 w-5 h-5 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary" title="Empreiteira premium">
+                      <span class="material-symbols-outlined text-[12px]" aria-hidden="true">workspace_premium</span>
+                    </span>
+                  </div>
+                  <div>
+                    <h3 class="font-title-md text-title-md text-primary font-bold">Aliança Obras &amp; Edificações</h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">CNPJ ativo | ISO 9001</p>
+                  </div>
+                </div>
+                <span class="px-space-xs py-0.5 bg-status-info/10 text-status-info rounded font-label-sm text-label-sm font-semibold shrink-0">Empreiteira</span>
+              </div>
+              <div class="flex items-center gap-space-md mb-space-md bg-surface-container-low px-space-md py-space-xs rounded-lg" style="font-variant-numeric: tabular-nums;">
+                <div class="flex items-center gap-1 text-secondary font-semibold">
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                  <span class="font-title-md text-title-md">5.0</span>
+                  <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">(112 obras)</span>
+                </div>
+                <div class="h-4 w-[1px] bg-outline-variant"></div>
+                <div class="font-body-sm text-body-sm text-on-surface font-medium">19 anos exp.</div>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+                Execução por empreitada de obras comerciais, galpões logísticos e reformas corporativas de alto padrão com frota própria.
+              </p>
+              <div class="flex flex-wrap gap-1 mb-space-lg">
+                <span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Empreitada completa</span>
+                <span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Estrutura metálica</span>
+                <span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Alvenaria</span>
+              </div>
+            </div>
+            <div class="pt-space-md flex items-center justify-between border-t border-surface-container">
+              <span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span> Campinas &amp; região
+              </span>
+              <a class="bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary px-space-md py-space-xs rounded-lg font-label-md text-label-md flex items-center gap-1 transition-all" href="profissionais.html">
+                <span>Cotar escopo</span>
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">description</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Engenheira MEP -->
+          <article class="reveal bg-surface-card rounded-xl p-space-lg shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all flex flex-col justify-between" style="transition-delay: 160ms;">
+            <div>
+              <div class="flex items-start justify-between gap-space-sm mb-space-md">
+                <div class="flex items-center gap-space-sm">
+                  <div class="relative shrink-0">
+                    <div class="w-14 h-14 rounded-xl overflow-hidden bg-primary text-on-primary flex items-center justify-center font-headline-md text-headline-md">
+                      CM
+                    </div>
+                    <span class="absolute -bottom-1 -right-1 w-5 h-5 bg-status-success rounded-full flex items-center justify-center text-on-primary" title="CFT/CREA">
+                      <span class="material-symbols-outlined text-[12px]" aria-hidden="true">check</span>
+                    </span>
+                  </div>
+                  <div>
+                    <h3 class="font-title-md text-title-md text-primary font-bold">Engª. Camila Montenegro</h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">CREA 819.043.119-MG</p>
+                  </div>
+                </div>
+                <span class="px-space-xs py-0.5 bg-status-success/10 text-status-success rounded font-label-sm text-label-sm font-semibold shrink-0">Verificado</span>
+              </div>
+              <div class="flex items-center gap-space-md mb-space-md bg-surface-container-low px-space-md py-space-xs rounded-lg" style="font-variant-numeric: tabular-nums;">
+                <div class="flex items-center gap-1 text-secondary font-semibold">
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
+                  <span class="font-title-md text-title-md">4.8</span>
+                  <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">(34 obras)</span>
+                </div>
+                <div class="h-4 w-[1px] bg-outline-variant"></div>
+                <div class="font-body-sm text-body-sm text-on-surface font-medium">9 anos exp.</div>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+                Projetista hidrossanitária, subestações abrigadas, climatização industrial e prevenção contra incêndio (AVCB).
+              </p>
+              <div class="flex flex-wrap gap-1 mb-space-lg">
+                <span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">Instalações MEP</span>
+                <span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">AVCB bombeiros</span>
+                <span class="px-2 py-0.5 bg-surface-container text-on-surface rounded font-label-sm text-label-sm">HVAC</span>
+              </div>
+            </div>
+            <div class="pt-space-md flex items-center justify-between border-t border-surface-container">
+              <span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span> Belo Horizonte &amp; vale
+              </span>
+              <a class="bg-primary hover:bg-primary-container active:scale-[0.98] text-on-primary px-space-md py-space-xs rounded-lg font-label-md text-label-md flex items-center gap-1 transition-all" href="profissionais.html">
+                <span>Contatar</span>
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">chat</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ OBRAS RECENTES ══════════════════ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-space-xl w-full">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-space-lg gap-space-md">
+        <div>
+          <div class="flex items-center gap-space-xs text-secondary font-label-md text-label-md mb-1">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">handshake</span>
+            <span class="uppercase tracking-wide">Mural de oportunidades</span>
+          </div>
+          <h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl font-bold text-primary tracking-tight text-balance">
+            Obras recentes abertas para propostas
+          </h2>
+        </div>
+        <div class="flex items-center gap-space-xs">
+          <label class="font-label-sm text-label-sm text-on-surface-variant" for="project-filter-status">Filtro rápido:</label>
+          <select class="bg-surface-card px-space-sm py-1 rounded-lg text-on-surface font-label-sm text-label-sm shadow-sm outline-none cursor-pointer" id="project-filter-status">
+            <option value="all">Todas as categorias</option>
+            <option value="residencial">Residencial</option>
+            <option value="comercial">Comercial</option>
+            <option value="industrial">Industrial</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter" id="projects-grid">
+        <article class="reveal bg-surface-card rounded-xl overflow-hidden shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all flex flex-col group project-card" data-category="residencial">
+          <div class="relative h-48 w-full overflow-hidden bg-surface-container">
+            <img alt="Casa residencial de dois pavimentos em estrutura de alvenaria em construção" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" src="assets/images/obra-residencial.jpg" />
+            <span class="absolute top-3 left-3 bg-primary/90 text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm backdrop-blur-sm">Residencial alto padrão</span>
+            <span class="absolute top-3 right-3 bg-status-success text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm font-semibold">Recebendo propostas</span>
+          </div>
+          <div class="p-space-lg flex flex-col flex-1 justify-between">
+            <div>
+              <div class="flex items-center gap-1 font-label-sm text-label-sm text-secondary mb-1">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">calendar_today</span>
+                <span>Início previsto: outubro / 2025</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-space-xs line-clamp-1">Construção Casa Granja Viana — 420 m²</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-md">
+                Demanda de empreiteira para execução completa de alvenaria estrutural, lajes protendidas e infraestrutura elétrica/hidráulica.
+              </p>
+              <div class="grid grid-cols-2 gap-space-xs bg-surface-container-low p-space-sm rounded-lg mb-space-md" style="font-variant-numeric: tabular-nums;">
+                <div>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant block">Orçamento est.</span>
+                  <span class="font-title-md text-title-md text-primary font-bold">R$ 580 mil</span>
+                </div>
+                <div>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant block">Prazo estimado</span>
+                  <span class="font-title-md text-title-md text-on-surface font-semibold">8 meses</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-space-xs">
+              <span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span> Cotia, SP
+              </span>
+              <a class="bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary px-space-md py-1 rounded-lg font-label-md text-label-md transition-all shadow-sm" href="obras.html">Ver edital</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="reveal bg-surface-card rounded-xl overflow-hidden shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all flex flex-col group project-card" data-category="comercial" style="transition-delay: 80ms;">
+          <div class="relative h-48 w-full overflow-hidden bg-surface-container">
+            <img alt="Eletricista instalando quadro de distribuição em reforma comercial" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" src="assets/images/obra-comercial.jpg" />
+            <span class="absolute top-3 left-3 bg-primary/90 text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm backdrop-blur-sm">Comercial corporativo</span>
+            <span class="absolute top-3 right-3 bg-status-info text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm font-semibold">Em análise técnica</span>
+          </div>
+          <div class="p-space-lg flex flex-col flex-1 justify-between">
+            <div>
+              <div class="flex items-center gap-1 font-label-sm text-label-sm text-secondary mb-1">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">calendar_today</span>
+                <span>Início previsto: imediato</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-space-xs line-clamp-1">Retrofit clínico &amp; recepção</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-md">
+                Reforma estrutural de 2 pavimentos comerciais em centro médico. Instalações de gases medicinais e cabeamento estruturado.
+              </p>
+              <div class="grid grid-cols-2 gap-space-xs bg-surface-container-low p-space-sm rounded-lg mb-space-md" style="font-variant-numeric: tabular-nums;">
+                <div>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant block">Orçamento est.</span>
+                  <span class="font-title-md text-title-md text-primary font-bold">R$ 210 mil</span>
+                </div>
+                <div>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant block">Prazo estimado</span>
+                  <span class="font-title-md text-title-md text-on-surface font-semibold">3 meses</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-space-xs">
+              <span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span> Jardins, São Paulo
+              </span>
+              <a class="bg-primary hover:bg-primary-container active:scale-[0.98] text-on-primary px-space-md py-1 rounded-lg font-label-md text-label-md transition-all shadow-sm" href="obras.html">Enviar proposta</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="reveal bg-surface-card rounded-xl overflow-hidden shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all flex flex-col group project-card" data-category="industrial" style="transition-delay: 160ms;">
+          <div class="relative h-48 w-full overflow-hidden bg-surface-container">
+            <img alt="Galpão industrial com colunas pré-moldadas e treliças metálicas em construção" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" src="assets/images/obra-galpao.jpg" />
+            <span class="absolute top-3 left-3 bg-primary/90 text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm backdrop-blur-sm">Galpão industrial</span>
+            <span class="absolute top-3 right-3 bg-status-success text-on-primary px-space-sm py-0.5 rounded font-label-sm text-label-sm font-semibold">Recebendo propostas</span>
+          </div>
+          <div class="p-space-lg flex flex-col flex-1 justify-between">
+            <div>
+              <div class="flex items-center gap-1 font-label-sm text-label-sm text-secondary mb-1">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">calendar_today</span>
+                <span>Início previsto: novembro / 2025</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-space-xs line-clamp-1">Piso industrial de alta resistência — 2.800 m²</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-md">
+                Concretagem de piso polido nivelado a laser com fibra metálica para centro logístico automotivo.
+              </p>
+              <div class="grid grid-cols-2 gap-space-xs bg-surface-container-low p-space-sm rounded-lg mb-space-md" style="font-variant-numeric: tabular-nums;">
+                <div>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant block">Orçamento est.</span>
+                  <span class="font-title-md text-title-md text-primary font-bold">R$ 840 mil</span>
+                </div>
+                <div>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant block">Prazo estimado</span>
+                  <span class="font-title-md text-title-md text-on-surface font-semibold">45 dias</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-space-xs">
+              <span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span> Betim, MG
+              </span>
+              <a class="bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary px-space-md py-1 rounded-lg font-label-md text-label-md transition-all shadow-sm" href="obras.html">Ver edital</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CONFIANÇA & COMPLIANCE ══════════════════ -->
+    <section class="w-full bg-surface-card py-space-xl" id="confianca">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-space-lg">
+          <div class="flex items-center gap-space-xs text-secondary font-label-md text-label-md mb-1">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">gavel</span>
+            <span class="uppercase tracking-wide">Conformidade e confiança</span>
+          </div>
+          <h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl font-bold text-primary tracking-tight text-balance">
+            Cada etapa auditada, cada documento rastreável
+          </h2>
+        </div>
+        <div class="reveal bg-surface-container-low rounded-xl grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-surface-container-high">
+          <div class="flex items-start gap-space-md p-space-lg">
+            <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-secondary-container shrink-0">
+              <span class="material-symbols-outlined text-[26px]" aria-hidden="true">gavel</span>
+            </div>
+            <div>
+              <h4 class="font-title-md text-title-md text-primary mb-1">Validação de registro no CREA</h4>
+              <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs">Checamos a regularidade da certidão profissional antes de liberar orçamentos e assinaturas de ART.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-space-md p-space-lg">
+            <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-secondary-container shrink-0">
+              <span class="material-symbols-outlined text-[26px]" aria-hidden="true">lock</span>
+            </div>
+            <div>
+              <h4 class="font-title-md text-title-md text-primary mb-1">Garantia financeira em custódia</h4>
+              <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs">Os valores das medições são custodiados e só liberados após a validação do diário de obras e das vistorias.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-space-md p-space-lg">
+            <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-secondary-container shrink-0">
+              <span class="material-symbols-outlined text-[26px]" aria-hidden="true">history_edu</span>
+            </div>
+            <div>
+              <h4 class="font-title-md text-title-md text-primary mb-1">Rastreabilidade documental</h4>
+              <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs">Projetos, as-built, notas fiscais e relatórios técnicos reunidos em um único acervo perpétuo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CTA FINAL ══════════════════ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-space-xl w-full">
+      <div class="relative overflow-hidden rounded-2xl bg-primary text-on-primary p-space-xl md:p-16 shadow-[0_24px_64px_-16px_rgba(2,14,38,0.45)]">
+        <img alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover opacity-20" loading="lazy" src="assets/images/hero-canteiro.jpg" />
+        <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/60 pointer-events-none"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-secondary-container/25 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+          <div class="lg:col-span-8 flex flex-col gap-space-sm">
+            <span class="px-space-sm py-0.5 bg-secondary-container/20 text-secondary-fixed w-fit rounded font-label-sm text-label-sm tracking-wide font-semibold">
+              Comece hoje na Civil Connection
+            </span>
+            <h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl font-bold text-on-primary tracking-tight text-balance">
+              Pronto para transformar a gestão e a execução das suas obras?
+            </h2>
+            <p class="font-body-lg text-body-lg text-surface-variant max-w-2xl font-light">
+              Publique sua obra sem custos para receber orçamentos, ou credencie sua construtora e equipe técnica na maior rede da construção civil brasileira.
+            </p>
+          </div>
+          <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-space-sm justify-center">
+            <a class="w-full bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md px-space-lg py-space-md rounded-lg flex items-center justify-center gap-space-xs transition-all shadow-md" href="cadastro.html">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">add_circle</span>
+              <span>Publicar obra gratuitamente</span>
+            </a>
+            <a class="w-full bg-surface-card/10 hover:bg-surface-card/20 active:scale-[0.98] text-on-primary font-label-md text-label-md px-space-lg py-space-md rounded-lg flex items-center justify-center gap-space-xs transition-all backdrop-blur-sm border border-surface-card/20" href="cadastro.html">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">badge</span>
+              <span>Cadastrar meu perfil técnico</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Alternância de painéis por público (mantida global para os onclick inline)
+      function switchAudienceTab(audience) {
+        const tabs = ['clientes', 'engenheiros', 'empreiteiras'];
+        tabs.forEach(tab => {
+          const pane = document.getElementById('pane-' + tab);
+          const btn = document.getElementById('tab-btn-' + tab);
+          const active = tab === audience;
+          pane.classList.toggle('hidden', !active);
+          btn.setAttribute('aria-selected', String(active));
+          if (active) {
+            btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+            btn.classList.remove('text-on-surface-variant');
           } else {
-            card.style.display = 'none';
+            btn.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+            btn.classList.add('text-on-surface-variant');
           }
         });
+      }
+
+      // Tags rápidas preenchem o campo de especialidade
+      document.querySelectorAll('.quick-tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+          const input = document.getElementById('service-search-input');
+          input.value = tag.dataset.term;
+          input.focus();
+        });
       });
-    }
-  </script>
-</div></main><footer class="w-full bg-surface-card shadow-[0_1px_8px_rgba(0,0,0,0.04)] mt-space-xl"><div class="max-w-7xl mx-auto px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter mb-space-xl"><div class="lg:col-span-2 flex flex-col gap-space-md"><div class="flex items-center gap-space-md"><img alt="civil_connection_logo.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WOVti2G0Jl0QJ8A5qko53tM9r9tkWLbEERY5F98WlZ7ChnHzEOjvTgR1Vq8aNwyAFKfJLEcSjMEe-aAGMHEiheUZqsYjSVMkoVIEIyGL2b1ceNJNmmKc-r7sA6DGmiT2ma2vxh3y8qw-VVhgIGnA1e6T3GXYvlSeM5coJ6H-2-td84hU0jwh0iLTHNoWz8zvpn9nVG96L624ZPuQj4vay-9xRpGWSbRwkS3p0arAa6iVXVwCeWUICnOfxMJCWOM274CizaxzTH"/><span class="font-headline-sm text-headline-sm text-primary">Civil Connection</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Plataforma integrada de engenharia e gestão de construções civis. Conectamos proprietários, empreiteiros e equipes técnicas com rastreabilidade estrutural.</p><div class="flex items-center gap-space-sm text-on-surface-variant"><span class="material-symbols-outlined text-status-success text-[18px]">verified_user</span><span class="font-label-sm text-label-sm uppercase tracking-wider">Plataforma Em conformidade com Normas ABNT &amp; CREA</span></div></div><div class="flex flex-col gap-space-sm"><h3 class="font-title-md text-title-md text-primary">Navegação</h3><ul class="flex flex-col gap-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="inicio" href="#">Início</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="encontrar-profissionais" href="#">Profissionais &amp; ART</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="obras-e-projetos" href="#">Projetos Ativos</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="diario-de-obras" href="#">Diários &amp; Vistorias</a></li></ul></div><div class="flex flex-col gap-space-sm"><h3 class="font-title-md text-title-md text-primary">Institucional</h3><ul class="flex flex-col gap-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Sobre a Plataforma</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Termos de Uso Técnico</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Privacidade &amp; LGPD</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"><a href="#">Segurança no Canteiro</a></li></ul></div><div class="flex flex-col gap-space-sm"><h3 class="font-title-md text-title-md text-primary">Contato &amp; Suporte</h3><ul class="flex flex-col gap-space-xs"><li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">mail</span>contato@civilconnection.com.br</li><li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">call</span>+55 (11) 3450-9800</li><li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">location_on</span>Av. Paulista, 1000 - SP</li></ul></div></div><div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md bg-surface-container-low px-space-lg py-space-md rounded-xl"><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Civil Connection Engenharia &amp; Tecnologia S.A. Todos os direitos reservados.</p><div class="flex items-center gap-space-md text-on-surface-variant font-label-sm text-label-sm"><span class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-status-success">lock</span>Criptografia Ponta a Ponta</span><span>ISO 9001 Homologado</span></div></div></div></footer><script src="js/config.js"></script><script src="js/app.js"></script></body></html>
+
+      // Filtro de categoria nos cards de projetos
+      const projectFilter = document.getElementById('project-filter-status');
+      if (projectFilter) {
+        projectFilter.addEventListener('change', () => {
+          const val = projectFilter.value;
+          document.querySelectorAll('.project-card').forEach(card => {
+            card.style.display = (val === 'all' || card.dataset.category === val) ? 'flex' : 'none';
+          });
+        });
+      }
+    </script>
+  </main>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="w-full bg-surface-card border-t border-surface-container">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-space-xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter mb-space-xl">
+        <div class="lg:col-span-2 flex flex-col gap-space-md">
+          <div class="flex items-center gap-space-md">
+            <img alt="Logotipo Civil Connection" class="h-8 w-auto object-contain" src="assets/images/logo.png" />
+            <span class="font-headline-sm text-headline-sm text-primary">Civil Connection</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">
+            Plataforma integrada de engenharia e gestão de obras civis. Conectamos proprietários, empreiteiros e equipes técnicas com rastreabilidade estrutural.
+          </p>
+          <div class="flex items-center gap-space-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-status-success text-[18px]" aria-hidden="true">verified_user</span>
+            <span class="font-label-sm text-label-sm tracking-wide">Plataforma em conformidade com normas ABNT e CREA</span>
+          </div>
+        </div>
+        <nav aria-label="Navegação do rodapé" class="flex flex-col gap-space-sm">
+          <h3 class="font-title-md text-title-md text-primary">Navegação</h3>
+          <ul class="flex flex-col gap-space-xs">
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="index.html">Início</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="profissionais.html">Profissionais &amp; ART</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="obras.html">Projetos ativos</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="diario.html">Diários &amp; vistorias</a></li>
+          </ul>
+        </nav>
+        <div class="flex flex-col gap-space-sm">
+          <h3 class="font-title-md text-title-md text-primary">Institucional</h3>
+          <ul class="flex flex-col gap-space-xs">
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="index.html#confianca">Sobre a plataforma</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="cadastro.html#termos">Termos de uso técnico</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="cadastro.html#termos">Privacidade &amp; LGPD</a></li>
+            <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="mailto:contato@civilconnection.com.br">Segurança no canteiro</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-space-sm">
+          <h3 class="font-title-md text-title-md text-primary">Contato &amp; suporte</h3>
+          <ul class="flex flex-col gap-space-xs">
+            <li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">mail</span><a class="hover:text-on-surface transition-colors" href="mailto:contato@civilconnection.com.br">contato@civilconnection.com.br</a>
+            </li>
+            <li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">call</span><a class="hover:text-on-surface transition-colors" href="tel:+551134509800">+55 (11) 3450-9800</a>
+            </li>
+            <li class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span>Av. Paulista, 1000 — São Paulo, SP
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-space-md border-t border-surface-container pt-space-lg">
+        <p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Civil Connection Engenharia &amp; Tecnologia. Projeto acadêmico — Etec.</p>
+        <div class="flex items-center gap-space-md text-on-surface-variant font-label-sm text-label-sm">
+          <span class="flex items-center gap-space-xs">
+            <span class="material-symbols-outlined text-[16px] text-status-success" aria-hidden="true">lock</span>Dados protegidos (LGPD)
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
