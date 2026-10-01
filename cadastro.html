@@ -717,6 +717,11 @@
       }
 
       // ════════ Envio dos formulários (integração com a API REST) ════════
+
+      // Guarda o usuário já criado quando apenas a criação do perfil profissional falhou,
+      // para que o reenvio do formulário não tente criar a conta de novo.
+      let perfilPendente = null;
+
       async function handleRegisterSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -735,17 +740,29 @@
 
         const payload = { nome, email, senha, tipo };
 
-        try {
-          const usuarioCriado = await apiFetch('/api/usuarios', {
-            method: 'POST',
-            body: JSON.stringify(payload),
-          });
+        // A conta já foi criada numa tentativa anterior: só falta o perfil profissional.
+        let usuarioId = perfilPendente ? perfilPendente.usuarioId : null;
 
-          if (tipo === 'PROFISSIONAL' && profissao) {
+        if (usuarioId === null) {
+          try {
+            const usuarioCriado = await apiFetch('/api/usuarios', {
+              method: 'POST',
+              body: JSON.stringify(payload),
+            });
+            usuarioId = usuarioCriado && usuarioCriado.id;
+          } catch (err) {
+            // Nada foi criado — o cadastro inteiro pode ser repetido.
+            showToast(err.message || 'Não foi possível concluir o cadastro.', false);
+            return;
+          }
+        }
+
+        if (tipo === 'PROFISSIONAL' && profissao) {
+          try {
             await apiFetch('/api/profissionais', {
               method: 'POST',
               body: JSON.stringify({
-                usuarioId: usuarioCriado.id,
+                usuarioId,
                 profissao,
                 cidade,
                 descricao: 'Profissional registrado na plataforma Civil Connection.',
@@ -753,19 +770,28 @@
                 contato: email,
               }),
             });
+          } catch (err) {
+            // A conta existe: preserva o id para que o reenvio tente apenas o perfil,
+            // evitando duplicar o usuário. Sem id utilizável não há o que reaproveitar.
+            perfilPendente = usuarioId ? { usuarioId, email } : null;
+            showToast(
+              `Conta criada com sucesso, mas o perfil profissional não pôde ser salvo (${err.message || 'erro na requisição'}). Não refaça o cadastro: envie novamente para concluir apenas o perfil.`,
+              false
+            );
+            return;
           }
-
-          showToast('Cadastro realizado com sucesso.');
-          setTimeout(() => { window.location.href = 'index.html'; }, 1500);
-        } catch (err) {
-          showToast(err.message || 'Não foi possível concluir o cadastro.', false);
         }
+
+        perfilPendente = null;
+        showToast('Cadastro realizado com sucesso.');
+        setTimeout(() => { window.location.href = 'index.html'; }, 1500);
       }
 
       async function handleLoginSubmit(event) {
         event.preventDefault();
-        showToast('Acesso realizado com sucesso.');
-        setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+        // O backend ainda não expõe endpoint de autenticação (/api/usuarios só cria e lista).
+        // Não há como validar as credenciais, então nada de "sucesso" nem redirecionamento.
+        showToast('Login indisponível: a autenticação ainda não foi implementada no servidor.', false);
       }
     </script>
   </main>

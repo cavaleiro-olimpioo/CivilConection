@@ -182,4 +182,12 @@ button:active {
     .tab-pane {
         display: flex !important;
     }
+
+    /* Elementos ainda não revelados pelo IntersectionObserver
+       precisam aparecer na impressão. */
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
 }

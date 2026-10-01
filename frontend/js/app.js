@@ -25,9 +25,33 @@ document.addEventListener('DOMContentLoaded', () => {
 // Utilitários
 // ============================================================
 
+// Resolve o endpoint conforme a configuração disponível:
+// - window.CIVIL_API_CONFIG.baseUrl quando configurado (js/config.js);
+// - http://localhost:8080 para páginas abertas via file:// (URL relativa não funciona);
+// - URL relativa (mesma origem) nos demais casos.
+function resolveApiUrl(endpoint) {
+    if (/^[a-z][a-z0-9+.-]*:\/\//i.test(endpoint)) return endpoint;
+
+    const configured = (window.CIVIL_API_CONFIG && window.CIVIL_API_CONFIG.baseUrl) || '';
+    const base = configured
+        ? configured
+        : (window.location.protocol === 'file:' ? 'http://localhost:8080' : '');
+
+    if (!base) return endpoint;
+    return `${base.replace(/\/+$/, '')}${endpoint.startsWith('/') ? '' : '/'}${endpoint}`;
+}
+
+// Escapa valores vindos da API antes de interpolá-los em HTML.
+const HTML_ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+
+function escapeHtml(value) {
+    if (value == null) return '';
+    return String(value).replace(/[&<>"']/g, ch => HTML_ESCAPES[ch]);
+}
+
 async function apiFetch(endpoint, options = {}) {
     try {
-        const response = await fetch(endpoint, {
+        const response = await fetch(resolveApiUrl(endpoint), {
             headers: {
                 'Content-Type': 'application/json',
                 ...options.headers
@@ -61,7 +85,7 @@ function showToast(message, isSuccess = true) {
     }`;
     toast.innerHTML = `
         <span class="material-symbols-outlined text-[20px] ${isSuccess ? 'text-status-success' : 'text-error-container'}" aria-hidden="true">${isSuccess ? 'check_circle' : 'error'}</span>
-        <span class="font-label-md text-label-md">${message}</span>
+        <span class="font-label-md text-label-md">${escapeHtml(message)}</span>
     `;
     document.body.appendChild(toast);
 
@@ -239,17 +263,25 @@ async function initProfissionaisPage() {
     await carregarProfissionais({ termo: initialTerm });
 }
 
+// Guarda da última requisição: respostas atrasadas de buscas antigas
+// não podem sobrescrever o resultado da busca mais recente.
+let profissionaisRequestId = 0;
+
 async function carregarProfissionais(filtros = {}) {
     const container = document.getElementById('lista-profissionais');
     if (!container) return;
+
+    const requestId = ++profissionaisRequestId;
 
     try {
         const queryParams = new URLSearchParams();
         if (filtros.termo) queryParams.append('termo', filtros.termo);
 
         const profissionais = await apiFetch(`/api/profissionais?${queryParams.toString()}`);
+        if (requestId !== profissionaisRequestId) return;
         renderProfissionais(profissionais, container);
     } catch (err) {
+        if (requestId !== profissionaisRequestId) return;
         if (!apiFailureToastShown) {
             apiFailureToastShown = true;
             showToast('API indisponível — exibindo vitrine de demonstração.', false);
@@ -268,17 +300,22 @@ function renderProfissionais(profissionais, container) {
     }
 
     container.innerHTML = profissionais.map(p => {
-        const iniciais = (p.nome || 'P')
-            .split(' ')
-            .filter(w => w.length > 2)
-            .slice(0, 2)
-            .map(w => w.charAt(0).toUpperCase())
-            .join('') || p.nome.charAt(0).toUpperCase();
-        const nota = p.avaliacao ? p.avaliacao.toFixed(2) : '5.00';
-        const especialidades = p.especialidades
+        const nomeBase = p.nome || 'P';
+        const iniciais = escapeHtml(
+            nomeBase
+                .split(' ')
+                .filter(w => w.length > 2)
+                .slice(0, 2)
+                .map(w => w.charAt(0).toUpperCase())
+                .join('') || nomeBase.charAt(0).toUpperCase()
+        );
+        const nota = typeof p.avaliacao === 'number' ? p.avaliacao.toFixed(2) : '5.00';
+        const especialidades = typeof p.especialidades === 'string'
             ? p.especialidades.split(',').slice(0, 4).map(esp =>
-                `<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">${esp.trim()}</span>`).join('')
+                `<span class="px-space-sm py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-md">${escapeHtml(esp.trim())}</span>`).join('')
             : '';
+        const nomeContato = p.nome || 'Profissional';
+        const contato = p.contato || p.email || '';
 
         return `
         <article class="prof-card bg-surface-card rounded-xl shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] transition-all overflow-hidden flex flex-col p-space-lg gap-space-md" data-type="autonomous" data-rating="${nota}">
@@ -291,8 +328,8 @@ function renderProfissionais(profissionais, container) {
                         </span>
                     </div>
                     <div class="min-w-0">
-                        <h3 class="font-headline-sm text-headline-sm text-primary">${p.nome || 'Profissional'}</h3>
-                        <p class="font-body-sm text-body-sm text-on-surface-variant">${p.profissao || 'Especialista'}</p>
+                        <h3 class="font-headline-sm text-headline-sm text-primary">${escapeHtml(p.nome || 'Profissional')}</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">${escapeHtml(p.profissao || 'Especialista')}</p>
                         <div class="flex items-center gap-space-xs mt-1 text-on-surface-variant" style="font-variant-numeric: tabular-nums;">
                             <span class="material-symbols-outlined text-status-warning text-[18px]" aria-hidden="true" style="font-variation-settings: 'FILL' 1;">star</span>
                             <span class="font-title-md text-title-md text-primary font-bold">${nota}</span>
@@ -300,18 +337,18 @@ function renderProfissionais(profissionais, container) {
                     </div>
                 </div>
             </div>
-            ${p.descricao ? `<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 max-w-prose">${p.descricao}</p>` : ''}
+            ${p.descricao ? `<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 max-w-prose">${escapeHtml(p.descricao)}</p>` : ''}
             ${especialidades ? `<div class="flex flex-wrap items-center gap-space-xs">${especialidades}</div>` : ''}
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-canvas p-space-md rounded-lg">
                 <div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
                     <span class="flex items-center gap-1">
                         <span class="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">near_me</span>
-                        ${p.cidade || 'São Paulo, SP'}
+                        ${escapeHtml(p.cidade || 'São Paulo, SP')}
                     </span>
                 </div>
                 <div class="flex items-center gap-space-sm self-end sm:self-auto">
-                    <button class="px-space-md py-2 bg-surface-card hover:bg-surface-variant active:scale-[0.98] text-primary font-label-md text-label-md rounded-lg transition-all shadow-sm" onclick="contatarProfissional('${(p.nome || '').replace(/'/g, '')}', '${p.contato || p.email || ''}')" type="button">Ver perfil</button>
-                    <button class="px-space-lg py-2 bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-1 shadow-sm transition-all" onclick="contatarProfissional('${(p.nome || '').replace(/'/g, '')}', '${p.contato || p.email || ''}')" type="button">
+                    <button class="px-space-md py-2 bg-surface-card hover:bg-surface-variant active:scale-[0.98] text-primary font-label-md text-label-md rounded-lg transition-all shadow-sm" data-action="contatar-profissional" data-nome="${escapeHtml(nomeContato)}" data-contato="${escapeHtml(contato)}" type="button">Ver perfil</button>
+                    <button class="px-space-lg py-2 bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-1 shadow-sm transition-all" data-action="contatar-profissional" data-nome="${escapeHtml(nomeContato)}" data-contato="${escapeHtml(contato)}" type="button">
                         <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
                         <span>Solicitar proposta</span>
                     </button>
@@ -320,9 +357,23 @@ function renderProfissionais(profissionais, container) {
         </article>`;
     }).join('');
 
+    bindProfissionaisActions(container);
+
     if (typeof window.applyLocalProfFilters === 'function') {
         window.applyLocalProfFilters();
     }
+}
+
+// Listener delegado (registrado uma única vez por container) no lugar de onclick inline.
+function bindProfissionaisActions(container) {
+    if (container.dataset.actionsBound === 'true') return;
+    container.dataset.actionsBound = 'true';
+
+    container.addEventListener('click', (event) => {
+        const btn = event.target.closest('[data-action="contatar-profissional"]');
+        if (!btn || !container.contains(btn)) return;
+        contatarProfissional(btn.dataset.nome || 'Profissional', btn.dataset.contato || '');
+    });
 }
 
 function contatarProfissional(nome, contato) {
@@ -367,34 +418,38 @@ function renderObras(obras, container) {
     const fmt = new Intl.NumberFormat('pt-BR');
 
     container.innerHTML = obras.map((o, i) => {
-        const progresso = o.progresso || 0;
+        const progresso = Number(o.progresso) || 0;
         const concluida = o.status === 'CONCLUIDA';
-        const categoria = o.categoria || 'Residencial';
+        const categoria = escapeHtml(o.categoria || 'Residencial');
         const img = OBRA_IMAGES[i % OBRA_IMAGES.length];
+        const orcamento = Number(o.orcamentoEstimado) || progresso * 1000;
+        const nome = escapeHtml(o.nome || 'Obra sem nome');
+        const codigo = escapeHtml(o.id);
+        const idUrl = encodeURIComponent(o.id == null ? '' : o.id);
 
         return `
         <article class="project-card bg-surface-card rounded-xl overflow-hidden shadow-[0_2px_12px_-4px_rgba(2,14,38,0.08)] hover:shadow-[0_12px_32px_-8px_rgba(2,14,38,0.18)] flex flex-col justify-between transition-all duration-200 group"
-                 data-budget="${(o.orcamentoEstimado || progresso * 1000)}" data-category="${categoria}" data-modality="empreiteiras" data-urgency="Normal">
+                 data-budget="${orcamento}" data-category="${categoria}" data-modality="empreiteiras" data-urgency="Normal">
             <div class="flex flex-col">
                 <div class="relative w-full h-48 overflow-hidden bg-surface-container">
-                    <img alt="Foto ilustrativa da obra ${o.nome}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" src="${img}" />
+                    <img alt="Foto ilustrativa da obra ${nome}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" src="${img}" />
                     <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
                     <div class="absolute top-space-sm left-space-sm flex items-center gap-space-xs">
                         <span class="${concluida ? 'bg-status-success' : 'bg-status-info/90'} text-on-primary px-space-sm py-space-xs rounded font-label-sm text-label-sm font-semibold">${concluida ? 'Concluída' : 'Em andamento'}</span>
                     </div>
                     <div class="absolute bottom-space-sm left-space-sm right-space-sm text-on-primary flex items-center justify-between">
                         <span class="font-label-sm text-label-sm bg-primary/60 backdrop-blur-sm px-2 py-0.5 rounded">${categoria}</span>
-                        <span class="font-label-sm text-label-sm opacity-90" style="font-variant-numeric: tabular-nums;">Cód: CC-${o.id}</span>
+                        <span class="font-label-sm text-label-sm opacity-90" style="font-variant-numeric: tabular-nums;">Cód: CC-${codigo}</span>
                     </div>
                 </div>
                 <div class="p-space-lg flex flex-col gap-space-md">
                     <div class="flex flex-col gap-space-xs">
                         <div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
                             <span class="material-symbols-outlined text-[16px] text-secondary" aria-hidden="true">location_on</span>
-                            <span>${o.cidade || 'São Paulo, SP'}</span>
+                            <span>${escapeHtml(o.cidade || 'São Paulo, SP')}</span>
                         </div>
-                        <h2 class="font-headline-sm text-headline-sm text-primary line-clamp-1 group-hover:text-secondary transition-colors">${o.nome}</h2>
-                        <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">${o.descricao || 'Sem descrição informada.'}</p>
+                        <h2 class="font-headline-sm text-headline-sm text-primary line-clamp-1 group-hover:text-secondary transition-colors">${nome}</h2>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">${escapeHtml(o.descricao || 'Sem descrição informada.')}</p>
                     </div>
                     <div class="flex flex-col gap-1">
                         <div class="flex justify-between font-label-sm text-label-sm font-semibold">
@@ -409,7 +464,7 @@ function renderObras(obras, container) {
             </div>
             <div class="p-space-lg pt-0">
                 <a class="btn-open-modal w-full bg-secondary-container hover:bg-accent-hover active:scale-[0.98] text-on-secondary font-label-md text-label-md py-space-sm rounded-lg transition-all flex items-center justify-center gap-space-xs shadow-sm"
-                   data-budget="Consulte o edital" data-code="CC-${o.id}" data-title="${(o.nome || '').replace(/"/g, '&quot;')}" href="diario.html?obraId=${o.id}">
+                   data-budget="Consulte o edital" data-code="CC-${codigo}" data-title="${nome}" href="diario.html?obraId=${idUrl}">
                     <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
                     <span>Acompanhar diário</span>
                 </a>
